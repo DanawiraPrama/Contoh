@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laporan Kinerja Rekrutmen Reseller El Marwa</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 400px;
+            }
+        }
+        .arrow {
+            font-size: 2.5rem;
+            line-height: 1;
+            color: #FFD166;
+        }
+    </style>
+</head>
+<body class="bg-gray-100" style="background-color: #073B4C;">
+    <div class="container mx-auto p-4 md:p-8">
+
+        <header class="text-center mb-12">
+            <h1 class="text-4xl md:text-5xl font-bold text-white mb-2">Laporan Kinerja Program</h1>
+            <h2 class="text-2xl md:text-3xl font-semibold text-white" style="color: #06D6A0;">Rekrutmen Reseller El Marwa</h2>
+            <p class="text-lg text-gray-300 mt-2">Periode Analisis: Juni - September 2025</p>
+        </header>
+
+        <section id="executive-summary" class="mb-12">
+            <h3 class="text-2xl font-bold text-white text-center mb-6">Ringkasan Eksekutif</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-white rounded-lg shadow-xl p-6 text-center transform hover:scale-105 transition-transform duration-300" style="background-color: #118AB2;">
+                    <p class="text-xl font-semibold text-gray-200">Total Leads Awal</p>
+                    <p class="text-5xl font-bold text-white mt-2">389</p>
+                    <p class="text-gray-300 mt-2">Prospek dari Meta Ads.</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-xl p-6 text-center transform hover:scale-105 transition-transform duration-300" style="background-color: #118AB2;">
+                    <p class="text-xl font-semibold text-gray-200">Pendaftar Formal</p>
+                    <p class="text-5xl font-bold text-white mt-2">37</p>
+                    <p class="text-gray-300 mt-2">Reseller yang mengisi formulir.</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-xl p-6 text-center transform hover:scale-105 transition-transform duration-300" style="background-color: #118AB2;">
+                    <p class="text-xl font-semibold text-gray-200">Reseller Onboard</p>
+                    <p class="text-5xl font-bold text-white mt-2">52</p>
+                    <p class="text-gray-300 mt-2">Reseller yang berkomitmen di grup.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="funnel" class="mb-12 bg-white rounded-lg shadow-lg p-6" style="background-color: #FFFFFF;">
+             <h3 class="text-2xl font-bold text-center mb-2" style="color: #073B4C;">Analisis Funnel Seleksi Bertahap</h3>
+             <p class="text-center text-gray-600 mb-8 max-w-2xl mx-auto">Program rekrutmen menggunakan pendekatan 'squeeze' untuk menyaring pendaftar yang benar-benar berkomitmen. Proses ini secara efektif memisahkan audiens yang hanya tertarik dari calon reseller yang siap berinvestasi waktu dan tenaga.</p>
+            <div class="flex flex-col md:flex-row items-center justify-around space-y-6 md:space-y-0 md:space-x-6 text-center">
+                <div class="flex flex-col items-center">
+                    <div class="rounded-lg p-4 w-48 h-24 flex flex-col justify-center" style="background-color: #118AB2;">
+                        <span class="font-bold text-xl text-white">Leads Awal</span>
+                        <span class="font-semibold text-2xl text-white">389</span>
+                    </div>
+                     <p class="text-xs text-gray-500 mt-1 max-w-xs">Pengisian Formulir di Meta Ads</p>
+                </div>
+                <div class="arrow transform md:rotate-0 rotate-90">→</div>
+                 <div class="flex flex-col items-center">
+                    <div class="rounded-lg p-4 w-48 h-24 flex flex-col justify-center" style="background-color: #06D6A0;">
+                        <span class="font-bold text-xl text-white">Anggota Grup WA</span>
+                        <span class="font-semibold text-2xl text-white">> 250</span>
+                    </div>
+                     <p class="text-xs text-gray-500 mt-1 max-w-xs">Bergabung di Grup Prospek</p>
+                </div>
+                <div class="arrow transform md:rotate-0 rotate-90">→</div>
+                 <div class="flex flex-col items-center">
+                    <div class="rounded-lg p-4 w-48 h-24 flex flex-col justify-center" style="background-color: #FFD166;">
+                        <span class="font-bold text-xl text-gray-800">Reseller Onboard</span>
+                        <span class="font-semibold text-2xl text-gray-800">52</span>
+                    </div>
+                     <p class="text-xs text-gray-500 mt-1 max-w-xs">Mengisi Formulir Resmi & Masuk Grup Onboarding</p>
+                </div>
+            </div>
+            <div class="text-center mt-6">
+                <p class="text-lg font-semibold" style="color: #FF6B6B;">Tingkat Konversi dari Leads ke Reseller Onboard: <span class="font-bold text-2xl">13.4%</span></p>
+                <p class="text-sm font-semibold text-gray-500">Angka ini menunjukkan keberhasilan filter untuk mendapatkan reseller berkomitmen.</p>
+            </div>
+        </section>
+
+        <section id="registrant-profile" class="mb-12">
+            <h3 class="text-2xl font-bold text-white text-center mb-6">Profil Pendaftar Reseller</h3>
+            <p class="text-center text-gray-300 mb-8 max-w-3xl mx-auto">Memahami siapa pendaftar kita adalah kunci untuk merancang strategi rekrutmen dan pelatihan yang lebih efektif. Data menunjukkan antusiasme tinggi dari berbagai wilayah, namun dengan tingkat pengalaman berjualan yang bervariasi.</p>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div class="bg-white rounded-lg shadow-lg p-6">
+                    <h4 class="text-xl font-bold text-center mb-4" style="color: #073B4C;">Sebaran Geografis (Kota Teratas)</h4>
+                    <p class="text-sm text-center text-gray-600 mb-4">Program ini berhasil menarik minat dari berbagai kota besar di Indonesia, menunjukkan jangkauan nasional yang luas dan potensi pasar yang beragam.</p>
+                    <div class="chart-container">
+                        <canvas id="geographyChart"></canvas>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-lg p-6">
+                    <h4 class="text-xl font-bold text-center mb-4" style="color: #073B4C;">Pengalaman Berjualan Pendaftar</h4>
+                    <p class="text-sm text-center text-gray-600 mb-4">Hampir setengah dari pendaftar adalah pemula. Ini merupakan peluang besar untuk program pembinaan, sekaligus tantangan untuk memastikan mereka siap berjualan.</p>
+                    <div class="chart-container">
+                        <canvas id="experienceChart"></canvas>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-lg p-6 lg:col-span-2">
+                    <h4 class="text-xl font-bold text-center mb-4" style="color: #073B4C;">Target Penghasilan Bulanan</h4>
+                    <p class="text-sm text-center text-gray-600 mb-4 max-w-2xl mx-auto">Aspirasi penghasilan para pendaftar sangat tinggi. Mayoritas menargetkan pendapatan di atas 10 juta per bulan, menandakan motivasi finansial yang kuat sebagai pendorong utama.</p>
+                    <div class="chart-container">
+                        <canvas id="incomeTargetChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="qualitative-analysis" class="mb-12">
+             <h3 class="text-2xl font-bold text-white text-center mb-6">Analisis Kualitatif & Program</h3>
+             <p class="text-center text-gray-300 mb-8 max-w-3xl mx-auto">Di luar angka, evaluasi kualitatif memberikan wawasan tentang kekuatan program dan area yang memerlukan perbaikan. Program pelatihan yang solid menjadi fondasi, namun perlu diimbangi dengan strategi untuk mengatasi kesenjangan pengalaman pendaftar.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-white rounded-lg shadow-lg p-6">
+                    <h4 class="text-xl font-bold mb-4" style="color: #073B4C;">Evaluasi Program Pelatihan</h4>
+                    <p class="text-gray-600 mb-4">Program pelatihan awal telah mencakup pilar-pilar penting untuk kesuksesan reseller. Topik yang relevan dan komprehensif menjadi aset utama program ini.</p>
+                    <ul class="space-y-3">
+                        <li class="flex items-start p-3 rounded-md" style="background-color: #eef7fa;">
+                            <span class="text-2xl mr-3" style="color: #118AB2;">📚</span>
+                            <div>
+                                <h5 class="font-semibold">Pengetahuan Produk</h5>
+                                <p class="text-sm text-gray-600">Materi mendalam tentang paket umroh dan layanan El Marwa.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start p-3 rounded-md" style="background-color: #e6fcf5;">
+                            <span class="text-2xl mr-3" style="color: #06D6A0;">🎨</span>
+                            <div>
+                                <h5 class="font-semibold">Kelas Konten & AI</h5>
+                                <p class="text-sm text-gray-600">Pelatihan pembuatan konten promosi dan pemanfaatan AI untuk efisiensi.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start p-3 rounded-md" style="background-color: #fff8e7;">
+                            <span class="text-2xl mr-3" style="color: #FFD166;">💰</span>
+                            <div>
+                                <h5 class="font-semibold">Selling Skill</h5>
+                                <p class="text-sm text-gray-600">Workshop untuk meningkatkan kemampuan negosiasi dan penutupan penjualan.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="bg-white rounded-lg shadow-lg p-6">
+                    <h4 class="text-xl font-bold mb-4" style="color: #073B4C;">Analisis Plus & Minus</h4>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <h5 class="font-bold text-lg mb-2" style="color: #06D6A0;">PLUS (+)</h5>
+                            <ul class="space-y-2 text-sm text-gray-700 list-disc list-inside">
+                                <li>Motivasi pendaftar tinggi (aspirasi penghasilan).</li>
+                                <li>Jangkauan geografis luas dan beragam.</li>
+                                <li>Struktur pelatihan awal yang solid.</li>
+                                <li>Minat awal (anggota grup) yang sangat besar.</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h5 class="font-bold text-lg mb-2" style="color: #FF6B6B;">MINUS (-)</h5>
+                            <ul class="space-y-2 text-sm text-gray-700 list-disc list-inside">
+                                <li>Kesenjangan besar antara minat dan pendaftaran (funnel bocor).</li>
+                                <li>Mayoritas pendaftar belum punya pengalaman menjual.</li>
+                                <li>Potensi ketidaksesuaian antara ekspektasi penghasilan dan skill awal.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer id="conclusion" class="bg-white rounded-lg shadow-xl p-8" style="background-color: #118AB2;">
+            <h3 class="text-2xl font-bold text-white text-center mb-4">Kesimpulan & Rekomendasi Strategis</h3>
+            <p class="text-gray-200 text-center mb-6">Program rekrutmen reseller El Marwa telah menunjukkan potensi yang kuat dengan berhasil menarik audiens yang sangat termotivasi dari berbagai wilayah di Indonesia melalui kampanye iklan yang efektif. Namun, keberhasilan ini dibayangi oleh tantangan signifikan yang terletak pada ketidakselarasan antara harapan pendaftar dan pengalaman mereka, serta "kebocoran" dalam alur pendaftaran formal.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-white">
+                <div class="border-l-4 p-4 rounded-r-lg" style="border-color: #06D6A0; background-color: rgba(255,255,255,0.1);">
+                    <h4 class="font-bold mb-2">Optimalkan Alur Konversi Funnel</h4>
+                    <p class="text-sm">Sederhanakan formulir pendaftaran dan integrasikan dengan grup komunikasi. Tawarkan insentif tambahan untuk mendorong pendaftaran formal di dalam grup.</p>
+                </div>
+                <div class="border-l-4 p-4 rounded-r-lg" style="border-color: #FFD166; background-color: rgba(255,255,255,0.1);">
+                    <h4 class="font-bold mb-2">Manajemen Ekspektasi & Pelatihan</h4>
+                    <p class="text-sm">Buat kurikulum pelatihan berjenjang untuk menjembatani kesenjangan pengalaman. Pertimbangkan program mentorship untuk membantu reseller baru yang tidak berpengalaman.</p>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+
+    <script>
+        window.onload = function() {
+            const FONT_COLOR = '#073B4C';
+            const GRID_COLOR = '#D1D5DB';
+            const PALETTE = {
+                red: '#FF6B6B',
+                yellow: '#FFD166',
+                green: '#06D6A0',
+                blue: '#118AB2',
+                darkBlue: '#073B4C'
+            };
+
+            const tooltipTitleCallback = {
+                plugins: {
+                    tooltip: {
+                        callbacks: {
+                            title: function(tooltipItems) {
+                                const item = tooltipItems[0];
+                                let label = item.chart.data.labels[item.dataIndex];
+                                if (Array.isArray(label)) {
+                                    return label.join(' ');
+                                } else {
+                                    return label;
+                                }
+                            }
+                        }
+                    },
+                    legend: {
+                        labels: {
+                            color: FONT_COLOR,
+                            font: {
+                                size: 14
+                            }
+                        }
+                    }
+                }
+            };
+
+            const commonChartOptions = {
+                responsive: true,
+                maintainAspectRatio: false,
+                ...tooltipTitleCallback,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: { color: FONT_COLOR, font: { size: 12 } },
+                        grid: { color: GRID_COLOR }
+                    },
+                    x: {
+                        ticks: { color: FONT_COLOR, font: { size: 12 } },
+                        grid: { color: 'transparent' }
+                    }
+                }
+            };
+            
+            const geographyData = {
+                labels: ['Jakarta', 'Bandung', 'Bekasi', 'Surabaya', 'Bogor', 'Tangerang', 'Depok'],
+                datasets: [{
+                    label: 'Jumlah Pendaftar',
+                    data: [8, 9, 6, 5, 2, 6, 1],
+                    backgroundColor: [PALETTE.blue, PALETTE.green, PALETTE.yellow, PALETTE.red, '#3a86ff', '#fb5607', '#8338ec'],
+                    borderColor: '#ffffff',
+                    borderWidth: 2
+                }]
+            };
+            const geoCtx = document.getElementById('geographyChart').getContext('2d');
+            new Chart(geoCtx, {
+                type: 'bar',
+                data: geographyData,
+                options: {
+                    ...commonChartOptions,
+                    indexAxis: 'y',
+                }
+            });
+
+            const experienceData = {
+                labels: ['Belum Pernah', ['Pernah', 'Sekali-kali'], ['Rutin', 'Berjualan']],
+                datasets: [{
+                    label: 'Pengalaman Berjualan',
+                    data: [15, 16, 6],
+                    backgroundColor: [PALETTE.red, PALETTE.yellow, PALETTE.green],
+                    borderColor: '#ffffff',
+                    borderWidth: 4,
+                    hoverOffset: 4
+                }]
+            };
+            const expCtx = document.getElementById('experienceChart').getContext('2d');
+            new Chart(expCtx, {
+                type: 'doughnut',
+                data: experienceData,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    ...tooltipTitleCallback
+                }
+            });
+            
+            const incomeData = {
+                labels: ['< 5 Juta', ['5 - 10', 'Juta'], ['10 - 20', 'Juta'], '> 20 Juta'],
+                datasets: [{
+                    label: 'Jumlah Pendaftar',
+                    data: [4, 10, 7, 16],
+                    backgroundColor: [PALETTE.red, PALETTE.yellow, PALETTE.green, PALETTE.blue],
+                    borderColor: '#ffffff',
+                    borderWidth: 2,
+                    borderRadius: 5
+                }]
+            };
+            const incomeCtx = document.getElementById('incomeTargetChart').getContext('2d');
+            new Chart(incomeCtx, {
+                type: 'bar',
+                data: incomeData,
+                options: commonChartOptions
+            });
+        };
+    </script>
+</body>
+</html>
