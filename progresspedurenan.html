@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Progres Aset Digital Pedurenan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F0F4F8;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 320px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        .funnel-step {
+            min-height: 120px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+        .funnel-arrow::after {
+            content: "👇";
+            position: absolute;
+            bottom: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 1.5rem;
+            line-height: 1;
+        }
+        .link-card {
+            transition: all 0.3s ease;
+            border-left: 4px solid transparent;
+        }
+        .link-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .social-media { border-left-color: #FF6B6B; }
+        .landing-page { border-left-color: #4FBDBA; }
+        .chat-bot { border-left-color: #0A2E36; }
+        .google-drive { border-left-color: #FFD166; }
+    </style>
+</head>
+<body class="text-[#0A2E36]">
+
+    <div class="container mx-auto p-4 md:p-8">
+
+        <header class="text-center mb-12">
+            <h1 class="text-4xl md:text-5xl font-black leading-tight">Implementasi Pemasaran Digital: Proyek Pedurenan</h1>
+            <p class="text-xl md:text-2xl text-[#FF6B6B] mt-2 font-bold">Laporan Progres Aset Digital & Infrastruktur Leads</p>
+        </header>
+
+        <main class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+            <div class="bg-white rounded-lg shadow-md p-6 text-center">
+                <h3 class="text-lg font-bold">Total Saluran Aktif</h3>
+                <p class="text-5xl md:text-6xl font-black text-[#FF6B6B] my-2">9</p>
+                <p class="text-gray-600">Total platform Media Sosial dan Infrastruktur Utama yang telah di-deploy.</p>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-md p-6 text-center">
+                <h3 class="text-lg font-bold">Aset Konten Visual</h3>
+                <p class="text-5xl md:text-6xl font-black text-[#4FBDBA] my-2">4</p>
+                <p class="text-gray-600">Jumlah folder Google Drive berisi *footage* mentah, terorganisir, dan *content plan*.</p>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-md p-6 text-center">
+                <h3 class="text-lg font-bold">Infrastruktur Leads</h3>
+                <p class="text-5xl md:text-6xl font-black text-[#0A2E36] my-2">3</p>
+                <p class="text-gray-600">Landing Page & Chatbot yang berfungsi penuh, siap menangkap *lead* 24/7.</p>
+            </div>
+
+            <div class="md:col-span-3 bg-white rounded-lg shadow-md p-6">
+                <h2 class="text-2xl font-bold mb-6 text-center">Marketing Funnel Infrastructure Flow</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                    
+                    <div class="funnel-step bg-[#FF6B6B] text-white rounded-lg shadow-xl funnel-arrow">
+                        <span class="text-4xl">📣</span>
+                        <h4 class="font-bold text-xl mt-2">1. Awareness & Traffic</h4>
+                        <p class="text-sm mt-1 font-semibold">Media Sosial (IG, TikTok, YT, X) - Mendorong Kunjungan</p>
+                    </div>
+
+                    <div class="funnel-step bg-[#4FBDBA] text-white rounded-lg shadow-xl funnel-arrow">
+                        <span class="text-4xl">🔗</span>
+                        <h4 class="font-bold text-xl mt-2">2. Lead Capture</h4>
+                        <p class="text-sm mt-1 font-semibold">Landing Page (Hostinger) - Konversi Traffic menjadi Data</p>
+                    </div>
+
+                    <div class="funnel-step bg-[#0A2E36] text-white rounded-lg shadow-xl">
+                        <span class="text-4xl">💬</span>
+                        <h4 class="font-bold text-xl mt-2">3. Nurturing & Follow-up</h4>
+                        <p class="text-sm mt-1 font-semibold">Chatbot (Hosted & Telegram) - Respon Instan & Kualifikasi</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="md:col-span-2 bg-white rounded-lg shadow-md p-6">
+                <h3 class="text-xl font-bold mb-4">Komposisi Aset Digital Utama</h3>
+                <p class="text-gray-600 mb-4">Pembagian aset yang telah disiapkan untuk memastikan strategi pemasaran terintegrasi di semua lini.</p>
+                <div class="chart-container">
+                    <canvas id="assetCompositionChart"></canvas>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-md p-6">
+                 <h3 class="text-xl font-bold mb-4">Status Kesiapan Konten Visual</h3>
+                 <p class="text-gray-600 mb-4">Kesiapan *Footage* dan *Content Plan* untuk di-deploy secara masif.</p>
+                 <div class="chart-container">
+                    <canvas id="contentReadinessChart"></canvas>
+                 </div>
+            </div>
+
+            <!-- REPOSITORY LINK SECTION -->
+            <div class="md:col-span-3 bg-white rounded-lg shadow-md p-6">
+                <h2 class="text-2xl font-bold mb-6 text-center">Repository Semua Aset Digital</h2>
+                <p class="text-gray-600 text-center mb-6">Akses langsung ke semua saluran, konten, dan infrastruktur yang telah dibuat</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    
+                    <!-- SOCIAL MEDIA LINKS -->
+                    <div class="link-card social-media bg-white rounded-lg shadow-md p-5">
+                        <h3 class="text-xl font-bold mb-4 flex items-center">
+                            <i class="fas fa-share-alt text-[#FF6B6B] mr-2"></i>
+                            Media Sosial
+                        </h3>
+                        <div class="space-y-3">
+                            <a href="https://www.instagram.com/urban.hive.realty/" target="_blank" class="flex items-center p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                                <i class="fab fa-instagram text-pink-600 text-xl mr-3"></i>
+                                <span>Instagram: urban.hive.realty</span>
+                            </a>
+                            <a href="https://www.youtube.com/@urbanhivereview" target="_blank" class="flex items-center p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                                <i class="fab fa-youtube text-red-600 text-xl mr-3"></i>
+                                <span>YouTube Channel: @urbanhivereview</span>
+                            </a>
+                            <a href="https://youtube.com/shorts/JSl9j8iV1hQ" target="_blank" class="flex items-center p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors ml-4">
+                                <i class="fas fa-film text-gray-600 mr-3"></i>
+                                <span>YouTube Short: JSl9j8iV1hQ</span>
+                            </a>
+                            <a href="https://youtu.be/bMUf4O5nFQg" target="_blank" class="flex items-center p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors ml-4">
+                                <i class="fas fa-film text-gray-600 mr-3"></i>
+                                <span>YouTube Video: bMUf4O5nFQg</span>
+                            </a>
+                            <a href="https://youtu.be/2dMnCJ0Rv38" target="_blank" class="flex items-center p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors ml-4">
+                                <i class="fas fa-film text-gray-600 mr-3"></i>
+                                <span>YouTube Video: 2dMnCJ0Rv38</span>
+                            </a>
+                            <a href="https://www.tiktok.com/@urbanhive_realty" target="_blank" class="flex items-center p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                                <i class="fab fa-tiktok text-black text-xl mr-3"></i>
+                                <span>TikTok: @urbanhive_realty</span>
+                            </a>
+                            <a href="https://www.tiktok.com/@urbanhive_realty/video/7558817942851407105" target="_blank" class="flex items-center p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors ml-4">
+                                <i class="fas fa-video text-gray-600 mr-3"></i>
+                                <span>TikTok Video: 7558817942851407105</span>
+                            </a>
+                            <a href="https://x.com/@urbanhiverealty" target="_blank" class="flex items-center p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                                <i class="fab fa-twitter text-blue-500 text-xl mr-3"></i>
+                                <span>X (Twitter): @urbanhiverealty</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- LANDING PAGE & CHATBOT LINKS -->
+                    <div class="link-card landing-page bg-white rounded-lg shadow-md p-5">
+                        <h3 class="text-xl font-bold mb-4 flex items-center">
+                            <i class="fas fa-window-restore text-[#4FBDBA] mr-2"></i>
+                            Landing Page & Chatbot
+                        </h3>
+                        <div class="space-y-3">
+                            <a href="https://coral-toad-599740.hostingersite.com/" target="_blank" class="flex items-center p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                                <i class="fas fa-globe text-green-600 text-xl mr-3"></i>
+                                <span>Landing Page (Hostinger)</span>
+                            </a>
+                            <a href="https://rumah-mewah-pedurenan-depok-mk34qv5rz5f8qvwz.builder-preview.com/" target="_blank" class="flex items-center p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                                <i class="fas fa-eye text-blue-600 text-xl mr-3"></i>
+                                <span>Landing Page Preview</span>
+                            </a>
+                            <a href="https://lime.n8n.co.id/webhook/87d9ffba-96aa-4666-a909-781085bf819c/chat" target="_blank" class="flex items-center p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                                <i class="fas fa-robot text-purple-600 text-xl mr-3"></i>
+                                <span>Hosted Chat Bot</span>
+                            </a>
+                            <a href="https://web.telegram.org/k/#@Lime_Stone_Bot" target="_blank" class="flex items-center p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                                <i class="fab fa-telegram text-blue-400 text-xl mr-3"></i>
+                                <span>Telegram Bot: @Lime_Stone_Bot</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- GOOGLE DRIVE ASSETS -->
+                    <div class="link-card google-drive bg-white rounded-lg shadow-md p-5 md:col-span-2">
+                        <h3 class="text-xl font-bold mb-4 flex items-center">
+                            <i class="fab fa-google-drive text-yellow-500 mr-2"></i>
+                            Aset Konten Visual - Google Drive
+                        </h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <a href="https://drive.google.com/drive/folders/1tt4OeYVUck4rb8uWCfitF5heSgC_3WoC?usp=sharing" target="_blank" class="flex items-center p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                                <i class="fas fa-folder text-blue-500 mr-3"></i>
+                                <span>Pooling Footage (Drone & YouTube Final)</span>
+                            </a>
+                            <a href="https://drive.google.com/drive/folders/1TkH1N9jU4SjU8I6FcoeZeAYQk0USWZJa?usp=sharing" target="_blank" class="flex items-center p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                                <i class="fas fa-folder text-blue-500 mr-3"></i>
+                                <span>Footage Day 1</span>
+                            </a>
+                            <a href="https://docs.google.com/spreadsheets/d/1zlbnVMmlVS9ATFkJ2z8GZuuI5j5sarV1_HNRkvEBWn0/edit?usp=sharing" target="_blank" class="flex items-center p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                                <i class="fas fa-table text-green-600 mr-3"></i>
+                                <span>Konten Plan Spreadsheet</span>
+                            </a>
+                            <a href="https://drive.google.com/drive/folders/1HBI_nIwL2Ydh5tiQAz4ulDKjJ_nkuCDi" target="_blank" class="flex items-center p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                                <i class="fas fa-folder-open text-blue-500 mr-3"></i>
+                                <span>Konten IG Folder</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        
+        <footer class="text-center mt-12 py-6 border-t border-gray-300">
+            <p class="text-gray-800 font-bold text-lg">Kesimpulan: Infrastruktur Pemasaran Siap 100%</p>
+            <p class="text-gray-600">Semua saluran, aset konten, dan sistem penangkapan *lead* telah diuji coba dan siap untuk memulai kampanye.</p>
+            <button onclick="scrollToLinks()" class="mt-4 bg-[#FF6B6B] text-white font-bold py-3 px-8 rounded-lg shadow-lg hover:bg-[#ff4f4f] transition-colors">Lihat Detail Semua Link</button>
+        </footer>
+    </div>
+
+    <script>
+        // Scroll function untuk tombol
+        function scrollToLinks() {
+            document.querySelector('.md\\:col-span-3.bg-white.rounded-lg.shadow-md.p-6').scrollIntoView({ 
+                behavior: 'smooth' 
+            });
+        }
+
+        const wrapLabels = (label, maxLength) => {
+            if (typeof label !== 'string' || label.length <= maxLength) {
+                return label;
+            }
+            const words = label.split(' ');
+            const lines = [];
+            let currentLine = '';
+            words.forEach(word => {
+                if ((currentLine + word).length > maxLength && currentLine.length > 0) {
+                    lines.push(currentLine.trim());
+                    currentLine = '';
+                }
+                currentLine += word + ' ';
+            });
+            lines.push(currentLine.trim());
+            return lines;
+        };
+        
+        const tooltipTitleCallback = (tooltipItems) => {
+            const item = tooltipItems[0];
+            let label = item.chart.data.labels[item.dataIndex];
+            if (Array.isArray(label)) {
+              return label.join(' ');
+            }
+            return label;
+        };
+
+        const chartOptionsTemplate = {
+            maintainAspectRatio: false,
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'bottom',
+                    labels: {
+                        color: '#0A2E36',
+                        font: { family: "'Inter', sans-serif", size: 14 }
+                    }
+                },
+                tooltip: {
+                    callbacks: { title: tooltipTitleCallback },
+                    backgroundColor: '#0A2E36',
+                    titleFont: { size: 16, weight: 'bold', family: "'Inter', sans-serif" },
+                    bodyFont: { size: 14, family: "'Inter', sans-serif" },
+                    padding: 12,
+                    cornerRadius: 8,
+                    displayColors: true,
+                    boxPadding: 4,
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: { color: '#0A2E36', font: { family: "'Inter', sans-serif", size: 12 } },
+                    grid: { color: '#E0E7ED' }
+                },
+                x: {
+                    ticks: { color: '#0A2E36', font: { family: "'Inter', sans-serif", size: 12 } },
+                    grid: { display: false }
+                }
+            }
+        };
+        
+        const assetCompositionCtx = document.getElementById('assetCompositionChart').getContext('2d');
+        new Chart(assetCompositionCtx, {
+            type: 'doughnut',
+            data: {
+                labels: [wrapLabels('Media Sosial (4 Channels)', 16), wrapLabels('Infrastruktur Leads (3 Channels)', 16), wrapLabels('Aset Konten Visual (4 Folders)', 16)],
+                datasets: [{
+                    data: [4, 3, 4],
+                    backgroundColor: ['#FF6B6B', '#0A2E36', '#4FBDBA'],
+                    hoverOffset: 8,
+                    borderColor: '#F0F4F8',
+                    borderWidth: 4,
+                }]
+            },
+            options: {
+                maintainAspectRatio: false,
+                responsive: true,
+                plugins: {
+                    legend: { display: true, position: 'bottom', labels: { color: '#0A2E36', font: { family: "'Inter', sans-serif" } } },
+                    tooltip: { callbacks: { title: tooltipTitleCallback } }
+                }
+            }
+        });
+
+        const contentReadinessCtx = document.getElementById('contentReadinessChart').getContext('2d');
+        new Chart(contentReadinessCtx, {
+            type: 'bar',
+            data: {
+                labels: [wrapLabels('Konten Plan', 16), wrapLabels('Pooling Footage', 16), wrapLabels('Footage Day 1', 16), wrapLabels('Konten IG', 16)],
+                datasets: [{
+                    label: 'Status Kesiapan (%)',
+                    data: [100, 100, 75, 100],
+                    backgroundColor: ['#4FBDBA', '#4FBDBA', '#FF6B6B', '#4FBDBA'],
+                    borderRadius: 5,
+                    borderWidth: 1,
+                }]
+            },
+            options: {
+                ...chartOptionsTemplate,
+                scales: {
+                    y: {
+                        ...chartOptionsTemplate.scales.y,
+                        max: 100,
+                        title: {
+                            display: true,
+                            text: 'Persentase (%)',
+                            color: '#0A2E36'
+                        }
+                    },
+                    x: chartOptionsTemplate.scales.x
+                }
+            }
+        });
+
+    </script>
+</body>
+</html>
