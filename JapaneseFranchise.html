@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sakura Sushi Express - Franchise Makanan Jepang</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Kagura Japanese Food - Franchise Makanan Jepang</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -42,7 +42,7 @@
             top: 0;
             left: 0;
             width: 100%;
-            background-color: rgba(255, 255, 255, 0.95);
+            background-color: rgba(255, 255, 255, 0.98);
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             z-index: 1000;
             transition: all 0.3s ease;
@@ -64,9 +64,9 @@
             text-decoration: none;
         }
         
-        .logo i {
+        .logo img {
+            height: 40px;
             margin-right: 10px;
-            font-size: 28px;
         }
         
         nav ul {
@@ -116,7 +116,7 @@
         
         /* Hero Section */
         .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?w=1920&h=1080&fit=crop');
+            background: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url('https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?w=1920&h=1080&fit=crop');
             background-size: cover;
             background-position: center;
             height: 100vh;
@@ -128,30 +128,63 @@
         }
         
         .hero-content {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
             padding: 0 20px;
+        }
+        
+        .hero-badge {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: var(--dark-color);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
         }
         
         .hero h1 {
             font-size: 3.5rem;
             margin-bottom: 20px;
-            font-weight: 700;
+            font-weight: 800;
             line-height: 1.2;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
         
+        .hero .tagline {
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            font-weight: 600;
+            color: var(--accent-color);
+        }
+        
         .hero p {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             margin-bottom: 30px;
             max-width: 700px;
             margin-left: auto;
             margin-right: auto;
         }
         
+        .price-highlight {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            margin: 20px 0;
+            display: block;
+        }
+        
         .btn {
             display: inline-block;
-            padding: 15px 30px;
+            padding: 15px 35px;
             background-color: var(--primary-color);
             color: white;
             border: none;
@@ -230,6 +263,7 @@
             text-align: center;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
             transition: all 0.3s ease;
+            height: 100%;
         }
         
         .feature-card:hover {
@@ -411,7 +445,7 @@
         /* Franchise Section */
         .franchise {
             padding: 100px 0;
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1920&h=1080&fit=crop');
+            background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url('https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1920&h=1080&fit=crop');
             background-size: cover;
             background-position: center;
             color: white;
@@ -431,7 +465,7 @@
         
         .franchise-cards {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
             margin-bottom: 40px;
         }
@@ -442,11 +476,18 @@
             border-radius: 10px;
             padding: 30px;
             transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
         
         .franchise-card:hover {
-            background-color: rgba(255, 255, 255, 0.2);
+            background-color: rgba(255, 255, 255, 0.15);
             transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .franchise-card.featured {
+            background-color: rgba(255, 215, 0, 0.15);
+            border: 2px solid var(--accent-color);
         }
         
         .franchise-card h3 {
@@ -457,13 +498,141 @@
         
         .franchise-card p {
             font-size: 1rem;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        
+        .franchise-card ul {
+            text-align: left;
+            margin-bottom: 20px;
+            list-style-type: none;
+        }
+        
+        .franchise-card ul li {
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 20px;
+        }
+        
+        .franchise-card ul li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+            font-weight: bold;
         }
         
         .franchise-card .price {
             font-size: 1.8rem;
             font-weight: 700;
             color: var(--accent-color);
+            margin-top: 20px;
+        }
+        
+        .best-seller-badge {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: var(--dark-color);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        /* Profit Section */
+        .profit {
+            padding: 100px 0;
+            background-color: var(--light-color);
+        }
+        
+        .profit-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .profit-text h2 {
+            font-size: 2.5rem;
+            color: var(--dark-color);
+            margin-bottom: 20px;
+        }
+        
+        .profit-calculation {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .calculation-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .calculation-row:last-child {
+            border-bottom: none;
+            border-top: 2px solid var(--primary-color);
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            margin-top: 10px;
+            padding-top: 20px;
+        }
+        
+        .roi-highlight {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            margin-top: 20px;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+        
+        /* Process Section */
+        .process {
+            padding: 100px 0;
+        }
+        
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .process-step {
+            text-align: center;
+            position: relative;
+        }
+        
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .process-step h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--dark-color);
+        }
+        
+        .process-step p {
+            color: #666;
         }
         
         /* Testimonials Section */
@@ -539,58 +708,6 @@
             background-color: var(--primary-color);
             width: 30px;
             border-radius: 6px;
-        }
-        
-        /* Gallery Section */
-        .gallery {
-            padding: 100px 0;
-        }
-        
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
-        }
-        
-        .gallery-item {
-            position: relative;
-            overflow: hidden;
-            border-radius: 10px;
-            height: 250px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-        }
-        
-        .gallery-item:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-        }
-        
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-        
-        .gallery-item:hover img {
-            transform: scale(1.1);
-        }
-        
-        .gallery-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
-            padding: 20px;
-            color: white;
-            transform: translateY(100%);
-            transition: transform 0.3s ease;
-        }
-        
-        .gallery-item:hover .gallery-overlay {
-            transform: translateY(0);
         }
         
         /* Contact Section */
@@ -791,6 +908,10 @@
             .contact-content {
                 grid-template-columns: 1fr;
             }
+            
+            .profit-content {
+                grid-template-columns: 1fr;
+            }
         }
         
         @media (max-width: 768px) {
@@ -827,8 +948,8 @@
                 font-size: 2.2rem;
             }
             
-            .hero p {
-                font-size: 1.1rem;
+            .hero .tagline {
+                font-size: 1.4rem;
             }
             
             .section-title h2 {
@@ -864,16 +985,15 @@
         <div class="container">
             <div class="header-content">
                 <a href="#" class="logo">
-                    <i class="fas fa-torii-gate"></i>
-                    Sakura Sushi Express
+                    <img src="https://z-cdn-media.chatglm.cn/files/8c8665d4-dfec-4a0a-bde5-1ec50ef17a62.png?auth_key=1865086809-66b73f79585b40b99ad34d0452a3d37-0-83a16a1380f1f44b8c2e8a459858d309" alt="Kagura Japanese Food">
                 </a>
                 <nav>
                     <ul id="nav-menu">
                         <li><a href="#home">Beranda</a></li>
                         <li><a href="#about">Tentang</a></li>
                         <li><a href="#menu">Menu</a></li>
-                        <li><a href="#gallery">Galeri</a></li>
                         <li><a href="#franchise">Franchise</a></li>
+                        <li><a href="#profit">Profit</a></li>
                         <li><a href="#testimonials">Testimoni</a></li>
                         <li><a href="#contact">Kontak</a></li>
                     </ul>
@@ -888,8 +1008,11 @@
     <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="hero-content">
-            <h1>Bergabunglah dengan Franchise Makanan Jepang Terkemuka</h1>
-            <p>Peluang bisnis makanan Jepang dengan investasi terjangkau dan dukungan penuh dari tim profesional kami</p>
+            <div class="hero-badge">TERMURAH !!</div>
+            <h1>KAGURA Japanese Food</h1>
+            <div class="tagline">"Bikin Kenyang, Bikin Happy!"</div>
+            <span class="price-highlight">Modal 5 Juta-an, Bisa Cuan Belasan Juta per Bulan!</span>
+            <p>Mau mulai usaha tapi bingung cari yang simple dan pasti jalan? KAGURA Japanese Food jawabannya!</p>
             <div>
                 <a href="#franchise" class="btn">Info Franchise</a>
                 <a href="#contact" class="btn btn-outline">Hubungi Kami</a>
@@ -901,51 +1024,51 @@
     <section class="features" id="features">
         <div class="container">
             <div class="section-title">
-                <h2>Mengapa Memilih Sakura Sushi Express?</h2>
-                <p>Kami menawarkan peluang bisnis franchise makanan Jepang dengan berbagai keunggulan yang tidak akan Anda temukan di tempat lain</p>
+                <h2>Mengapa Bergabung Dengan KAGURA?</h2>
+                <p>Kami mematahkan stigma bahwa makanan Jepang harus mahal dengan konsep street food yang aksesibel</p>
             </div>
             <div class="features-grid">
                 <div class="feature-card">
                     <div class="feature-icon">
                         <i class="fas fa-chart-line"></i>
                     </div>
-                    <h3>Potensi Penghasilan Tinggi</h3>
-                    <p>Industri makanan Jepang terus berkembang dengan permintaan yang tinggi, memberikan potensi penghasilan yang menjanjikan untuk franchisee.</p>
+                    <h3>Pasar Luas & Tahan Krisis</h3>
+                    <p>Makanan adalah kebutuhan pokok, dan tren makanan Jepang (Teriyaki/Katsu) sangat digemari lintas generasi.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
-                        <i class="fas fa-utensils"></i>
+                        <i class="fas fa-cogs"></i>
                     </div>
-                    <h3>Menu Autentik & Variatif</h3>
-                    <p>Menu kami dirancang oleh chef profesional dengan cita rasa autentik Jepang namun disesuaikan dengan selera lokal.</p>
+                    <h3>Sistem Mudah (Plug & Play)</h3>
+                    <p>Operasional sederhana, tidak butuh chef profesional. Semua saus kunci disuplai dari pusat.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-wallet"></i>
+                    </div>
+                    <h3>Modal Terjangkau</h3>
+                    <p>Pilihan paket yang fleksibel mulai dari Rp 5jt-an dengan fasilitas lengkap untuk memulai bisnis Anda.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-percentage"></i>
+                    </div>
+                    <h3>Tanpa Royalty Fee</h3>
+                    <p>100% keuntungan penjualan adalah milik Mitra. Kami hanya mengambil margin dari suplai bahan baku (Saus & Tepung).</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-coins"></i>
+                    </div>
+                    <h3>Margin Sehat</h3>
+                    <p>Memberikan ruang keuntungan kotor hingga 50% dengan harga jual yang kompetitif.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
                         <i class="fas fa-graduation-cap"></i>
                     </div>
-                    <h3>Pelatihan Komprehensif</h3>
-                    <p>Kami menyediakan pelatihan intensif untuk Anda dan tim Anda, mulai dari persiapan makanan hingga manajemen restoran.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-bullhorn"></i>
-                    </div>
-                    <h3>Dukungan Pemasaran</h3>
-                    <p>Tim pemasaran kami akan membantu Anda dengan strategi promosi lokal dan nasional untuk menarik lebih banyak pelanggan.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-box"></i>
-                    </div>
-                    <h3>Supply Chain Terintegrasi</h3>
-                    <p>Kami menyediakan rantai pasokan yang terintegrasi untuk memastikan kualitas bahan baku yang konsisten dan harga yang kompetitif.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <h3>Komunitas Franchisee</h3>
-                    <p>Bergabunglah dengan komunitas franchisee kami untuk berbagi pengalaman, tips, dan dukungan bisnis.</p>
+                    <h3>Pelatihan Gratis</h3>
+                    <p>Gratis training & penyediaan staff profesional, survey lokasi, dan pendaftaran online food delivery.</p>
                 </div>
             </div>
         </div>
@@ -956,14 +1079,15 @@
         <div class="container">
             <div class="about-content">
                 <div class="about-text">
-                    <h2>Tentang Sakura Sushi Express</h2>
-                    <p>Sakura Sushi Express adalah franchise makanan Jepang yang didirikan pada tahun 2015 dengan visi membawa cita rasa autentik Jepang ke seluruh Indonesia dengan harga terjangkau.</p>
-                    <p>Dengan lebih dari 50 outlet di seluruh Indonesia, kami telah membuktikan konsep bisnis kami berhasil dan diminati oleh berbagai kalangan. Menu kami mencakup berbagai hidangan Jepang populer seperti sushi, ramen, donburi, dan bento yang disesuaikan dengan selera lokal.</p>
-                    <p>Kami terus berinovasi dalam menu dan konsep restoran untuk tetap menjadi pilihan utama pecinta makanan Jepang di Indonesia.</p>
+                    <h2>Tentang KAGURA Japanese Food</h2>
+                    <p>KAGURA Japanese Food adalah brand kuliner yang berfokus menyajikan masakan Jepang populer dengan konsep street food yang aksesibel. Kami mematahkan stigma bahwa makanan Jepang harus mahal.</p>
+                    <p>Dengan resep saus otentik yang disesuaikan dengan lidah Indonesia, kami menyajikan menu berkualitas dengan harga mulai dari Rp 15.000,-.</p>
+                    <p><strong>Visi:</strong> Menjadi jaringan Japanese Food terbesar di Indonesia yang menjadi pilihan utama masyarakat kelas menengah.</p>
+                    <p><strong>Misi:</strong> Menyajikan makanan Jepang halal, enak, dan higienis dengan harga yang terjangkau bagi pelajar dan keluarga.</p>
                     <a href="#franchise" class="btn">Peluang Franchise</a>
                 </div>
                 <div class="about-image">
-                    <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&h=400&fit=crop" alt="Sakura Sushi Express Restaurant">
+                    <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&h=400&fit=crop" alt="KAGURA Japanese Food">
                 </div>
             </div>
         </div>
@@ -973,14 +1097,13 @@
     <section class="menu" id="menu">
         <div class="container">
             <div class="section-title">
-                <h2>Menu Unggulan Kami</h2>
-                <p>Nikmati berbagai hidangan Jepang autentik dengan kualitas terbaik</p>
+                <h2>Produk Unggulan Kami</h2>
+                <p>Menu kami dibagi menjadi kategori strategis untuk memudahkan operasional</p>
             </div>
             <div class="menu-tabs">
-                <button class="menu-tab active" data-tab="sushi">Sushi</button>
-                <button class="menu-tab" data-tab="ramen">Ramen</button>
-                <button class="menu-tab" data-tab="donburi">Donburi</button>
-                <button class="menu-tab" data-tab="bento">Bento</button>
+                <button class="menu-tab active" data-tab="beef">Signature Beef Series</button>
+                <button class="menu-tab" data-tab="chicken">Signature Chicken Series</button>
+                <button class="menu-tab" data-tab="agemono">Agemono / Goreng</button>
             </div>
             <div class="menu-grid" id="menu-grid">
                 <!-- Menu items will be dynamically loaded here -->
@@ -988,101 +1111,179 @@
         </div>
     </section>
 
-    <!-- Gallery Section -->
-    <section class="gallery" id="gallery">
+    <!-- Franchise Section -->
+    <section class="franchise" id="franchise">
         <div class="container">
-            <div class="section-title">
-                <h2>Galeri Makanan Kami</h2>
-                <p>Lihat berbagai hidangan lezat yang kami sajikan di Sakura Sushi Express</p>
-            </div>
-            <div class="gallery-grid">
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1617196034766-1a2173a4762e?w=400&h=300&fit=crop" alt="Sashimi Platter">
-                    <div class="gallery-overlay">
-                        <h3>Sashimi Platter</h3>
-                        <p>Fresh salmon, tuna, and yellowtail sashimi</p>
-                    </div>
+            <h2>Pilihan Paket Kemitraan KAGURA</h2>
+            <p>Pilih paket franchise yang sesuai dengan budget dan tujuan bisnis Anda</p>
+            <div class="franchise-cards">
+                <div class="franchise-card">
+                    <h3>PAKET START-UP</h3>
+                    <p>Solusi termurah untuk memulai bisnis makanan Jepang</p>
+                    <ul>
+                        <li>Spanduk</li>
+                        <li>Kompor Set</li>
+                        <li>Hotplate Set</li>
+                        <li>Garpu Sendok</li>
+                        <li>Apron</li>
+                        <li>Packaging</li>
+                        <li>Daftar Menu</li>
+                        <li>Aplikasi Online Food</li>
+                        <li>Bahan Baku Starter Kit untuk 10 porsi</li>
+                    </ul>
+                    <div class="price">Rp 5,9 Jt</div>
                 </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=400&h=300&fit=crop" alt="Tempura Combination">
-                    <div class="gallery-overlay">
-                        <h3>Tempura Combination</h3>
-                        <p>Crispy shrimp and vegetable tempura</p>
-                    </div>
+                <div class="franchise-card">
+                    <h3>PAKET SILVER (KAGURA EXPRESS)</h3>
+                    <p>Solusi untuk lokasi terbatas (Teras Rumah, Teras Minimarket)</p>
+                    <ul>
+                        <li>1 Kompor Gas High Pressure (2 Tungku)</li>
+                        <li>1 Wajan Datar Portable</li>
+                        <li>Peralatan Masak Dasar</li>
+                        <li>X-Banner (1 pcs)</li>
+                        <li>File Foto Menu untuk Online Food</li>
+                        <li>Starter kit untuk 20 porsi</li>
+                        <li>Box Packaging KAGURA</li>
+                        <li>1 Set Seragam (Kaos Polo + Apron)</li>
+                        <li>Pelatihan langsung 2 hari di lokasi</li>
+                    </ul>
+                    <div class="price">Rp 7,9 Jt</div>
                 </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1586190848861-99aa4a171e90?w=400&h=300&fit=crop" alt="Gyoza">
-                    <div class="gallery-overlay">
-                        <h3>Gyoza</h3>
-                        <p>Japanese dumplings with dipping sauce</p>
-                    </div>
+                <div class="franchise-card featured">
+                    <div class="best-seller-badge">BEST SELLER</div>
+                    <h3>PAKET GOLD (KAGURA YATAI)</h3>
+                    <p>Konsep Booth Jepang modern</p>
+                    <ul>
+                        <li>Hak Guna Merek KAGURA (3 Tahun)</li>
+                        <li>1 Kompor Gas High Pressure (2 Tungku)</li>
+                        <li>Kompor High Pressure 1 Tungku & Regulator</li>
+                        <li>Peralatan Masak Dasar</li>
+                        <li>Rice Cooker Jumbo</li>
+                        <li>Cooler box untuk simpan sayuran & daging</li>
+                        <li>X-Banner (2 pcs), Brosur (500 lbr)</li>
+                        <li>Akun Sosmed Awal</li>
+                        <li>Starter kit untuk 30 porsi</li>
+                        <li>1 Topi + Apron KAGURA</li>
+                        <li>Pelatihan langsung 2 hari di lokasi</li>
+                    </ul>
+                    <div class="price">Rp 9,9 Jt</div>
                 </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=400&h=300&fit=crop" alt="Chicken Katsu Don">
-                    <div class="gallery-overlay">
-                        <h3>Chicken Katsu Don</h3>
-                        <p>Breaded chicken cutlet with egg over rice</p>
-                    </div>
-                </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1529042410759-b12b609b74b4?w=400&h=300&fit=crop" alt="Yakitori">
-                    <div class="gallery-overlay">
-                        <h3>Yakitori Skewers</h3>
-                        <p>Grilled chicken skewers with teriyaki sauce</p>
-                    </div>
-                </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1586201375761-83865001e31c?w=400&h=300&fit=crop" alt="Miso Soup">
-                    <div class="gallery-overlay">
-                        <h3>Miso Soup</h3>
-                        <p>Traditional Japanese soybean paste soup</p>
-                    </div>
+                <div class="franchise-card">
+                    <h3>PAKET PLATINUM (KAGURA DINING)</h3>
+                    <p>Konsep Resto untuk Ruko / Auto Pilot</p>
+                    <ul>
+                        <li>Hak Guna Merek KAGURA (3 Tahun)</li>
+                        <li>6 Set Meja Kursi Customer</li>
+                        <li>Dekorasi Jepang</li>
+                        <li>Griddle Plate Heavy Duty</li>
+                        <li>Chiller untuk simpan sayuran & daging</li>
+                        <li>Tablet Android POS (Kasir) + Printer</li>
+                        <li>Grand Opening, Instagram Ads (7 Hari)</li>
+                        <li>Starter kit untuk 50 porsi</li>
+                        <li>CCTV Tersambung ke HP Owner</li>
+                        <li>2 orang karyawan siap jualan</li>
+                    </ul>
+                    <div class="price">Rp 49,9 Jt</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Franchise Section -->
-    <section class="franchise" id="franchise">
+    <!-- Profit Section -->
+    <section class="profit" id="profit">
         <div class="container">
-            <h2>Paket Franchise Sakura Sushi Express</h2>
-            <p>Pilih paket franchise yang sesuai dengan budget dan tujuan bisnis Anda</p>
-            <div class="franchise-cards">
-                <div class="franchise-card">
-                    <h3>Paket Silver</h3>
-                    <p>Cocok untuk pemula dengan budget terbatas</p>
-                    <ul style="text-align: left; margin-bottom: 20px;">
-                        <li>Luas outlet: 25-40 m²</li>
-                        <li>Kapasitas: 20-30 kursi</li>
-                        <li>Pelatihan: 3 hari</li>
-                        <li>Dukungan pemasaran dasar</li>
-                    </ul>
-                    <div class="price">Rp 150 Juta</div>
+            <div class="section-title">
+                <h2>Proyeksi Keuntungan (Paket Gold)</h2>
+                <p>Simulasi potensi penghasilan Anda dengan paket KAGURA YATAI</p>
+            </div>
+            <div class="profit-content">
+                <div class="profit-text">
+                    <h2>Estimasi Penghasilan Bulanan</h2>
+                    <p>Dengan asumsi penjualan 60 porsi/hari, harga rata-rata makanan Rp 20.000 & minuman Rp 5.000, buka 26 hari/bulan:</p>
+                    <div class="profit-calculation">
+                        <div class="calculation-row">
+                            <span>Omset (Sales) Food & Drink</span>
+                            <span>Rp 41.080.000</span>
+                        </div>
+                        <div class="calculation-row">
+                            <span>HPP Bahan Baku (45%)</span>
+                            <span>Rp 19.526.000</span>
+                        </div>
+                        <div class="calculation-row">
+                            <span>Sewa Tempat (Est. Teras Mart, Kios)</span>
+                            <span>Rp 2.000.000</span>
+                        </div>
+                        <div class="calculation-row">
+                            <span>Gaji Karyawan (2 Orang)</span>
+                            <span>Rp 5.000.000</span>
+                        </div>
+                        <div class="calculation-row">
+                            <span>Operasional (Listrik, Gas, Kebersihan)</span>
+                            <span>Rp 2.000.000</span>
+                        </div>
+                        <div class="calculation-row">
+                            <span>Packaging & Promosi</span>
+                            <span>Rp 500.000</span>
+                        </div>
+                        <div class="calculation-row">
+                            <span>Total Pengeluaran</span>
+                            <span>Rp 9.500.000</span>
+                        </div>
+                        <div class="calculation-row">
+                            <span>LABA BERSIH (NET PROFIT)</span>
+                            <span>Rp 12.500.000</span>
+                        </div>
+                    </div>
+                    <div class="roi-highlight">
+                        <i class="fas fa-chart-line"></i> Estimasi Balik Modal (ROI): ± 3.9 Bulan
+                    </div>
                 </div>
-                <div class="franchise-card">
-                    <h3>Paket Gold</h3>
-                    <p>Pilihan terpopuler dengan potensi pengembalian cepat</p>
-                    <ul style="text-align: left; margin-bottom: 20px;">
-                        <li>Luas outlet: 40-60 m²</li>
-                        <li>Kapasitas: 30-50 kursi</li>
-                        <li>Pelatihan: 5 hari</li>
-                        <li>Dukungan pemasaran lengkap</li>
-                    </ul>
-                    <div class="price">Rp 250 Juta</div>
-                </div>
-                <div class="franchise-card">
-                    <h3>Paket Platinum</h3>
-                    <p>Paket premium untuk lokasi strategis</p>
-                    <ul style="text-align: left; margin-bottom: 20px;">
-                        <li>Luas outlet: 60-100 m²</li>
-                        <li>Kapasitas: 50-80 kursi</li>
-                        <li>Pelatihan: 7 hari</li>
-                        <li>Dukungan pemasaran premium</li>
-                    </ul>
-                    <div class="price">Rp 400 Juta</div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&h=400&fit=crop" alt="Profit Calculation">
                 </div>
             </div>
-            <a href="#contact" class="btn">Konsultasi Gratis</a>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process" id="process">
+        <div class="container">
+            <div class="section-title">
+                <h2>Alur Kemitraan</h2>
+                <p>Proses mudah untuk menjadi mitra KAGURA Japanese Food</p>
+            </div>
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <h3>Pilih Paket Kemitraan</h3>
+                    <p>Pilih paket yang sesuai dengan budget dan kebutuhan bisnis Anda</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <h3>Isi Data Format Order</h3>
+                    <p>Lengkapi formulir pendaftaran dengan data diri Anda</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <h3>Transfer DP 50%</h3>
+                    <p>Tanda jadi & Booking Wilayah (Lock Area 2KM)</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <h3>Persiapan (1 Minggu)</h3>
+                    <p>Produksi Booth, Training SDM, Renovasi</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">5</div>
+                    <h3>Pelunasan 50%</h3>
+                    <p>Sebelum pengiriman barang</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">6</div>
+                    <h3>Grand Opening</h3>
+                    <p>Siap Berjualan!</p>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -1090,38 +1291,38 @@
     <section class="testimonials" id="testimonials">
         <div class="container">
             <div class="section-title">
-                <h2>Apa Kata Franchisee Kami</h2>
-                <p>Dengarkan pengalaman mereka yang telah bergabung dengan Sakura Sushi Express</p>
+                <h2>Apa Kata Mitra Kami</h2>
+                <p>Dengarkan pengalaman mereka yang telah bergabung dengan KAGURA Japanese Food</p>
             </div>
             <div class="testimonials-slider">
                 <div class="testimonial-item active">
                     <div class="testimonial-img">
                         <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop" alt="Testimonial">
                     </div>
-                    <p class="testimonial-text">"Bergabung dengan Sakura Sushi Express adalah keputusan bisnis terbaik yang saya buat. Dukungan dari tim pusat sangat luar biasa, dan outlet saya mencapai BEP dalam waktu 8 bulan!"</p>
+                    <p class="testimonial-text">"Bergabung dengan KAGURA adalah keputusan bisnis terbaik yang saya buat. Dengan modal hanya 9,9 juta, saya bisa balik modal dalam 4 bulan. Sistemnya mudah dan supportnya luar biasa!"</p>
                     <div class="testimonial-author">
                         Budi Santoso
-                        <span>Franchisee Jakarta Selatan</span>
+                        <span>Mitra KAGURA Yogyakarta</span>
                     </div>
                 </div>
                 <div class="testimonial-item">
                     <div class="testimonial-img">
                         <img src="https://images.unsplash.com/photo-1494790108755-2616b332c5ca?w=200&h=200&fit=crop" alt="Testimonial">
                     </div>
-                    <p class="testimonial-text">"Saya tidak memiliki pengalaman di bidang F&B sebelumnya, tapi dengan pelatihan komprehensif dari Sakura Sushi Express, saya bisa mengelola restoran dengan baik."</p>
+                    <p class="testimonial-text">"Saya tidak punya pengalaman masak sama sekali, tapi dengan training dari KAGURA, saya bisa jualan sendiri. Menu nya disukai anak-anak dan orang tua. Omsetnya stabil!"</p>
                     <div class="testimonial-author">
                         Siti Nurhaliza
-                        <span>Franchisee Bandung</span>
+                        <span>Mitra KAGURA Bandung</span>
                     </div>
                 </div>
                 <div class="testimonial-item">
                     <div class="testimonial-img">
                         <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop" alt="Testimonial">
                     </div>
-                    <p class="testimonial-text">"Kualitas bahan baku yang konsisten dan menu yang disukai pelanggan membuat bisnis saya terus berkembang. Sangat direkomendasikan!"</p>
+                    <p class="testimonial-text">"Saya coba paket Silver dulu untuk tes pasar, ternyata responnya bagus. Sekarang sudah upgrade ke Gold dan punya 2 outlet. Terima kasih KAGURA!"</p>
                     <div class="testimonial-author">
                         Ahmad Fauzi
-                        <span>Franchisee Surabaya</span>
+                        <span>Mitra KAGURA Surabaya</span>
                     </div>
                 </div>
             </div>
@@ -1139,14 +1340,14 @@
             <div class="contact-content">
                 <div class="contact-info">
                     <h2>Hubungi Kami</h2>
-                    <p>Tim kami siap membantu Anda untuk memulai perjalanan bisnis franchise makanan Jepang bersama Sakura Sushi Express</p>
+                    <p>Tim kami siap membantu Anda untuk memulai perjalanan bisnis franchise makanan Jepang bersama KAGURA Japanese Food</p>
                     <div class="contact-item">
                         <div class="contact-icon">
                             <i class="fas fa-map-marker-alt"></i>
                         </div>
                         <div class="contact-text">
                             <h3>Alamat</h3>
-                            <p>Jl. Sudirman No. 123, Jakarta Pusat, 10110</p>
+                            <p>Anabuki A5, Jl. Parpostel Raya - Jatiasih</p>
                         </div>
                     </div>
                     <div class="contact-item">
@@ -1154,17 +1355,17 @@
                             <i class="fas fa-phone-alt"></i>
                         </div>
                         <div class="contact-text">
-                            <h3>Telepon</h3>
-                            <p>+62 21 1234 5678</p>
+                            <h3>Telepon/WA</h3>
+                            <p>0878-9090-7000</p>
                         </div>
                     </div>
                     <div class="contact-item">
                         <div class="contact-icon">
-                            <i class="fas fa-envelope"></i>
+                            <i class="fab fa-instagram"></i>
                         </div>
                         <div class="contact-text">
-                            <h3>Email</h3>
-                            <p>franchise@sakurasushiexpress.com</p>
+                            <h3>Instagram</h3>
+                            <p>@KaguraStreetFood</p>
                         </div>
                     </div>
                 </div>
@@ -1199,8 +1400,8 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-column">
-                    <h3>Sakura Sushi Express</h3>
-                    <p>Franchise makanan Jepang terkemuka di Indonesia dengan lebih dari 50 outlet di seluruh negeri.</p>
+                    <h3>KAGURA Japanese Food</h3>
+                    <p>"Bikin Kenyang, Bikin Happy!" - Franchise makanan Jepang dengan harga terjangkau dan konsep street food yang aksesibel.</p>
                     <div class="social-links">
                         <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
                         <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
@@ -1214,34 +1415,35 @@
                         <li><a href="#home">Beranda</a></li>
                         <li><a href="#about">Tentang Kami</a></li>
                         <li><a href="#menu">Menu</a></li>
-                        <li><a href="#gallery">Galeri</a></li>
                         <li><a href="#franchise">Franchise</a></li>
+                        <li><a href="#profit">Profit</a></li>
                         <li><a href="#testimonials">Testimoni</a></li>
                         <li><a href="#contact">Kontak</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
-                    <h3>Informasi Franchise</h3>
+                    <h3>Paket Franchise</h3>
                     <ul class="footer-links">
-                        <li><a href="#">Paket Franchise</a></li>
+                        <li><a href="#">Paket Start-Up (Rp 5,9 Jt)</a></li>
+                        <li><a href="#">Paket Silver (Rp 7,9 Jt)</a></li>
+                        <li><a href="#">Paket Gold (Rp 9,9 Jt)</a></li>
+                        <li><a href="#">Paket Platinum (Rp 49,9 Jt)</a></li>
                         <li><a href="#">Prospek Bisnis</a></li>
-                        <li><a href="#">Lokasi Tersedia</a></li>
                         <li><a href="#">FAQ</a></li>
-                        <li><a href="#">Karir</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
                     <h3>Kontak</h3>
                     <ul class="footer-links">
-                        <li>Jl. Sudirman No. 123, Jakarta Pusat</li>
-                        <li>+62 21 1234 5678</li>
-                        <li>franchise@sakurasushiexpress.com</li>
-                        <li>Senin - Jumat: 09:00 - 17:00</li>
+                        <li>Anabuki A5, Jl. Parpostel Raya - Jatiasih</li>
+                        <li>0878-9090-7000</li>
+                        <li>@KaguraStreetFood</li>
+                        <li>Mari Sukses Bersama KAGURA!</li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2023 Sakura Sushi Express. All Rights Reserved.</p>
+                <p>&copy; 2023 KAGURA Japanese Food. All Rights Reserved.</p>
             </div>
         </div>
     </footer>
@@ -1279,31 +1481,19 @@
             }
         });
 
-        // Menu data with appropriate image URLs
+        // Menu data based on KAGURA's actual menu
         const menuData = {
-            sushi: [
-                { name: 'Salmon Maki Roll', description: 'Salmon segar dengan nori dan nasi', price: 'Rp 45.000', image: 'https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?w=400&h=300&fit=crop' },
-                { name: 'California Roll', description: 'Kepiting, alpukat, dan timun', price: 'Rp 40.000', image: 'https://images.unsplash.com/photo-1617196034766-1a2173a4762e?w=400&h=300&fit=crop' },
-                { name: 'Spicy Tuna Roll', description: 'Tuna pedas dengan saus khas', price: 'Rp 50.000', image: 'https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?w=400&h=300&fit=crop' },
-                { name: 'Dragon Roll', description: 'Ungkepan eel dengan alpukat', price: 'Rp 65.000', image: 'https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?w=400&h=300&fit=crop' }
+            beef: [
+                { name: 'Beef Yakiniku', description: 'Irisan daging sapi dengan saus rahasia KAGURA', price: 'Rp 22.000', image: 'https://images.unsplash.com/photo-1596797038534-9c61e69e1c6a?w=400&h=300&fit=crop' },
+                { name: 'Beef Teriyaki', description: 'Daging sapi dengan saus teriyaki khas', price: 'Rp 22.000', image: 'https://images.unsplash.com/photo-1596797038534-9c61e69e1c6a?w=400&h=300&fit=crop' }
             ],
-            ramen: [
-                { name: 'Shoyu Ramen', description: 'Kaldu kedelai dengan chashu', price: 'Rp 55.000', image: 'https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=400&h=300&fit=crop' },
-                { name: 'Miso Ramen', description: 'Kaldu miso dengan telur', price: 'Rp 55.000', image: 'https://images.unsplash.com/photo-1586201375761-83865001e31c?w=400&h=300&fit=crop' },
-                { name: 'Tonkotsu Ramen', description: 'Kaldu tulang babi dengan sayuran', price: 'Rp 60.000', image: 'https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=400&h=300&fit=crop' },
-                { name: 'Spicy Ramen', description: 'Ramen pedas dengan topping lengkap', price: 'Rp 60.000', image: 'https://images.unsplash.com/photo-1586201375761-83865001e31c?w=400&h=300&fit=crop' }
+            chicken: [
+                { name: 'Chicken Crispy', description: 'Opsi ekonomis favorit pelajar', price: 'Rp 18.000', image: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=400&h=300&fit=crop' },
+                { name: 'Chicken Grill', description: 'Ayam bakar dengan bumbu spesial', price: 'Rp 18.000', image: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=400&h=300&fit=crop' }
             ],
-            donburi: [
-                { name: 'Oyakodon', description: 'Ayam dan telur di atas nasi', price: 'Rp 50.000', image: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=400&h=300&fit=crop' },
-                { name: 'Katsudon', description: 'Gorengan daging dengan telur', price: 'Rp 55.000', image: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=400&h=300&fit=crop' },
-                { name: 'Gyudon', description: 'Daging sapi dengan bawang', price: 'Rp 50.000', image: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=400&h=300&fit=crop' },
-                { name: 'Unadon', description: 'Ikan sidat dengan saus manis', price: 'Rp 75.000', image: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=400&h=300&fit=crop' }
-            ],
-            bento: [
-                { name: 'Salmon Bento', description: 'Salmon panggang dengan lauk lengkap', price: 'Rp 70.000', image: 'https://images.unsplash.com/photo-1586201375761-83865001e31c?w=400&h=300&fit=crop' },
-                { name: 'Chicken Teriyaki Bento', description: 'Ayam teriyaki dengan nasi dan salad', price: 'Rp 60.000', image: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=400&h=300&fit=crop' },
-                { name: 'Karaage Bento', description: 'Ayam goreng Jepang dengan lauk', price: 'Rp 55.000', image: 'https://images.unsplash.com/photo-1586201375761-83865001e31c?w=400&h=300&fit=crop' },
-                { name: 'Mixed Bento', description: 'Kombinasi seafood dan daging', price: 'Rp 75.000', image: 'https://images.unsplash.com/photo-1586201375761-83865001e31c?w=400&h=300&fit=crop' }
+            agemono: [
+                { name: 'Katsu', description: 'Ayam krispi ukuran besar dengan saus creamy spesial', price: 'Rp 15.000', image: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=400&h=300&fit=crop' },
+                { name: 'Tempura', description: 'Udang dan sayuran goreng tepung renyah', price: 'Rp 15.000', image: 'https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=400&h=300&fit=crop' }
             ]
         };
 
@@ -1333,7 +1523,7 @@
         }
 
         // Initial menu load
-        loadMenuItems('sushi');
+        loadMenuItems('beef');
 
         // Menu tab functionality
         document.querySelectorAll('.menu-tab').forEach(tab => {
@@ -1389,7 +1579,7 @@
             
             // Here you would normally send the data to a server
             // For this demo, we'll just show an alert
-            alert(`Terima kasih ${name}! Pesan Anda telah terkirim. Tim kami akan segera menghubungi Anda di ${email} atau ${phone}.`);
+            alert(`Terima kasih ${name}! Pesan Anda telah terkirim. Tim KAGURA akan segera menghubungi Anda di ${email} atau ${phone}.`);
             
             // Reset form
             this.reset();
