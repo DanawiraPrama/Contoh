@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kumpulan Artikel Haji & Umrah</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- CSS VARIABLES & RESET --- */
+        :root {
+            --primary-green: #0f4c3a; /* Deep Emerald */
+            --secondary-green: #167a5e;
+            --accent-gold: #d4af37; /* Metallic Gold */
+            --accent-gold-light: #f3e5ab;
+            --bg-light: #f8f9fa;
+            --bg-white: #ffffff;
+            --text-dark: #2c3e50;
+            --text-gray: #5f6c7b;
+            --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+            --shadow-md: 0 6px 12px rgba(0,0,0,0.08);
+            --radius: 12px;
+            --container-width: 1100px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* --- UTILITIES --- */
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary-green);
+        }
+
+        .arabic-font {
+            font-family: 'Amiri', serif;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+
+        .badge.fikih { background-color: #e8f5e9; color: #2e7d32; }
+        .badge.tips { background-color: #e3f2fd; color: #1565c0; }
+        .badge.waspada { background-color: #ffebee; color: #c62828; }
+
+        /* --- HEADER & HERO --- */
+        header {
+            background: linear-gradient(135deg, var(--primary-green) 0%, var(--secondary-green) 100%);
+            color: white;
+            padding: 60px 0 40px; /* Padding disesuaikan karena subtitle dihapus */
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 5px solid var(--accent-gold);
+        }
+
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: radial-gradient(var(--accent-gold) 1px, transparent 1px);
+            background-size: 30px 30px;
+            opacity: 0.1;
+            pointer-events: none;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        h1 {
+            font-size: 3rem;
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .header-desc {
+            max-width: 600px;
+            margin: 0 auto;
+            color: rgba(255,255,255,0.9);
+            font-size: 1.1rem;
+        }
+
+        /* --- NAVIGATION --- */
+        .sticky-nav {
+            position: sticky;
+            top: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: var(--shadow-sm);
+            z-index: 1000;
+            padding: 15px 0;
+        }
+
+        .nav-inner {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            padding: 10px 20px;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            background-color: var(--primary-green);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(15, 76, 58, 0.2);
+        }
+
+        /* --- MAIN CONTENT SECTIONS --- */
+        main {
+            padding: 60px 0;
+        }
+
+        .pillar-section {
+            margin-bottom: 80px;
+            /* Margin top penting agar saat scroll tidak tertutup menu sticky */
+            scroll-margin-top: 100px; 
+        }
+
+        .pillar-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+
+        .pillar-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--primary-green);
+            color: var(--accent-gold);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .pillar-title h2 {
+            font-size: 2rem;
+            margin: 0;
+            line-height: 1.2;
+        }
+
+        .pillar-title p {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+            margin-top: 5px;
+        }
+
+        /* --- GRID LAYOUT FOR SUB-CATEGORIES --- */
+        .sub-cat-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        @media (max-width: 768px) {
+            .sub-cat-grid {
+                grid-template-columns: 1fr;
+            }
+            h1 { font-size: 2rem; }
+            .nav-inner { gap: 10px; }
+            .nav-link { padding: 8px 15px; font-size: 0.9rem; }
+        }
+
+        /* --- SUB-CATEGORY CARD --- */
+        .sub-cat-card {
+            background: var(--bg-white);
+            border-radius: var(--radius);
+            padding: 25px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid #eee;
+            height: 100%;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .sub-cat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--accent-gold-light);
+        }
+
+        .sub-cat-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            color: var(--text-dark);
+            display: flex;
+            align-items: baseline;
+            gap: 10px;
+        }
+
+        .sub-cat-letter {
+            color: var(--accent-gold);
+            font-weight: 700;
+            font-size: 1.8rem;
+        }
+
+        /* --- ARTICLE LIST --- */
+        .article-list {
+            list-style: none;
+        }
+
+        .article-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 12px 0;
+            border-bottom: 1px dashed #e0e0e0;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+
+        .article-item:last-child {
+            border-bottom: none;
+        }
+
+        .article-item:hover {
+            padding-left: 5px;
+        }
+
+        .article-item:hover .article-text {
+            color: var(--primary-green);
+        }
+
+        .article-icon {
+            color: var(--accent-gold);
+            margin-top: 4px;
+            font-size: 0.8rem;
+        }
+
+        .article-text {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--text-gray);
+            transition: color 0.2s;
+        }
+
+        /* Specific color themes per pillar hover */
+        #fikih .article-item:hover .article-text { color: var(--secondary-green); }
+        #tips .article-item:hover .article-text { color: #1565c0; }
+        #waspada .article-item:hover .article-text { color: #c62828; }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: var(--text-dark);
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+            border-top: 4px solid var(--accent-gold);
+        }
+
+        .footer-content p {
+            color: rgba(255,255,255,0.6);
+            font-size: 0.9rem;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <div class="container header-content">
+            <h1>Daftar Judul Artikel Haji & Umrah</h1>
+            <p class="header-desc">
+                Kumpulan artikel terkurasi yang dikategorikan menjadi tiga pilar utama untuk memudahkan navigasi pembaca dalam memahami hukum, logistik, dan keamanan ibadah.
+            </p>
+        </div>
+    </header>
+
+    <!-- Sticky Navigation -->
+    <nav class="sticky-nav">
+        <div class="container nav-inner">
+            <a href="#fikih" class="nav-link">
+                <span>📜</span> Fikih & Regulasi
+            </a>
+            <a href="#tips" class="nav-link">
+                <span>💡</span> Tips & Logistik
+            </a>
+            <a href="#waspada" class="nav-link">
+                <span>⚠️</span> Waspada & Keamanan
+            </a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container">
+
+        <!-- PILLAR 1: Fikih & Regulasi -->
+        <section id="fikih" class="pillar-section">
+            <div class="pillar-header">
+                <div class="pillar-icon">📜</div>
+                <div class="pillar-title">
+                    <h2>Fikih & Regulasi</h2>
+                    <p>Hukum Syar'i, Kebijakan Pemerintah, dan Panduan Ibadah</p>
+                </div>
+            </div>
+
+            <div class="sub-cat-grid">
+                <!-- Sub A -->
+                <article class="sub-cat-card">
+                    <span class="badge fikih">Regulasi</span>
+                    <h3 class="sub-cat-title">
+                        <span class="sub-cat-letter">A.</span> Regulasi & Kebijakan
+                    </h3>
+                    <ul class="article-list">
+                        <li class="article-item">
+                            <span class="article-icon">➤</span>
+                            <span class="article-text">Transisi Haji 2026: Kemenag ke Kemenhaj & Dampaknya bagi Jemaah</span>
+                        </li>
+                        <li class="article-item">
+                            <span class="article-icon">➤</span>
+                            <span class="article-text">Biaya Haji 2026: Rincian Alokasi Dana & Perbandingannya</span>
+                        </li>
+                        <li class="article-item">
+                            <span class="article-icon">➤</span>
+                            <span class="article-text">Aturan Baru Umrah 1447 H: Vaksin, Visa, dan Batas Waktu</span>
+                        </li>
+                        <li class="article-item">
+                            <span class="article-icon">➤</span>
+                            <span class="article-text">Aturan Jeda 18 Tahun: Penjelasan Resmi bagi yang Sudah Pernah Haji</span>
+                        </li>
+                        <li class="article-item">
+                            <span class="article-icon">➤</span>
+                            <span class="article-text">Kartu Nusuk: Fungsi, Manfaat, & Cara Mendapatkannya untuk Haji 2026</span>
+                        </li>
+                        <li class="article-item">
+                            <span class="article-icon">➤</span>
+                            <span class="article-text">Umrah Backpacker vs PPIU: Regulasi Baru & Solusi Pemerintah</span>
+                        </li>
+                        <li class="article-item">
+                            <span class="article-icon">➤</span>
+                            <span class="article-text">Skema Murur & Tanazul: Solusi Penting untuk Jemaah Lansia</span>
+                        </li>
+                        <li class="article-item">
+                            <span class="article-icon">➤</span>
+                            <span class="article-text">Digitalisasi Total: Cara Kerja Aplikasi Nusuk (Visa hingga Kereta Haramain)</span>
+                        </li>
+                    </ul>
+                </article>
+
+                <!-- Sub B -->
+                <article class="sub-cat-card">
+                    <span class="badge fikih">Fikih</span>
+                    <h3 class="sub-cat-title">
+                        <span class="sub-cat-letter">B.</span> Fikih Ibadah & Wanita
+                    </h3>
+                    <ul class="article-list">
+                        <li class="article-item">
+                            <span class="article-icon">➤</span>
+                            <span class="article-text">Wanita Haid Saat Haji: Belajar dari Kisah 'Aisyah radhiyallahu 'anha</span>
+                        </li>
+                        <li class="article-item">
+                            <span class="article-icon">➤</span>
+                            <span class="article-text">Panduan Fikih Qurban: Lokasi Pembelian & Hukum Mewakilkan</span>
+                        </li>
+                        <li class="article-item">
+                            <span class="article-icon">➤</span>
+                            <span class="article-text">Shalat di Belakang Maqam Ibrahim: Tinjauan Fikih Empat Mazhab</span>
+                        </li>
+                        <li class="article-item">
+                            <span class="article-icon">➤</span>
+                            <span class="article-text">Miqat & Denda Dam: Hukum Melewati Batas Tanpa Ihram</span>
+                        </li>
+                        <li class="article-item">
+                            <span class="article-icon">➤</span>
+                            <span class="article-text">Talbiyah Jama'i: Hukum Membaca Talbiyah Bersama-sama</span>
+                        </li>
+                        <li class="article-item">
+                            <span class="article-icon">➤</span>
+                            <span class="article-text">Rukun & Wajib Umrah: Poin Krusial yang Tidak Boleh Terlewat</span>
+                        </li>
+                        <li class="article-item">
+                            <span class="article-icon">➤</span>
+                            <span class="article-text">Busana Wanita: Panduan Shalat & Thawaf dengan Pakaian Syar'i</span>
+                        </li>
+                        <li class="article-item">
+                            <span class="article-icon">➤</span>
+                            <span class="article-text">Shalat Jamak Qashar: Batasan Waktu Saat Safar Haji/Umrah</span>
+                        </li>
+                        <li class="article-item">
+                            <span class="article-icon">➤</span>
+                            <span class="article-text">Thawaf Wada': Hukum bagi Jemaah Wanita yang Sedang Haid</span>
+                        </li>
+                    </ul>
+                </article>
+            </div>
+        </section>
+
+        <!-- PILLAR 2: Tips, Logistik & Pelayanan -->
+        <section id="tips" class="pillar-section">
+            <div class="pillar-header">
+                <div class="pillar-icon" style="background-color: #1565c0;">💡</div>
+                <div class="pillar-title">
+                    <h2 style="color: #1565c0;">Tips, Logistik & Pelayanan</h2>
+                    <p>Panduan Praktis, Teknologi, dan Strategi Kenyamanan</p>
+                </div>
+            </div>
+
+            <div class="sub-cat-grid">
+                <!-- Sub A -->
+                <article class="sub-cat-card">
+                    <span class="badge tips">Digital & Aplikasi</span>
+                    <h3 class="sub-cat-title">
+                        <span class="sub-cat-letter" style="color: #1565c0;">A.</span> Tips Digital & Aplikasi
+                    </h3>
+                    <ul class="article-list">
+                        <li class="article-item">
+                            <span class="article-icon" style="color: #1565c0;">➤</span>
+                            <span class="article-text">Nusuk Tanpa Internet: Cara Pakai Fitur Offline untuk Izin & Navigasi</span>
+                        </li>
+                        <li class="article-item">
+                            <span class="article-icon" style="color: #1565c0;">➤</span>
+                            <span class="article-text">Sertifikat Haji Digital: Panduan Download via Aplikasi Nusuk</span>
+                        </li>
+                        <li class="article-item">
+                            <span class="article-icon" style="color: #1565c0;">➤</span>
+                            <span class="article-text">Nusuk AI: Cara Efektif Menggunakan Asisten Cerdas di Tanah Suci</span>
+                        </li>
+                        <li class="article-item">
+                            <span class="article-icon" style="color: #1565c0;">➤</span>
+                            <span class="article-text">Manasik Modern: Memanfaatkan Google Maps & Teknologi Saat Ibadah</span>
+                        </li>
+                        <li class="article-item">
+                            <span class="article-icon" style="color: #1565c0;">➤</span>
+                            <span class="article-text">Air Zamzam via Aplikasi: Cara Pesan Online ke Rumah (Via Nusuk)</span>
+                        </li>
+                        <li class="article-item">
+                            <span class="article-icon" style="color: #1565c0;">➤</span>
+                            <span class="article-text">Umrah Mandiri: Panduan Akomodasi & Transportasi via Platform Nusuk</span>
+                        </li>
+                    </ul>
+                </article>
+
+                <!-- Sub B -->
+                <article class="sub-cat-card">
+                    <span class="badge tips">Strategi Lapangan</span>
+                    <h3 class="sub-cat-title">
+                        <span class="sub-cat-letter" style="color: #1565c0;">B.</span> Strategi Lapangan & Kesehatan
+                    </h3>
+                    <ul class="article-list">
+                        <li class="article-item">
+                            <span class="article-icon" style="color: #1565c0;">➤</span>
+                            <span class="article-text">Waktu Terbaik Umrah: Tips Menghindari Keramaian ala Pemerintah Saudi</span>
+                        </li>
+                        <li class="article-item">
+                            <span class="article-icon" style="color: #1565c0;">➤</span>
+                            <span class="article-text">Persiapan Lansia: Checklist Fisik & Mental Sebelum Berangkat</span>
+                        </li>
+                        <li class="article-item">
+                            <span class="article-icon" style="color: #1565c0;">➤</span>
+                            <span class="article-text">Logistik Itikaf: Strategi Mandi & Cuci Tanpa Kehilangan Spot</span>
+                        </li>
+                        <li class="article-item">
+                            <span class="article-icon" style="color: #1565c0;">➤</span>
+                            <span class="article-text">Shalat Idul Fitri: Strategi "Grand Exit" & Logistik Kepulangan</span>
+                        </li>
+                        <li class="article-item">
+                            <span class="article-icon" style="color: #1565c0;">➤</span>
+                            <span class="article-text">Kesehatan Tenggorokan: Tips Bertahan di Udara Panas Makkah</span>
+                        </li>
+                        <li class="article-item">
+                            <span class="article-icon" style="color: #1565c0;">➤</span>
+                            <span class="article-text">Peta Rahasia: Strategi Mengamankan Spot Itikaf di Masjidil Haram</span>
+                        </li>
+                        <li class="article-item">
+                            <span class="article-icon" style="color: #1565c0;">➤</span>
+                            <span class="article-text">Packing List: Barang Wajib Bawa (Ihram Cadangan hingga P3K)</span>
+                        </li>
+                        <li class="article-item">
+                            <span class="article-icon" style="color: #1565c0;">➤</span>
+                            <span class="article-text">Anti-Heatstroke: Cara Menghindari Dehidrasi Saat Wukuf</span>
+                        </li>
+                        <li class="article-item">
+                            <span class="article-icon" style="color: #1565c0;">➤</span>
+                            <span class="article-text">Transportasi: Panduan Bus Shalawat & Bus Sapu Jagat</span>
+                        </li>
+                        <li class="article-item">
+                            <span class="article-icon" style="color: #1565c0;">➤</span>
+                            <span class="article-text">Loker Masjidil Haram: Tips Aman Menyimpan Barang</span>
+                        </li>
+                        <li class="article-item">
+                            <span class="article-icon" style="color: #1565c0;">➤</span>
+                            <span class="article-text">Komunikasi: Panduan Roaming & Telepon ke Indonesia</span>
+                        </li>
+                        <li class="article-item">
+                            <span class="article-icon" style="color: #1565c0;">➤</span>
+                            <span class="article-text">Keamanan Barang: 7 Tips Anti-Maling & Hipnotis untuk Lansia</span>
+                        </li>
+                        <li class="article-item">
+                            <span class="article-icon" style="color: #1565c0;">➤</span>
+                            <span class="article-text">Aplikasi Wajib: Daftar Apps Penting di HP Jemaah (Selain Nusuk)</span>
+                        </li>
+                    </ul>
+                </article>
+            </div>
+        </section>
+
+        <!-- PILLAR 3: Waspada & Keamanan -->
+        <section id="waspada" class="pillar-section">
+            <div class="pillar-header">
+                <div class="pillar-icon" style="background-color: #c62828;">⚠️</div>
+                <div class="pillar-title">
+                    <h2 style="color: #c62828;">Waspada & Keamanan</h2>
+                    <p>Mitigasi Risiko, Penipuan, dan Kepatuhan Hukum</p>
+                </div>
+            </div>
+
+            <div class="sub-cat-grid">
+                <!-- Sub A -->
+                <article class="sub-cat-card">
+                    <span class="badge waspada">Modus Penipuan</span>
+                    <h3 class="sub-cat-title">
+                        <span class="sub-cat-letter" style="color: #c62828;">A.</span> Modus Penipuan & Legalitas
+                    </h3>
+                    <ul class="article-list">
+                        <li class="article-item">
+                            <span class="article-icon" style="color: #c62828;">➤</span>
+                            <span class="article-text">Waspada Penipuan: 5 Modus Travel Umrah Terbaru di Era Digital</span>
+                        </li>
+                        <li class="article-item">
+                            <span class="article-icon" style="color: #c62828;">➤</span>
+                            <span class="article-text">Visa Haji vs Ziarah: Pahami Aturan Agar Tidak Ditolak Masuk Makkah</span>
+                        </li>
+                        <li class="article-item">
+                            <span class="article-icon" style="color: #c62828;">➤</span>
+                            <span class="article-text">Cek Travel Resmi: Cara Menggunakan Aplikasi SISKOPATUH</span>
+                        </li>
+                        <li class="article-item">
+                            <span class="article-icon" style="color: #c62828;">➤</span>
+                            <span class="article-text">Risiko Backpacker: Bahaya Umrah Tanpa Pengawasan (Hukum & Keamanan)</span>
+                        </li>
+                        <li class="article-item">
+                            <span class="article-icon" style="color: #c62828;">➤</span>
+                            <span class="article-text">Bahaya Overstay: Konsekuensi Denda hingga Deportasi</span>
+                        </li>
+                        <li class="article-item">
+                            <span class="article-icon" style="color: #c62828;">➤</span>
+                            <span class="article-text">Isu 'Mafia Haji': Transparansi Tender Haji 2026 oleh Kemenhaj</span>
+                        </li>
+                        <li class="article-item">
+                            <span class="article-icon" style="color: #c62828;">➤</span>
+                            <span class="article-text">Visa Furoda: Bahaya Visa Non-Kuotif Resmi & Risiko Gagal Berangkat</span>
+                        </li>
+                    </ul>
+                </article>
+
+                <!-- Sub B -->
+                <article class="sub-cat-card">
+                    <span class="badge waspada">Keamanan Fisik</span>
+                    <h3 class="sub-cat-title">
+                        <span class="sub-cat-letter" style="color: #c62828;">B.</span> Keamanan & Larangan
+                    </h3>
+                    <ul class="article-list">
+                        <li class="article-item">
+                            <span class="article-icon" style="color: #c62828;">➤</span>
+                            <span class="article-text">Heatstroke: Mengenali Gejala & Penanganan Cepat</span>
+                        </li>
+                        <li class="article-item">
+                            <span class="article-icon" style="color: #c62828;">➤</span>
+                            <span class="article-text">Joki Hajar Aswad: Modus Operandi & Hukumnya dalam Syariat</span>
+                        </li>
+                        <li class="article-item">
+                            <span class="article-icon" style="color: #c62828;">➤</span>
+                            <span class="article-text">Barang Hilang: Panduan Melapor di Masjidil Haram</span>
+                        </li>
+                        <li class="article-item">
+                            <span class="article-icon" style="color: #c62828;">➤</span>
+                            <span class="article-text">Kesalahan Sa'i: 5 Hal yang Sering Salah Dilakukan Jemaah</span>
+                        </li>
+                        <li class="article-item">
+                            <span class="article-icon" style="color: #c62828;">➤</span>
+                            <span class="article-text">Larangan di Masyair: Hukum Membawa Pulang Kerikil Mina/Muzdalifah</span>
+                        </li>
+                        <li class="article-item">
+                            <span class="article-icon" style="color: #c62828;">➤</span>
+                            <span class="article-text">Pemeriksaan Bandara: Aturan Benda Mencurigakan di Jeddah/Madinah</span>
+                        </li>
+                        <li class="article-item">
+                            <span class="article-icon" style="color: #c62828;">➤</span>
+                            <span class="article-text">Transportasi Lokal: Tips Negosiasi Harga Taksi (Anti 'Getok' Harga)</span>
+                        </li>
+                    </ul>
+                </article>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-content">
+            <p>Dokumentasi Artikel Haji & Umrah Edisi Revisi</p>
+            <p style="margin-top: 20px; font-size: 0.8rem;">&copy; 2025 All Rights Reserved. Desain Presentasi Web.</p>
+        </div>
+    </footer>
+
+    <!-- Script untuk Memastikan Anchor Berjalan Lancar -->
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
