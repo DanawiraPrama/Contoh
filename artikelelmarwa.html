@@ -13,9 +13,9 @@
     <style>
         /* --- CSS VARIABLES & RESET --- */
         :root {
-            --primary-green: #0f4c3a; /* Deep Emerald */
+            --primary-green: #0f4c3a;
             --secondary-green: #167a5e;
-            --accent-gold: #d4af37; /* Metallic Gold */
+            --accent-gold: #d4af37;
             --accent-gold-light: #f3e5ab;
             --bg-light: #f8f9fa;
             --bg-white: #ffffff;
@@ -24,7 +24,7 @@
             --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
             --shadow-md: 0 6px 12px rgba(0,0,0,0.08);
             --radius: 12px;
-            --container-width: 1100px;
+            --container-width: 1200px;
         }
 
         * {
@@ -41,7 +41,7 @@
             font-family: 'Inter', sans-serif;
             background-color: var(--bg-light);
             color: var(--text-dark);
-            line-height: 1.6;
+            line-height: 1.5;
             overflow-x: hidden;
         }
 
@@ -55,10 +55,6 @@
         h1, h2, h3 {
             font-family: 'Playfair Display', serif;
             color: var(--primary-green);
-        }
-
-        .arabic-font {
-            font-family: 'Amiri', serif;
         }
 
         .badge {
@@ -80,7 +76,7 @@
         header {
             background: linear-gradient(135deg, var(--primary-green) 0%, var(--secondary-green) 100%);
             color: white;
-            padding: 60px 0 40px; /* Padding disesuaikan karena subtitle dihapus */
+            padding: 60px 0 40px;
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -103,7 +99,7 @@
         }
 
         h1 {
-            font-size: 3rem;
+            font-size: 2.5rem;
             color: white;
             margin-bottom: 20px;
         }
@@ -161,7 +157,6 @@
 
         .pillar-section {
             margin-bottom: 80px;
-            /* Margin top penting agar saat scroll tidak tertutup menu sticky */
             scroll-margin-top: 100px; 
         }
 
@@ -199,7 +194,7 @@
             margin-top: 5px;
         }
 
-        /* --- GRID LAYOUT FOR SUB-CATEGORIES --- */
+        /* --- GRID LAYOUT --- */
         .sub-cat-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -210,9 +205,10 @@
             .sub-cat-grid {
                 grid-template-columns: 1fr;
             }
-            h1 { font-size: 2rem; }
+            h1 { font-size: 1.8rem; }
             .nav-inner { gap: 10px; }
             .nav-link { padding: 8px 15px; font-size: 0.9rem; }
+            .pillar-icon { width: 40px; height: 40px; font-size: 1.2rem; }
         }
 
         /* --- SUB-CATEGORY CARD --- */
@@ -234,7 +230,7 @@
 
         .sub-cat-title {
             font-family: 'Playfair Display', serif;
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             margin-bottom: 20px;
             color: var(--text-dark);
             display: flex;
@@ -245,53 +241,71 @@
         .sub-cat-letter {
             color: var(--accent-gold);
             font-weight: 700;
-            font-size: 1.8rem;
+            font-size: 1.6rem;
         }
 
         /* --- ARTICLE LIST --- */
         .article-list {
             list-style: none;
+            max-height: 600px;
+            overflow-y: auto;
+            padding-right: 5px;
+        }
+        
+        .article-list::-webkit-scrollbar {
+            width: 6px;
+        }
+        .article-list::-webkit-scrollbar-track {
+            background: #f1f1f1; 
+        }
+        .article-list::-webkit-scrollbar-thumb {
+            background: #d1d1d1; 
+            border-radius: 3px;
         }
 
         .article-item {
+            padding: 0;
+            border: none;
+        }
+
+        /* --- LINK STYLE UPDATE --- */
+        .article-link {
             display: flex;
             align-items: flex-start;
-            gap: 12px;
-            padding: 12px 0;
+            gap: 10px;
+            width: 100%;
+            text-decoration: none;
+            color: var(--text-dark);
+            padding: 10px 0;
             border-bottom: 1px dashed #e0e0e0;
             transition: all 0.2s;
-            cursor: pointer;
         }
 
-        .article-item:last-child {
-            border-bottom: none;
-        }
-
-        .article-item:hover {
+        .article-link:hover {
             padding-left: 5px;
-        }
-
-        .article-item:hover .article-text {
-            color: var(--primary-green);
+            background-color: rgba(0,0,0,0.01);
+            border-radius: 4px;
         }
 
         .article-icon {
             color: var(--accent-gold);
-            margin-top: 4px;
+            margin-top: 3px;
             font-size: 0.8rem;
+            flex-shrink: 0;
         }
 
         .article-text {
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             font-weight: 500;
             color: var(--text-gray);
             transition: color 0.2s;
+            line-height: 1.4;
         }
 
         /* Specific color themes per pillar hover */
-        #fikih .article-item:hover .article-text { color: var(--secondary-green); }
-        #tips .article-item:hover .article-text { color: #1565c0; }
-        #waspada .article-item:hover .article-text { color: #c62828; }
+        #fikih .article-link:hover .article-text { color: var(--secondary-green); }
+        #tips .article-link:hover .article-text { color: #1565c0; }
+        #waspada .article-link:hover .article-text { color: #c62828; }
 
         /* --- FOOTER --- */
         footer {
@@ -350,7 +364,7 @@
             </div>
 
             <div class="sub-cat-grid">
-                <!-- Sub A -->
+                <!-- Sub A: Regulasi -->
                 <article class="sub-cat-card">
                     <span class="badge fikih">Regulasi</span>
                     <h3 class="sub-cat-title">
@@ -358,41 +372,45 @@
                     </h3>
                     <ul class="article-list">
                         <li class="article-item">
-                            <span class="article-icon">➤</span>
-                            <span class="article-text">Transisi Haji 2026: Kemenag ke Kemenhaj & Dampaknya bagi Jemaah</span>
+                            <a href="https://docs.google.com/document/d/1oXPHpTAz2xjUYgToMm_w5-GRYEI-Gu12n3lHKt14Q9I/edit" class="article-link" target="_blank">
+                                <span class="article-icon">➤</span>
+                                <span class="article-text">Kartu Nusuk Haji 2026: Tiket Sakti Anda ke Armuzna. Pahami Fungsi, Manfaat, dan Cara Mendapatkannya di Sini!</span>
+                            </a>
                         </li>
                         <li class="article-item">
-                            <span class="article-icon">➤</span>
-                            <span class="article-text">Biaya Haji 2026: Rincian Alokasi Dana & Perbandingannya</span>
+                            <a href="https://docs.google.com/document/d/1fyUTS59XD-t5UvSI5eCDaKsKTB10IsIHqs3OiIL_hrg/edit" class="article-link" target="_blank">
+                                <span class="article-icon">➤</span>
+                                <span class="article-text">Gelang Pintar & Kartu Nusuk: Standar Baru Identitas Jemaah Itikaf 2025</span>
+                            </a>
                         </li>
                         <li class="article-item">
-                            <span class="article-icon">➤</span>
-                            <span class="article-text">Aturan Baru Umrah 1447 H: Vaksin, Visa, dan Batas Waktu</span>
+                            <a href="https://docs.google.com/document/d/1L12zmeNFj9EgYtGgNI37pgvN_3Zp5q53ZFCppo9NNRU/edit" class="article-link" target="_blank">
+                                <span class="article-icon">➤</span>
+                                <span class="article-text">Algoritma Ibadah: Strategi Menembus Kuota I'tikaf via Aplikasi Nusuk 2025</span>
+                            </a>
                         </li>
                         <li class="article-item">
-                            <span class="article-icon">➤</span>
-                            <span class="article-text">Aturan Jeda 18 Tahun: Penjelasan Resmi bagi yang Sudah Pernah Haji</span>
+                            <a href="https://docs.google.com/document/d/18pjtNl1pQE8Ju_TIa5Anu5NKHxapk_tcmUujwO4x20g/edit" class="article-link" target="_blank">
+                                <span class="article-icon">➤</span>
+                                <span class="article-text">Kemenag Diusulkan Jadi Kemenhaj: Panduan Santai & Lengkap Memahami Wacananya</span>
+                            </a>
                         </li>
                         <li class="article-item">
-                            <span class="article-icon">➤</span>
-                            <span class="article-text">Kartu Nusuk: Fungsi, Manfaat, & Cara Mendapatkannya untuk Haji 2026</span>
+                            <a href="https://docs.google.com/document/d/1oidkJwOfcyrNmqdqt3TqytvW8SWaYF52SLk7_wnkVHo/edit" class="article-link" target="_blank">
+                                <span class="article-icon">➤</span>
+                                <span class="article-text">Jangan Sampai Niat Ibadah Jadi Bumerang! Pahami Aturan Ketat Visa Haji vs. Visa Ziarah Sebelum Ditolak Masuk Makkah</span>
+                            </a>
                         </li>
                         <li class="article-item">
-                            <span class="article-icon">➤</span>
-                            <span class="article-text">Umrah Backpacker vs PPIU: Regulasi Baru & Solusi Pemerintah</span>
-                        </li>
-                        <li class="article-item">
-                            <span class="article-icon">➤</span>
-                            <span class="article-text">Skema Murur & Tanazul: Solusi Penting untuk Jemaah Lansia</span>
-                        </li>
-                        <li class="article-item">
-                            <span class="article-icon">➤</span>
-                            <span class="article-text">Digitalisasi Total: Cara Kerja Aplikasi Nusuk (Visa hingga Kereta Haramain)</span>
+                            <a href="https://docs.google.com/document/d/1C16DBEFZv8_istRN3KO7DMCkfUxAwaCl1CBbh_jyJKY/edit" class="article-link" target="_blank">
+                                <span class="article-icon">➤</span>
+                                <span class="article-text">Waspada Regulasi 2025: Power Bank Disita di Bandara hingga Razia Tas Masjidil Haram, Ini Solusinya</span>
+                            </a>
                         </li>
                     </ul>
                 </article>
 
-                <!-- Sub B -->
+                <!-- Sub B: Fikih -->
                 <article class="sub-cat-card">
                     <span class="badge fikih">Fikih</span>
                     <h3 class="sub-cat-title">
@@ -400,40 +418,190 @@
                     </h3>
                     <ul class="article-list">
                         <li class="article-item">
-                            <span class="article-icon">➤</span>
-                            <span class="article-text">Wanita Haid Saat Haji: Belajar dari Kisah 'Aisyah radhiyallahu 'anha</span>
+                            <a href="https://docs.google.com/document/d/1Yv6-I6cXF0WONYZnXGVsCEJ5qSNStTKGQ4frOm-FpqE/edit" class="article-link" target="_blank">
+                                <span class="article-icon">➤</span>
+                                <span class="article-text">Muslimah di Tanah Suci: Navigasi Fiqh Haid dan Strategi Ruang Privasi Sesuai Sunnah</span>
+                            </a>
                         </li>
                         <li class="article-item">
-                            <span class="article-icon">➤</span>
-                            <span class="article-text">Panduan Fikih Qurban: Lokasi Pembelian & Hukum Mewakilkan</span>
+                            <a href="https://docs.google.com/document/d/1fNtI2o62_ceuUt2HllNY8G6kpgmo-cWSnA18d3osNLM/edit" class="article-link" target="_blank">
+                                <span class="article-icon">➤</span>
+                                <span class="article-text">Meraih Lailatul Qadar Saat Haid: Panduan Amalan 10 Hari Terakhir dan Fiqih Wanita di Tanah Suci</span>
+                            </a>
                         </li>
                         <li class="article-item">
-                            <span class="article-icon">➤</span>
-                            <span class="article-text">Shalat di Belakang Maqam Ibrahim: Tinjauan Fikih Empat Mazhab</span>
+                            <a href="https://docs.google.com/document/d/1_3nb59Dnp5LsoISqiXg9q2lWHGw6gJLeq8LGXbMefiw/edit" class="article-link" target="_blank">
+                                <span class="article-icon">➤</span>
+                                <span class="article-text">Haid Saat Haji? Jangan Panik! Belajar dari Kisah 'Aisyah radhiyallahu 'anha</span>
+                            </a>
                         </li>
                         <li class="article-item">
-                            <span class="article-icon">➤</span>
-                            <span class="article-text">Miqat & Denda Dam: Hukum Melewati Batas Tanpa Ihram</span>
+                            <a href="https://docs.google.com/document/d/1eqgmeoirJFMKn1E_Ff1P1343TkdlcPhbKXon2wfl5Xc/edit" class="article-link" target="_blank">
+                                <span class="article-icon">➤</span>
+                                <span class="article-text">Hukum Memakai Pil Pencegah Haid Saat Umrah/Haji: Tinjauan Syar'i & Medis</span>
+                            </a>
                         </li>
                         <li class="article-item">
-                            <span class="article-icon">➤</span>
-                            <span class="article-text">Talbiyah Jama'i: Hukum Membaca Talbiyah Bersama-sama</span>
+                            <a href="https://docs.google.com/document/d/1yGhdHUeBifFGT43DsmESXtmDP7xRwkWKcC5_LbW9zKg/edit" class="article-link" target="_blank">
+                                <span class="article-icon">➤</span>
+                                <span class="article-text">Tabel Pemisah: Bedakan Rukun, Wajib, dan Sunnah Haji – Panduan Fikih Praktis</span>
+                            </a>
                         </li>
                         <li class="article-item">
-                            <span class="article-icon">➤</span>
-                            <span class="article-text">Rukun & Wajib Umrah: Poin Krusial yang Tidak Boleh Terlewat</span>
+                            <a href="https://docs.google.com/document/d/1wU063xVEcjVAc46Fw4vQjKoU7vucPIy8xOx27OypDyE/edit" class="article-link" target="_blank">
+                                <span class="article-icon">➤</span>
+                                <span class="article-text">Awas Batal! Hukum Keluar Masjid Saat Itikaf: Antara Mandi dan 'Ngopi' di Zamzam Tower</span>
+                            </a>
                         </li>
                         <li class="article-item">
-                            <span class="article-icon">➤</span>
-                            <span class="article-text">Busana Wanita: Panduan Shalat & Thawaf dengan Pakaian Syar'i</span>
+                            <a href="https://docs.google.com/document/d/1qncYEXJxjB4F5KSwKfboch8CQ4FsYKVOK_8W7lflKoQ/edit" class="article-link" target="_blank">
+                                <span class="article-icon">➤</span>
+                                <span class="article-text">Menandai Tempat Shalat dan Batasan I'tikaf: Panduan Fiqh Spasial di Tanah Suci</span>
+                            </a>
                         </li>
                         <li class="article-item">
-                            <span class="article-icon">➤</span>
-                            <span class="article-text">Shalat Jamak Qashar: Batasan Waktu Saat Safar Haji/Umrah</span>
+                            <a href="https://docs.google.com/document/d/12-pHJSwvxxGD4ANlg-AFz_gJ0GG8xhVRjg_ZhvBDbrE/edit" class="article-link" target="_blank">
+                                <span class="article-icon">➤</span>
+                                <span class="article-text">Stop "Itikaf" di Musalla Hotel! Itu Bukan Masjid, Ini Penjelasan Hukumnya</span>
+                            </a>
                         </li>
                         <li class="article-item">
-                            <span class="article-icon">➤</span>
-                            <span class="article-text">Thawaf Wada': Hukum bagi Jemaah Wanita yang Sedang Haid</span>
+                            <a href="https://docs.google.com/document/d/1ew1qS73F5OgcJ2-dZ43KwqEZJJy-GCW3PSwJ_qOYez0/edit" class="article-link" target="_blank">
+                                <span class="article-icon">➤</span>
+                                <span class="article-text">Mengapa Asuransi Perjalanan Komersial HARAM? (Fatwa Lajnah Daimah)</span>
+                            </a>
+                        </li>
+                        <li class="article-item">
+                            <a href="https://docs.google.com/document/d/1giIP3VwFDbUjZAZ0W0_pja_VGOVlv3j07OEjRgKJWcg/edit" class="article-link" target="_blank">
+                                <span class="article-icon">➤</span>
+                                <span class="article-text">Hukum Mengunjungi Gua Hira & Jabal Tsur: Antara Napak Tilas Sejarah dan Jebakan Bid'ah</span>
+                            </a>
+                        </li>
+                        <li class="article-item">
+                            <a href="https://docs.google.com/document/d/1s9kVp68AGqi2lMHFrFLLCrsWiTnrlHya4-DQZY6-sDE/edit" class="article-link" target="_blank">
+                                <span class="article-icon">➤</span>
+                                <span class="article-text">Mengusap Kiswah & Dinding Ka'bah: Tanda Cinta atau Justru Bid'ah?</span>
+                            </a>
+                        </li>
+                        <li class="article-item">
+                            <a href="https://docs.google.com/document/d/1F95nPTRd0IemsJFb9TBiNYckuwSMtbXx3P3uWrWHkBE/edit" class="article-link" target="_blank">
+                                <span class="article-icon">➤</span>
+                                <span class="article-text">Hukum Berdoa Kepada Nabi: Bahaya Syirik Akbar di Madinah yang Sering Diabaikan</span>
+                            </a>
+                        </li>
+                        <li class="article-item">
+                            <a href="https://docs.google.com/document/d/1maOr3R0TqybN1406xwUe_8KXRSQSnm22jCXbJ1yApQc/edit" class="article-link" target="_blank">
+                                <span class="article-icon">➤</span>
+                                <span class="article-text">Hukum Tidak Urut Amalan Haji di Haji Wada': Kisah Keringanan Agung 'If'al wa Laa Haraj' untuk Jamaah</span>
+                            </a>
+                        </li>
+                        <li class="article-item">
+                            <a href="https://docs.google.com/document/d/1OH5TS-EDdD4LzkOWGrDw2At1QZTz-tSqcfeTn3sfdSg/edit" class="article-link" target="_blank">
+                                <span class="article-icon">➤</span>
+                                <span class="article-text">Panduan Lengkap Sifat Umrah Nabi: Tata Cara Umroh Sesuai Sunnah (Ringkas & Shahih)</span>
+                            </a>
+                        </li>
+                        <li class="article-item">
+                            <a href="https://docs.google.com/document/d/1IuBzZHDX3he9lcd-jLZczElx4v7I5OcSgBzZMa_mOTk/edit" class="article-link" target="_blank">
+                                <span class="article-icon">➤</span>
+                                <span class="article-text">Jejak Itikaf Rasulullah di Tiang As-Sarir: Mengungkap Sejarah Tempat Tidur Nabi di Raudhah</span>
+                            </a>
+                        </li>
+                        <li class="article-item">
+                            <a href="https://docs.google.com/document/d/1RsVA-2_bVYMhyvtwqiqE3iyuL7zjRgtX0gb_-uWDHAE/edit" class="article-link" target="_blank">
+                                <span class="article-icon">➤</span>
+                                <span class="article-text">Kisah Ibnu Umar: Itikaf Bukan Sekadar Pindah Tidur, Melainkan Fokus Total Menghamba pada Ilahi</span>
+                            </a>
+                        </li>
+                        <li class="article-item">
+                            <a href="https://docs.google.com/document/d/1n7LKZmii__-wXxF1UYiCip82SYZm9AGPQ9ybWENTng4/edit" class="article-link" target="_blank">
+                                <span class="article-icon">➤</span>
+                                <span class="article-text">Kisah 'Umar Mencium Hajar Aswad: "Kalau Bukan Karena Nabi, Nggak Akan Aku Cium!"</span>
+                            </a>
+                        </li>
+                        <li class="article-item">
+                            <a href="https://docs.google.com/document/d/1YNQMelgChYXbb7ML8c0z9SWBSWn85KuKGbVjsfPA8t4/edit" class="article-link" target="_blank">
+                                <span class="article-icon">➤</span>
+                                <span class="article-text">Satu Kali Seumur Hidup: Mengupas Tuntas Kisah Haji Wada' Rasulullah ﷺ</span>
+                            </a>
+                        </li>
+                        <li class="article-item">
+                            <a href="https://docs.google.com/document/d/1MkA5MD7ySDcXEHZrGfZi0L6ca62D1xu1rFGfjkV6t0Q/edit" class="article-link" target="_blank">
+                                <span class="article-icon">➤</span>
+                                <span class="article-text">Bukan Sekadar Berangkat: Teladan Haji dari Kisah Umar bin Khattab & Abu Bakar Ash-Shiddiq</span>
+                            </a>
+                        </li>
+                        <li class="article-item">
+                            <a href="https://docs.google.com/document/d/1reR8ivN6wcXZmiKQpUDZzZq42OMIKQUQeLDHeAKS07I/edit" class="article-link" target="_blank">
+                                <span class="article-icon">➤</span>
+                                <span class="article-text">Menyingkap Keutamaan Mekkah & Madinah: Panduan Cinta Syar'i Berbasis Dalil Shahih</span>
+                            </a>
+                        </li>
+                        <li class="article-item">
+                            <a href="https://docs.google.com/document/d/1p-UTCSUPu2N0GTVUvHf5vcu_mmdYh5jgLkZccoJZkRE/edit" class="article-link" target="_blank">
+                                <span class="article-icon">➤</span>
+                                <span class="article-text">Niatnya Murni Tauhid: Mengulik Sejarah Pembangunan Ka'bah oleh Nabi Ibrahim dan Ismail</span>
+                            </a>
+                        </li>
+                        <li class="article-item">
+                            <a href="https://docs.google.com/document/d/1q05Bg4DCFIFF4v-t7BX3CkEkFVpI-TWjSbFAB2yYNBg/edit" class="article-link" target="_blank">
+                                <span class="article-icon">➤</span>
+                                <span class="article-text">Pahala Shalat di Masjidil Haram: Keutamaan 100.000 Kali Lipat Menurut Hadits Shahih</span>
+                            </a>
+                        </li>
+                        <li class="article-item">
+                            <a href="https://docs.google.com/document/d/1GYfo5MKNAPMQ-XQo4SyympW8fOMII4moZiI27TX6-aA/edit" class="article-link" target="_blank">
+                                <span class="article-icon">➤</span>
+                                <span class="article-text">Pahala Haji Mabrur: Balasannya Surga (Meneladani Amalan Salaf)</span>
+                            </a>
+                        </li>
+                        <li class="article-item">
+                            <a href="https://docs.google.com/document/d/1HSVtcwduKPQWfy5_E0kmINuZHdBBha9N-knp0PCrS-s/edit" class="article-link" target="_blank">
+                                <span class="article-icon">➤</span>
+                                <span class="article-text">Raudhah di Masjid Nabawi: Tinjauan Mengenai Keutamaan dan Adab Beribadah</span>
+                            </a>
+                        </li>
+                        <li class="article-item">
+                            <a href="https://docs.google.com/document/d/19p5icnOu002b-ioweq7vqPNqSBf9olRfsdcES_kr5yg/edit" class="article-link" target="_blank">
+                                <span class="article-icon">➤</span>
+                                <span class="article-text">Mengungkap Sejarah Shafa Marwa: Jejak Abadi Kisah Hajar dan Nabi Ismail</span>
+                            </a>
+                        </li>
+                        <li class="article-item">
+                            <a href="https://docs.google.com/document/d/189NQKlV7yDRZA8LMbntUS1QIsHt06zxKRWsh102l8OM/edit" class="article-link" target="_blank">
+                                <span class="article-icon">➤</span>
+                                <span class="article-text">Ziarah Baqi' Sesuai Sunnah: Kisah Sahabat yang Dimakamkan di Baqi' & Adab Ziarah yang Benar</span>
+                            </a>
+                        </li>
+                        <li class="article-item">
+                            <a href="https://docs.google.com/document/d/1g1U-nVpPPRX6e9cm_J-jFA4xuVh7mxEEDQLqcTlKfnI/edit" class="article-link" target="_blank">
+                                <span class="article-icon">➤</span>
+                                <span class="article-text">Memaksimalkan Keutamaan Sepuluh Hari Pertama Dzulhijjah: Tinjauan Amalan Terbaik</span>
+                            </a>
+                        </li>
+                        <li class="article-item">
+                            <a href="https://docs.google.com/document/d/1yU0lf4tZo1VdybzOgswmpArugmFPqYJH25fbrhq5S74/edit" class="article-link" target="_blank">
+                                <span class="article-icon">➤</span>
+                                <span class="article-text">Makna Talbiyah Haji: Kisah Mengharukan Para Sahabat Menjawab Panggilan Tauhid</span>
+                            </a>
+                        </li>
+                        <li class="article-item">
+                            <a href="https://docs.google.com/document/d/1mY6L_R3G4-vAHFb0feU4HjhQTm5OQsb2B-sVvoVUVXo/edit" class="article-link" target="_blank">
+                                <span class="article-icon">➤</span>
+                                <span class="article-text">Doa Safar Sesuai Sunnah: Panduan Lengkap dari Berangkat Hingga Tiba (Biar Perjalanan Jadi Ibadah!)</span>
+                            </a>
+                        </li>
+                        <li class="article-item">
+                            <a href="https://docs.google.com/document/d/1_pCqMBr6fgP1zfZAfKGoMz3iQSQuaxucukxy0FMErqg/edit" class="article-link" target="_blank">
+                                <span class="article-icon">➤</span>
+                                <span class="article-text">Sunnah yang Sering Terlupa: Menunjuk "Amir" Saat Safar (Penting Banget!)</span>
+                            </a>
+                        </li>
+                        <li class="article-item">
+                            <a href="https://docs.google.com/document/d/10RyDFeFXCCfOywgjL2tNk4JfnYyJKrgSAHakq8KZaDo/edit" class="article-link" target="_blank">
+                                <span class="article-icon">➤</span>
+                                <span class="article-text">Air Zamzam: Makanan, Obat, dan Berkah Sesuai Sunnah (Bukan Mitos!)</span>
+                            </a>
                         </li>
                     </ul>
                 </article>
@@ -451,7 +619,7 @@
             </div>
 
             <div class="sub-cat-grid">
-                <!-- Sub A -->
+                <!-- Sub A: Digital & Aplikasi -->
                 <article class="sub-cat-card">
                     <span class="badge tips">Digital & Aplikasi</span>
                     <h3 class="sub-cat-title">
@@ -459,33 +627,39 @@
                     </h3>
                     <ul class="article-list">
                         <li class="article-item">
-                            <span class="article-icon" style="color: #1565c0;">➤</span>
-                            <span class="article-text">Nusuk Tanpa Internet: Cara Pakai Fitur Offline untuk Izin & Navigasi</span>
+                            <a href="https://docs.google.com/document/d/1fC9HaoVEncQkfilOllGCiTa7Zf9X5yX5sBW5gHZ6uEc/edit" class="article-link" target="_blank">
+                                <span class="article-icon" style="color: #1565c0;">➤</span>
+                                <span class="article-text">"War" Tiket Itikaf via Aplikasi Nusuk 2025: Strategi Cepat Mengamankan Slot di Masjidil Haram</span>
+                            </a>
                         </li>
                         <li class="article-item">
-                            <span class="article-icon" style="color: #1565c0;">➤</span>
-                            <span class="article-text">Sertifikat Haji Digital: Panduan Download via Aplikasi Nusuk</span>
+                            <a href="https://docs.google.com/document/d/1jfe82ysfurO3z_srzigJ_zNkXvP9cyeN8sUclintYtY/edit" class="article-link" target="_blank">
+                                <span class="article-icon" style="color: #1565c0;">➤</span>
+                                <span class="article-text">Fasilitas Loker & Cas HP: Bedah Fasilitas Resmi Mu'takif Masjidil Haram</span>
+                            </a>
                         </li>
                         <li class="article-item">
-                            <span class="article-icon" style="color: #1565c0;">➤</span>
-                            <span class="article-text">Nusuk AI: Cara Efektif Menggunakan Asisten Cerdas di Tanah Suci</span>
+                            <a href="https://docs.google.com/document/d/1ytNMOYbAw1UtwMtfAwo8rr6hdGoEsHU5ncfolmDuxGQ/edit" class="article-link" target="_blank">
+                                <span class="article-icon" style="color: #1565c0;">➤</span>
+                                <span class="article-text">Smart Lockers & Lost Found: Solusi Modern Keamanan Barang Jemaah di Masjidil Haram 2025</span>
+                            </a>
                         </li>
                         <li class="article-item">
-                            <span class="article-icon" style="color: #1565c0;">➤</span>
-                            <span class="article-text">Manasik Modern: Memanfaatkan Google Maps & Teknologi Saat Ibadah</span>
+                            <a href="https://docs.google.com/document/d/1jcRmCBSy8nll-T66Lf6naCjlDLibPCoT-58VJgYCjeQ/edit" class="article-link" target="_blank">
+                                <span class="article-icon" style="color: #1565c0;">➤</span>
+                                <span class="article-text">Digital Detox di Tanah Suci: Menjaga Keikhlasan dari Jerat Riya' di Tengah Tren Live Streaming</span>
+                            </a>
                         </li>
                         <li class="article-item">
-                            <span class="article-icon" style="color: #1565c0;">➤</span>
-                            <span class="article-text">Air Zamzam via Aplikasi: Cara Pesan Online ke Rumah (Via Nusuk)</span>
-                        </li>
-                        <li class="article-item">
-                            <span class="article-icon" style="color: #1565c0;">➤</span>
-                            <span class="article-text">Umrah Mandiri: Panduan Akomodasi & Transportasi via Platform Nusuk</span>
+                            <a href="https://docs.google.com/document/d/1d4cuQOsBGJwrBhG5b5PDy0-VETYkxTR2uh1oQzvPBpI/edit" class="article-link" target="_blank">
+                                <span class="article-icon" style="color: #1565c0;">➤</span>
+                                <span class="article-text">Makkah Jadi Smart City Global: 7 Proyek Futuristik Ini Siap Menyambut Anda!</span>
+                            </a>
                         </li>
                     </ul>
                 </article>
 
-                <!-- Sub B -->
+                <!-- Sub B: Strategi Lapangan -->
                 <article class="sub-cat-card">
                     <span class="badge tips">Strategi Lapangan</span>
                     <h3 class="sub-cat-title">
@@ -493,56 +667,94 @@
                     </h3>
                     <ul class="article-list">
                         <li class="article-item">
-                            <span class="article-icon" style="color: #1565c0;">➤</span>
-                            <span class="article-text">Waktu Terbaik Umrah: Tips Menghindari Keramaian ala Pemerintah Saudi</span>
+                            <a href="https://docs.google.com/document/d/1rJPqx_zKopesstULwOqIN1OtNTZRH_nubcUd2Dzum64/edit" class="article-link" target="_blank">
+                                <span class="article-icon" style="color: #1565c0;">➤</span>
+                                <span class="article-text">"Survival Kit" Itikaf: Daftar Barang yang Wajib Masuk Tas Kecil untuk Umrah Ramadan</span>
+                            </a>
                         </li>
                         <li class="article-item">
-                            <span class="article-icon" style="color: #1565c0;">➤</span>
-                            <span class="article-text">Persiapan Lansia: Checklist Fisik & Mental Sebelum Berangkat</span>
+                            <a href="https://docs.google.com/document/d/1snT7GvzxcPH2P1NTE8LqZzYldGSRKxMDcqChH9g9X8w/edit" class="article-link" target="_blank">
+                                <span class="article-icon" style="color: #1565c0;">➤</span>
+                                <span class="article-text">The Minimalist Mutakif: Strategi Packing Cerdas dan Syar'i untuk I'tikaf 10 Hari Terakhir</span>
+                            </a>
                         </li>
                         <li class="article-item">
-                            <span class="article-icon" style="color: #1565c0;">➤</span>
-                            <span class="article-text">Logistik Itikaf: Strategi Mandi & Cuci Tanpa Kehilangan Spot</span>
+                            <a href="https://docs.google.com/document/d/1Pkqp_iG5aoqOxfvkSda85XXBLoor1chcqpd1dFYbjv4/edit" class="article-link" target="_blank">
+                                <span class="article-icon" style="color: #1565c0;">➤</span>
+                                <span class="article-text">Strategi "Tidur Ayam" Ala Mu'takif Pro: Rahasia Manajemen Waktu Ramadhan di Mekkah untuk Raih Lailatul Qadar</span>
+                            </a>
                         </li>
                         <li class="article-item">
-                            <span class="article-icon" style="color: #1565c0;">➤</span>
-                            <span class="article-text">Shalat Idul Fitri: Strategi "Grand Exit" & Logistik Kepulangan</span>
+                            <a href="https://docs.google.com/document/d/1_K8RSWSp4WzAlrlA341-DdnMVsRuDRFfh5d7a-PL6Qo/edit" class="article-link" target="_blank">
+                                <span class="article-icon" style="color: #1565c0;">➤</span>
+                                <span class="article-text">Bio-Hacking Ramadhan: Strategi Manajemen Tidur dan Nutrisi untuk Stamina 10 Malam Terakhir</span>
+                            </a>
                         </li>
                         <li class="article-item">
-                            <span class="article-icon" style="color: #1565c0;">➤</span>
-                            <span class="article-text">Kesehatan Tenggorokan: Tips Bertahan di Udara Panas Makkah</span>
+                            <a href="https://docs.google.com/document/d/10mZulDTwsgmt-8ZC0_RruJ9TG_OWAPAJjrxbnm3YTec/edit" class="article-link" target="_blank">
+                                <span class="article-icon" style="color: #1565c0;">➤</span>
+                                <span class="article-text">Navigasi Haramain: Peta Strategis Gerbang dan Zonasi I'tikaf Terbaik di Masjid Nabawi</span>
+                            </a>
                         </li>
                         <li class="article-item">
-                            <span class="article-icon" style="color: #1565c0;">➤</span>
-                            <span class="article-text">Peta Rahasia: Strategi Mengamankan Spot Itikaf di Masjidil Haram</span>
+                            <a href="https://docs.google.com/document/d/1De1t13i1rqJdSBBGcdGv_X3A9ttX83PWj2sxSthr_ZM/edit" class="article-link" target="_blank">
+                                <span class="article-icon" style="color: #1565c0;">➤</span>
+                                <span class="article-text">Paket Itikaf El Marwa 2025: Strategi "Emergency Exit" Hotel Dekat untuk Maksimalkan Ibadah</span>
+                            </a>
                         </li>
                         <li class="article-item">
-                            <span class="article-icon" style="color: #1565c0;">➤</span>
-                            <span class="article-text">Packing List: Barang Wajib Bawa (Ihram Cadangan hingga P3K)</span>
+                            <a href="https://docs.google.com/document/d/1G6sDmtNBHAEQCFZmTQYnIi1W0DZKcGn-yJFWzaqRjI4/edit" class="article-link" target="_blank">
+                                <span class="article-icon" style="color: #1565c0;">➤</span>
+                                <span class="article-text">Manajemen Logistik Kebersihan di Tanah Suci: Antara Efisiensi Biaya dan Fokus Ibadah</span>
+                            </a>
                         </li>
                         <li class="article-item">
-                            <span class="article-icon" style="color: #1565c0;">➤</span>
-                            <span class="article-text">Anti-Heatstroke: Cara Menghindari Dehidrasi Saat Wukuf</span>
+                            <a href="https://docs.google.com/document/d/1xmPlXM87NgaSEgyNWTe0utM-cRZv1UQiiMbScUkD74U/edit" class="article-link" target="_blank">
+                                <span class="article-icon" style="color: #1565c0;">➤</span>
+                                <span class="article-text">Keajaiban 35 Menit: Bagaimana Pasukan Kebersihan Haram Bekerja Saat Iftar</span>
+                            </a>
                         </li>
                         <li class="article-item">
-                            <span class="article-icon" style="color: #1565c0;">➤</span>
-                            <span class="article-text">Transportasi: Panduan Bus Shalawat & Bus Sapu Jagat</span>
+                            <a href="https://docs.google.com/document/d/1s63xSHesbge8jxFUdrHLrkonAO6dEdB_RHM8XhWaXUE/edit" class="article-link" target="_blank">
+                                <span class="article-icon" style="color: #1565c0;">➤</span>
+                                <span class="article-text">Suhu Ekstrem & Lantai Marmer Thassos: Mengungkap Fakta Ilmiah di Balik Dinginnya Lantai Masjidil Haram</span>
+                            </a>
                         </li>
                         <li class="article-item">
-                            <span class="article-icon" style="color: #1565c0;">➤</span>
-                            <span class="article-text">Loker Masjidil Haram: Tips Aman Menyimpan Barang</span>
+                            <a href="https://docs.google.com/document/d/1PLsVx8BfXcW315sv01_MkJVMIeiHMUTVDypP2MW3-NQ/edit" class="article-link" target="_blank">
+                                <span class="article-icon" style="color: #1565c0;">➤</span>
+                                <span class="article-text">Rahasia Umrah Nyaman: Tips Cerdas Pilih Waktu Terbaik Hindari Keramaian ala Otoritas Saudi</span>
+                            </a>
                         </li>
                         <li class="article-item">
-                            <span class="article-icon" style="color: #1565c0;">➤</span>
-                            <span class="article-text">Komunikasi: Panduan Roaming & Telepon ke Indonesia</span>
+                            <a href="https://docs.google.com/document/d/1XZM9e-C-3WMD2xz4WmXL9tVS2Y6AjcjYdTGO_V2UysA/edit" class="article-link" target="_blank">
+                                <span class="article-icon" style="color: #1565c0;">➤</span>
+                                <span class="article-text">Menu Buka Puasa & Sahur Ala Masjid Nabawi: Sederhana, Berkah, dan Penuh Persaudaraan</span>
+                            </a>
                         </li>
                         <li class="article-item">
-                            <span class="article-icon" style="color: #1565c0;">➤</span>
-                            <span class="article-text">Keamanan Barang: 7 Tips Anti-Maling & Hipnotis untuk Lansia</span>
+                            <a href="https://docs.google.com/document/d/1q3J5lICsBxO3X6Fhq7OKvNYs7rIh48YHbjpMq8p-Eo8/edit" class="article-link" target="_blank">
+                                <span class="article-icon" style="color: #1565c0;">➤</span>
+                                <span class="article-text">The Grand Exit: Strategi Vital Shalat Idul Fitri dan Manajemen Logistik Kepulangan Jemaah Umrah</span>
+                            </a>
                         </li>
                         <li class="article-item">
-                            <span class="article-icon" style="color: #1565c0;">➤</span>
-                            <span class="article-text">Aplikasi Wajib: Daftar Apps Penting di HP Jemaah (Selain Nusuk)</span>
+                            <a href="https://docs.google.com/document/d/11WwX7RdReQD8j0gE0JD1VEDt3GUzh9zz4kAWCVeBK1I/edit" class="article-link" target="_blank">
+                                <span class="article-icon" style="color: #1565c0;">➤</span>
+                                <span class="article-text">Strategi Mandi & Mencuci Baju Tanpa Kehilangan Spot Itikaf: Panduan Logistik Jemaah Umrah</span>
+                            </a>
+                        </li>
+                        <li class="article-item">
+                            <a href="https://docs.google.com/document/d/1qaixN2EYj8JN_iyIfE9GYyPcYXRNgW8XQ8vtVeRlCV8/edit" class="article-link" target="_blank">
+                                <span class="article-icon" style="color: #1565c0;">➤</span>
+                                <span class="article-text">"Reuni Akbar" di Tanah Suci: Merajut Ukhuwah Islamiyah Tanpa Batas Benua</span>
+                            </a>
+                        </li>
+                        <li class="article-item">
+                            <a href="https://docs.google.com/document/d/1Jhm8mlnthI8JS2j4YrDz9NBJM8IIrtN72kPARB_UmJU/edit" class="article-link" target="_blank">
+                                <span class="article-icon" style="color: #1565c0;">➤</span>
+                                <span class="article-text">Tangisan di Malam 27: Merasakan Getaran Lailatul Qadar di Depan Ka'bah</span>
+                            </a>
                         </li>
                     </ul>
                 </article>
@@ -560,7 +772,7 @@
             </div>
 
             <div class="sub-cat-grid">
-                <!-- Sub A -->
+                <!-- Sub A: Modus Penipuan -->
                 <article class="sub-cat-card">
                     <span class="badge waspada">Modus Penipuan</span>
                     <h3 class="sub-cat-title">
@@ -568,70 +780,32 @@
                     </h3>
                     <ul class="article-list">
                         <li class="article-item">
-                            <span class="article-icon" style="color: #c62828;">➤</span>
-                            <span class="article-text">Waspada Penipuan: 5 Modus Travel Umrah Terbaru di Era Digital</span>
-                        </li>
-                        <li class="article-item">
-                            <span class="article-icon" style="color: #c62828;">➤</span>
-                            <span class="article-text">Visa Haji vs Ziarah: Pahami Aturan Agar Tidak Ditolak Masuk Makkah</span>
-                        </li>
-                        <li class="article-item">
-                            <span class="article-icon" style="color: #c62828;">➤</span>
-                            <span class="article-text">Cek Travel Resmi: Cara Menggunakan Aplikasi SISKOPATUH</span>
-                        </li>
-                        <li class="article-item">
-                            <span class="article-icon" style="color: #c62828;">➤</span>
-                            <span class="article-text">Risiko Backpacker: Bahaya Umrah Tanpa Pengawasan (Hukum & Keamanan)</span>
-                        </li>
-                        <li class="article-item">
-                            <span class="article-icon" style="color: #c62828;">➤</span>
-                            <span class="article-text">Bahaya Overstay: Konsekuensi Denda hingga Deportasi</span>
-                        </li>
-                        <li class="article-item">
-                            <span class="article-icon" style="color: #c62828;">➤</span>
-                            <span class="article-text">Isu 'Mafia Haji': Transparansi Tender Haji 2026 oleh Kemenhaj</span>
-                        </li>
-                        <li class="article-item">
-                            <span class="article-icon" style="color: #c62828;">➤</span>
-                            <span class="article-text">Visa Furoda: Bahaya Visa Non-Kuotif Resmi & Risiko Gagal Berangkat</span>
+                            <a href="https://docs.google.com/document/d/1CpX2KJHeA2wWOi2xW5TejwnGYEE1wSfei6hjTiEoZYA/edit" class="article-link" target="_blank">
+                                <span class="article-icon" style="color: #c62828;">➤</span>
+                                <span class="article-text">Waspada Joki Hajar Aswad & Raudhah: Modus Pemerasan Baru 2025 yang Mengintai Jemaah</span>
+                            </a>
                         </li>
                     </ul>
                 </article>
 
-                <!-- Sub B -->
+                <!-- Sub B: Keamanan -->
                 <article class="sub-cat-card">
-                    <span class="badge waspada">Keamanan Fisik</span>
+                    <span class="badge waspada">Keamanan</span>
                     <h3 class="sub-cat-title">
-                        <span class="sub-cat-letter" style="color: #c62828;">B.</span> Keamanan & Larangan
+                        <span class="sub-cat-letter" style="color: #c62828;">B.</span> Keamanan Fisik & Rohani
                     </h3>
                     <ul class="article-list">
                         <li class="article-item">
-                            <span class="article-icon" style="color: #c62828;">➤</span>
-                            <span class="article-text">Heatstroke: Mengenali Gejala & Penanganan Cepat</span>
+                            <a href="https://docs.google.com/document/d/1Nl7W986eNYgvKNfZr4KsjzEEJy0UU-lSD7zLqQCoRK4/edit" class="article-link" target="_blank">
+                                <span class="article-icon" style="color: #c62828;">➤</span>
+                                <span class="article-text">Barang Hilang Saat Sujud? Strategi Menjaga Harta dan Tips Itikaf Aman di Tanah Suci</span>
+                            </a>
                         </li>
                         <li class="article-item">
-                            <span class="article-icon" style="color: #c62828;">➤</span>
-                            <span class="article-text">Joki Hajar Aswad: Modus Operandi & Hukumnya dalam Syariat</span>
-                        </li>
-                        <li class="article-item">
-                            <span class="article-icon" style="color: #c62828;">➤</span>
-                            <span class="article-text">Barang Hilang: Panduan Melapor di Masjidil Haram</span>
-                        </li>
-                        <li class="article-item">
-                            <span class="article-icon" style="color: #c62828;">➤</span>
-                            <span class="article-text">Kesalahan Sa'i: 5 Hal yang Sering Salah Dilakukan Jemaah</span>
-                        </li>
-                        <li class="article-item">
-                            <span class="article-icon" style="color: #c62828;">➤</span>
-                            <span class="article-text">Larangan di Masyair: Hukum Membawa Pulang Kerikil Mina/Muzdalifah</span>
-                        </li>
-                        <li class="article-item">
-                            <span class="article-icon" style="color: #c62828;">➤</span>
-                            <span class="article-text">Pemeriksaan Bandara: Aturan Benda Mencurigakan di Jeddah/Madinah</span>
-                        </li>
-                        <li class="article-item">
-                            <span class="article-icon" style="color: #c62828;">➤</span>
-                            <span class="article-text">Transportasi Lokal: Tips Negosiasi Harga Taksi (Anti 'Getok' Harga)</span>
+                            <a href="https://docs.google.com/document/d/1eOChDD634hCi4R9zM7Ku4xm75XBWGo4xPEkGQC7XINg/edit" class="article-link" target="_blank">
+                                <span class="article-icon" style="color: #c62828;">➤</span>
+                                <span class="article-text">Hukum 'Selfie' Saat Umroh: Riya' Terselubung atau Sekadar Kenangan? Tinjauan Fatwa Lajnah Daimah</span>
+                            </a>
                         </li>
                     </ul>
                 </article>
