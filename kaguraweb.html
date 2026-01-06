@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kagura Franchise | Own The Soul of Tokyo</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;700&family=Oswald:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <!-- Custom Config for Brand Colors -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        kaguraRed: '#DC2626',
+                        kaguraYellow: '#FACC15',
+                        kaguraBlack: '#171717',
+                        kaguraGray: '#262626',
+                        kaguraLightGray: '#404040',
+                    },
+                    fontFamily: {
+                        sans: ['"Noto Sans JP"', 'sans-serif'],
+                        display: ['"Oswald"', 'sans-serif'],
+                    },
+                    backgroundImage: {
+                        'halftone': "radial-gradient(circle, #262626 2px, transparent 2.5px)",
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* FIX: Tambahkan scroll-padding agar judul tidak ketutup navbar saat di-klik */
+        html {
+            scroll-padding-top: 100px;
+        }
+
+        /* Custom Utilities */
+        .text-stroke {
+            -webkit-text-stroke: 1px white;
+            color: transparent;
+        }
+        .text-stroke-red {
+            -webkit-text-stroke: 1px #DC2626;
+            color: transparent;
+        }
+        .bg-pattern {
+            background-color: #171717;
+            background-image: radial-gradient(#262626 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+        .clip-diagonal {
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        }
+        .clip-diagonal-reverse {
+            clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%);
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #171717;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #DC2626;
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #b91c1c;
+        }
+        
+        .hero-overlay {
+            background: linear-gradient(180deg, rgba(23,23,23,0.3) 0%, rgba(23,23,23,0.8) 70%, #171717 100%);
+        }
+    </style>
+</head>
+<body class="bg-kaguraBlack text-white font-sans selection:bg-kaguraYellow selection:text-kaguraBlack overflow-x-hidden">
+
+    <!-- NAVIGATION -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 py-4 px-6 lg:px-12 flex justify-between items-center bg-kaguraBlack/90 backdrop-blur-sm border-b border-white/10">
+        <!-- LOGO UPDATE: Menambahkan background putih kotak miring agar logo hitam terlihat jelas -->
+        <a href="#" class="flex items-center gap-3 group">
+            <div class="bg-white px-3 py-1 rounded-sm transform -rotate-2 border-2 border-kaguraRed shadow-[2px_2px_0px_#FACC15] transition-transform duration-300 group-hover:rotate-0">
+                <img src="Untitled design (6).png" alt="Kagura Logo" class="h-10 w-auto object-contain">
+            </div>
+            <!-- Opsional: Menambahkan teks jika diperlukan, tapi logo visual sudah cukup kuat -->
+        </a>
+        
+        <!-- Desktop Menu -->
+        <div class="hidden md:flex gap-8 items-center font-bold uppercase text-sm tracking-widest">
+            <a href="#why-us" class="hover:text-kaguraRed transition-colors">Why Us</a>
+            <a href="#products" class="hover:text-kaguraRed transition-colors">Products</a>
+            <a href="#packages" class="hover:text-kaguraRed transition-colors">Packages</a>
+            <a href="#roi" class="hover:text-kaguraRed transition-colors">Proyeksi</a>
+            <a href="#join" class="bg-kaguraRed text-white px-6 py-2 rounded-sm hover:bg-white hover:text-kaguraRed transition-all font-display font-bold transform skew-x-[-10deg] inline-block">
+                <span class="transform skew-x-[10deg] inline-block">Gabung Mitra</span>
+            </a>
+        </div>
+
+        <!-- Mobile Toggle -->
+        <button id="mobile-menu-btn" class="md:hidden text-2xl text-white">
+            <i class="fas fa-bars"></i>
+        </button>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="fixed inset-0 bg-kaguraBlack/95 z-40 transform translate-x-full transition-transform duration-300 flex flex-col justify-center items-center gap-8 text-2xl font-display uppercase font-bold backdrop-blur-xl">
+        <button id="close-menu-btn" class="absolute top-6 right-6 text-kaguraRed text-4xl hover:rotate-90 transition-transform">&times;</button>
+        <a href="#why-us" class="mobile-link hover:text-kaguraRed">Why Us</a>
+        <a href="#products" class="mobile-link hover:text-kaguraRed">Products</a>
+        <a href="#packages" class="mobile-link hover:text-kaguraRed">Packages</a>
+        <a href="#roi" class="mobile-link hover:text-kaguraRed">ROI</a>
+        <a href="#join" class="mobile-link text-kaguraYellow">Join Now</a>
+    </div>
+
+    <!-- HERO SECTION (B2B Focus) -->
+    <section class="relative h-screen w-full overflow-hidden flex items-center">
+        <!-- Background Video/Image UPDATED -->
+        <div class="absolute inset-0 z-0">
+            <!-- Updated to a moodier, night-time Tokyo alley shot -->
+            <img src="https://images.unsplash.com/photo-1578469645742-46cae010e5d4?q=80&w=2070&auto=format&fit=crop" class="w-full h-full object-cover opacity-60 grayscale hover:grayscale-0 transition-all duration-1000">
+        </div>
+        <div class="hero-overlay absolute inset-0 z-10"></div>
+        
+        <div class="container mx-auto px-6 relative z-20 pt-20">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-12">
+                <div class="md:w-2/3" data-aos="fade-right">
+                    <div class="inline-block border-l-4 border-kaguraRed pl-4 mb-4">
+                        <p class="text-kaguraYellow font-bold tracking-[0.2em] uppercase text-sm">#1 Street Food Franchise Opportunity</p>
+                    </div>
+                    <h1 class="font-display text-6xl md:text-8xl font-bold uppercase leading-[0.9] mb-6">
+                        Own The <br>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-kaguraRed to-kaguraYellow">Soul</span> of Tokyo
+                    </h1>
+                    <p class="font-sans text-gray-300 text-lg md:text-xl max-w-xl mb-10 border-l border-gray-600 pl-4">
+                        Ubah energi <i>Yatai</i> (warung jalanan) Jepang menjadi mesin profit bisnis Anda. Margin tinggi, produk viral, dan supply chain yang <i>fully managed</i>.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="#packages" class="bg-kaguraRed text-white px-8 py-4 text-center font-display font-bold uppercase tracking-wide hover:bg-white hover:text-kaguraBlack transition-all shadow-[5px_5px_0px_0px_#FACC15]">
+                            Lihat Paket Franchise
+                        </a>
+                        <a href="#join" class="border border-white text-white px-8 py-4 text-center font-display font-bold uppercase tracking-wide hover:bg-kaguraYellow hover:text-kaguraBlack hover:border-kaguraYellow transition-all">
+                            Download Proposal
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Stats Box -->
+                <div class="md:w-1/3 w-full bg-kaguraGray/80 backdrop-blur-md border border-white/10 p-6 rounded-sm shadow-2xl transform rotate-1 hover:rotate-0 transition-transform duration-300" data-aos="fade-left" data-aos-delay="200">
+                    <h3 class="font-display text-2xl uppercase font-bold text-center border-b border-gray-600 pb-4 mb-4">Market Impact</h3>
+                    <div class="grid grid-cols-2 gap-4 text-center">
+                        <div class="p-2">
+                            <span class="block text-4xl font-bold text-kaguraYellow">50+</span>
+                            <span class="text-xs uppercase tracking-wider text-gray-400">Outlet Aktif</span>
+                        </div>
+                        <div class="p-2">
+                            <span class="block text-4xl font-bold text-kaguraRed">10K+</span>
+                            <span class="text-xs uppercase tracking-wider text-gray-400">Porsi / Hari</span>
+                        </div>
+                        <div class="p-2">
+                            <span class="block text-4xl font-bold text-white">4.8</span>
+                            <span class="text-xs uppercase tracking-wider text-gray-400">Avg. Rating</span>
+                        </div>
+                        <div class="p-2">
+                            <span class="block text-4xl font-bold text-white">&lt;6bln</span>
+                            <span class="text-xs uppercase tracking-wider text-gray-400">Target BEP</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHY CHOOSE US (USP) -->
+    <section id="why-us" class="py-20 relative z-20">
+        <div class="absolute inset-0 bg-pattern clip-diagonal -z-10 h-full w-full"></div>
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-kaguraRed font-bold tracking-widest uppercase mb-2">The Kagura Advantage</h2>
+                <h3 class="font-display text-5xl md:text-6xl text-white uppercase font-bold">Why <span class="text-stroke">Invest?</span></h3>
+                <div class="w-24 h-1 bg-kaguraYellow mx-auto mt-4"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="group bg-kaguraGray border border-gray-700 p-8 hover:bg-kaguraRed transition-colors duration-300" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-16 h-16 bg-kaguraBlack rounded-full flex items-center justify-center text-3xl text-kaguraYellow mb-6 group-hover:bg-white group-hover:text-kaguraRed transition-colors">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <h4 class="font-display text-2xl uppercase font-bold mb-4">Viral Product</h4>
+                    <p class="text-gray-400 group-hover:text-white">Menu kami dirancang untuk lidah lokal tapi tetap otentik. Visual yang <i>Instagrammable</i> bikin produk ini gampang viral.</p>
+                </div>
+                <!-- Card 2 -->
+                <div class="group bg-kaguraGray border border-gray-700 p-8 hover:bg-kaguraRed transition-colors duration-300" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-16 h-16 bg-kaguraBlack rounded-full flex items-center justify-center text-3xl text-kaguraYellow mb-6 group-hover:bg-white group-hover:text-kaguraRed transition-colors">
+                        <i class="fas fa-users-cog"></i>
+                    </div>
+                    <h4 class="font-display text-2xl uppercase font-bold mb-4">No Chef Needed</h4>
+                    <p class="text-gray-400 group-hover:text-white">SOP super simpel. Semua bahan baku datang dari <i>Central Kitchen</i> sudah dimarinasi. Staff baru bisa langsung jago masak dalam 3 hari.</p>
+                </div>
+                <!-- Card 3 -->
+                <div class="group bg-kaguraGray border border-gray-700 p-8 hover:bg-kaguraRed transition-colors duration-300" data-aos="fade-up" data-aos-delay="300">
+                    <div class="w-16 h-16 bg-kaguraBlack rounded-full flex items-center justify-center text-3xl text-kaguraYellow mb-6 group-hover:bg-white group-hover:text-kaguraRed transition-colors">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h4 class="font-display text-2xl uppercase font-bold mb-4">Proven System</h4>
+                    <p class="text-gray-400 group-hover:text-white">Sistem POS terintegrasi, manajemen stok otomatis, dan dukungan marketing nasional yang masif.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRODUCT SHOWCASE (What you sell) -->
+    <section id="products" class="py-20 bg-white text-kaguraBlack">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12">
+                <div>
+                    <h2 class="font-display text-4xl md:text-5xl font-bold uppercase leading-tight">Your <span class="text-kaguraRed">Money</span> <br> Makers</h2>
+                </div>
+                <div class="text-right hidden md:block">
+                    <p class="font-bold text-xl">Rata-rata Transaksi: <span class="text-kaguraRed">IDR 55.000</span></p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                <!-- Item 1 UPDATED IMAGE -->
+                <div class="relative group overflow-hidden h-[400px] cursor-pointer">
+                    <!-- Updated Takoyaki Image: Close up cooking -->
+                    <img src="https://images.unsplash.com/photo-1615887023516-9b6bcd559e87?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80"></div>
+                    <div class="absolute bottom-0 left-0 p-6 text-white w-full">
+                        <h3 class="font-display text-3xl font-bold uppercase translate-y-4 group-hover:translate-y-0 transition-transform">Takoyaki</h3>
+                        <p class="text-kaguraYellow font-bold text-sm opacity-0 group-hover:opacity-100 transition-opacity delay-100">Margin up to 60%</p>
+                    </div>
+                    <div class="absolute top-4 right-4 bg-kaguraRed text-white font-bold px-3 py-1 text-xs uppercase">#1 Best Seller</div>
+                </div>
+                 <!-- Item 2 UPDATED IMAGE -->
+                 <div class="relative group overflow-hidden h-[400px] cursor-pointer">
+                    <!-- Updated Yakitori Image: Grilling action -->
+                    <img src="https://images.unsplash.com/photo-1604810376882-9383637651a1?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80"></div>
+                    <div class="absolute bottom-0 left-0 p-6 text-white w-full">
+                        <h3 class="font-display text-3xl font-bold uppercase translate-y-4 group-hover:translate-y-0 transition-transform">Yakitori</h3>
+                        <p class="text-kaguraYellow font-bold text-sm opacity-0 group-hover:opacity-100 transition-opacity delay-100">Beer Mate Combo</p>
+                    </div>
+                </div>
+                 <!-- Item 3 -->
+                 <div class="relative group overflow-hidden h-[400px] cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1555126634-323283e090fa?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80"></div>
+                    <div class="absolute bottom-0 left-0 p-6 text-white w-full">
+                        <h3 class="font-display text-3xl font-bold uppercase translate-y-4 group-hover:translate-y-0 transition-transform">Spicy Ramen</h3>
+                        <p class="text-kaguraYellow font-bold text-sm opacity-0 group-hover:opacity-100 transition-opacity delay-100">High Retention Rate</p>
+                    </div>
+                </div>
+                 <!-- Item 4 -->
+                 <div class="relative group overflow-hidden h-[400px] cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1569050467447-ce54b3bbc37d?q=80&w=2070&auto=format&fit=crop" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80"></div>
+                    <div class="absolute bottom-0 left-0 p-6 text-white w-full">
+                        <h3 class="font-display text-3xl font-bold uppercase translate-y-4 group-hover:translate-y-0 transition-transform">Okonomiyaki</h3>
+                        <p class="text-kaguraYellow font-bold text-sm opacity-0 group-hover:opacity-100 transition-opacity delay-100">Menu Sharing</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PACKAGES SECTION -->
+    <section id="packages" class="py-24 bg-kaguraBlack relative">
+        <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-30"></div>
+        
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="font-display text-5xl font-bold uppercase text-white mb-4">Pilih <span class="text-kaguraRed">Senjata</span> Anda</h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">3 model bisnis fleksibel yang bisa disesuaikan dengan <i>budget</i> dan lokasi target Anda.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <!-- Package 1: YATAI -->
+                <div class="bg-kaguraGray border border-gray-700 rounded-lg p-8 flex flex-col hover:border-kaguraYellow transition-colors relative group" data-aos="flip-left">
+                    <div class="absolute top-0 right-0 bg-gray-700 text-xs font-bold px-3 py-1 text-white uppercase rounded-bl-lg">Entry Level</div>
+                    <h3 class="font-display text-3xl font-bold text-white uppercase mb-2">Yatai Cart</h3>
+                    <p class="text-sm text-gray-400 mb-6">Cocok untuk bazaar, kantin kampus, atau <i>food court</i> kecil.</p>
+                    
+                    <div class="text-4xl font-bold text-kaguraYellow mb-6">
+                        <span class="text-sm text-gray-500 font-normal">Mulai dari</span> <br> IDR 35 Jt
+                    </div>
+                    
+                    <ul class="space-y-3 mb-8 text-gray-300 text-sm flex-grow">
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-kaguraRed"></i> Booth Yatai Premium (1.8m)</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-kaguraRed"></i> Peralatan Masak Lengkap</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-kaguraRed"></i> Bahan Baku Awal (300 porsi)</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-kaguraRed"></i> Training 2 Staff</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-kaguraRed"></i> Marketing Support</li>
+                    </ul>
+                    
+                    <a href="#join" class="w-full block text-center border border-white text-white py-3 font-bold uppercase hover:bg-white hover:text-black transition-colors">Pilih Paket</a>
+                </div>
+
+                <!-- Package 2: KIOSK (Featured) -->
+                <div class="bg-kaguraBlack border-2 border-kaguraRed rounded-lg p-8 flex flex-col relative transform md:-translate-y-4 shadow-[0_0_30px_rgba(220,38,38,0.3)]" data-aos="flip-left" data-aos-delay="100">
+                    <div class="absolute top-0 inset-x-0 bg-kaguraRed text-center py-1 text-white text-sm font-bold uppercase tracking-widest">Most Popular</div>
+                    <h3 class="font-display text-4xl font-bold text-white uppercase mb-2 mt-4">Street Kiosk</h3>
+                    <p class="text-sm text-gray-400 mb-6">Ideal untuk teras minimarket, stasiun MRT/KRL, atau area perkantoran.</p>
+                    
+                    <div class="text-5xl font-bold text-white mb-6">
+                        <span class="text-sm text-gray-500 font-normal">Mulai dari</span> <br> IDR 75 Jt
+                    </div>
+                    
+                    <ul class="space-y-3 mb-8 text-gray-300 text-sm flex-grow">
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-kaguraYellow"></i> Container Booth (3x2m)</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-kaguraYellow"></i> Heavy Duty Equipment</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-kaguraYellow"></i> Bahan Baku Awal (500 porsi)</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-kaguraYellow"></i> Training 3 Staff</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-kaguraYellow"></i> Sistem POS (1 Tahun)</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-kaguraYellow"></i> GrabFood/GoFood Setup</li>
+                    </ul>
+                    
+                    <a href="#join" class="w-full block text-center bg-kaguraRed text-white py-4 font-bold uppercase hover:bg-white hover:text-kaguraRed transition-colors shadow-lg">Pilih Paket</a>
+                </div>
+
+                <!-- Package 3: OUTLET -->
+                <div class="bg-kaguraGray border border-gray-700 rounded-lg p-8 flex flex-col hover:border-kaguraYellow transition-colors relative group" data-aos="flip-left" data-aos-delay="200">
+                    <div class="absolute top-0 right-0 bg-kaguraYellow text-black text-xs font-bold px-3 py-1 uppercase rounded-bl-lg">Full Experience</div>
+                    <h3 class="font-display text-3xl font-bold text-white uppercase mb-2">Shophouse</h3>
+                    <p class="text-sm text-gray-400 mb-6">Konsep resto / ruko untuk pengalaman <i>dine-in</i> yang maksimal.</p>
+                    
+                    <div class="text-4xl font-bold text-kaguraYellow mb-6">
+                        <span class="text-sm text-gray-500 font-normal">Mulai dari</span> <br> IDR 150 Jt
+                    </div>
+                    
+                    <ul class="space-y-3 mb-8 text-gray-300 text-sm flex-grow">
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-kaguraRed"></i> Interior Design & Fitout</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-kaguraRed"></i> Full Kitchen Set</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-kaguraRed"></i> Bahan Baku Awal (1000 porsi)</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-kaguraRed"></i> Managerial Training</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-kaguraRed"></i> Event Grand Opening</li>
+                    </ul>
+                    
+                    <a href="#join" class="w-full block text-center border border-white text-white py-3 font-bold uppercase hover:bg-white hover:text-black transition-colors">Pilih Paket</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ROI SIMULATION -->
+    <section id="roi" class="py-20 bg-white relative pb-32">
+        <div class="absolute inset-0 bg-white clip-diagonal-reverse z-0"></div>
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="flex flex-col lg:flex-row gap-12 items-center">
+                <div class="lg:w-1/2">
+                    <h2 class="font-display text-4xl font-bold uppercase text-kaguraBlack mb-6">Numbers Don't Lie. <br> <span class="text-kaguraRed">Cek ROI-nya.</span></h2>
+                    <p class="text-gray-600 mb-8">
+                        Simulasi keuntungan bulanan di bawah ini berdasarkan performa rata-rata outlet tipe "Street Kiosk". Data diambil dari 50+ outlet aktif kami.
+                    </p>
+                    
+                    <div class="space-y-4">
+                        <div class="flex justify-between border-b border-gray-300 pb-2">
+                            <span class="font-bold text-gray-500">Rata-rata Sales / Hari</span>
+                            <span class="font-bold text-kaguraBlack">IDR 2.500.000</span>
+                        </div>
+                        <div class="flex justify-between border-b border-gray-300 pb-2">
+                            <span class="font-bold text-gray-500">Sales Bulanan (30 Hari)</span>
+                            <span class="font-bold text-kaguraBlack">IDR 75.000.000</span>
+                        </div>
+                        <div class="flex justify-between border-b border-gray-300 pb-2">
+                            <span class="font-bold text-gray-500">HPP / COGS (45%)</span>
+                            <span class="font-bold text-red-500">- IDR 33.750.000</span>
+                        </div>
+                        <div class="flex justify-between border-b border-gray-300 pb-2">
+                            <span class="font-bold text-gray-500">OpEx (Sewa, Gaji, Listrik)</span>
+                            <span class="font-bold text-red-500">- IDR 18.000.000</span>
+                        </div>
+                        <div class="flex justify-between pt-4 bg-gray-100 p-4 rounded-lg">
+                            <span class="font-display text-xl font-bold text-kaguraBlack">Net Profit / Bulan</span>
+                            <span class="font-display text-2xl font-bold text-green-600">IDR 23.250.000</span>
+                        </div>
+                    </div>
+                    <p class="text-xs text-gray-400 mt-4 italic">*Disclaimer: Hasil dapat bervariasi tergantung lokasi dan manajemen operasional mitra.</p>
+                </div>
+                
+                <div class="lg:w-1/2 relative">
+                    <!-- Graph Illustration (Visual only) -->
+                    <div class="bg-kaguraBlack p-8 rounded-xl shadow-2xl relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-kaguraRed/20 rounded-full blur-3xl"></div>
+                        <h3 class="text-white font-display uppercase mb-6">Estimasi Break Even Point</h3>
+                        
+                        <div class="flex items-end justify-between h-64 gap-4 px-2">
+                            <!-- Bar 1 -->
+                            <div class="w-full flex flex-col items-center gap-2 group">
+                                <div class="w-full bg-gray-700 h-16 rounded-t-sm relative overflow-hidden group-hover:bg-gray-600 transition-all"></div>
+                                <span class="text-xs text-gray-400">Bulan 1</span>
+                            </div>
+                            <!-- Bar 2 -->
+                            <div class="w-full flex flex-col items-center gap-2 group">
+                                <div class="w-full bg-gray-600 h-24 rounded-t-sm relative overflow-hidden group-hover:bg-gray-500 transition-all"></div>
+                                <span class="text-xs text-gray-400">Bulan 2</span>
+                            </div>
+                            <!-- Bar 3 -->
+                            <div class="w-full flex flex-col items-center gap-2 group">
+                                <div class="w-full bg-gray-500 h-32 rounded-t-sm relative overflow-hidden group-hover:bg-gray-400 transition-all"></div>
+                                <span class="text-xs text-gray-400">Bulan 3</span>
+                            </div>
+                            <!-- Bar 4 -->
+                            <div class="w-full flex flex-col items-center gap-2 group">
+                                <div class="w-full bg-gradient-to-t from-kaguraRed to-kaguraYellow h-48 rounded-t-sm relative overflow-hidden shadow-[0_0_20px_rgba(220,38,38,0.5)]">
+                                    <div class="absolute bottom-2 inset-x-0 text-center text-white font-bold text-xs">BEP!</div>
+                                </div>
+                                <span class="text-xs text-white font-bold">Bulan 4</span>
+                            </div>
+                            <!-- Bar 5 -->
+                            <div class="w-full flex flex-col items-center gap-2 group">
+                                <div class="w-full bg-green-500 h-64 rounded-t-sm relative overflow-hidden opacity-80"></div>
+                                <span class="text-xs text-gray-400">Profit</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT / JOIN FORM -->
+    <section id="join" class="py-20 bg-kaguraBlack relative">
+        <div class="container mx-auto px-6 max-w-4xl">
+            <div class="bg-kaguraGray border border-gray-700 p-8 md:p-12 rounded-lg relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-64 h-64 bg-kaguraRed/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+                
+                <div class="text-center mb-10 relative z-10">
+                    <h2 class="font-display text-4xl font-bold uppercase text-white mb-2">Join the Family</h2>
+                    <p class="text-gray-400">Isi form di bawah untuk mendapatkan proposal franchise lengkap dan jadwal konsultasi gratis.</p>
+                </div>
+
+                <form class="space-y-6 relative z-10">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-xs uppercase tracking-widest text-gray-500 mb-2 font-bold">Nama Lengkap</label>
+                            <input type="text" class="w-full bg-kaguraBlack border border-gray-600 text-white p-4 focus:outline-none focus:border-kaguraRed transition-colors" placeholder="Budi Santoso">
+                        </div>
+                        <div>
+                            <label class="block text-xs uppercase tracking-widest text-gray-500 mb-2 font-bold">No. WhatsApp</label>
+                            <input type="tel" class="w-full bg-kaguraBlack border border-gray-600 text-white p-4 focus:outline-none focus:border-kaguraRed transition-colors" placeholder="0812...">
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-xs uppercase tracking-widest text-gray-500 mb-2 font-bold">Kota / Lokasi</label>
+                            <input type="text" class="w-full bg-kaguraBlack border border-gray-600 text-white p-4 focus:outline-none focus:border-kaguraRed transition-colors" placeholder="Jakarta Selatan">
+                        </div>
+                        <div>
+                            <label class="block text-xs uppercase tracking-widest text-gray-500 mb-2 font-bold">Paket Pilihan</label>
+                            <select class="w-full bg-kaguraBlack border border-gray-600 text-white p-4 focus:outline-none focus:border-kaguraRed transition-colors appearance-none">
+                                <option>Yatai Cart (35 Jt)</option>
+                                <option>Street Kiosk (75 Jt)</option>
+                                <option>Shophouse (150 Jt)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <button type="button" class="w-full bg-kaguraRed text-white font-display font-bold uppercase text-xl py-5 hover:bg-white hover:text-kaguraRed transition-all shadow-lg transform hover:-translate-y-1">
+                        Kirim Pengajuan
+                    </button>
+                    
+                    <p class="text-center text-gray-500 text-xs mt-4">
+                        Tim marketing kami akan menghubungi Anda maksimal 1x24 jam hari kerja.
+                    </p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-black text-white py-12 border-t border-gray-800">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <!-- LOGO UPDATE DI FOOTER -->
+                <div class="flex items-center gap-2 mb-4 md:mb-0 bg-white px-3 py-1 rounded-sm">
+                    <img src="Untitled design (6).png" alt="Kagura Logo" class="h-10 w-auto object-contain">
+                </div>
+                
+                <div class="flex gap-6 text-sm text-gray-400 font-bold uppercase tracking-widest">
+                    <a href="#" class="hover:text-white">Instagram</a>
+                    <a href="#" class="hover:text-white">LinkedIn</a>
+                    <a href="#" class="hover:text-white">Email Us</a>
+                </div>
+            </div>
+            <div class="text-center mt-8 text-gray-600 text-sm">
+                &copy; 2024 Kagura Japanese Street Food Franchise Group. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Initialize AOS (Animate On Scroll)
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 100
+        });
+
+        // Navbar Scroll Effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('py-3');
+                navbar.classList.remove('py-4');
+            } else {
+                navbar.classList.add('py-4');
+                navbar.classList.remove('py-3');
+            }
+        });
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const closeMenuBtn = document.getElementById('close-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        function toggleMenu() {
+            mobileMenu.classList.toggle('translate-x-full');
+        }
+
+        mobileMenuBtn.addEventListener('click', toggleMenu);
+        closeMenuBtn.addEventListener('click', toggleMenu);
+        
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', toggleMenu);
+        });
+    </script>
+</body>
+</html>
