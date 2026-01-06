@@ -94,8 +94,10 @@
 <body class="bg-kaguraBlack text-white font-sans selection:bg-kaguraYellow selection:text-kaguraBlack overflow-x-hidden">
 
     <!-- NAVIGATION -->
-    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 py-4 px-6 lg:px-12 flex justify-between items-center bg-kaguraBlack/90 backdrop-blur-sm border-b border-white/10">
-        <!-- LOGO UPDATE: Diperbesar (h-14 di mobile, h-20 di desktop) dan padding disesuaikan -->
+    <!-- UPDATE: Hapus class background solid (bg-kaguraBlack) di sini. Ganti dengan logika Javascript nanti. -->
+    <!-- Tambahkan 'transition-all duration-500' untuk efek muncul perlahan yang halus -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-500 py-6 px-6 lg:px-12 flex justify-between items-center border-b border-transparent">
+        <!-- LOGO -->
         <a href="#" class="flex items-center gap-3 group">
             <div class="bg-white px-4 py-2 rounded-sm transform -rotate-2 border-2 border-kaguraRed shadow-[3px_3px_0px_#FACC15] transition-transform duration-300 group-hover:rotate-0">
                 <img src="https://danawiraprama.github.io/Contoh/images/kaguralogo.png" alt="Kagura Logo" class="h-14 md:h-20 w-auto object-contain">
@@ -104,17 +106,18 @@
         
         <!-- Desktop Menu -->
         <div class="hidden md:flex gap-8 items-center font-bold uppercase text-sm tracking-widest">
-            <a href="#why-us" class="hover:text-kaguraRed transition-colors">Why Us</a>
-            <a href="#products" class="hover:text-kaguraRed transition-colors">Products</a>
-            <a href="#packages" class="hover:text-kaguraRed transition-colors">Packages</a>
-            <a href="#roi" class="hover:text-kaguraRed transition-colors">Proyeksi</a>
-            <a href="#join" class="bg-kaguraRed text-white px-6 py-2 rounded-sm hover:bg-white hover:text-kaguraRed transition-all font-display font-bold transform skew-x-[-10deg] inline-block">
+            <!-- Tambahkan text-shadow agar menu tetap terbaca saat background transparan -->
+            <a href="#why-us" class="hover:text-kaguraRed transition-colors drop-shadow-md">Why Us</a>
+            <a href="#products" class="hover:text-kaguraRed transition-colors drop-shadow-md">Products</a>
+            <a href="#packages" class="hover:text-kaguraRed transition-colors drop-shadow-md">Packages</a>
+            <a href="#roi" class="hover:text-kaguraRed transition-colors drop-shadow-md">Proyeksi</a>
+            <a href="#join" class="bg-kaguraRed text-white px-6 py-2 rounded-sm hover:bg-white hover:text-kaguraRed transition-all font-display font-bold transform skew-x-[-10deg] inline-block shadow-lg">
                 <span class="transform skew-x-[10deg] inline-block">Gabung Mitra</span>
             </a>
         </div>
 
         <!-- Mobile Toggle -->
-        <button id="mobile-menu-btn" class="md:hidden text-2xl text-white">
+        <button id="mobile-menu-btn" class="md:hidden text-2xl text-white drop-shadow-md">
             <i class="fas fa-bars"></i>
         </button>
     </nav>
@@ -519,17 +522,27 @@
             offset: 100
         });
 
-        // Navbar Scroll Effect
+        // Navbar Scroll Effect (UPDATED)
         const navbar = document.getElementById('navbar');
-        window.addEventListener('scroll', () => {
+        
+        // Fungsi untuk update navbar
+        function updateNavbar() {
             if (window.scrollY > 50) {
-                navbar.classList.add('py-3');
-                navbar.classList.remove('py-4');
+                // Saat di-scroll ke bawah: Muncul perlahan (Solid Black, Padding mengecil, Blur)
+                navbar.classList.remove('py-6', 'border-transparent');
+                navbar.classList.add('bg-kaguraBlack/95', 'backdrop-blur-md', 'shadow-lg', 'border-white/10', 'py-3');
             } else {
-                navbar.classList.add('py-4');
-                navbar.classList.remove('py-3');
+                // Saat di paling atas: Transparan penuh (Hero terlihat full), Padding besar
+                navbar.classList.add('py-6', 'border-transparent');
+                navbar.classList.remove('bg-kaguraBlack/95', 'backdrop-blur-md', 'shadow-lg', 'border-white/10', 'py-3');
             }
-        });
+        }
+
+        // Jalankan saat scroll
+        window.addEventListener('scroll', updateNavbar);
+        
+        // Jalankan sekali saat load (jika user refresh di tengah halaman)
+        updateNavbar();
 
         // Mobile Menu Toggle
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
