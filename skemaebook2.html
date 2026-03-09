@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SKEMA JALUR ORANG DALAM - Abu Omar</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #FFFFFF;
+      --fg: #0F0F0F;
+      --muted: #525252;
+      --accent: #E53935;
+      --accent-hover: #C62828;
+      --cta: #FF6D00;
+      --cta-hover: #E65100;
+      --success: #2E7D32;
+      --card: #FAFAFA;
+      --border: #E5E5E5;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background-color: var(--bg);
+      color: var(--fg);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Space Grotesk', sans-serif;
+      line-height: 1.2;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .stagger-1 { transition-delay: 0.1s; }
+    .stagger-2 { transition-delay: 0.2s; }
+    .stagger-3 { transition-delay: 0.3s; }
+    .stagger-4 { transition-delay: 0.4s; }
+    .stagger-5 { transition-delay: 0.5s; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+    }
+
+    .btn-cta {
+      background: linear-gradient(135deg, var(--cta) 0%, #FF8F00 100%);
+      box-shadow: 0 4px 20px rgba(255, 109, 0, 0.4), inset 0 1px 0 rgba(255,255,255,0.2);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .btn-cta:hover {
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 8px 30px rgba(255, 109, 0, 0.5), inset 0 1px 0 rgba(255,255,255,0.3);
+    }
+
+    .btn-cta:active { transform: translateY(0) scale(0.98); }
+
+    .btn-cta:focus-visible {
+      outline: 3px solid var(--cta);
+      outline-offset: 3px;
+    }
+
+    .price-slash { position: relative; display: inline-block; }
+    .price-slash::after {
+      content: '';
+      position: absolute;
+      left: -5%; top: 50%;
+      width: 110%; height: 3px;
+      background: var(--accent);
+      transform: rotate(-8deg);
+    }
+
+    .floating { animation: float 6s ease-in-out infinite; }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-12px); }
+    }
+
+    @media (prefers-reduced-motion: reduce) { .floating { animation: none; } }
+
+    .gradient-text {
+      background: linear-gradient(135deg, var(--accent) 0%, #D32F2F 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .check-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .check-item:last-child { border-bottom: none; }
+
+    .check-icon {
+      flex-shrink: 0;
+      width: 24px; height: 24px;
+      background: linear-gradient(135deg, var(--success) 0%, #43A047 100%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 2px;
+    }
+
+    .bonus-card {
+      background: linear-gradient(135deg, #FFF8E1 0%, #FFECB3 100%);
+      border-left: 4px solid #FFB300;
+    }
+
+    .testimonial-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      transition: all 0.3s ease;
+    }
+    .testimonial-card:hover {
+      border-color: #FFB74D;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+    }
+
+    .usp-card {
+      background: linear-gradient(135deg, #E3F2FD 0%, #BBDEFB 100%);
+      border-left: 4px solid #1976D2;
+    }
+
+    .hero-bg { background: linear-gradient(180deg, #0D0D0D 0%, #1A1A1A 50%, var(--bg) 100%); }
+
+    .countdown-badge { background: linear-gradient(135deg, var(--accent) 0%, #B71C1C 100%); }
+
+    .pulse-dot { animation: pulse 2s ease-in-out infinite; }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.7; transform: scale(1.1); }
+    }
+    @media (prefers-reduced-motion: reduce) { .pulse-dot { animation: none; } }
+
+    .image-frame {
+      position: relative;
+      overflow: hidden;
+      border-radius: 12px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+    }
+    .image-frame img { transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
+    .image-frame:hover img { transform: scale(1.03); }
+
+    .sticky-cta {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      z-index: 50;
+      transform: translateY(100%);
+      transition: transform 0.3s ease;
+    }
+    .sticky-cta.visible { transform: translateY(0); }
+  </style>
+</head>
+<body>
+  <!-- Hero Section -->
+  <section class="hero-bg min-h-screen flex flex-col items-center justify-center px-4 pt-12 pb-20 relative overflow-hidden">
+    <div class="absolute inset-0 opacity-20">
+      <div class="absolute top-20 left-10 w-2 h-2 bg-white rounded-full pulse-dot"></div>
+      <div class="absolute top-40 right-20 w-1 h-1 bg-white rounded-full pulse-dot" style="animation-delay: 0.5s"></div>
+      <div class="absolute bottom-40 left-1/4 w-1.5 h-1.5 bg-white rounded-full pulse-dot" style="animation-delay: 1s"></div>
+      <div class="absolute top-1/3 right-1/3 w-1 h-1 bg-white rounded-full pulse-dot" style="animation-delay: 1.5s"></div>
+    </div>
+    
+    <div class="text-center max-w-3xl mx-auto relative z-10">
+      <div class="reveal">
+        <span class="inline-block px-4 py-2 bg-white/10 text-white/90 text-sm font-medium rounded-full mb-6 backdrop-blur-sm border border-white/20">
+          Blueprint Digital Marketing by Abu Omar
+        </span>
+      </div>
+      
+      <h1 class="reveal stagger-1 text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+        Sudah Rajin Ngonten Tiap Hari,<br>
+        <span class="text-orange-400">Tapi Begitu Jualan... Malah ZONK?</span>
+      </h1>
+      
+      <p class="reveal stagger-2 text-lg md:text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+        Jangan-jangan Anda terjebak dalam <strong class="text-white">"Ghost Content Loop"</strong>. Waktunya tinggalkan cara lama dan temukan rahasia membangun mesin uang otomatis, tanpa modal besar, bahkan tanpa perlu tampil di depan kamera!
+      </p>
+    </div>
+    
+    <!-- Hero Image Placeholder -->
+    <div class="reveal stagger-3 mt-10 floating max-w-md w-full">
+      <div class="image-frame">
+        <img src="images/cover.png" alt="Cover Ebook SKEMA JALUR ORANG DALAM" class="w-full h-auto">
+      </div>
+    </div>
+    
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/50 animate-bounce">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+      </svg>
+    </div>
+  </section>
+
+  <!-- Problem Section -->
+  <section class="py-16 md:py-24 px-4 bg-white">
+    <div class="max-w-3xl mx-auto">
+      <div class="reveal">
+        <h2 class="text-2xl md:text-4xl font-bold mb-4 text-center">
+          Jujur saja, apakah Anda sedang merasakan satu dari 5 hal ini?
+        </h2>
+      </div>
+      
+      <div class="reveal stagger-1 mt-10 space-y-6">
+        <div class="check-item group cursor-default">
+          <div class="check-icon">
+            <svg class="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+            </svg>
+          </div>
+          <div>
+            <h3 class="font-semibold text-lg mb-1">Konten Selalu "Zonk"</h3>
+            <p class="text-gray-600">Sudah lelah mengedit video berjam-jam agar viral, tapi begitu soft-selling, views anjlok dan tidak ada yang beli? <em>(Selamat datang di Paradoks Jualan)</em></p>
+          </div>
+        </div>
+        
+        <div class="check-item group cursor-default">
+          <div class="check-icon"><svg class="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></div>
+          <div>
+            <h3 class="font-semibold text-lg mb-1">Terjebak Penjara Followers</h3>
+            <p class="text-gray-600">Merasa tidak PD jualan karena followers masih ratusan?</p>
+          </div>
+        </div>
+        
+        <div class="check-item group cursor-default">
+          <div class="check-icon"><svg class="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></div>
+          <div>
+            <h3 class="font-semibold text-lg mb-1">Kelelahan Operasional</h3>
+            <p class="text-gray-600">Pusing mikirin stok barang, capek bungkus paket tiap malam, dan pusing ngurus logistik untuk margin keuntungan yang cuma seberapa?</p>
+          </div>
+        </div>
+        
+        <div class="check-item group cursor-default">
+          <div class="check-icon"><svg class="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></div>
+          <div>
+            <h3 class="font-semibold text-lg mb-1">Ghost Content Loop</h3>
+            <p class="text-gray-600">Konsisten upload tiap hari seperti robot, tapi algoritma seolah buta dan tidak pernah menyebarkan konten Anda ke pembeli baru?</p>
+          </div>
+        </div>
+        
+        <div class="check-item group cursor-default">
+          <div class="check-icon"><svg class="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></div>
+          <div>
+            <h3 class="font-semibold text-lg mb-1">Takut Mulai Karena Modal</h3>
+            <p class="text-gray-600">Ingin bisnis, tapi dompet tipis. Boro-boro buat stok barang atau bayar iklan Ads yang makin mahal.</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="reveal stagger-2 mt-10 p-6 bg-gray-50 rounded-2xl border border-gray-100">
+        <p class="text-lg text-center">
+          Jika Anda mengangguk pada salah satu poin di atas, tenang... <strong>Anda tidak sendirian.</strong> Dan yang terpenting: <em class="gradient-text font-semibold">Itu bukan salah Anda.</em> Anda hanya belum tahu <strong>"Jalur Orang Dalam"</strong> nya.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Solution Section -->
+  <section class="py-16 md:py-24 px-4 bg-gradient-to-b from-gray-50 to-white">
+    <div class="max-w-4xl mx-auto text-center">
+      <div class="reveal">
+        <span class="inline-block px-4 py-2 bg-orange-100 text-orange-700 text-sm font-semibold rounded-full mb-6">THE SOLUTION</span>
+      </div>
+      
+      <h2 class="reveal stagger-1 text-3xl md:text-5xl font-bold mb-4">Memperkenalkan...</h2>
+      
+      <div class="reveal stagger-2 my-10">
+        <img src="images/realis.png" alt="Ebook Mockup SKEMA JALUR ORANG DALAM" class="mx-auto max-w-sm w-full h-auto rounded-2xl shadow-2xl">
+      </div>
+      
+      <h3 class="reveal stagger-3 text-2xl md:text-4xl font-bold mb-2">
+        Ebook: <span class="gradient-text">SKEMA JALUR ORANG DALAM</span>
+      </h3>
+      <p class="reveal stagger-4 text-gray-600 text-lg mb-8">Karya: <strong>Abu Omar</strong></p>
+      
+      <div class="reveal stagger-5 max-w-2xl mx-auto bg-white p-6 rounded-2xl shadow-lg border border-gray-100">
+        <p class="text-lg text-gray-700">
+          Ini bukan sekadar buku motivasi atau teori basi. Ini adalah <strong>Cetak Biru (Blueprint)</strong> dari A sampai Z tentang cara memanipulasi algoritma dan membangun aset digital dengan <span class="text-green-600 font-semibold">margin keuntungan 95-99%</span>. Semua disajikan dalam panduan taktis, langsung to the point.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Target Audience -->
+  <section class="py-16 md:py-24 px-4 bg-white">
+    <div class="max-w-3xl mx-auto">
+      <div class="reveal text-center mb-12">
+        <h2 class="text-2xl md:text-4xl font-bold mb-4">Siapa yang Wajib Punya Ini?</h2>
+        <p class="text-gray-600">Panduan ini dirancang spesifik sebagai "Jalur Malas" yang sistematis untuk:</p>
+      </div>
+      
+      <div class="reveal stagger-1 space-y-4">
+        <div class="flex items-start gap-4 p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors">
+          <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
+            <svg class="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+          </div>
+          <p class="text-gray-700"><strong>Content Creator Pemula</strong> yang capek jadi "Zonkers" (views banyak, konversi nol).</p>
+        </div>
+        
+        <div class="flex items-start gap-4 p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors">
+          <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
+            <svg class="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+          </div>
+          <p class="text-gray-700"><strong>Kaum Introvert</strong> yang ingin punya penghasilan besar lewat Faceless Marketing (tanpa harus joget-joget atau unjuk muka).</p>
+        </div>
+        
+        <div class="flex items-start gap-4 p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors">
+          <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
+            <svg class="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+          </div>
+          <p class="text-gray-700"><strong>Pebisnis Modal Tipis</strong> yang lelah berdarah-darah perang harga di niche umum (Fashion/Food).</p>
+        </div>
+        
+        <div class="flex items-start gap-4 p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors">
+          <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
+            <svg class="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+          </div>
+          <p class="text-gray-700"><strong>Karyawan & Mahasiswa</strong> yang butuh sistem otomatis yang bekerja 24/7 saat mereka tidur atau di kantor.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- USP Section -->
+  <section class="py-16 md:py-24 px-4 bg-gray-50">
+    <div class="max-w-4xl mx-auto">
+      <div class="reveal text-center mb-12">
+        <h2 class="text-2xl md:text-4xl font-bold mb-4">Kenapa Ini Berbeda dari Kelas Lain?</h2>
+        <p class="text-gray-600">Di "Skema Jalur Orang Dalam", Anda akan menguasai senjata rahasia yang jarang diajarkan:</p>
+      </div>
+      
+      <div class="space-y-6">
+        <div class="reveal stagger-1 usp-card p-6 rounded-2xl">
+          <h3 class="text-xl font-bold mb-2 text-blue-800">Strategi "Invisible Thread"</h3>
+          <p class="text-gray-700">Teknik jualan sangat halus yang membuat audiens tidak sadar bahwa mereka sedang dijualin.</p>
+        </div>
+        
+        <div class="reveal stagger-2 usp-card p-6 rounded-2xl">
+          <h3 class="text-xl font-bold mb-2 text-blue-800">The Zero-Gravity Profit</h3>
+          <p class="text-gray-700">Bisnis yang melawan hukum gravitasi biaya. Fokus murni pada produk digital: <strong>Tanpa ongkir, tanpa sewa gudang, margin 95-99%!</strong></p>
+        </div>
+        
+        <div class="reveal stagger-3 usp-card p-6 rounded-2xl">
+          <h3 class="text-xl font-bold mb-2 text-blue-800">Teknik "Akun Ghoib"</h3>
+          <p class="text-gray-700">Rahasia membangun imperium bisnis yang menghasilkan jutaan rupiah, tanpa ada yang tahu siapa di balik akun tersebut.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sneak Peek Section -->
+  <section class="py-16 md:py-24 px-4 bg-white">
+    <div class="max-w-4xl mx-auto">
+      <div class="reveal text-center mb-12">
+        <h2 class="text-2xl md:text-4xl font-bold mb-4">Intip Isi Produk</h2>
+        <p class="text-gray-600">Apa saja isi dari 32 Chapter daging di dalam Ebook ini?</p>
+      </div>
+      
+      <!-- UPDATED: Image Sneak Peek with provided URL -->
+      <div class="grid md:grid-cols-1 gap-6 mb-10">
+        <div class="reveal stagger-1 image-frame">
+          <img src="images/skema.png" alt="Roadmap Isi Ebook SKEMA JALUR ORANG DALAM - 6 Bagian" class="w-full h-auto">
+        </div>
+      </div>
+      
+      <div class="reveal stagger-3 space-y-4">
+        <div class="p-4 border-l-4 border-orange-500 bg-orange-50 rounded-r-xl">
+          <h4 class="font-bold text-orange-800">Bagian I (The Wake Up Call)</h4>
+          <p class="text-gray-700">Membongkar paksa mindset sesat tentang digital marketing yang selama ini menahan Anda.</p>
+        </div>
+        
+        <div class="p-4 border-l-4 border-orange-500 bg-orange-50 rounded-r-xl">
+          <h4 class="font-bold text-orange-800">Bagian II (The Engine)</h4>
+          <p class="text-gray-700">Cara merakit mesin trafik & menguasai teknik "Hook 3 Detik" yang mematikan.</p>
+        </div>
+        
+        <div class="p-4 border-l-4 border-orange-500 bg-orange-50 rounded-r-xl">
+          <h4 class="font-bold text-orange-800">Bagian III (Algoritma & Viral)</h4>
+          <p class="text-gray-700">Cara memaksa algoritma bekerja sebagai kurir gratis untuk menyebarkan konten Anda ke orang asing (pembeli potensial).</p>
+        </div>
+        
+        <div class="p-4 border-l-4 border-orange-500 bg-orange-50 rounded-r-xl">
+          <h4 class="font-bold text-orange-800">Bagian IV - VI (Otoritas & Skalasi)</h4>
+          <p class="text-gray-700">Teknik Penjualan Tingkat Tinggi hingga Skalasi Otomatis.</p>
+        </div>
+        
+        <div class="p-4 border-l-4 border-green-500 bg-green-50 rounded-r-xl">
+          <h4 class="font-bold text-green-800">Epilog (Action Plan)</h4>
+          <p class="text-gray-700">Rencana aksi konkret 7 hari pertama untuk langsung Pecah Telor!</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonial Section -->
+  <section class="py-16 md:py-24 px-4 bg-gray-50">
+    <div class="max-w-3xl mx-auto">
+      <div class="reveal text-center mb-12">
+        <h2 class="text-2xl md:text-4xl font-bold mb-4">Apa Kata Mereka?</h2>
+        <p class="text-gray-600">Yang Sudah Mencoba "Jalur Orang Dalam"</p>
+      </div>
+      
+      <div class="space-y-6">
+        <div class="reveal stagger-1 testimonial-card p-6 rounded-2xl">
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 bg-gradient-to-br from-orange-400 to-red-500 rounded-full flex items-center justify-center text-white font-bold flex-shrink-0">R</div>
+            <div>
+              <p class="text-gray-700 mb-3 italic">"Awalnya ragu karena followers saya cuma 150. Tapi pakai Teknik Akun Ghoib dan ngikutin Action Plan 7 Harinya, alhamdulillah di hari ke-5 udah ada notif closing beruntun!"</p>
+              <p class="font-semibold text-gray-900">Rizki A.</p>
+              <p class="text-sm text-gray-500">Beta Tester</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="reveal stagger-2 testimonial-card p-6 rounded-2xl">
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 bg-gradient-to-br from-blue-400 to-indigo-500 rounded-full flex items-center justify-center text-white font-bold flex-shrink-0">D</div>
+            <div>
+              <p class="text-gray-700 mb-3 italic">"Strategi riset di buku ini gila. Penjelasannya gampang banget dicerna, bahkan buat saya yang gaptek. Toko yang tadinya sepi sekarang rutin ada traffic organik."</p>
+              <p class="font-semibold text-gray-900">Dewi S.</p>
+              <p class="text-sm text-gray-500">Beta Tester</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Section -->
+  <section class="py-16 md:py-24 px-4 bg-white">
+    <div class="max-w-2xl mx-auto text-center">
+      <div class="reveal">
+        <span class="inline-block px-4 py-2 countdown-badge text-white text-sm font-semibold rounded-full mb-6">PENAWARAN TERBATAS</span>
+      </div>
+      
+      <h2 class="reveal stagger-1 text-2xl md:text-4xl font-bold mb-8">Berapa investasi untuk mendapatkan "Skema Jalur Orang Dalam"?</h2>
+      
+      <div class="reveal stagger-2 mb-8">
+        <p class="text-gray-600 mb-2">Total Nilai Ilmu ini sebenarnya bernilai:</p>
+        <p class="text-3xl font-bold text-gray-400 price-slash">Rp 997.000</p>
+      </div>
+      
+      <div class="reveal stagger-3 bg-gradient-to-br from-red-50 to-orange-50 p-8 rounded-3xl border-2 border-red-100 mb-8">
+        <p class="text-gray-700 mb-2">HARGA PROMO HARI INI:</p>
+        <p class="text-5xl md:text-6xl font-bold gradient-text mb-4">Rp 149.000</p>
+        <p class="text-sm text-gray-600">(Perhatian: Harga promo ini sangat terbatas dan hanya berlaku untuk <strong>20 pembeli pertama</strong> hari ini. Setelah kuota penuh, harga akan naik perlahan menuju harga normal).</p>
+      </div>
+      
+      <div class="reveal stagger-4 mb-10">
+        <p class="text-lg text-gray-700 mb-6">Anda juga akan langsung mendapatkan <strong>BONUS EKSKLUSIF</strong> ini secara GRATIS:</p>
+        
+        <div class="space-y-4 text-left">
+          <div class="bonus-card p-4 rounded-xl">
+            <p class="font-semibold text-amber-800">Bonus 1: Checklist Digital Echo-Location</p>
+            <p class="text-gray-700 text-sm">Spreadsheet ajaib untuk riset titik koordinat uang di Google Trends & SimilarWeb.</p>
+          </div>
+          
+          <div class="bonus-card p-4 rounded-xl">
+            <p class="font-semibold text-amber-800">Bonus 2: Template Script "Slippery Slide"</p>
+            <p class="text-gray-700 text-sm">Kerangka narasi siap pakai yang bikin penonton 'nempel' sampai akhir video Anda.</p>
+          </div>
+          
+          <div class="bonus-card p-4 rounded-xl">
+            <p class="font-semibold text-amber-800">Bonus 3: PDF Cheat Sheet 7-Day Blitz</p>
+            <p class="text-gray-700 text-sm">Ringkasan tugas harian untuk memastikan sistem Anda aktif menghasilkan dalam 168 jam.</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="reveal stagger-5">
+        <p class="text-lg text-gray-700 mb-6">Jangan biarkan akun Anda terus-terusan ZONK.<br>Klik tombol di bawah ini sekarang untuk mengamankan salinan Anda!</p>
+        
+        <a href="#checkout" class="btn-cta block w-full py-5 px-8 text-white text-lg md:text-xl font-bold uppercase rounded-2xl focus:outline-none" aria-label="Beli Ebook SKEMA JALUR ORANG DALAM dengan Bonus">
+          YA, SAYA MAU SKEMA JALUR ORANG DALAM + BONUSNYA SEKARANG
+        </a>
+        
+        <p class="text-sm text-gray-500 mt-4">
+          <svg class="inline w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"/></svg>
+          Pembayaran aman & terenkripsi
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-8 px-4 bg-gray-900 text-white text-center">
+    <p class="text-gray-400 text-sm">Copyright 2024 - SKEMA JALUR ORANG DALAM by Abu Omar<br>All Rights Reserved</p>
+  </footer>
+
+  <!-- Sticky CTA for Mobile -->
+  <div class="sticky-cta md:hidden bg-white border-t border-gray-200 p-4 shadow-2xl" id="stickyCta">
+    <a href="#checkout" class="btn-cta block w-full py-4 px-6 text-white text-base font-bold uppercase rounded-xl text-center focus:outline-none">
+      BELI SEKARANG - Rp 149.000
+    </a>
+  </div>
+
+  <script>
+    const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('active');
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    const stickyCta = document.getElementById('stickyCta');
+    const pricingSection = document.querySelector('section:nth-last-of-type(2)');
+    let ticking = false;
+
+    function updateStickyCta() {
+      const scrollY = window.scrollY;
+      const windowHeight = window.innerHeight;
+      if (scrollY > windowHeight * 0.5) stickyCta.classList.add('visible');
+      else stickyCta.classList.remove('visible');
+
+      if (pricingSection) {
+        const pricingRect = pricingSection.getBoundingClientRect();
+        if (pricingRect.top < windowHeight * 0.7) stickyCta.classList.remove('visible');
+        else if (scrollY > windowHeight * 0.5) stickyCta.classList.add('visible');
+      }
+      ticking = false;
+    }
+
+    window.addEventListener('scroll', () => {
+      if (!ticking) { requestAnimationFrame(updateStickyCta); ticking = true; }
+    }, { passive: true });
+
+    updateStickyCta();
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      document.querySelectorAll('.reveal').forEach(el => el.classList.add('active'));
+      stickyCta.classList.add('visible');
+    }
+  </script>
+</body>
+</html>
