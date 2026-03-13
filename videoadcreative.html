@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Konten Video Ad Creative</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #08080c;
+            --bg-elevated: #0f0f14;
+            --fg: #f4f4f5;
+            --muted: #71717a;
+            --accent: #f59e0b;
+            --card: #141419;
+            --border: #27272a;
+        }
+
+        * { box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--fg);
+        }
+
+        .font-display { font-family: 'Space Grotesk', sans-serif; }
+
+        /* Gradient background */
+        .hero-bg {
+            background: 
+                radial-gradient(ellipse 80% 50% at 50% -20%, rgba(245, 158, 11, 0.12), transparent),
+                var(--bg);
+        }
+
+        /* Reveal animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
+
+        /* Video card */
+        .video-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+        .video-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-4px);
+        }
+
+        /* Button */
+        .btn-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 14px;
+            background: rgba(245, 158, 11, 0.1);
+            border: 1px solid rgba(245, 158, 11, 0.2);
+            border-radius: 8px;
+            color: var(--accent);
+            font-size: 13px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+        .btn-link:hover {
+            background: rgba(245, 158, 11, 0.2);
+        }
+
+        /* Category badge */
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 4px 10px;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(4px);
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 500;
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--bg); }
+        ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+        @media (prefers-reduced-motion: reduce) {
+            .reveal { opacity: 1; transform: none; transition: none; }
+            .video-card { transition: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="hero-bg">
+        <div class="max-w-6xl mx-auto px-6 py-16 text-center">
+            <div class="reveal">
+                <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-medium mb-4">
+                    <i data-lucide="video" class="w-3.5 h-3.5"></i>
+                    Campaign Concept
+                </span>
+            </div>
+            <h1 class="reveal reveal-delay-1 font-display text-3xl sm:text-4xl font-bold mb-3">
+                Konten Video Ad Creative
+            </h1>
+            <p class="reveal reveal-delay-2 text-zinc-400 max-w-xl mx-auto">
+                Koleksi footage untuk kebutuhan iklan digital dan presentasi campaign
+            </p>
+        </div>
+    </header>
+
+    <!-- Video Grid -->
+    <main class="max-w-6xl mx-auto px-6 pb-16">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5" id="video-grid">
+            <!-- Videos rendered by JS -->
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-zinc-800 py-8 px-6">
+        <div class="max-w-6xl mx-auto text-center text-zinc-500 text-sm">
+            <p>Stock Video Collection</p>
+        </div>
+    </footer>
+
+    <script>
+        const videos = [
+            { url: 'https://danawiraprama.github.io/Contoh/videos/backyard.mp4', title: 'Backyard View', icon: 'home', category: 'Nature' },
+            { url: 'https://danawiraprama.github.io/Contoh/videos/beach.mp4', title: 'Beach Waves', icon: 'umbrella', category: 'Nature' },
+            { url: 'https://danawiraprama.github.io/Contoh/videos/redlight.mp4', title: 'Red Light City', icon: 'lamp', category: 'Urban' },
+            { url: 'https://danawiraprama.github.io/Contoh/videos/shopping.mp4', title: 'Shopping District', icon: 'shopping-bag', category: 'Urban' },
+            { url: 'https://danawiraprama.github.io/Contoh/videos/snowfall.mp4', title: 'Snowfall', icon: 'snowflake', category: 'Weather' },
+            { url: 'https://danawiraprama.github.io/Contoh/videos/squirel.mp4', title: 'Squirrel Nature', icon: 'leaf', category: 'Wildlife' },
+            { url: 'https://danawiraprama.github.io/Contoh/videos/traffic.mp4', title: 'City Traffic', icon: 'car', category: 'Urban' },
+            { url: 'https://danawiraprama.github.io/Contoh/videos/train.mp4', title: 'Train Journey', icon: 'train-front', category: 'Transport' },
+            { url: 'https://danawiraprama.github.io/Contoh/videos/walking.mp4', title: 'Walking Path', icon: 'footprints', category: 'Lifestyle' }
+        ];
+
+        function renderVideos() {
+            const grid = document.getElementById('video-grid');
+            
+            videos.forEach((v, i) => {
+                const card = document.createElement('div');
+                card.className = `reveal reveal-delay-${(i % 3) + 1} video-card`;
+                card.innerHTML = `
+                    <div class="relative aspect-video bg-zinc-800">
+                        <div class="absolute top-2 left-2 badge z-10">
+                            <i data-lucide="${v.icon}" class="w-3 h-3"></i>
+                            ${v.category}
+                        </div>
+                        <video class="w-full h-full object-cover" controls loop muted playsinline preload="metadata">
+                            <source src="${v.url}" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-display font-semibold mb-3">${v.title}</h3>
+                        <div class="flex gap-2">
+                            <a href="${v.url}" target="_blank" class="btn-link flex-1 justify-center">
+                                <i data-lucide="play" class="w-3.5 h-3.5"></i>
+                                Preview
+                            </a>
+                            <a href="${v.url}" download class="btn-link flex-1 justify-center">
+                                <i data-lucide="download" class="w-3.5 h-3.5"></i>
+                                Download
+                            </a>
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+
+            lucide.createIcons();
+        }
+
+        function initReveal() {
+            const observer = new IntersectionObserver(
+                (entries) => entries.forEach(e => e.isIntersecting && e.target.classList.add('visible')),
+                { threshold: 0.1 }
+            );
+            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons();
+            renderVideos();
+            initReveal();
+        });
+    </script>
+</body>
+</html>
