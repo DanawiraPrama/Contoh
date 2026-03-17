@@ -79,6 +79,15 @@
             box-shadow: 0 10px 30px rgba(245, 158, 11, 0.4);
         }
 
+        /* Book cover styling */
+        .book-cover {
+            transition: transform 0.3s ease;
+        }
+
+        .card-hover:hover .book-cover {
+            transform: scale(1.05);
+        }
+
         @keyframes fadeInUp {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
@@ -116,9 +125,13 @@
                 <!-- Card Header -->
                 <div class="p-6 sm:p-8 border-b border-zinc-800/50">
                     <div class="flex flex-col sm:flex-row items-start gap-5">
-                        <!-- Book Icon -->
-                        <div class="flex-shrink-0 w-16 h-16 rounded-xl bg-gradient-to-br from-accent/20 to-accent/5 border border-accent/20 flex items-center justify-center glow-accent">
-                            <i data-lucide="book-open" class="w-8 h-8 text-accent"></i>
+                        <!-- Book Cover Image -->
+                        <div class="flex-shrink-0 w-28 sm:w-32 aspect-[3/4] rounded-lg overflow-hidden border-2 border-accent/30 glow-accent">
+                            <img 
+                                src="https://z-cdn-media.chatglm.cn/files/8f68ea25-2be6-427e-a227-5a8486ae40a9.png?auth_key=1873713419-bac15f2334af4ba692ff6b4d266fe9ce-0-ef0e65dac258f5aa35a356d34cac59d9" 
+                                alt="Skema Jalur Orang Dalam"
+                                class="book-cover w-full h-full object-cover"
+                            >
                         </div>
                         
                         <div class="flex-1">
@@ -182,102 +195,123 @@
             <!-- Bonus Grid -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
                 <!-- Bonus 1 -->
-                <div class="animate-fade-in delay-2 card-hover bg-surface-700 rounded-xl border border-zinc-800 p-6">
-                    <div class="w-12 h-12 rounded-lg bg-emerald-500/15 flex items-center justify-center mb-4">
-                        <i data-lucide="calendar" class="w-6 h-6 text-emerald-400"></i>
+                <div class="animate-fade-in delay-2 card-hover bg-surface-700 rounded-xl border border-zinc-800 overflow-hidden">
+                    <div class="p-5">
+                        <!-- Book Cover Image -->
+                        <div class="w-full aspect-[3/4] rounded-lg overflow-hidden border border-zinc-700 mb-4">
+                            <img 
+                                src="https://z-cdn-media.chatglm.cn/files/a84f3427-0554-420d-8f33-87f4c12f0247.png?auth_key=1873713419-43101472fb914d11bc55f6022f857965-0-a77ffb6a324d66d4c51be2bce57c81e2" 
+                                alt="7-Day Blitz Action Plan"
+                                class="book-cover w-full h-full object-cover"
+                            >
+                        </div>
+                        
+                        <h3 class="font-display font-bold text-zinc-100 mb-1">
+                            7-Day Blitz Action Plan
+                        </h3>
+                        <p class="text-zinc-400 text-sm mb-4">
+                            Arsitektur Persuasi 168 Jam
+                        </p>
+                        
+                        <ul class="space-y-1 mb-5">
+                            <li class="flex items-center gap-2 text-sm text-zinc-300">
+                                <i data-lucide="check" class="w-3 h-3 text-success"></i>
+                                <span>Rencana aksi harian</span>
+                            </li>
+                            <li class="flex items-center gap-2 text-sm text-zinc-300">
+                                <i data-lucide="check" class="w-3 h-3 text-success"></i>
+                                <span>Checklist lengkap</span>
+                            </li>
+                        </ul>
+                        
+                        <a href="https://danawiraprama.github.io/Contoh/books/Bonus%20-%207-Day%20Blitz%20Action%20Plan%20%E2%80%94%20Arsitektur%20Persuasi%20168%20Jam.pdf"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           class="inline-flex items-center justify-center gap-2 w-full px-4 py-2.5 rounded-lg bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-sm font-medium hover:bg-emerald-500/20 transition-colors">
+                            <i data-lucide="external-link" class="w-4 h-4"></i>
+                            <span>Akses</span>
+                        </a>
                     </div>
-                    
-                    <h3 class="font-display font-bold text-zinc-100 mb-2">
-                        7-Day Blitz Action Plan
-                    </h3>
-                    <p class="text-zinc-400 text-sm mb-4">
-                        Arsitektur Persuasi 168 Jam
-                    </p>
-                    
-                    <ul class="space-y-1 mb-5">
-                        <li class="flex items-center gap-2 text-sm text-zinc-300">
-                            <i data-lucide="check" class="w-3 h-3 text-success"></i>
-                            <span>Rencana aksi harian</span>
-                        </li>
-                        <li class="flex items-center gap-2 text-sm text-zinc-300">
-                            <i data-lucide="check" class="w-3 h-3 text-success"></i>
-                            <span>Checklist lengkap</span>
-                        </li>
-                    </ul>
-                    
-                    <a href="https://danawiraprama.github.io/Contoh/books/Bonus%20-%207-Day%20Blitz%20Action%20Plan%20%E2%80%94%20Arsitektur%20Persuasi%20168%20Jam.pdf"
-                       target="_blank"
-                       rel="noopener noreferrer"
-                       class="inline-flex items-center justify-center gap-2 w-full px-4 py-2.5 rounded-lg bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-sm font-medium hover:bg-emerald-500/20 transition-colors">
-                        <i data-lucide="external-link" class="w-4 h-4"></i>
-                        <span>Akses</span>
-                    </a>
                 </div>
 
                 <!-- Bonus 2 -->
-                <div class="animate-fade-in delay-2 card-hover bg-surface-700 rounded-xl border border-zinc-800 p-6">
-                    <div class="w-12 h-12 rounded-lg bg-amber-500/15 flex items-center justify-center mb-4">
-                        <i data-lucide="zap" class="w-6 h-6 text-amber-400"></i>
+                <div class="animate-fade-in delay-2 card-hover bg-surface-700 rounded-xl border border-zinc-800 overflow-hidden">
+                    <div class="p-5">
+                        <!-- Book Cover Image -->
+                        <div class="w-full aspect-[3/4] rounded-lg overflow-hidden border border-zinc-700 mb-4">
+                            <img 
+                                src="https://z-cdn-media.chatglm.cn/files/180c48ca-c17a-4b8d-bdb3-686b1f31888f.png?auth_key=1873713419-782a7cce35af4e23bd1d831de85f2c50-0-d4e699036ab07dc711b6285728c91b7c" 
+                                alt="Arsitektur Persuasi Elit"
+                                class="book-cover w-full h-full object-cover"
+                            >
+                        </div>
+                        
+                        <h3 class="font-display font-bold text-zinc-100 mb-1">
+                            Arsitektur Persuasi Elit
+                        </h3>
+                        <p class="text-zinc-400 text-sm mb-4">
+                            Protokol Slippery Slide
+                        </p>
+                        
+                        <ul class="space-y-1 mb-5">
+                            <li class="flex items-center gap-2 text-sm text-zinc-300">
+                                <i data-lucide="check" class="w-3 h-3 text-success"></i>
+                                <span>Teknik copywriting elit</span>
+                            </li>
+                            <li class="flex items-center gap-2 text-sm text-zinc-300">
+                                <i data-lucide="check" class="w-3 h-3 text-success"></i>
+                                <span>Framework persuasi</span>
+                            </li>
+                        </ul>
+                        
+                        <a href="https://danawiraprama.github.io/Contoh/books/Bonus%20-%20ARSITEKTUR%20PERSUASI%20ELIT%20&%20PROTOKOL%20SLIPPERY%20SLIDE.pdf"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           class="inline-flex items-center justify-center gap-2 w-full px-4 py-2.5 rounded-lg bg-amber-500/10 border border-amber-500/30 text-amber-400 text-sm font-medium hover:bg-amber-500/20 transition-colors">
+                            <i data-lucide="external-link" class="w-4 h-4"></i>
+                            <span>Akses</span>
+                        </a>
                     </div>
-                    
-                    <h3 class="font-display font-bold text-zinc-100 mb-2">
-                        Arsitektur Persuasi Elit
-                    </h3>
-                    <p class="text-zinc-400 text-sm mb-4">
-                        Protokol Slippery Slide
-                    </p>
-                    
-                    <ul class="space-y-1 mb-5">
-                        <li class="flex items-center gap-2 text-sm text-zinc-300">
-                            <i data-lucide="check" class="w-3 h-3 text-success"></i>
-                            <span>Teknik copywriting elit</span>
-                        </li>
-                        <li class="flex items-center gap-2 text-sm text-zinc-300">
-                            <i data-lucide="check" class="w-3 h-3 text-success"></i>
-                            <span>Framework persuasi</span>
-                        </li>
-                    </ul>
-                    
-                    <a href="https://danawiraprama.github.io/Contoh/books/Bonus%20-%20ARSITEKTUR%20PERSUASI%20ELIT%20&%20PROTOKOL%20SLIPPERY%20SLIDE.pdf"
-                       target="_blank"
-                       rel="noopener noreferrer"
-                       class="inline-flex items-center justify-center gap-2 w-full px-4 py-2.5 rounded-lg bg-amber-500/10 border border-amber-500/30 text-amber-400 text-sm font-medium hover:bg-amber-500/20 transition-colors">
-                        <i data-lucide="external-link" class="w-4 h-4"></i>
-                        <span>Akses</span>
-                    </a>
                 </div>
 
                 <!-- Bonus 3 -->
-                <div class="animate-fade-in delay-3 card-hover bg-surface-700 rounded-xl border border-zinc-800 p-6">
-                    <div class="w-12 h-12 rounded-lg bg-cyan-500/15 flex items-center justify-center mb-4">
-                        <i data-lucide="map" class="w-6 h-6 text-cyan-400"></i>
+                <div class="animate-fade-in delay-3 card-hover bg-surface-700 rounded-xl border border-zinc-800 overflow-hidden">
+                    <div class="p-5">
+                        <!-- Book Cover Image -->
+                        <div class="w-full aspect-[3/4] rounded-lg overflow-hidden border border-zinc-700 mb-4">
+                            <img 
+                                src="https://z-cdn-media.chatglm.cn/files/3545626b-2aa5-42ba-9121-b9cd886027d5.png?auth_key=1873713419-8e92c01b93394b1b829074fe664a0d8e-0-1c9d8f9c8f8491845561d0238f7f93f9" 
+                                alt="Digital Echo Location"
+                                class="book-cover w-full h-full object-cover"
+                            >
+                        </div>
+                        
+                        <h3 class="font-display font-bold text-zinc-100 mb-1">
+                            Deep Dive Blue Print
+                        </h3>
+                        <p class="text-zinc-400 text-sm mb-4">
+                            Digital Echo-Location
+                        </p>
+                        
+                        <ul class="space-y-1 mb-5">
+                            <li class="flex items-center gap-2 text-sm text-zinc-300">
+                                <i data-lucide="check" class="w-3 h-3 text-success"></i>
+                                <span>Analisis mendalam</span>
+                            </li>
+                            <li class="flex items-center gap-2 text-sm text-zinc-300">
+                                <i data-lucide="check" class="w-3 h-3 text-success"></i>
+                                <span>Seni melacak jejak uang</span>
+                            </li>
+                        </ul>
+                        
+                        <a href="https://danawiraprama.github.io/Contoh/books/Bonus%20-%20Deep%20Dive%20Blue%20Print.pdf"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           class="inline-flex items-center justify-center gap-2 w-full px-4 py-2.5 rounded-lg bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-sm font-medium hover:bg-cyan-500/20 transition-colors">
+                            <i data-lucide="external-link" class="w-4 h-4"></i>
+                            <span>Akses</span>
+                        </a>
                     </div>
-                    
-                    <h3 class="font-display font-bold text-zinc-100 mb-2">
-                        Deep Dive Blue Print
-                    </h3>
-                    <p class="text-zinc-400 text-sm mb-4">
-                        Panduan mendalam strategi
-                    </p>
-                    
-                    <ul class="space-y-1 mb-5">
-                        <li class="flex items-center gap-2 text-sm text-zinc-300">
-                            <i data-lucide="check" class="w-3 h-3 text-success"></i>
-                            <span>Analisis mendalam</span>
-                        </li>
-                        <li class="flex items-center gap-2 text-sm text-zinc-300">
-                            <i data-lucide="check" class="w-3 h-3 text-success"></i>
-                            <span>Studi kasus nyata</span>
-                        </li>
-                    </ul>
-                    
-                    <a href="https://danawiraprama.github.io/Contoh/books/Bonus%20-%20Deep%20Dive%20Blue%20Print.pdf"
-                       target="_blank"
-                       rel="noopener noreferrer"
-                       class="inline-flex items-center justify-center gap-2 w-full px-4 py-2.5 rounded-lg bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-sm font-medium hover:bg-cyan-500/20 transition-colors">
-                        <i data-lucide="external-link" class="w-4 h-4"></i>
-                        <span>Akses</span>
-                    </a>
                 </div>
             </div>
         </div>
