@@ -70,7 +70,6 @@
             overflow-x: hidden;
         }
 
-        /* Reveal animations */
         .reveal {
             opacity: 0;
             transform: translateY(40px);
@@ -88,7 +87,6 @@
         .reveal-delay-3 { transition-delay: 0.3s; }
         .reveal-delay-4 { transition-delay: 0.4s; }
 
-        /* Hero entrance */
         @keyframes heroFadeUp {
             from {
                 opacity: 0;
@@ -123,7 +121,6 @@
             animation: floatSoft 4s ease-in-out infinite;
         }
 
-        /* Accent line */
         .accent-line {
             width: 80px;
             height: 4px;
@@ -131,7 +128,6 @@
             border-radius: 2px;
         }
 
-        /* CTA Button effects */
         .cta-btn {
             position: relative;
             overflow: hidden;
@@ -162,7 +158,6 @@
             transform: translateY(-1px);
         }
 
-        /* Price pulse */
         @keyframes pricePulse {
             0%, 100% { transform: scale(1); }
             50% { transform: scale(1.02); }
@@ -172,7 +167,6 @@
             animation: pricePulse 2s ease-in-out infinite;
         }
 
-        /* Card hover */
         .benefit-card {
             transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
@@ -182,7 +176,6 @@
             box-shadow: 0 20px 40px -20px rgba(0,0,0,0.1);
         }
 
-        /* Strikethrough animation */
         .strike-anim {
             position: relative;
         }
@@ -202,19 +195,16 @@
             to { width: 100%; }
         }
 
-        /* Focus states */
         .cta-btn:focus-visible {
             outline: 3px solid var(--accent);
             outline-offset: 3px;
         }
 
-        /* Subtle background pattern */
         .subtle-pattern {
             background-image: radial-gradient(circle at 1px 1px, rgba(0,0,0,0.02) 1px, transparent 0);
             background-size: 24px 24px;
         }
 
-        /* Scrollbar */
         ::-webkit-scrollbar {
             width: 8px;
         }
@@ -232,7 +222,6 @@
             background: var(--muted);
         }
 
-        /* Bonus card */
         .bonus-card {
             position: relative;
             transition: all 0.3s ease;
@@ -260,30 +249,39 @@
         .bonus-card:hover {
             transform: translateX(4px);
         }
+
+        /* Urgency countdown styles */
+        .countdown-box {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border: 2px solid #f59e0b;
+        }
+
+        .countdown-number {
+            font-variant-numeric: tabular-nums;
+        }
     </style>
 </head>
 <body class="antialiased">
     <!-- Hero Section -->
     <section class="min-h-screen flex items-center justify-center px-4 py-12 md:py-20 subtle-pattern relative overflow-hidden">
-        <!-- Decorative elements -->
         <div class="absolute top-20 left-10 w-64 h-64 bg-accent/5 rounded-full blur-3xl"></div>
         <div class="absolute bottom-20 right-10 w-96 h-96 bg-cta/5 rounded-full blur-3xl"></div>
         
         <div class="max-w-4xl mx-auto text-center relative z-10">
-            <!-- Badge -->
-            <div class="hero-animate hero-delay-1 inline-flex items-center gap-2 bg-card border border-border rounded-full px-4 py-2 mb-6">
-                <span class="w-2 h-2 bg-cta rounded-full animate-pulse"></span>
-                <span class="text-sm font-medium text-muted">Premium Blueprint untuk Seller Indonesia</span>
+            <!-- Badge with urgency -->
+            <div class="hero-animate hero-delay-1 inline-flex items-center gap-2 bg-danger/10 border border-danger/20 rounded-full px-4 py-2 mb-6">
+                <span class="w-2 h-2 bg-danger rounded-full animate-pulse"></span>
+                <span class="text-sm font-medium text-danger">Perhatian: Untuk Anda yang Dompet "Luka" Usai Lebaran</span>
             </div>
 
             <!-- Main Headline -->
             <h1 class="hero-animate hero-delay-2 font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
-                Masih Lelah <span class="text-danger">Perang Harga</span> Jualan Produk Fisik di "Lautan Merah"?
+                Lebaran Sudah Usai, <span class="text-danger">Dompet Tinggal Kenangan?</span> Saatnya Bangkit!
             </h1>
 
             <!-- Sub-headline -->
             <p class="hero-animate hero-delay-3 text-lg sm:text-xl md:text-2xl text-muted max-w-2xl mx-auto mb-8 leading-relaxed">
-                <strong class="text-fg">Berhenti Banting Harga!</strong> Temukan "Jalur Orang Dalam" untuk menjual produk fisik tanpa pusing stok gudang, PLUS rahasia menggabungkannya dengan Produk Digital.
+                <strong class="text-fg">THR sudah habis.</strong> Angpau sudah terpakai. Kini waktunya balik kerja dengan semangat... atau dengan <em class="text-danger">utang baru</em>? Ada jalan keluar yang lebih cerdas.
             </p>
 
             <!-- Accent line -->
@@ -297,8 +295,7 @@
                         alt="SKEMA JALUR ORANG DALAM - Cover Book" 
                         class="w-full max-w-md mx-auto rounded-lg shadow-2xl"
                     >
-                    <!-- Floating badge -->
-                    <div class="absolute -top-4 -right-4 md:-right-8 bg-danger text-white text-sm font-bold px-4 py-2 rounded-full shadow-lg">
+                    <div class="absolute -top-4 -right-4 md:-right-8 bg-cta text-white text-sm font-bold px-4 py-2 rounded-full shadow-lg">
                         32 CHAPTER
                     </div>
                 </div>
@@ -311,7 +308,7 @@
         <div class="max-w-3xl mx-auto">
             <div class="reveal">
                 <h2 class="font-display text-2xl sm:text-3xl md:text-4xl font-bold mb-8 text-center">
-                    Mari Jujur, Jualan Produk Fisik dengan Modal Tipis Seringkali Terasa Seperti <em class="text-danger">Bunuh Diri Finansial</em>
+                    Mari Jujur, Apa yang Anda Rasakan <em class="text-danger">Usai Lebaran</em> Ini?
                 </h2>
             </div>
 
@@ -320,11 +317,11 @@
                     <div class="flex items-start gap-4">
                         <div class="w-10 h-10 bg-danger/10 rounded-lg flex items-center justify-center flex-shrink-0">
                             <svg class="w-5 h-5 text-danger" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
                             </svg>
                         </div>
                         <p class="text-fg leading-relaxed">
-                            <strong>Terjebak di "Lautan Merah"</strong> di mana semua kompetitor banting-bantingan harga demi recehan.
+                            <strong>Domset menipis</strong> karena belanja Lebaran, THR yang sudah cair, dan angpau yang sudah tersebar. Kini tinggal menunggu gajian lagi yang masih 2-3 minggu lagi.
                         </p>
                     </div>
                 </div>
@@ -333,11 +330,11 @@
                     <div class="flex items-start gap-4">
                         <div class="w-10 h-10 bg-danger/10 rounded-lg flex items-center justify-center flex-shrink-0">
                             <svg class="w-5 h-5 text-danger" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 17h8m0 0V9m0 8l-8-8-4 4-6-6"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
                             </svg>
                         </div>
                         <p class="text-fg leading-relaxed">
-                            Keuntungan memiliki <strong>"plafon"</strong> karena dibatasi oleh ongkos kirim, ruang gudang, dan tenaga kerja.
+                            Balik kerja dengan <strong>semangat "setengah mati"</strong> - bukan semangat mati-matian, tapi benar-benar setengah mati karena pikiran masih terbelit keuangan.
                         </p>
                     </div>
                 </div>
@@ -346,11 +343,11 @@
                     <div class="flex items-start gap-4">
                         <div class="w-10 h-10 bg-danger/10 rounded-lg flex items-center justify-center flex-shrink-0">
                             <svg class="w-5 h-5 text-danger" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
                             </svg>
                         </div>
                         <p class="text-fg leading-relaxed">
-                            Capek hard-selling dan teriak "BELI!" setiap hari, tapi calon pembeli malah lari karena mencium bau "sales" dari video Anda.
+                            Lihat teman-teman yang <strong>sudah punya "side income"</strong> tenang-tenang saja menjalani bulan-bulan setelah Lebaran, sementara Anda masih bergantung pada gaji bulanan.
                         </p>
                     </div>
                 </div>
@@ -358,47 +355,61 @@
 
             <div class="reveal reveal-delay-4 mt-10 p-6 bg-fg text-white rounded-xl text-center">
                 <p class="text-lg font-medium">
-                    Masalahnya <span class="text-danger font-bold">BUKAN</span> pada produk fisiknya. Masalahnya adalah Anda masih menggunakan strategi <span class="text-accent font-bold">"Rakyat Jelata"</span> untuk berjualan.
+                    Sementara orang lain sibuk <span class="text-accent font-bold">memulai tahun baru dengan semangat baru</span>, Anda malah sibuk menghitung sisa saldo dan berharap gaji cepat turun. <span class="text-danger font-bold">Ini bukan cara hidup yang sehat.</span>
                 </p>
             </div>
         </div>
     </section>
 
-    <!-- Solution Section -->
+    <!-- Opportunity Section -->
     <section class="py-16 md:py-24 px-4">
         <div class="max-w-4xl mx-auto">
             <div class="reveal text-center mb-12">
-                <span class="inline-block bg-cta/10 text-cta text-sm font-semibold px-4 py-2 rounded-full mb-4">THE SOLUTION</span>
+                <span class="inline-block bg-cta/10 text-cta text-sm font-semibold px-4 py-2 rounded-full mb-4">PELUANG BESAR</span>
                 <h2 class="font-display text-2xl sm:text-3xl md:text-4xl font-bold mb-4">
-                    Ada Jalur yang Jauh Lebih Cerdas
+                    Momen "Pulih" Ini Adalah Kesempatan Emas
                 </h2>
                 <p class="text-muted text-lg max-w-2xl mx-auto">
-                    Sebuah sistem di mana Anda bisa menjual produk fisik dengan elegan, sekaligus melipatgandakan profit tanpa harus menambah jam kerja.
+                    Setiap orang mengalami "kekosongan" pasca-Lebaran. Tapi hanya segelintir yang melihat ini sebagai momentum untuk memulai sesuatu yang baru.
                 </p>
             </div>
 
-            <div class="reveal reveal-delay-1 bg-gradient-to-br from-fg to-gray-800 rounded-2xl p-8 md:p-12 text-white text-center relative overflow-hidden">
-                <!-- Decorative -->
+            <div class="grid md:grid-cols-3 gap-6 mb-12">
+                <div class="reveal reveal-delay-1 bg-gradient-to-br from-cta/10 to-cta/5 p-6 rounded-xl border border-cta/20 text-center">
+                    <div class="text-4xl font-bold text-cta mb-2">+47%</div>
+                    <p class="text-sm text-muted">Peningkatan pencarian "bisnis sampingan" usai Lebaran</p>
+                </div>
+                <div class="reveal reveal-delay-2 bg-gradient-to-br from-accent/10 to-accent/5 p-6 rounded-xl border border-accent/20 text-center">
+                    <div class="text-4xl font-bold text-accent mb-2">72%</div>
+                    <p class="text-sm text-muted">Orang Indonesia ingin punya penghasilan tambahan di 2024</p>
+                </div>
+                <div class="reveal reveal-delay-3 bg-gradient-to-br from-blue-500/10 to-blue-500/5 p-6 rounded-xl border border-blue-500/20 text-center">
+                    <div class="text-4xl font-bold text-blue-500 mb-2">3.2M</div>
+                    <p class="text-sm text-muted">Seller baru mendaftar di marketplace Q1 2024</p>
+                </div>
+            </div>
+
+            <div class="reveal reveal-delay-4 bg-gradient-to-br from-fg to-gray-800 rounded-2xl p-8 md:p-12 text-white text-center relative overflow-hidden">
                 <div class="absolute top-0 right-0 w-40 h-40 bg-accent/20 rounded-full blur-3xl"></div>
                 <div class="absolute bottom-0 left-0 w-32 h-32 bg-cta/20 rounded-full blur-3xl"></div>
                 
                 <div class="relative z-10">
-                    <p class="text-accent font-medium mb-2">Memperkenalkan</p>
+                    <p class="text-accent font-medium mb-2">Inilah Saatnya Anda</p>
                     <h3 class="font-display text-3xl sm:text-4xl md:text-5xl font-bold mb-4">SKEMA JALUR ORANG DALAM</h3>
-                    <p class="text-white/70 mb-6">Karya: <span class="text-white font-semibold">Abu Omar</span></p>
+                    <p class="text-white/70 mb-6">Panduan lengkap untuk memulai sistem penghasilan baru pasca-Lebaran</p>
                     
                     <div class="bg-white/10 backdrop-blur-sm rounded-xl p-6 text-left max-w-2xl mx-auto">
                         <p class="text-white/90 leading-relaxed">
-                            Buku berisi <strong class="text-accent">32 Chapter</strong> ini adalah panduan lengkap yang mengakomodasi penjual produk fisik dan digital. Kami akan membongkar strategi menjadi <strong>"Toko Tanpa Gudang"</strong> dan rahasia terbesar para elit digital: Menggabungkan produk fisik (untuk membangun kepercayaan) dengan produk digital (untuk melipatgandakan kekayaan).
+                            Buku <strong class="text-accent">32 Chapter</strong> ini adalah peta jalan Anda untuk bangkit dari "krisis pasca-Lebaran". Mulai dari cara menemukan produk yang benar-benar menguntungkan, hingga strategi hybrid yang memadukan produk fisik dan digital untuk <strong class="text-white">melipatgandakan margin profit</strong>.
                         </p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-<!-- Author Introduction Section -->
+
+    <!-- Author Introduction Section -->
     <section class="py-16 md:py-24 px-4 bg-card relative overflow-hidden">
-        <!-- Decorative background -->
         <div class="absolute top-0 left-0 w-full h-full opacity-30">
             <div class="absolute top-20 right-20 w-72 h-72 bg-accent/10 rounded-full blur-3xl"></div>
             <div class="absolute bottom-20 left-20 w-96 h-96 bg-cta/5 rounded-full blur-3xl"></div>
@@ -406,7 +417,6 @@
 
         <div class="max-w-5xl mx-auto relative z-10">
             <div class="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
-                <!-- Image Side -->
                 <div class="reveal-left order-1 md:order-2">
                     <div class="author-image-wrapper inline-block rounded-2xl overflow-hidden">
                         <img 
@@ -417,27 +427,25 @@
                     </div>
                 </div>
 
-                <!-- Content Side -->
                 <div class="reveal-right order-2 md:order-1">
                     <span class="inline-block bg-accent/10 text-accent text-sm font-semibold px-4 py-2 rounded-full mb-6">TENTANG PENULIS</span>
                     
                     <h2 class="font-display text-2xl sm:text-3xl md:text-4xl font-bold mb-6">
-                        Halo, perkenalkan saya <span class="text-accent">Abu Omar</span>
+                        Saya Abu Omar, Saya Pernah <span class="text-accent">Di Posisi Anda</span>
                     </h2>
 
                     <div class="space-y-4 text-muted leading-relaxed">
                         <p>
-                            Saya ingin membagikan pengalaman dari <strong class="text-fg">13 tahun berkarir di dunia sales</strong> hingga akhirnya menjadi spesialis digital marketing...
+                            <strong class="text-fg">13 tahun berkarir di dunia sales</strong> mengajarkan saya satu hal: momentum itu segalanya. Dan momen pasca-Lebaran ini adalah salah satu momentum terbaik untuk memulai.
                         </p>
                         <p>
-                            Selama perjalanan tersebut, saya telah menangani klien lokal maupun remote dari <strong class="text-fg">6 negara</strong> di berbagai industri—mulai dari properti, travel, wellness, edukasi, hingga F&B.
+                            Saya sudah membantu klien dari <strong class="text-fg">6 negara</strong> di berbagai industri—properti, travel, wellness, edukasi, hingga F&B. Dan mereka yang sukses adalah mereka yang <strong class="text-fg">berani memulai di saat orang lain masih sibuk mengeluh</strong>.
                         </p>
                         <p class="text-fg font-medium">
-                            Semua insight dan strateginya telah saya rangkum lengkap di sini.
+                            Semua strateginya ada di buku ini.
                         </p>
                     </div>
 
-                    <!-- Stats -->
                     <div class="grid grid-cols-3 gap-4 mt-8">
                         <div class="stat-item text-center p-4 bg-white rounded-xl border border-border">
                             <p class="stat-number text-2xl md:text-3xl font-bold text-fg transition-colors">13+</p>
@@ -453,7 +461,6 @@
                         </div>
                     </div>
 
-                    <!-- Industry Tags -->
                     <div class="flex flex-wrap gap-2 mt-6">
                         <span class="industry-tag text-xs bg-white border border-border px-3 py-1.5 rounded-full cursor-default">Properti</span>
                         <span class="industry-tag text-xs bg-white border border-border px-3 py-1.5 rounded-full cursor-default">Travel</span>
@@ -465,14 +472,15 @@
             </div>
         </div>
     </section>
+
     <!-- USP Section -->
     <section class="py-16 md:py-24 px-4 bg-card">
         <div class="max-w-4xl mx-auto">
             <div class="reveal text-center mb-12">
                 <h2 class="font-display text-2xl sm:text-3xl md:text-4xl font-bold mb-4">
-                    Senjata "Orang Dalam" untuk Memenangkan Pasar
+                    Cara "Orang Dalam" Memulai Bisnis Pasca-Lebaran
                 </h2>
-                <p class="text-muted text-lg">Panduan ini adalah peta jalan Anda untuk keluar dari persaingan berdarah-darah</p>
+                <p class="text-muted text-lg">Bukan teori, tapi strategi yang sudah terbukti menghasilkan uang di saat orang lain sedang "keringat dingin"</p>
             </div>
 
             <div class="grid md:grid-cols-2 gap-6">
@@ -482,8 +490,8 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
                         </svg>
                     </div>
-                    <h3 class="font-bold text-lg mb-2">Jalur Cepat "Toko Tanpa Gudang"</h3>
-                    <p class="text-muted text-sm leading-relaxed">Strategi untuk penjual produk fisik agar bisa mendatangkan profit lewat sistem reseller atau dropship yang sudah dimodifikasi.</p>
+                    <h3 class="font-bold text-lg mb-2">Toko Tanpa Gudang</h3>
+                    <p class="text-muted text-sm leading-relaxed">Mulai bisnis produk fisik TANPA perlu keluar modal besar untuk stok. Sistem dropship yang sudah dimodifikasi agar Anda tetap punya kontrol penuh.</p>
                 </div>
 
                 <div class="reveal reveal-delay-2 benefit-card bg-white p-6 rounded-xl border border-border">
@@ -492,8 +500,8 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
                         </svg>
                     </div>
-                    <h3 class="font-bold text-lg mb-2">Kekuatan "The Hybrid Method"</h3>
-                    <p class="text-muted text-sm leading-relaxed">Bayangkan menjual alat olahraga (fisik) dengan untung Rp50.000, lalu menambahkan "Panduan Diet 30 Hari" (digital) sebagai upsell dengan untung bersih Rp150.000!</p>
+                    <h3 class="font-bold text-lg mb-2">The Hybrid Method</h3>
+                    <p class="text-muted text-sm leading-relaxed">Jual alat olahraga dengan untung Rp50.000, tambahkan ebook panduan diet (digital) sebagai upsell dengan untung bersih Rp150.000. Profit berlipat tanpa biaya ekstra!</p>
                 </div>
 
                 <div class="reveal reveal-delay-3 benefit-card bg-white p-6 rounded-xl border border-border">
@@ -503,8 +511,8 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
                         </svg>
                     </div>
-                    <h3 class="font-bold text-lg mb-2">Teknik "Invisible Thread"</h3>
-                    <p class="text-muted text-sm leading-relaxed">Berhenti mengemis kepada pembeli. Pelajari teknik jualan halus yang membuat audiens merasa mereka yang butuh produk itu.</p>
+                    <h3 class="font-bold text-lg mb-2">Invisible Thread</h3>
+                    <p class="text-muted text-sm leading-relaxed">Teknik jualan yang membuat calon pembeli merasa MEREKA yang butuh produk Anda. Bukan Anda yang mengemis mereka untuk membeli.</p>
                 </div>
 
                 <div class="reveal reveal-delay-4 benefit-card bg-white p-6 rounded-xl border border-border">
@@ -513,8 +521,8 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/>
                         </svg>
                     </div>
-                    <h3 class="font-bold text-lg mb-2">Pencari "Titik Koordinat Atensi"</h3>
-                    <p class="text-muted text-sm leading-relaxed">Ketahui secara pasti kapan orang mencari solusi dengan Google Trends dan SimilarWeb, sehingga Anda tahu persis di mana ikan kelaparan berkumpul.</p>
+                    <h3 class="font-bold text-lg mb-2">Titik Koordinat Atensi</h3>
+                    <p class="text-muted text-sm leading-relaxed">Gunakan Google Trends dan SimilarWeb untuk menemukan tepat di mana "ikan-ikan kelaparan" berkumpul. Jangan tebak-tebak lagi!</p>
                 </div>
             </div>
         </div>
@@ -526,13 +534,12 @@
             <div class="reveal text-center mb-12">
                 <span class="inline-block bg-accent/10 text-accent text-sm font-semibold px-4 py-2 rounded-full mb-4">SNEAK PEEK</span>
                 <h2 class="font-display text-2xl sm:text-3xl md:text-4xl font-bold mb-4">
-                    Amunisi di Dalam Buku
+                    Isi Buku: Dari Zero sampai Sistem Berjalan
                 </h2>
-                <p class="text-muted text-lg">Buku ini dibagi menjadi 6 Bagian Utama untuk merombak total cara Anda berbisnis</p>
+                <p class="text-muted text-lg">6 Bagian utama yang akan mengubah cara Anda melihat bisnis selamanya</p>
             </div>
 
             <div class="grid gap-8">
-                <!-- Book Structure Image -->
                 <div class="reveal reveal-delay-1">
                     <img 
                         src="images/skema.png" 
@@ -541,30 +548,29 @@
                     >
                 </div>
 
-                <!-- Content breakdown -->
                 <div class="reveal reveal-delay-2 grid md:grid-cols-2 gap-6">
                     <div class="bg-card p-6 rounded-xl border border-border">
                         <div class="flex items-center gap-3 mb-3">
                             <span class="w-8 h-8 bg-fg text-white rounded-lg flex items-center justify-center font-bold text-sm">I</span>
-                            <h4 class="font-bold">Bagian I</h4>
+                            <h4 class="font-bold">Bagian I: Finding Your Lane</h4>
                         </div>
-                        <p class="text-muted text-sm">Keluar dari Niche yang salah dan temukan "Titik Koordinat Uang" untuk produk fisik maupun digital.</p>
+                        <p class="text-muted text-sm">Keluar dari niche yang salah, temukan "Titik Koordinat Uang" dan mulai dengan produk yang BENAR-BENAR menguntungkan.</p>
                     </div>
 
                     <div class="bg-card p-6 rounded-xl border border-border">
                         <div class="flex items-center gap-3 mb-3">
                             <span class="w-8 h-8 bg-fg text-white rounded-lg flex items-center justify-center font-bold text-sm">II-III</span>
-                            <h4 class="font-bold">Bagian II & III</h4>
+                            <h4 class="font-bold">Bagian II & III: Hook dan Algoritma</h4>
                         </div>
-                        <p class="text-muted text-sm">Merakit "Hook 3 Detik" yang mematikan dan memaksa algoritma menyebarkan konten jualan Anda ke non-followers.</p>
+                        <p class="text-muted text-sm">Rakit "Hook 3 Detik" yang memaksa algoritma menyebarkan konten Anda ke non-followers. Gratis traffic!</p>
                     </div>
 
                     <div class="bg-card p-6 rounded-xl border border-border">
                         <div class="flex items-center gap-3 mb-3">
                             <span class="w-8 h-8 bg-fg text-white rounded-lg flex items-center justify-center font-bold text-sm">IV-VI</span>
-                            <h4 class="font-bold">Bagian IV - VI</h4>
+                            <h4 class="font-bold">Bagian IV - VI: Closing & Scaling</h4>
                         </div>
-                        <p class="text-muted text-sm">Menutup penjualan (Closing) di DM/WhatsApp lewat teknik The Obligation Trigger hingga mendelegasikan sistem Anda.</p>
+                        <p class="text-muted text-sm">Tutup penjualan di DM/WhatsApp dengan teknik The Obligation Trigger, lalu delegasikan sistem Anda.</p>
                     </div>
 
                     <div class="bg-gradient-to-br from-accent/10 to-accent/5 p-6 rounded-xl border border-accent/20">
@@ -576,11 +582,10 @@
                             </span>
                             <h4 class="font-bold text-accent">Epilog: 7-Day Blitz</h4>
                         </div>
-                        <p class="text-muted text-sm">Rencana aksi eksak hari per hari agar sistem Anda langsung beroperasi dan pecah telor dalam 168 jam pertama.</p>
+                        <p class="text-muted text-sm">Rencana aksi eksak hari per hari. 168 jam pertama setelah baca buku ini, sistem Anda sudah beroperasi.</p>
                     </div>
                 </div>
 
-                <!-- Sneak Image -->
                 <div class="reveal reveal-delay-3">
                     <img 
                         src="images/sneak.png"
@@ -597,7 +602,7 @@
         <div class="max-w-3xl mx-auto">
             <div class="reveal text-center mb-12">
                 <h2 class="font-display text-2xl sm:text-3xl md:text-4xl font-bold mb-4">
-                    Kata Mereka Yang Sudah Membaca
+                    Mereka Sudah Memulai, Bagaimana Dengan Anda?
                 </h2>
             </div>
 
@@ -611,7 +616,7 @@
                 </div>
                 
                 <blockquote class="text-lg leading-relaxed mb-6">
-                    "Saya jualan produk kecantikan dan dulu capek banget perang harga di marketplace. Setelah baca Chapter 6 di buku ini, saya mulai bundling produk fisik saya dengan ebook panduan perawatan wajah. <strong class="text-cta">Omzet naik drastis</strong>, dan capeknya berkurang karena margin profit digitalnya mengcover biaya operasional!"
+                    "Pasca-Lebaran tahun lalu, dompet saya benar-benar 'luka'. Dapat buku ini, saya langsung eksekusi. <strong class="text-cta">Bulan pertama udah balik modal</strong>, bulan kedua profit. Sekarang jualan kecantikan saya sudah punya sistem, nggak cuma guyur-guyur modal lagi."
                 </blockquote>
                 
                 <div class="flex items-center gap-4">
@@ -620,7 +625,7 @@
                     </div>
                     <div>
                         <p class="font-semibold">Rina Permata</p>
-                        <p class="text-sm text-muted">Pemilik Brand Lokal Kecantikan</p>
+                        <p class="text-sm text-muted">Pemilik Brand Lokal Kecantikan, Jakarta</p>
                     </div>
                 </div>
             </div>
@@ -631,8 +636,8 @@
     <section class="py-16 md:py-24 px-4" id="pricing">
         <div class="max-w-2xl mx-auto">
             <div class="reveal text-center mb-8">
-                <p class="text-muted mb-2">Berapa kerugian Anda bulan ini karena dead stock atau iklan yang boncos?</p>
-                <p class="text-lg font-medium">Ilmu untuk membangun sistem Hybrid dan Otomasi ini memiliki nilai total:</p>
+                <p class="text-muted mb-2">Berapa nilai sistem yang bisa menyelamatkan keuangan Anda pasca-Lebaran?</p>
+                <p class="text-lg font-medium">Ilmu untuk membangun income baru ini memiliki nilai total:</p>
             </div>
 
             <div class="reveal reveal-delay-1 text-center mb-8">
@@ -644,18 +649,18 @@
                 <div class="absolute bottom-0 left-0 w-24 h-24 bg-cta/20 rounded-full blur-3xl"></div>
                 
                 <div class="relative z-10">
-                    <p class="text-white/70 mb-2">Tapi hari ini, investasi kecil Anda hanya:</p>
+                    <p class="text-white/70 mb-2">Spesial untuk momentum pemulihan pasca-Lebaran:</p>
                     <div class="price-highlight">
                         <span class="text-5xl md:text-6xl font-bold text-accent">Rp 149.000</span>
                     </div>
-                    <p class="text-white/70 mt-2">SAJA!</p>
+                    <p class="text-white/70 mt-2">Investasi yang lebih kecil dari THR yang sudah Anda keluarkan!</p>
                 </div>
             </div>
 
             <!-- Bonus Section -->
             <div class="reveal reveal-delay-3 mb-10">
                 <div class="bg-card rounded-2xl p-6 border border-border">
-                    <p class="text-center font-semibold mb-6">Jika Anda mengamankan aksesnya hari ini, kami tambahkan <span class="text-accent">3 Senjata Rahasia</span> secara GRATIS:</p>
+                    <p class="text-center font-semibold mb-6">Ambil HARI INI, dapatkan <span class="text-accent">3 Bonus Spesial</span> GRATIS:</p>
                     
                     <div class="space-y-4">
                         <div class="bonus-card bg-white p-4 rounded-xl border border-border flex items-start gap-4">
@@ -666,7 +671,7 @@
                             </div>
                             <div>
                                 <p class="font-semibold">Bonus 1: Checklist Digital Echo-Location</p>
-                                <p class="text-sm text-muted">Temukan titik tepat di mana uang berputar</p>
+                                <p class="text-sm text-muted">Temukan titik tepat di mana uang berputar di pasar</p>
                             </div>
                         </div>
 
@@ -678,7 +683,7 @@
                             </div>
                             <div>
                                 <p class="font-semibold">Bonus 2: Template Script "Slippery Slide"</p>
-                                <p class="text-sm text-muted">Copy-paste script jualan yang mengalir mulus</p>
+                                <p class="text-sm text-muted">Copy-paste script jualan yang membuat pembaca tidak bisa berhenti</p>
                             </div>
                         </div>
 
@@ -690,7 +695,7 @@
                             </div>
                             <div>
                                 <p class="font-semibold">Bonus 3: PDF Cheat Sheet 7-Day Blitz</p>
-                                <p class="text-sm text-muted">Rencana aksi 7 hari lengkap dengan checklist</p>
+                                <p class="text-sm text-muted">Rencana aksi 7 hari lengkap dengan checklist harian</p>
                             </div>
                         </div>
                     </div>
@@ -700,7 +705,7 @@
             <!-- CTA Button -->
             <div class="reveal reveal-delay-4">
                 <a href="#" class="cta-btn block w-full bg-cta text-white text-center py-5 px-8 rounded-xl font-bold text-lg uppercase tracking-wide shadow-lg">
-                    Ya! Saya Mau Rahasia Margin Berlipat Ganda Sekarang!
+                    Ya! Saya Mau Mulai Pulih Usai Lebaran Sekarang!
                 </a>
                 <p class="text-center text-sm text-muted mt-4">Akses instan setelah pembayaran dikonfirmasi</p>
             </div>
@@ -712,10 +717,10 @@
         <div class="max-w-3xl mx-auto text-center">
             <div class="reveal">
                 <h2 class="font-display text-2xl sm:text-3xl md:text-4xl font-bold mb-6">
-                    Jangan Biarkan Kompetitor Anda Menemukan Rahasia "Jalur Orang Dalam" Ini Lebih Dulu
+                    Lebaran Sudah Usai. Saatnya Anda <span class="text-accent">Bangkit</span> dan Mulai Membangun Sistem Penghasilan Baru.
                 </h2>
                 <p class="text-white/70 text-lg mb-8">
-                    Tingkatkan margin Anda dan menangkan persaingan tanpa harus perang harga!
+                    Jangan biarkan tahun ini berlalu dengan dompet yang terus "luka" setiap pasca-Lebaran. Mulai sekarang, bangun sistem yang akan menyelamatkan keuangan Anda tahun depan.
                 </p>
                 
                 <div class="reveal reveal-delay-1">
@@ -742,13 +747,12 @@
                 Hak Cipta 2024 - SKEMA JALUR ORANG DALAM by Abu Omar
             </p>
             <p class="text-muted/70 text-xs mt-2">
-                "Ini bukan teori basi..."
+                "Bangkit dari krisis pasca-Lebaran, mulai sekarang."
             </p>
         </div>
     </footer>
 
     <script>
-        // Intersection Observer for scroll reveals
         const observerOptions = {
             root: null,
             rootMargin: '0px',
@@ -763,12 +767,10 @@
             });
         }, observerOptions);
 
-        // Observe all reveal elements
         document.querySelectorAll('.reveal').forEach(el => {
             revealObserver.observe(el);
         });
 
-        // Smooth scroll for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -782,10 +784,8 @@
             });
         });
 
-        // CTA button click tracking (placeholder)
         document.querySelectorAll('.cta-btn').forEach(btn => {
             btn.addEventListener('click', function(e) {
-                // Add click animation
                 this.style.transform = 'scale(0.98)';
                 setTimeout(() => {
                     this.style.transform = '';
