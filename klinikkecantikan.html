@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contentro Insights - Data-Driven Strategy</title>
+    <title>Contentro Insights - Social Media Listener #1 Industri Kecantikan Indonesia</title>
+    <meta name="description" content="Platform pemantau media sosial terbaik di Indonesia. Kami mengubah jutaan data industri kecantikan menjadi strategi bisnis yang menguntungkan.">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
         body { font-family: 'Inter', sans-serif; }
         .report-content { display: none; }
         .report-content.active { display: block; animation: fadeIn 0.5s ease-in-out; }
@@ -15,49 +16,44 @@
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        /* Custom scrollbar for tables */
         .table-container::-webkit-scrollbar { height: 6px; }
         .table-container::-webkit-scrollbar-thumb { background-color: #cbd5e1; border-radius: 10px; }
         
-        /* Flowchart connecting line for desktop */
-        @media (min-width: 768px) {
-            .flowchart-line::before {
-                content: '';
-                position: absolute;
-                top: 2rem;
-                left: 10%;
-                right: 10%;
-                height: 4px;
-                background: #e2e8f0;
-                z-index: 0;
-            }
+        /* Glowing effect for CTA */
+        .glow-cta {
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+        @keyframes glow {
+            from { box-shadow: 0 0 10px rgba(99, 102, 241, 0.4); }
+            to { box-shadow: 0 0 25px rgba(99, 102, 241, 0.8); }
         }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-800 selection:bg-indigo-200 selection:text-indigo-900">
 
     <!-- Navigation Bar -->
-    <nav class="bg-white/80 backdrop-blur-md shadow-sm sticky top-0 z-50 border-b border-slate-200">
+    <nav class="bg-white/90 backdrop-blur-md shadow-sm sticky top-0 z-50 border-b border-slate-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16 items-center">
                 <div class="flex items-center cursor-pointer group" onclick="showPage('home')">
-                    <div class="bg-indigo-100 p-2 rounded-lg group-hover:bg-indigo-200 transition">
-                        <i class="fas fa-satellite-dish text-indigo-600 text-xl"></i>
+                    <div class="bg-indigo-600 p-2 rounded-lg group-hover:bg-indigo-700 transition shadow-lg">
+                        <i class="fas fa-satellite-dish text-white text-xl"></i>
                     </div>
-                    <span class="font-bold text-xl tracking-tight text-slate-800 ml-3">Contentro<span class="text-indigo-500">Insights.</span></span>
+                    <span class="font-extrabold text-xl tracking-tight text-slate-900 ml-3">Contentro<span class="text-indigo-600">Insights</span></span>
                 </div>
                 <div class="hidden lg:flex items-center space-x-8">
-                    <button onclick="showPage('home')" class="text-sm font-semibold text-slate-600 hover:text-indigo-600 transition">Dashboard Performa</button>
-                    <button onclick="scrollToSection('features')" class="text-sm font-semibold text-slate-600 hover:text-indigo-600 transition">Metrik Kami</button>
-                    <button onclick="scrollToSection('about')" class="text-sm font-semibold text-slate-600 hover:text-indigo-600 transition">Teknologi & Metodologi</button>
-                    <button onclick="scrollToSection('pricing')" class="text-sm font-semibold text-slate-600 hover:text-indigo-600 transition">Investasi Pionir</button>
-                    <a href="https://wa.me/6281284942940?text=Halo%20Contentro%20Insights,%20saya%20tertarik%20berlangganan%20dashboard%20performa%20brand%20saya." target="_blank" class="bg-gradient-to-r from-slate-800 to-slate-900 text-white px-5 py-2.5 rounded-full text-sm font-bold hover:shadow-lg hover:-translate-y-0.5 transition-all flex items-center">
-                        <i class="fab fa-whatsapp text-green-400 text-lg mr-2"></i> Hubungi Analis
+                    <button onclick="showPage('home')" class="text-sm font-semibold text-slate-600 hover:text-indigo-600 transition">Dashboard</button>
+                    <button onclick="scrollToSection('features')" class="text-sm font-semibold text-slate-600 hover:text-indigo-600 transition">Layanan Kami</button>
+                    <button onclick="scrollToSection('about')" class="text-sm font-semibold text-slate-600 hover:text-indigo-600 transition">Teknologi</button>
+                    <button onclick="scrollToSection('pricing')" class="text-sm font-semibold text-slate-600 hover:text-indigo-600 transition">Harga</button>
+                    <a href="https://wa.me/6281284942940?text=Halo%20Contentro,%20saya%20ingin%20konsultasi%20tentang%20pemantauan%20brand%20saya." target="_blank" class="bg-indigo-600 text-white px-5 py-2.5 rounded-full text-sm font-bold hover:bg-indigo-700 hover:shadow-lg hover:-translate-y-0.5 transition-all flex items-center">
+                        <i class="fab fa-whatsapp text-lg mr-2"></i> Hubungi Ahli
                     </a>
                 </div>
-                <!-- Mobile Menu Icon (Simplified for brevity) -->
                 <div class="lg:hidden flex items-center">
-                    <i class="fas fa-bars text-xl text-slate-600"></i>
+                    <button id="mobile-menu-btn" class="text-slate-600">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
                 </div>
             </div>
         </div>
@@ -70,84 +66,84 @@
         <div id="home" class="report-content active">
             
             <!-- Hero Section -->
-            <div class="bg-white rounded-[2rem] shadow-xl mb-8 border border-slate-100 overflow-hidden relative flex flex-col md:flex-row items-center">
-                <div class="absolute top-0 right-0 w-[800px] h-[800px] bg-gradient-to-bl from-indigo-100/50 via-teal-50/20 to-transparent rounded-full -translate-y-1/2 translate-x-1/3 blur-3xl pointer-events-none"></div>
+            <div class="bg-white rounded-[2rem] shadow-2xl mb-12 border border-slate-100 overflow-hidden relative flex flex-col md:flex-row items-center">
+                <div class="absolute top-0 right-0 w-[800px] h-[800px] bg-gradient-to-bl from-indigo-50 via-pink-50/30 to-transparent rounded-full -translate-y-1/2 translate-x-1/3 blur-3xl pointer-events-none"></div>
                 
                 <div class="p-10 md:p-16 relative z-10 flex-1">
-                    <div class="inline-flex items-center bg-indigo-50 text-indigo-700 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider mb-6 shadow-sm border border-indigo-100">
-                        <span class="w-2 h-2 rounded-full bg-indigo-500 mr-2 animate-pulse"></span> CONTENTRO INSIGHTS DASHBOARD
+                    <div class="inline-flex items-center bg-indigo-600 text-white px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider mb-6 shadow-md">
+                        <i class="fas fa-crown text-yellow-300 mr-2"></i> #1 SOCIAL MEDIA LISTENER INDONESIA
                     </div>
-                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 mb-6 leading-[1.15]">
-                        Data-Driven Strategy for <br>
-                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-teal-500">Scalable Brand Growth.</span>
+                    
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 mb-6 leading-[1.1]">
+                        Kami Mendengar Jutaan <br>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-pink-500">Percakapan Industri Kecantikan.</span>
                     </h1>
-                    <div class="text-lg text-slate-600 mb-8 max-w-xl leading-relaxed space-y-4">
-                        <p>Contentro Insights hadir untuk <strong>mengubah kebisingan di dunia digital menjadi metrik yang dapat dieksekusi.</strong> Kami memantau, menganalisis, dan mengoptimalkan kehadiran brand Anda dengan presisi tinggi.</p>
-                        <p>Tanpa data, Anda hanya sedang menebak. Bersama kami, deteksi "getaran" pasar dan pastikan setiap investasi pemasaran menghasilkan dampak ekonomi (AVE) yang nyata sebelum kompetitor menyadarinya.</p>
-                        <p class="font-semibold text-slate-800">Berhenti menebak. Jadilah pionir yang dikendalikan oleh data.</p>
+                    
+                    <p class="text-lg text-slate-600 mb-8 max-w-xl leading-relaxed">
+                        Brand Anda sedang dibicarakan, tapi di mana? Contentro Insights adalah <strong>"Telinga Digital"</strong> Anda. Kami memantau jutaan aktivitas di media sosial untuk mengubah kebisingan menjadi <strong>strategi bisnis yang presisi</strong>.
+                    </p>
+
+                    <div class="flex flex-wrap items-center gap-6 mb-8 text-xs text-slate-500 font-medium uppercase tracking-wider">
+                        <div class="flex items-center"><i class="fas fa-database text-indigo-500 mr-2 text-lg"></i> 25 Juta+ Sumber Data</div>
+                        <div class="flex items-center"><i class="fas fa-globe-asia text-indigo-500 mr-2 text-lg"></i> 108 Bahasa</div>
+                        <div class="flex items-center"><i class="fas fa-brain text-indigo-500 mr-2 text-lg"></i> AI-Powered</div>
                     </div>
+
                     <div class="flex flex-wrap gap-4">
-                        <button onclick="scrollToSection('about')" class="bg-gradient-to-r from-indigo-500 to-teal-500 text-white px-8 py-3.5 rounded-full font-bold hover:shadow-[0_0_20px_rgba(99,102,241,0.4)] hover:-translate-y-0.5 transition-all flex items-center">
-                            Pelajari Teknologi Kami <i class="fas fa-microchip ml-2"></i>
+                        <a href="https://wa.me/6281284942940?text=Halo%20Contentro,%20saya%20ingin%20request%20sample%20laporan%20brand%20saya." target="_blank" class="glow-cta bg-indigo-600 text-white px-8 py-4 rounded-full font-bold hover:bg-indigo-700 transition-all flex items-center text-lg shadow-xl">
+                            <i class="fas fa-file-audio mr-2"></i> Request Sample Laporan
+                        </a>
+                        <button onclick="scrollToSection('about')" class="bg-slate-100 text-slate-700 px-8 py-4 rounded-full font-bold hover:bg-slate-200 transition-all flex items-center text-lg border border-slate-200">
+                            <i class="fas fa-play-circle mr-2 text-indigo-600"></i> Cara Kerja Kami
                         </button>
                     </div>
                 </div>
 
                 <div class="hidden lg:block flex-1 p-10">
-                    <!-- Dashboard Mockup -->
                     <div class="bg-slate-900 border border-slate-700 rounded-3xl p-6 shadow-2xl relative overflow-hidden">
-                        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-indigo-500 via-teal-400 to-indigo-500"></div>
+                        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-indigo-500 via-pink-500 to-indigo-500"></div>
                         
                         <div class="flex justify-between items-center mb-6 border-b border-slate-700 pb-4">
                             <div>
-                                <h3 class="font-bold text-white text-lg flex items-center"><i class="fas fa-satellite-dish text-teal-400 mr-2"></i> Live Market Performance</h3>
-                                <p class="text-xs text-slate-400">Contentro Insights Engine</p>
+                                <h3 class="font-bold text-white text-lg flex items-center"><i class="fas fa-headphones text-pink-400 mr-2 animate-pulse"></i> Social Listening Active</h3>
+                                <p class="text-xs text-slate-400">Monitoring: Industri Kecantikan</p>
                             </div>
-                            <span class="bg-teal-500/20 text-teal-400 border border-teal-500/30 text-[10px] font-bold px-3 py-1.5 rounded-full shadow-sm animate-pulse">LIVE TRACKING</span>
+                            <span class="bg-green-500/20 text-green-400 border border-green-500/30 text-[10px] font-bold px-3 py-1.5 rounded-full shadow-sm animate-pulse">LIVE NOW</span>
                         </div>
 
-                        <!-- Highlight Widget 1: Total Reach -->
-                        <div class="bg-slate-800 rounded-xl p-4 mb-4 border border-slate-700 flex items-center justify-between">
-                            <div>
-                                <p class="text-xs text-slate-400 font-bold uppercase tracking-wider mb-1">Total Audience Reach</p>
-                                <h4 class="text-3xl font-black text-white">12,4 <span class="text-lg text-teal-400">Juta</span></h4>
+                        <div class="space-y-4">
+                            <div class="bg-slate-800 rounded-xl p-4 border border-slate-700">
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="text-xs text-slate-400 font-bold">KEYWORD: "Klinik Kecantikan"</span>
+                                    <span class="text-xs text-indigo-400 font-bold">+240% Trending</span>
+                                </div>
+                                <div class="h-2 w-full bg-slate-700 rounded-full overflow-hidden">
+                                    <div class="h-full bg-gradient-to-r from-indigo-500 to-pink-500" style="width: 85%"></div>
+                                </div>
+                                <p class="text-right text-xs text-slate-400 mt-1">85% Share of Voice</p>
                             </div>
-                            <div class="text-right">
-                                <span class="text-xs text-slate-400 block">9.1M Sosial</span>
-                                <span class="text-xs text-slate-400 block">+3.2M Non-Sosial</span>
-                            </div>
-                        </div>
 
-                        <!-- Highlight Widget 2: Sentiment -->
-                        <div class="mb-5">
-                            <div class="flex justify-between text-xs mb-1.5 font-bold text-slate-300">
-                                <span class="flex items-center"><i class="fas fa-smile text-green-400 mr-1"></i> Positif (35.7%)</span>
-                                <span class="flex items-center text-red-400">Negatif (7.0%) <i class="fas fa-frown ml-1"></i></span>
+                            <div class="grid grid-cols-3 gap-2 text-center text-xs">
+                                <div class="bg-slate-800/50 p-2 rounded-lg border border-slate-700">
+                                    <i class="fas fa-comment-dots text-slate-400 mb-1"></i>
+                                    <span class="block text-white font-bold text-base">12.4K</span>
+                                    <span class="text-slate-500 uppercase">Mentions</span>
+                                </div>
+                                <div class="bg-slate-800/50 p-2 rounded-lg border border-slate-700">
+                                    <i class="fas fa-smile text-green-400 mb-1"></i>
+                                    <span class="block text-white font-bold text-base">92%</span>
+                                    <span class="text-slate-500 uppercase">Positif</span>
+                                </div>
+                                <div class="bg-slate-800/50 p-2 rounded-lg border border-slate-700">
+                                    <i class="fas fa-user-check text-pink-400 mb-1"></i>
+                                    <span class="block text-white font-bold text-base">450</span>
+                                    <span class="text-slate-500 uppercase">Influencer</span>
+                                </div>
                             </div>
-                            <div class="w-full bg-slate-700 rounded-full h-3 flex overflow-hidden">
-                                <div class="bg-green-500 h-3" style="width: 35.7%"></div>
-                                <div class="bg-slate-500 h-3" style="width: 57.3%"></div> <!-- Netral -->
-                                <div class="bg-red-500 h-3" style="width: 7%"></div>
-                            </div>
-                            <p class="text-[10px] text-center text-slate-500 mt-1">Sisa persentase merepresentasikan sentimen netral.</p>
-                        </div>
-
-                        <!-- Highlight Widget 3: Platform Breakdown -->
-                        <div class="grid grid-cols-3 gap-2 text-center mt-6">
-                            <div class="bg-slate-800/50 p-2 rounded-lg border border-slate-700">
-                                <i class="far fa-newspaper text-slate-400 mb-1"></i>
-                                <span class="block text-white font-bold text-sm">746</span>
-                                <span class="text-[10px] text-slate-500 uppercase">Mass Media</span>
-                            </div>
-                            <div class="bg-slate-800/50 p-2 rounded-lg border border-slate-700">
-                                <i class="fab fa-instagram text-pink-500 mb-1"></i>
-                                <span class="block text-white font-bold text-sm">603</span>
-                                <span class="text-[10px] text-slate-500 uppercase">Instagram</span>
-                            </div>
-                            <div class="bg-slate-800/50 p-2 rounded-lg border border-slate-700">
-                                <i class="fab fa-tiktok text-teal-400 mb-1"></i>
-                                <span class="block text-white font-bold text-sm">130</span>
-                                <span class="text-[10px] text-slate-500 uppercase">TikTok</span>
+                            
+                            <div class="bg-indigo-900/30 border border-indigo-500/30 rounded-lg p-3 text-xs text-indigo-200 flex items-center">
+                                <i class="fas fa-bell mr-2 text-indigo-400"></i>
+                                <span><strong>ALERT:</strong> Sentimen negatif meningkat 5% terkait "Harga" di kompetitor X.</span>
                             </div>
                         </div>
                     </div>
@@ -155,365 +151,223 @@
             </div>
 
             <!-- Stats Ribbon Section -->
-            <div class="bg-gradient-to-r from-slate-900 to-indigo-900 rounded-3xl p-8 shadow-xl mb-20 relative overflow-hidden">
+            <div class="bg-gradient-to-r from-slate-900 to-indigo-950 rounded-3xl p-8 shadow-xl mb-20 relative overflow-hidden">
                 <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMiIgY3k9IjIiIHI9IjIiIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMC4wNSIvPjwvc3ZnPg==')] opacity-20"></div>
                 <div class="relative z-10 grid grid-cols-1 md:grid-cols-4 gap-6 text-center divide-y md:divide-y-0 md:divide-x divide-white/20">
                     <div class="py-4 md:py-0">
-                        <span class="block text-4xl lg:text-5xl font-black text-white mb-2"><span class="counter" data-target="25">0</span>M+</span>
-                        <span class="text-indigo-200 text-xs font-bold uppercase tracking-widest">Sumber Online Dilacak</span>
+                        <span class="block text-4xl lg:text-5xl font-black text-white mb-2">25<span class="text-xl">Juta+</span></span>
+                        <span class="text-indigo-200 text-xs font-bold uppercase tracking-widest">Sumber Data Dipantau</span>
                     </div>
                     <div class="py-4 md:py-0">
-                        <span class="block text-4xl lg:text-5xl font-black text-teal-400 mb-2 counter" data-target="108">0</span>
-                        <span class="text-indigo-200 text-xs font-bold uppercase tracking-widest">Bahasa Dianalisis</span>
+                        <span class="block text-4xl lg:text-5xl font-black text-pink-400 mb-2">Real-Time</span>
+                        <span class="text-indigo-200 text-xs font-bold uppercase tracking-widest">Monitoring 24/7</span>
                     </div>
                     <div class="py-4 md:py-0">
-                        <span class="block text-4xl lg:text-5xl font-black text-white mb-2">24/7</span>
-                        <span class="text-indigo-200 text-xs font-bold uppercase tracking-widest">AI Sentiment Tracking</span>
+                        <span class="block text-4xl lg:text-5xl font-black text-white mb-2">108</span>
+                        <span class="text-indigo-200 text-xs font-bold uppercase tracking-widest">Bahasa Analisis</span>
                     </div>
                     <div class="py-4 md:py-0">
-                        <span class="block text-4xl lg:text-5xl font-black text-teal-400 mb-2">0-10</span>
-                        <span class="text-indigo-200 text-xs font-bold uppercase tracking-widest">Skala Influence Score</span>
+                        <span class="block text-4xl lg:text-5xl font-black text-pink-400 mb-2">ID</span>
+                        <span class="text-indigo-200 text-xs font-bold uppercase tracking-widest">Fokus Pasar Lokal</span>
                     </div>
                 </div>
             </div>
 
-            <!-- NEW SECTION: ABOUT US / TECHNOLOGY -->
+            <!-- ABOUT SECTION -->
             <div id="about" class="mb-24 scroll-mt-24">
                 <div class="text-center max-w-4xl mx-auto mb-16">
-                    <span class="text-indigo-600 font-bold uppercase tracking-wider text-sm mb-2 block">Contentro Insights</span>
-                    <h2 class="text-3xl md:text-5xl font-extrabold text-slate-900 mb-6 leading-tight">Global Intelligence for <br> Your Local Growth</h2>
-                    <p class="text-xl text-slate-600 mb-4 font-medium italic">"Pantau, Analisis, dan Dominasi Pasar dengan Data Tanpa Batas."</p>
-                    <p class="text-slate-600 leading-relaxed">Di era informasi yang meluap, sekadar "tahu" tidak lagi cukup. Anda perlu melihat apa yang tidak terlihat oleh kompetitor Anda. Contentro Insights memberikan Anda akses ke teknologi pemantauan digital tercanggih di dunia untuk memastikan setiap langkah bisnis Anda didasarkan pada fakta, bukan asumsi.</p>
+                    <span class="inline-block bg-indigo-100 text-indigo-700 px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-4 border border-indigo-200">Why Contentro Insights?</span>
+                    <h2 class="text-3xl md:text-5xl font-extrabold text-slate-900 mb-6 leading-tight">Bukan Sekadar Tools, <br>Ini adalah <span class="text-indigo-600">Mata & Telinga Digital</span> Anda.</h2>
+                    <p class="text-lg text-slate-600 mb-4">Di era informasi yang berlebihan, brand yang menang adalah brand yang <em>dengar</em> paling jernih. Kami menghilangkan kebisingan dan menyajikan sinyal-sinyal penting yang bisa menyelamatkan atau melipatgandakan revenue bisnis kecantikan Anda.</p>
                 </div>
 
-                <!-- Apa Yang Membuat Kami Berbeda -->
-                <div class="mb-20">
-                    <h3 class="text-2xl font-bold text-center mb-10 text-slate-800">Apa yang Membuat Kami Berbeda?</h3>
-                    <p class="text-center text-slate-600 max-w-2xl mx-auto mb-12">Kami tidak hanya memberikan ringkasan; kami memberikan akses ke pusat data digital global melalui infrastruktur yang solid:</p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+                    <div class="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm hover:shadow-xl transition group relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-20 h-20 bg-red-50 rounded-bl-[100px]"></div>
+                        <i class="fas fa-volume-mute text-red-400 text-3xl mb-6"></i>
+                        <h3 class="font-bold text-xl mb-2 text-slate-900">Masalah: "Buta Data"</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">Banyak brand melewatkan feedback kritis atau tren viral karena tidak memiliki sistem pemantauan terstruktur. Anda tidak tahu apa yang tidak Anda lihat.</p>
+                    </div>
+                     <div class="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm hover:shadow-xl transition group relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-20 h-20 bg-amber-50 rounded-bl-[100px]"></div>
+                        <i class="fas fa-hourglass-half text-amber-400 text-3xl mb-6"></i>
+                        <h3 class="font-bold text-xl mb-2 text-slate-900">Masalah: Analisis Lambat</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">Data bulan lalu tidak berguna untuk keputusan hari ini. Manual reporting memakan waktu, sementara tren media sosial berubah dalam hitungan jam.</p>
+                    </div>
+                    <div class="bg-gradient-to-br from-indigo-600 to-indigo-800 p-8 rounded-3xl shadow-xl text-white relative overflow-hidden md:scale-105 z-10">
+                        <div class="absolute top-0 right-0 w-20 h-20 bg-white/10 rounded-bl-[100px]"></div>
+                        <i class="fas fa-bolt text-yellow-300 text-3xl mb-6"></i>
+                        <h3 class="font-bold text-xl mb-2">Solusi: Contentro Insights</h3>
+                        <p class="text-indigo-100 text-sm leading-relaxed">Kami memberikan visibilitas penuh secara real-time. Ketahui reputasi brand, pergerakan kompetitor, dan keinginan konsumen sebelum mereka menyadarinya.</p>
+                        <button onclick="scrollToSection('pricing')" class="mt-6 bg-white text-indigo-700 px-4 py-2 rounded-full text-sm font-bold hover:bg-indigo-100 transition">Mulai Sekarang</button>
+                    </div>
+                </div>
+
+                <!-- Features Deep Dive -->
+                <div id="features" class="scroll-mt-24">
+                    <h3 class="text-2xl font-bold text-center mb-10 text-slate-800">Kami Mengubah Data Menjadi Keputusan Bisnis</h3>
                     
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                        <!-- Tech Feature 1 -->
-                        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition text-center group">
-                            <div class="w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-blue-600 group-hover:text-white transition text-blue-600">
-                                <i class="fas fa-globe text-2xl"></i>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <div class="bg-white p-6 rounded-2xl border border-slate-200 hover:border-indigo-300 hover:shadow-md transition text-center group">
+                            <div class="w-14 h-14 bg-indigo-50 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-indigo-600 group-hover:text-white transition text-indigo-600">
+                                <i class="fas fa-search-dollar text-2xl"></i>
                             </div>
-                            <h4 class="font-bold text-slate-900 mb-2">25 Juta+ Sumber Online</h4>
-                            <p class="text-xs text-slate-500 leading-relaxed">Kami melacak jejak brand Anda di lebih dari 25 juta sumber di seluruh dunia secara <em>real-time</em>, mencakup medsos, portal berita, blog, forum, hingga podcast dan video.</p>
+                            <h4 class="font-bold text-slate-900 mb-2">Share of Voice (SOV)</h4>
+                            <p class="text-xs text-slate-500 leading-relaxed">Ukur dominasi brand Anda vs kompetitor. Siapa yang paling banyak dibicarakan di pasar?</p>
                         </div>
-                        <!-- Tech Feature 2 -->
-                        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition text-center group">
-                            <div class="w-16 h-16 bg-teal-50 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-teal-600 group-hover:text-white transition text-teal-600">
-                                <i class="fas fa-language text-2xl"></i>
+                        <div class="bg-white p-6 rounded-2xl border border-slate-200 hover:border-pink-300 hover:shadow-md transition text-center group">
+                            <div class="w-14 h-14 bg-pink-50 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-pink-600 group-hover:text-white transition text-pink-600">
+                                <i class="fas fa-heart-broken text-2xl"></i>
                             </div>
-                            <h4 class="font-bold text-slate-900 mb-2">Analisis 108 Bahasa</h4>
-                            <p class="text-xs text-slate-500 leading-relaxed">Jangkau pasar global tanpa batasan. Teknologi kami menganalisis sentimen dalam 108 bahasa, memastikan tidak ada peluang yang terlewatkan di pasar mana pun.</p>
+                            <h4 class="font-bold text-slate-900 mb-2">Sentiment Analysis</h4>
+                            <p class="text-xs text-slate-500 leading-relaxed">Deteksi keluhan atau pujian secara instan. Cegah krisis sebelum viral dan tingkatkan kepuasan pasien.</p>
                         </div>
-                        <!-- Tech Feature 3 -->
-                        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition text-center group">
-                            <div class="w-16 h-16 bg-indigo-50 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-indigo-600 group-hover:text-white transition text-indigo-600">
-                                <i class="fas fa-brain text-2xl"></i>
+                        <div class="bg-white p-6 rounded-2xl border border-slate-200 hover:border-teal-300 hover:shadow-md transition text-center group">
+                            <div class="w-14 h-14 bg-teal-50 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-teal-600 group-hover:text-white transition text-teal-600">
+                                <i class="fas fa-user-ninja text-2xl"></i>
                             </div>
-                            <h4 class="font-bold text-slate-900 mb-2">AI Sentiment Tracking</h4>
-                            <p class="text-xs text-slate-500 leading-relaxed">Dapatkan kepastian reputasi Anda. Sistem AI kami bekerja 24/7 mengategorikan setiap sebutan menjadi sentimen positif, negatif, atau netral dengan akurasi tinggi.</p>
+                            <h4 class="font-bold text-slate-900 mb-2">Influencer Mapping</h4>
+                            <p class="text-xs text-slate-500 leading-relaxed">Temukan siapa influencer kunci yang membicarakan brand Anda atau kompetitor dengan skor pengaruh akurat.</p>
                         </div>
-                        <!-- Tech Feature 4 -->
-                        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition text-center group">
-                            <div class="w-16 h-16 bg-amber-50 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-amber-500 group-hover:text-white transition text-amber-500">
-                                <i class="fas fa-star text-2xl"></i>
+                        <div class="bg-white p-6 rounded-2xl border border-slate-200 hover:border-amber-300 hover:shadow-md transition text-center group">
+                            <div class="w-14 h-14 bg-amber-50 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-amber-500 group-hover:text-white transition text-amber-500">
+                                <i class="fas fa-chart-line text-2xl"></i>
                             </div>
-                            <h4 class="font-bold text-slate-900 mb-2">Influence Score Mapping</h4>
-                            <p class="text-xs text-slate-500 leading-relaxed">Jangan salah pilih mitra. Kami memetakan skor pengaruh (skala 0-10) setiap akun sehingga Anda tahu siapa yang benar-benar memiliki kekuatan opini publik.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Metodologi (Flowchart) -->
-                <div class="bg-slate-50 p-10 md:p-16 rounded-[2.5rem] border border-slate-200">
-                    <div class="text-center max-w-3xl mx-auto mb-16">
-                        <h3 class="text-2xl md:text-3xl font-extrabold text-slate-900 mb-4">Mengapa Anda Bisa Mempercayai Metodologi Kami?</h3>
-                        <p class="text-slate-600">Teknologi hebat tanpa metodologi yang matang hanyalah sekumpulan angka. Contentro Insights beroperasi dengan standar analisis data kelas industri yang memastikan setiap laporan memiliki nilai strategis.</p>
-                    </div>
-
-                    <!-- Process Flowchart -->
-                    <div class="relative flowchart-line">
-                        <div class="grid grid-cols-1 md:grid-cols-4 gap-8 relative z-10">
-                            <!-- Step 1 -->
-                            <div class="flex flex-col items-center text-center">
-                                <div class="w-16 h-16 rounded-full bg-white border-4 border-indigo-500 flex items-center justify-center shadow-lg mb-6 z-10">
-                                    <i class="fas fa-filter text-indigo-600 text-xl"></i>
-                                </div>
-                                <h4 class="font-bold text-slate-900 mb-2">Validasi Data Berlapis</h4>
-                                <p class="text-xs text-slate-500 leading-relaxed">Setiap insight melalui proses validasi sistematis yang membandingkan data lintas platform, menjamin info yang bersih dan akurat.</p>
-                            </div>
-                            <!-- Step 2 -->
-                            <div class="flex flex-col items-center text-center">
-                                <div class="w-16 h-16 rounded-full bg-white border-4 border-teal-500 flex items-center justify-center shadow-lg mb-6 z-10">
-                                    <i class="fas fa-user-cog text-teal-600 text-xl"></i>
-                                </div>
-                                <h4 class="font-bold text-slate-900 mb-2">Analisis Psikologi Pasar</h4>
-                                <p class="text-xs text-slate-500 leading-relaxed">Melampaui metrik permukaan. Kami menganalisis perilaku di balik data untuk memahami motif, preferensi, dan tren sebelum menjadi arus utama.</p>
-                            </div>
-                            <!-- Step 3 -->
-                            <div class="flex flex-col items-center text-center">
-                                <div class="w-16 h-16 rounded-full bg-white border-4 border-pink-500 flex items-center justify-center shadow-lg mb-6 z-10">
-                                    <i class="fas fa-globe-americas text-pink-600 text-xl"></i>
-                                </div>
-                                <h4 class="font-bold text-slate-900 mb-2">Benchmark Global</h4>
-                                <p class="text-xs text-slate-500 leading-relaxed">Menggunakan parameter internasional (AVE & Social Reach) untuk memberi konteks posisi bisnis Anda dengan standar pasar global.</p>
-                            </div>
-                            <!-- Step 4 -->
-                            <div class="flex flex-col items-center text-center">
-                                <div class="w-16 h-16 rounded-full bg-white border-4 border-amber-500 flex items-center justify-center shadow-lg mb-6 z-10">
-                                    <i class="fas fa-chart-line text-amber-600 text-xl"></i>
-                                </div>
-                                <h4 class="font-bold text-slate-900 mb-2">Performance Framework</h4>
-                                <p class="text-xs text-slate-500 leading-relaxed">Data difilter melalui kerangka orientasi hasil. Kami tak hanya menghitung sebutan, tapi mengukur dampaknya terhadap konversi.</p>
-                            </div>
+                            <h4 class="font-bold text-slate-900 mb-2">Trend Forecasting</h4>
+                            <p class="text-xs text-slate-500 leading-relaxed">Antisipasi tren treatment dan skincare terbaru. Jangan jadi pengikut, jadi pioneer.</p>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Existing Section: Apa yang Kami Lakukan untuk Bisnis Anda (Features Metrics) -->
-            <div id="features" class="mb-24 scroll-mt-24">
-                <div class="text-center max-w-3xl mx-auto mb-12">
-                    <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 mb-4">Apa yang Kami Lakukan untuk Bisnis Anda?</h2>
-                    <p class="text-lg text-slate-600">Di dashboard Contentro Insights, Anda bisa melihat di mana konsumen membicarakan Anda, bagaimana perasaan mereka, dan seberapa besar nilai ekonomi yang dihasilkan dari kampanye berjalan.</p>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <!-- Feature 1 -->
-                    <div class="bg-white p-8 rounded-3xl shadow-sm border border-slate-200 hover:shadow-lg transition flex flex-col md:flex-row gap-6 items-start">
-                        <div class="w-14 h-14 shrink-0 bg-indigo-50 text-indigo-600 rounded-2xl flex items-center justify-center">
-                            <i class="fas fa-network-wired text-2xl"></i>
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-xl mb-2 text-slate-900">Omnichannel Monitoring</h3>
-                            <p class="text-slate-600 text-sm leading-relaxed mb-3">Kami melacak penyebaran brand di berbagai kanal secara presisi. Ketahui platform mana yang paling efektif untuk *brand* Anda.</p>
-                            <div class="flex flex-wrap gap-2 text-xs font-semibold">
-                                <span class="bg-slate-100 text-slate-700 px-2 py-1 rounded">Media Massa: 746</span>
-                                <span class="bg-pink-50 text-pink-700 px-2 py-1 rounded">Instagram: 603</span>
-                                <span class="bg-slate-900 text-white px-2 py-1 rounded">TikTok: 130</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Feature 2 -->
-                    <div class="bg-white p-8 rounded-3xl shadow-sm border border-slate-200 hover:shadow-lg transition flex flex-col md:flex-row gap-6 items-start">
-                        <div class="w-14 h-14 shrink-0 bg-teal-50 text-teal-600 rounded-2xl flex items-center justify-center">
-                            <i class="fas fa-users text-2xl"></i>
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-xl mb-2 text-slate-900">Massive Audience Impact</h3>
-                            <p class="text-slate-600 text-sm leading-relaxed mb-3">Strategi kami terbukti mampu menjangkau audiens luas tanpa batas. Kami mengkalkulasi jangkauan sosial dan non-sosial secara komprehensif.</p>
-                            <div class="flex flex-wrap gap-2 text-xs font-semibold">
-                                <span class="bg-teal-50 text-teal-700 px-2 py-1 rounded">Social Reach: >9.1 Juta</span>
-                                <span class="bg-blue-50 text-blue-700 px-2 py-1 rounded">Non-Social: +3.2 Juta</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Feature 3 -->
-                    <div class="bg-white p-8 rounded-3xl shadow-sm border border-slate-200 hover:shadow-lg transition flex flex-col md:flex-row gap-6 items-start">
-                        <div class="w-14 h-14 shrink-0 bg-amber-50 text-amber-600 rounded-2xl flex items-center justify-center">
-                            <i class="fas fa-comments text-2xl"></i>
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-xl mb-2 text-slate-900">Engagement Analysis</h3>
-                            <p class="text-slate-600 text-sm leading-relaxed mb-3">Kami tidak hanya mencari jangkauan, tapi juga interaksi nyata yang menggerakkan penjualan. Lihat seberapa banyak konsumen membela *brand* Anda.</p>
-                            <div class="flex flex-wrap gap-2 text-xs font-semibold">
-                                <span class="bg-amber-50 text-amber-700 px-2 py-1 rounded">Total Interaksi: >195.000</span>
-                                <span class="bg-orange-50 text-orange-700 px-2 py-1 rounded">UGC Content: 1.203</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Feature 4 -->
-                    <div class="bg-white p-8 rounded-3xl shadow-sm border border-slate-200 hover:shadow-lg transition flex flex-col md:flex-row gap-6 items-start">
-                        <div class="w-14 h-14 shrink-0 bg-red-50 text-red-600 rounded-2xl flex items-center justify-center">
-                            <i class="fas fa-heartbeat text-2xl"></i>
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-xl mb-2 text-slate-900">Sentiment & Reputation</h3>
-                            <p class="text-slate-600 text-sm leading-relaxed mb-3">Kami menjaga kesehatan brand Anda dengan memantau persepsi publik secara real-time. Cegah krisis sebelum ia membesar.</p>
-                            <div class="flex flex-wrap gap-2 text-xs font-semibold">
-                                <span class="bg-green-50 text-green-700 px-2 py-1 rounded"><i class="fas fa-arrow-up mr-1"></i> Positif: 35.7%</span>
-                                <span class="bg-red-50 text-red-700 px-2 py-1 rounded"><i class="fas fa-arrow-down mr-1"></i> Negatif: 7.0%</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Callout Quote Banner -->
-            <div class="bg-indigo-600 bg-gradient-to-br from-indigo-700 to-indigo-900 rounded-[2rem] p-10 md:p-16 text-center text-white mb-16 shadow-2xl relative overflow-hidden">
-                <i class="fas fa-quote-left absolute top-8 left-8 text-6xl text-white/10"></i>
-                <div class="relative z-10 max-w-4xl mx-auto">
-                    <h2 class="text-2xl md:text-4xl font-extrabold mb-6 leading-tight">"Data adalah mata uang baru. Contentro Insights memastikan Anda memilikinya lebih banyak dari orang lain."</h2>
-                    <p class="text-indigo-200 mb-8 md:text-lg">Gunakan data yang biasanya hanya bisa diakses oleh korporasi besar untuk mengembangkan bisnis Anda. Dapatkan visibilitas penuh tren pasar dan perilaku konsumen hanya dalam satu dashboard.</p>
-                    <a href="https://wa.me/6281284942940?text=Halo%20Contentro%20Insights,%20saya%20ingin%20mendapatkan%20Analisis%20Insight%20Bisnis%20seharga%20Rp100.000." target="_blank" class="inline-flex items-center justify-center bg-white text-indigo-900 px-8 py-4 rounded-full font-black hover:bg-indigo-50 hover:shadow-[0_0_20px_rgba(255,255,255,0.4)] transform hover:-translate-y-1 transition-all text-lg border-2 border-indigo-200">
-                        <i class="fas fa-chart-pie text-xl mr-3 text-indigo-600"></i> Dapatkan Analisis Bisnis Anda – Rp 100.000
-                    </a>
-                </div>
-            </div>
-
-            <!-- Report Grid (Sinyal Peluang Anda) -->
-            <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 border-b border-slate-200 pb-4">
+            <!-- Sample Reports Grid -->
+            <!-- ID 'market-signals' ditambahkan di sini agar bisa di-scroll -->
+            <div id="market-signals" class="flex flex-col md:flex-row md:items-end justify-between mb-8 border-b border-slate-200 pb-4 scroll-mt-24">
                 <div>
                     <h2 class="text-2xl md:text-3xl font-extrabold text-slate-800 flex items-center mb-2">
-                        <i class="fas fa-bolt text-amber-500 mr-3"></i> Contoh Sinyal Peluang
+                        <i class="fas fa-bolt text-indigo-600 mr-3"></i> Contoh Sinyal Pasar
                     </h2>
-                    <p class="text-slate-500">Intip rangkuman temuan *Early Warning* dari Contentro Insights yang memandu inovasi klien kami.</p>
+                    <p class="text-slate-500">Intip bagaimana data kami membantu klien mengambil keputusan cepat dan akurat.</p>
                 </div>
-                <span class="text-sm font-bold text-indigo-600 bg-indigo-50 px-3 py-1 rounded-full hidden md:inline-block">Klik kartu untuk memindai data</span>
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-20">
-                <!-- Card 1 -->
-                <div onclick="showPage('report1')" class="group bg-white p-8 rounded-3xl shadow-sm border border-slate-200 hover:shadow-xl hover:border-indigo-300 hover:-translate-y-1 transition duration-300 cursor-pointer flex flex-col h-full">
-                    <div class="flex justify-between items-start mb-6">
-                        <div class="w-14 h-14 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition shadow-sm">
-                            <i class="fas fa-mars text-2xl"></i>
-                        </div>
-                        <span class="text-[10px] font-bold bg-indigo-50 text-indigo-600 px-2 py-1 rounded uppercase tracking-wider">Untapped Market</span>
-                    </div>
-                    <h3 class="font-extrabold text-xl mb-3 text-slate-900 group-hover:text-indigo-600 transition">The Male Market Revolution</h3>
-                    <p class="text-slate-500 text-sm mb-6 leading-relaxed flex-grow">Deteksi anomali 46,9% audiens pria yang diabaikan kompetitor. Kuasai ceruk pasar senilai 1.4 Juta Reach ini sebelum *brand* lain menyadarinya.</p>
+                <!-- Card 1: Male Market -->
+                <div onclick="showPage('report1')" class="group bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:shadow-xl hover:border-indigo-300 hover:-translate-y-1 transition duration-300 cursor-pointer flex flex-col h-full">
+                    <span class="text-[10px] font-bold bg-blue-50 text-blue-600 px-2 py-1 rounded uppercase tracking-wider w-fit mb-4">Market Gap</span>
+                    <h3 class="font-extrabold text-lg mb-3 text-slate-900 group-hover:text-indigo-600 transition">The Male Market Revolution</h3>
+                    <p class="text-slate-500 text-sm mb-6 leading-relaxed flex-grow">Deteksi anomali: 46% audiens pria aktif mencari treatment wajah namun konten industri masih 90% fokus wanita. Peluang "Blue Ocean" yang belum disentuh kompetitor.</p>
                     <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-indigo-600 font-bold text-sm">
-                        <span>Pindai Sinyal</span>
+                        <span>Lihat Insight</span>
                         <i class="fas fa-arrow-right group-hover:translate-x-2 transition-transform"></i>
                     </div>
                 </div>
 
-                <!-- Card 2 -->
-                <div onclick="showPage('report2')" class="group bg-white p-8 rounded-3xl shadow-sm border border-slate-200 hover:shadow-xl hover:border-purple-300 hover:-translate-y-1 transition duration-300 cursor-pointer flex flex-col h-full">
-                    <div class="flex justify-between items-start mb-6">
-                        <div class="w-14 h-14 bg-purple-50 text-purple-600 rounded-2xl flex items-center justify-center group-hover:bg-purple-600 group-hover:text-white transition shadow-sm">
-                            <i class="fab fa-tiktok text-2xl"></i>
-                        </div>
-                        <span class="text-[10px] font-bold bg-indigo-50 text-indigo-600 px-2 py-1 rounded uppercase tracking-wider">Algorithm Shift</span>
-                    </div>
-                    <h3 class="font-extrabold text-xl mb-3 text-slate-900 group-hover:text-purple-600 transition">TikTok ROI & Influencer Playbook</h3>
-                    <p class="text-slate-500 text-sm mb-6 leading-relaxed flex-grow">Ketahui rahasia di balik 1 postingan organik yang meledakkan 2.9M Reach. Pahami pola algoritma baru dan tinggalkan metode spamming IG kuno.</p>
+                <!-- Card 2: TikTok ROI -->
+                <div onclick="showPage('report2')" class="group bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:shadow-xl hover:border-purple-300 hover:-translate-y-1 transition duration-300 cursor-pointer flex flex-col h-full">
+                    <span class="text-[10px] font-bold bg-purple-50 text-purple-600 px-2 py-1 rounded uppercase tracking-wider w-fit mb-4">Platform Strategy</span>
+                    <h3 class="font-extrabold text-lg mb-3 text-slate-900 group-hover:text-purple-600 transition">TikTok ROI Playbook</h3>
+                    <p class="text-slate-500 text-sm mb-6 leading-relaxed flex-grow">Analisis mendalam: 1 video TikTok organik menghasilkan jangkauan 3x lipat dibanding iklan berbayar Instagram. Rahasia algoritma FYP untuk klinik kecantikan.</p>
                     <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-purple-600 font-bold text-sm">
-                        <span>Pindai Sinyal</span>
+                        <span>Lihat Insight</span>
                         <i class="fas fa-arrow-right group-hover:translate-x-2 transition-transform"></i>
                     </div>
                 </div>
 
-                <!-- Card 3 -->
-                <div onclick="showPage('report3')" class="group bg-white p-8 rounded-3xl shadow-sm border border-slate-200 hover:shadow-xl hover:border-teal-300 hover:-translate-y-1 transition duration-300 cursor-pointer flex flex-col h-full">
-                    <div class="flex justify-between items-start mb-6">
-                        <div class="w-14 h-14 bg-teal-50 text-teal-600 rounded-2xl flex items-center justify-center group-hover:bg-teal-600 group-hover:text-white transition shadow-sm">
-                            <i class="fas fa-microscope text-2xl"></i>
-                        </div>
-                        <span class="text-[10px] font-bold bg-indigo-50 text-indigo-600 px-2 py-1 rounded uppercase tracking-wider">Emerging Tech</span>
-                    </div>
-                    <h3 class="font-extrabold text-xl mb-3 text-slate-900 group-hover:text-teal-600 transition">Trend Forecast & Competitor Edge</h3>
-                    <p class="text-slate-500 text-sm mb-6 leading-relaxed flex-grow">Deteksi dini pergeseran audiens menuju *treatment Medical-Grade*. Jadilah yang pertama merekomendasikan layanan baru berbasis data ini.</p>
+                <!-- Card 3: Trend Forecast -->
+                <div onclick="showPage('report3')" class="group bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:shadow-xl hover:border-teal-300 hover:-translate-y-1 transition duration-300 cursor-pointer flex flex-col h-full">
+                    <span class="text-[10px] font-bold bg-teal-50 text-teal-600 px-2 py-1 rounded uppercase tracking-wider w-fit mb-4">Emerging Trend</span>
+                    <h3 class="font-extrabold text-lg mb-3 text-slate-900 group-hover:text-teal-600 transition">Skin-Tech Takeover</h3>
+                    <p class="text-slate-500 text-sm mb-6 leading-relaxed flex-grow">Pergeseran masif: Audiens mulai meninggalkan skincare OTC menuju "Medical-Grade Treatment". Tren #PDTTherapy dan #JellySkin mulai mendominasi percakapan.</p>
                     <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-teal-600 font-bold text-sm">
-                        <span>Pindai Sinyal</span>
+                        <span>Lihat Insight</span>
                         <i class="fas fa-arrow-right group-hover:translate-x-2 transition-transform"></i>
                     </div>
                 </div>
 
-                <!-- Card 4 -->
-                <div onclick="showPage('report4')" class="group bg-white p-8 rounded-3xl shadow-sm border border-slate-200 hover:shadow-xl hover:border-amber-300 hover:-translate-y-1 transition duration-300 cursor-pointer flex flex-col h-full">
-                    <div class="flex justify-between items-start mb-6">
-                        <div class="w-14 h-14 bg-amber-50 text-amber-600 rounded-2xl flex items-center justify-center group-hover:bg-amber-600 group-hover:text-white transition shadow-sm">
-                            <i class="fas fa-map-marked-alt text-2xl"></i>
-                        </div>
-                        <span class="text-[10px] font-bold bg-indigo-50 text-indigo-600 px-2 py-1 rounded uppercase tracking-wider">Geo-Expansion</span>
-                    </div>
-                    <h3 class="font-extrabold text-xl mb-3 text-slate-900 group-hover:text-amber-600 transition">Regional & Hyper-Local Targeting</h3>
-                    <p class="text-slate-500 text-sm mb-6 leading-relaxed flex-grow">Temukan tambang emas hiper-lokal yang belum tersentuh di luar Pulau Jawa sementara kompetitor Anda masih berdarah-darah di Ibukota.</p>
+                <!-- Card 4: Regional Growth -->
+                <div onclick="showPage('report4')" class="group bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:shadow-xl hover:border-amber-300 hover:-translate-y-1 transition duration-300 cursor-pointer flex flex-col h-full">
+                    <span class="text-[10px] font-bold bg-amber-50 text-amber-600 px-2 py-1 rounded uppercase tracking-wider w-fit mb-4">Geo-Expansion</span>
+                    <h3 class="font-extrabold text-lg mb-3 text-slate-900 group-hover:text-amber-600 transition">Regional Goldmine</h3>
+                    <p class="text-slate-500 text-sm mb-6 leading-relaxed flex-grow">Peta buta terungkap: Kalimantan & Sumatera menyumbang 30% trafik diskusi kecantikan namun minim kompetisi. Peluang ekspansi tanpa perang harga Jakarta.</p>
                     <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-amber-600 font-bold text-sm">
-                        <span>Pindai Sinyal</span>
+                        <span>Lihat Insight</span>
                         <i class="fas fa-arrow-right group-hover:translate-x-2 transition-transform"></i>
                     </div>
                 </div>
 
-                <!-- Card 5 -->
-                <div onclick="showPage('report5')" class="group bg-white p-8 rounded-3xl shadow-sm border border-slate-200 hover:shadow-xl hover:border-red-300 hover:-translate-y-1 transition duration-300 cursor-pointer flex flex-col h-full">
-                    <div class="flex justify-between items-start mb-6">
-                        <div class="w-14 h-14 bg-red-50 text-red-600 rounded-2xl flex items-center justify-center group-hover:bg-red-600 group-hover:text-white transition shadow-sm">
-                            <i class="fas fa-radiation text-2xl"></i>
-                        </div>
-                        <span class="text-[10px] font-bold bg-indigo-50 text-indigo-600 px-2 py-1 rounded uppercase tracking-wider">Early Warning</span>
-                    </div>
-                    <h3 class="font-extrabold text-xl mb-3 text-slate-900 group-hover:text-red-600 transition">Reputation Armor & Crisis Protocol</h3>
-                    <p class="text-slate-500 text-sm mb-6 leading-relaxed flex-grow">Sistem peringatan dini untuk badai reputasi. Pivot strategi *marketing* Anda menjadi *Credential Marketing* sebelum krisis kompetitor menghantam sales Anda.</p>
+                <!-- Card 5: Crisis Management -->
+                <div onclick="showPage('report5')" class="group bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:shadow-xl hover:border-red-300 hover:-translate-y-1 transition duration-300 cursor-pointer flex flex-col h-full">
+                    <span class="text-[10px] font-bold bg-red-50 text-red-600 px-2 py-1 rounded uppercase tracking-wider w-fit mb-4">Reputation Alert</span>
+                    <h3 class="font-extrabold text-lg mb-3 text-slate-900 group-hover:text-red-600 transition">Crisis Protocol</h3>
+                    <p class="text-slate-500 text-sm mb-6 leading-relaxed flex-grow">Studi kasus: Deteksi dini sentimen toksik akibat isu "Malpraktik" & "Reviewer Doktif". Bagaimana sistem early warning menyelamatkan revenue.</p>
                     <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-red-600 font-bold text-sm">
-                        <span>Pindai Sinyal</span>
+                        <span>Lihat Insight</span>
                         <i class="fas fa-arrow-right group-hover:translate-x-2 transition-transform"></i>
                     </div>
                 </div>
             </div>
 
-            <!-- Pricing Section (Master Pack) -->
-            <div id="pricing" class="bg-slate-900 rounded-[2.5rem] p-10 md:p-16 text-white text-center relative overflow-hidden shadow-2xl scroll-mt-24">
-                <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMiIgY3k9IjIiIHI9IjIiIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMC4wNSIvPjwvc3ZnPg==')] opacity-30"></div>
-                <div class="absolute top-0 left-0 w-full h-full opacity-20 pointer-events-none">
-                    <div class="absolute -top-20 -left-20 w-64 h-64 bg-indigo-500 rounded-full blur-3xl"></div>
-                    <div class="absolute -bottom-20 -right-20 w-80 h-80 bg-teal-600 rounded-full blur-3xl"></div>
-                </div>
+            <!-- Pricing Section -->
+            <div id="pricing" class="bg-white rounded-[2.5rem] p-10 md:p-16 text-center relative overflow-hidden shadow-2xl scroll-mt-24 border border-slate-200">
+                <div class="absolute inset-0 bg-gradient-to-br from-indigo-50 to-pink-50 opacity-50"></div>
                 
                 <div class="relative z-10 max-w-4xl mx-auto">
-                    <div class="inline-block bg-white/10 border border-white/20 backdrop-blur-sm px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest text-teal-300 mb-4">
-                        Dapatkan Keunggulan Kompetitif
-                    </div>
-                    <h2 class="text-3xl md:text-5xl font-extrabold mb-6 leading-tight">Bersiaplah Menjadi <br> Sang Pionir Industri.</h2>
-                    <p class="text-slate-300 mb-12 text-lg md:text-xl max-w-2xl mx-auto">Berhentilah menjadi pengikut dan mulailah mendikte arah pasar kecantikan melalui data komprehensif dari Contentro Insights.</p>
+                    <span class="inline-block bg-slate-900 text-white px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-4">Investasi Kecil, Insight Besar</span>
+                    <h2 class="text-3xl md:text-5xl font-extrabold text-slate-900 mb-6 leading-tight">Mulai Mendengarkan <br>Brand Anda Hari Ini.</h2>
+                    <p class="text-slate-600 mb-12 text-lg max-w-2xl mx-auto">Jangan biarkan kompetitor mencuri pasar Anda dalam diam. Dapatkan akses ke intelijen pasar yang selama ini hanya dimiliki brand besar.</p>
                     
-                    <div class="flex flex-col md:flex-row justify-center items-center gap-6 mb-12">
+                    <div class="flex flex-col md:flex-row justify-center items-stretch gap-8 mb-12">
                         <!-- Single Report -->
-                        <div class="bg-white/5 backdrop-blur-xl px-10 py-10 rounded-3xl border border-white/10 w-full md:w-auto hover:bg-white/10 transition">
-                            <span class="block text-slate-400 text-xs uppercase tracking-widest font-bold mb-2">Analisis Insight Satuan</span>
-                            <div class="flex flex-col items-center justify-center">
-                                <span class="text-3xl font-extrabold">Rp 100.000</span>
-                                <span class="text-xs text-slate-400 mt-1">per PDF Laporan Data</span>
+                        <div class="bg-white px-8 py-10 rounded-3xl border border-slate-200 shadow-sm w-full md:w-auto hover:shadow-md transition text-left flex flex-col">
+                            <span class="block text-slate-500 text-xs uppercase tracking-widest font-bold mb-4">Starter Pack</span>
+                            <div class="mb-6">
+                                <span class="text-4xl font-extrabold text-slate-900">Rp 100k</span>
+                                <span class="text-sm text-slate-500"> / laporan</span>
                             </div>
-                            <ul class="text-left mt-8 space-y-4 text-sm text-slate-300">
-                                <li class="flex"><i class="fas fa-check-circle text-teal-400 mr-3 mt-0.5"></i> <span>1 Laporan PDF Eksekutif</span></li>
-                                <li class="flex"><i class="fas fa-check-circle text-teal-400 mr-3 mt-0.5"></i> <span>Temuan Visi & Aksi (No Fluff)</span></li>
-                                <li class="flex"><i class="fas fa-check-circle text-teal-400 mr-3 mt-0.5"></i> <span>Siap Masuk Proposal Inovasi</span></li>
+                            <ul class="text-sm text-slate-600 space-y-3 flex-grow">
+                                <li class="flex"><i class="fas fa-check-circle text-green-500 mr-3 mt-0.5"></i> 1 PDF Insight Spesifik</li>
+                                <li class="flex"><i class="fas fa-check-circle text-green-500 mr-3 mt-0.5"></i> Analisis Topik Tren</li>
+                                <li class="flex"><i class="fas fa-check-circle text-green-500 mr-3 mt-0.5"></i> Rekomendasi Aksi</li>
                             </ul>
+                            <a href="https://wa.me/6281284942940?text=Halo%20Contentro,%20saya%20mau%20pesan%20Laporan%20Single%20Rp100k." target="_blank" class="mt-8 block text-center bg-slate-100 text-slate-700 px-6 py-3 rounded-full font-bold hover:bg-slate-200 transition text-sm">
+                                Pesan Sekarang
+                            </a>
                         </div>
                         
                         <!-- Bundle Pack -->
-                        <div class="bg-gradient-to-b from-slate-800 to-slate-900 px-10 py-12 rounded-3xl shadow-2xl transform md:scale-110 border-2 border-indigo-500 relative w-full md:w-auto z-10">
-                            <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-indigo-500 to-teal-500 text-white text-xs font-black tracking-widest px-6 py-2 rounded-full shadow-lg whitespace-nowrap uppercase">
-                                🚀 The Visionary Master Pack
+                        <div class="bg-slate-900 px-8 py-10 rounded-3xl shadow-2xl w-full md:w-auto relative z-10 text-white border-2 border-indigo-600 flex flex-col">
+                            <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-indigo-600 text-white text-xs font-bold tracking-widest px-6 py-2 rounded-full shadow-lg whitespace-nowrap uppercase">
+                                Paling Laris
                             </div>
-                            <span class="block text-indigo-300 text-xs uppercase tracking-widest font-bold mb-2 mt-2">Arsitektur Total (5 Laporan)</span>
-                            <div class="flex flex-col items-center">
-                                <span class="text-5xl font-extrabold text-white drop-shadow-md">Rp 350.000</span>
-                                <span class="bg-teal-500/20 text-teal-300 border border-teal-500/30 text-xs font-bold px-3 py-1 rounded-full mt-3 backdrop-blur-sm">Akselerasi Diskon Rp 150.000</span>
+                            <span class="block text-indigo-300 text-xs uppercase tracking-widest font-bold mb-4">Business Masterpack</span>
+                            <div class="mb-6">
+                                <span class="text-4xl font-extrabold">Rp 350k</span>
+                                <span class="text-sm text-slate-400 line-through ml-2">Rp 500k</span>
                             </div>
-                            <ul class="text-left mt-8 space-y-4 text-sm text-slate-200">
-                                <li class="flex font-semibold"><i class="fas fa-lightbulb text-amber-400 mr-3 mt-0.5"></i> <span>Akses Lengkap ke 5 Sinyal Tren</span></li>
-                                <li class="flex"><i class="fas fa-lightbulb text-amber-400 mr-3 mt-0.5"></i> <span>Peta Peluang Pasar Baru</span></li>
-                                <li class="flex"><i class="fas fa-lightbulb text-amber-400 mr-3 mt-0.5"></i> <span>30-Days Content Idea Bonus</span></li>
-                                <li class="flex"><i class="fas fa-lightbulb text-amber-400 mr-3 mt-0.5"></i> <span>Priority WhatsApp Support</span></li>
+                            <ul class="text-sm text-slate-200 space-y-3 flex-grow">
+                                <li class="flex"><i class="fas fa-star text-yellow-400 mr-3 mt-0.5"></i> 5 Laporan Lengkap (Semua Topik)</li>
+                                <li class="flex"><i class="fas fa-star text-yellow-400 mr-3 mt-0.5"></i> Deep Dive Analysis</li>
+                                <li class="flex"><i class="fas fa-star text-yellow-400 mr-3 mt-0.5"></i> Data Kompetitor</li>
+                                <li class="flex"><i class="fas fa-star text-yellow-400 mr-3 mt-0.5"></i> Priority Support</li>
                             </ul>
+                            <a href="https://wa.me/6281284942940?text=Halo%20Contentro,%20saya%20mau%20pesan%20Masterpack%20Rp350k." target="_blank" class="mt-8 block text-center bg-indigo-600 text-white px-6 py-3 rounded-full font-bold hover:bg-indigo-500 transition text-sm shadow-lg">
+                                <i class="fas fa-rocket mr-1"></i> Dapatkan Masterpack
+                            </a>
                         </div>
                     </div>
-                    
-                    <a href="https://wa.me/6281284942940?text=Halo%20Contentro%20Insights,%20saya%20ingin%20mengamankan%20Visionary%20Master%20Pack%20seharga%20Rp%20350.000%20untuk%20membangun%20strategi%20baru." target="_blank" class="inline-flex items-center justify-center bg-gradient-to-r from-teal-500 to-emerald-600 text-white px-10 py-5 rounded-full font-extrabold hover:from-teal-400 hover:to-emerald-500 hover:shadow-[0_0_30px_rgba(20,184,166,0.5)] transform hover:-translate-y-1 transition-all text-lg w-full sm:w-auto border border-teal-400">
-                        <i class="fab fa-whatsapp text-2xl mr-3"></i> AKTIFKAN RADAR MASTER PACK 
-                    </a>
-                    <p class="text-slate-400 text-sm mt-6 flex items-center justify-center">
-                        <i class="fas fa-bolt mr-2 text-amber-500"></i> Berkas insight akan dikirimkan seketika via WhatsApp Anda.
-                    </p>
                 </div>
             </div>
         </div>
 
         <!-- ========================================== -->
-        <!-- REPORT 1: MALE MARKET -->
+        <!-- REPORT PAGES TEMPLATE -->
         <!-- ========================================== -->
+
+        <!-- REPORT 1 -->
         <div id="report1" class="report-content max-w-4xl mx-auto">
-            <button onclick="showPage('home')" class="text-slate-500 hover:text-indigo-600 mb-8 flex items-center font-bold text-sm uppercase tracking-wider transition group bg-white px-4 py-2 rounded-full shadow-sm border border-slate-200">
+            <!-- Top Back Button: Now targets market-signals section -->
+            <button onclick="goToMarketSignals()" class="text-slate-500 hover:text-indigo-600 mb-8 flex items-center font-bold text-sm uppercase tracking-wider transition group bg-white px-4 py-2 rounded-full shadow-sm border border-slate-200">
                 <i class="fas fa-arrow-left mr-2 transform group-hover:-translate-x-1 transition"></i> Kembali ke Radar Pasar
             </button>
             
@@ -522,107 +376,81 @@
                     <div class="absolute right-0 bottom-0 opacity-10 transform translate-x-1/4 translate-y-1/4">
                         <i class="fas fa-mars text-[200px]"></i>
                     </div>
-                    <span class="bg-indigo-900 text-indigo-100 border border-indigo-500/50 px-4 py-1.5 rounded-full text-[10px] font-bold tracking-widest uppercase mb-4 inline-block shadow-sm">Architect Signal #001</span>
+                    <span class="bg-indigo-900 text-indigo-100 border border-indigo-500/50 px-4 py-1.5 rounded-full text-[10px] font-bold tracking-widest uppercase mb-4 inline-block shadow-sm">Signal #001: Market Gap</span>
                     <h1 class="text-3xl md:text-5xl font-extrabold mb-4 leading-tight">The Male Market Revolution</h1>
-                    <p class="text-indigo-200 text-lg max-w-2xl">Mendeteksi anomali tersembunyi: Potensi 1,4 Juta jangkauan audiens pria yang belum tersentuh kompetitor utama.</p>
+                    <p class="text-indigo-200 text-lg max-w-2xl">Mendeteksi anomali: 1,4 Juta jangkauan audiens pria yang "diabaikan" oleh 90% pemain industri kecantikan.</p>
                 </div>
 
                 <div class="p-10 md:p-12 prose prose-slate max-w-none prose-headings:text-slate-800">
-                    <div class="bg-indigo-50 border-l-4 border-indigo-500 p-6 rounded-r-2xl mb-10">
+                    <div class="bg-indigo-50 border-l-4 border-indigo-500 p-6 rounded-r-2xl mb-10 not-prose">
                         <h4 class="font-extrabold text-indigo-900 text-xl mb-2 flex items-center"><i class="fas fa-chart-line mr-2"></i> Trend Alert: "The 46.9% Anomaly"</h4>
-                        <p class="text-indigo-800 m-0 leading-relaxed text-sm">Saat brand lain sibuk berebut pasar wanita yang *red ocean*, radar kami mendeteksi anomali berharga. Dari total <strong>11,8 Juta Reach</strong> obrolan industri kecantikan, <strong>46,9% (1.4 Juta Reach spesifik)</strong> digerakkan oleh audiens pria. Gap inovasi ini sangat lebar karena lebih dari 90% materi promosi klinik di pasar masih buta akan data ini dan menggunakan elemen feminin secara eksklusif.</p>
+                        <p class="text-indigo-800 m-0 leading-relaxed text-sm">Saat brand lain sibuk berebut pasar wanita (Red Ocean), radar Contentro mendeteksi <strong>46,9% pembicara</strong> tentang treatment wajah adalah pria. Namun, inventaris iklan dan konten di pasar masih dominan nuansa feminim. Ini adalah peluang "Blue Ocean" untuk brand yang ingin diversifikasi market.</p>
                     </div>
 
-                    <h3>1. Early Warning: Demografi yang Bangkit</h3>
-                    <p>Audiens pria di klinik kecantikan telah berevolusi melewati sebatas "membeli sabun cuci muka". Keterlibatan mereka mendorong terciptanya <strong>User Generated Content (UGC) organik sebanyak 1.204 post</strong> terkait layanan estetis.</p>
+                    <h3>1. Data Demografi: Pria Mana yang Harus Dibidik?</h3>
+                    <p>Bukan sekadar "pria", tapi segmen spesifik yang memiliki daya beli dan kesadaran tinggi akan penampilan (Grooming Conscious).</p>
                     
-                    <div class="table-container overflow-x-auto mb-10">
+                    <div class="table-container overflow-x-auto mb-10 not-prose">
                         <table class="min-w-full divide-y divide-slate-200 border border-slate-200 rounded-xl overflow-hidden">
                             <thead class="bg-slate-50">
                                 <tr>
-                                    <th class="px-6 py-4 text-left text-xs font-bold text-slate-500 uppercase tracking-wider">Demografi Segmentasi</th>
-                                    <th class="px-6 py-4 text-left text-xs font-bold text-slate-500 uppercase tracking-wider">Total Jangkauan (Reach)</th>
-                                    <th class="px-6 py-4 text-left text-xs font-bold text-slate-500 uppercase tracking-wider">Porsi terhadap Total</th>
-                                    <th class="px-6 py-4 text-left text-xs font-bold text-slate-500 uppercase tracking-wider">Insight Perilaku</th>
+                                    <th class="px-6 py-4 text-left text-xs font-bold text-slate-500 uppercase">Segmen</th>
+                                    <th class="px-6 py-4 text-left text-xs font-bold text-slate-500 uppercase">Jangkauan Potensial</th>
+                                    <th class="px-6 py-4 text-left text-xs font-bold text-slate-500 uppercase">Insight Perilaku</th>
                                 </tr>
                             </thead>
                             <tbody class="bg-white divide-y divide-slate-200">
                                 <tr class="bg-indigo-50/30 hover:bg-indigo-50 transition">
                                     <td class="px-6 py-4 whitespace-nowrap font-bold text-slate-800">Pria (18-24 Tahun)</td>
                                     <td class="px-6 py-4 whitespace-nowrap font-bold text-indigo-600">674.400</td>
-                                    <td class="px-6 py-4 whitespace-nowrap">
-                                        <div class="flex items-center"><span class="mr-2 text-sm font-bold">22.4%</span><div class="w-16 bg-slate-200 rounded-full h-2"><div class="bg-indigo-500 h-2 rounded-full" style="width: 22.4%"></div></div></div>
-                                    </td>
-                                    <td class="px-6 py-4 text-sm text-slate-600">Terpapar standar Gen-Z (Selfie culture, sadar kamera).</td>
+                                    <td class="px-6 py-4 text-sm text-slate-600">Gen-Z, sadar kamera, termotivasi tren TikTok/IG.</td>
                                 </tr>
                                 <tr class="hover:bg-slate-50 transition">
                                     <td class="px-6 py-4 whitespace-nowrap font-bold text-slate-800">Pria (25-34 Tahun)</td>
                                     <td class="px-6 py-4 whitespace-nowrap font-bold text-slate-600">272.300</td>
-                                    <td class="px-6 py-4 whitespace-nowrap">
-                                        <div class="flex items-center"><span class="mr-2 text-sm font-bold">9.1%</span><div class="w-16 bg-slate-200 rounded-full h-2"><div class="bg-slate-400 h-2 rounded-full" style="width: 9.1%"></div></div></div>
-                                    </td>
-                                    <td class="px-6 py-4 text-sm text-slate-600">Daya beli tinggi, motivasi karir profesional/status.</td>
+                                    <td class="px-6 py-4 text-sm text-slate-600">Profesional, daya beli tinggi, butuh penampilan untuk karir.</td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
 
+                    <h3>2. Psikografis: Mereka Bukan Pria "Biasa"</h3>
+                    <p>Minat mereka tidak melulu soal otomotif. Data minat (Interest Mapping) menunjukkan overlap tinggi dengan dunia teknologi dan gaya hidup modern.</p>
+                    
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
-                        <div>
-                            <h3>2. Blueprint Psikografis</h3>
-                            <p class="text-sm mb-4">Minat audiens memvalidasi bahwa pria yang mencari klinik merupakan *early adopters* teknologi.</p>
-                            <ul class="space-y-4">
-                                <li>
-                                    <div class="flex justify-between text-sm font-bold text-slate-700 mb-1"><span>Mass Media & Online Services</span> <span class="text-indigo-600">68.0%</span></div>
-                                    <div class="w-full bg-slate-100 rounded-full h-2.5"><div class="bg-indigo-500 h-2.5 rounded-full" style="width: 68%"></div></div>
-                                </li>
-                                <li>
-                                    <div class="flex justify-between text-sm font-bold text-slate-700 mb-1"><span>Information Technology (IT)</span> <span class="text-teal-500">47.1%</span></div>
-                                    <div class="w-full bg-slate-100 rounded-full h-2.5"><div class="bg-teal-400 h-2.5 rounded-full" style="width: 47%"></div></div>
-                                </li>
+                        <div class="bg-slate-50 p-6 rounded-xl border">
+                            <h4 class="font-bold text-slate-800 mb-2">Top Interest:</h4>
+                            <ul class="space-y-2 text-sm text-slate-600">
+                                <li><i class="fas fa-check text-green-500 mr-2"></i> Technology & Gadget (68%)</li>
+                                <li><i class="fas fa-check text-green-500 mr-2"></i> Gaming & E-Sports (55%)</li>
+                                <li><i class="fas fa-check text-green-500 mr-2"></i> Entrepreneurship (40%)</li>
                             </ul>
                         </div>
-                        <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200 shadow-sm">
-                            <h3 class="text-lg mt-0 mb-3"><i class="fab fa-youtube text-red-500 mr-2"></i>The YouTube Discovery</h3>
-                            <p class="text-sm text-slate-600">Radar kami menangkap fenomena unik: <strong>YouTube merajai jangkauan platform (36.8% / 1.1M Reach)</strong> melampaui Instagram untuk audiens ini.</p>
-                            <div class="bg-white p-3 rounded-lg border border-slate-100 mt-3 text-sm font-medium text-slate-700">
-                                <strong>Visi Arsitek:</strong> Konten format panjang yang membedah "Cara Kerja Alat" (Scientific Review) di YouTube akan dikonsumsi masif oleh audiens pria dibanding tren joget TikTok.
-                            </div>
-                        </div>
-                    </div>
-
-                    <h3 class="flex items-center"><i class="fas fa-lightbulb text-amber-500 mr-2"></i> Inovasi Pionir (Action Plan)</h3>
-                    <div class="space-y-4">
-                        <div class="border border-slate-200 p-5 rounded-xl flex gap-4 bg-white shadow-sm hover:shadow-md transition border-l-4 border-l-amber-400">
-                            <div class="text-amber-500 text-2xl mt-1"><i class="fas fa-flask"></i></div>
-                            <div>
-                                <strong class="text-slate-800 text-lg block mb-1">Ciptakan Kampanye "The Gentleman's Tech"</strong>
-                                <span class="text-slate-600 text-sm">Gunakan data IT & Tech. Kemas treatment laser bukan sebagai perawatan wajah biasa, tetapi sebagai *upgrade skin-tech* layaknya merawat *supercar*. Tinggalkan *bidding* kata kunci "skincare" di Facebook Ads, ganti dengan target "Gadget & Otomotif".</span>
-                            </div>
+                        <div class="bg-slate-900 text-white p-6 rounded-xl border border-slate-800">
+                            <h4 class="font-bold text-indigo-300 mb-2"><i class="fas fa-lightbulb text-yellow-400 mr-2"></i> Action Plan:</h4>
+                            <p class="text-sm text-slate-300">Pivot konten dari "Skincare untuk Wanita" menjadi "Skin Technology untuk Pria Modern". Gunakan pendekatan logis dan scientific review, bukan sekadar "pamer wajah glowing".</p>
                         </div>
                     </div>
                 </div>
 
-                <!-- Footer & CTA Report 1 -->
                 <div class="bg-slate-900 text-white p-8 md:p-12 border-t border-slate-800 rounded-b-[2rem] text-center">
-                    <p class="text-sm text-indigo-300 font-bold tracking-widest uppercase mb-6">Jangan Biarkan Kompetitor Mendahului Anda</p>
+                    <p class="text-sm text-indigo-300 font-bold tracking-widest uppercase mb-6">Dapatkan Laporan Lengkap (PDF)</p>
                     <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                        <button onclick="showPage('home')" class="bg-slate-800 text-slate-300 border border-slate-700 px-8 py-3.5 rounded-full font-bold hover:bg-slate-700 hover:text-white transition shadow-sm w-full sm:w-auto flex items-center justify-center">
-                            <i class="fas fa-home text-lg mr-2"></i> Kembali ke Dashboard
-                        </button>
-                        <a href="https://wa.me/6281284942940?text=Halo%20Contentro%20Insights,%20saya%20butuh%20Laporan%20Lengkap%20PDF%20001%20untuk%20membangun%20strategi%20baru" target="_blank" class="bg-indigo-600 text-white px-8 py-3.5 rounded-full font-bold hover:bg-indigo-500 transition shadow-lg w-full sm:w-auto flex items-center justify-center">
-                            <i class="fas fa-file-pdf text-xl mr-2"></i> Dapatkan PDF Sinyal Lengkap
+                        <a href="https://wa.me/6281284942940?text=Halo%20Contentro,%20saya%20mau%20pesan%20Laporan%20Male%20Market%20Revolution." target="_blank" class="inline-flex items-center bg-indigo-600 text-white px-8 py-4 rounded-full font-bold hover:bg-indigo-500 transition shadow-lg">
+                            <i class="fas fa-file-pdf mr-2"></i> Beli Laporan (Rp 100.000)
                         </a>
+                        <!-- Bottom Back Button -->
+                        <button onclick="goToMarketSignals()" class="bg-slate-700 text-slate-300 border border-slate-600 px-8 py-4 rounded-full font-bold hover:bg-slate-600 transition w-full sm:w-auto flex items-center justify-center">
+                            <i class="fas fa-arrow-left mr-2"></i> Kembali ke Daftar
+                        </button>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- ========================================== -->
-        <!-- REPORT 2: TIKTOK ROI -->
-        <!-- ========================================== -->
+        <!-- REPORT 2 -->
         <div id="report2" class="report-content max-w-4xl mx-auto">
-            <button onclick="showPage('home')" class="text-slate-500 hover:text-purple-600 mb-8 flex items-center font-bold text-sm uppercase tracking-wider transition group bg-white px-4 py-2 rounded-full shadow-sm border border-slate-200">
+            <button onclick="goToMarketSignals()" class="text-slate-500 hover:text-purple-600 mb-8 flex items-center font-bold text-sm uppercase tracking-wider transition group bg-white px-4 py-2 rounded-full shadow-sm border border-slate-200">
                 <i class="fas fa-arrow-left mr-2 transform group-hover:-translate-x-1 transition"></i> Kembali ke Radar Pasar
             </button>
             
@@ -631,81 +459,67 @@
                     <div class="absolute right-0 bottom-0 opacity-10 transform translate-x-1/4 translate-y-1/4">
                         <i class="fab fa-tiktok text-[200px]"></i>
                     </div>
-                    <span class="bg-purple-900 text-purple-100 border border-purple-500/50 px-4 py-1.5 rounded-full text-[10px] font-bold tracking-widest uppercase mb-4 inline-block shadow-sm">Architect Signal #002</span>
-                    <h1 class="text-3xl md:text-5xl font-extrabold mb-4 leading-tight">TikTok ROI & Influencer Playbook</h1>
-                    <p class="text-purple-200 text-lg max-w-2xl">Arsitek strategi tahu kemana algoritma bergerak. Bedah tuntas metrik di balik 1 konten mikro-kreator yang meledakkan 2.9 Juta Reach.</p>
+                    <span class="bg-purple-900 text-purple-100 border border-purple-500/50 px-4 py-1.5 rounded-full text-[10px] font-bold tracking-widest uppercase mb-4 inline-block shadow-sm">Signal #002: Platform Strategy</span>
+                    <h1 class="text-3xl md:text-5xl font-extrabold mb-4 leading-tight">TikTok ROI Playbook</h1>
+                    <p class="text-purple-200 text-lg max-w-2xl">Membongkar rahasia: Bagaimana 1 video organik bisa mengalahkan jangkauan iklan berbayar senilai puluhan juta rupiah.</p>
                 </div>
 
                 <div class="p-10 md:p-12 prose prose-slate max-w-none prose-headings:text-slate-800">
-                    <div class="grid grid-cols-1 md:grid-cols-12 gap-6 mb-10 items-center">
+                    <div class="grid grid-cols-1 md:grid-cols-12 gap-6 mb-10 items-center not-prose">
                         <div class="col-span-12 md:col-span-7 bg-purple-50 p-6 rounded-2xl border border-purple-200 h-full">
-                            <h4 class="font-bold text-purple-900 mt-0 text-xl flex items-center"><i class="fas fa-satellite mr-2"></i> Radar Anomali: 18 Februari</h4>
-                            <p class="text-sm text-purple-800 mb-0">Pada 18 Februari, sinyal intelijen kami mendeteksi <em>Reach</em> meroket <strong>+3.2 Juta (+60%)</strong>. Asal ledakan bukan dari *campaign* raksasa jutaan rupiah, melainkan 1 (satu) video TikTok organik dari kreator lokal <strong>@desyutan (82.5k followers)</strong>. Postingan sederhana dengan *caption* "Perawatan Wajah dulu ya Bestiee" ini mengaktifkan algoritma FYP, meng-generate <strong>2.9 Juta Reach</strong> seorang diri.</p>
+                            <h4 class="font-bold text-purple-900 mt-0 text-xl flex items-center"><i class="fas fa-satellite mr-2"></i> Radar Anomali</h4>
+                            <p class="text-sm text-purple-800 mb-0">Sistem mendeteksi lonjakan <em>Reach</em> sebesar <strong>+3.2 Juta (+60%)</strong> pada 18 Februari. Sumbernya bukan dari iklan, melainkan satu video TikTok dari micro-influencer <strong>@desyutan</strong> dengan format "Treatment Process".</p>
                         </div>
                         <div class="col-span-12 md:col-span-5 bg-slate-900 text-white p-6 rounded-2xl h-full flex flex-col justify-center items-center shadow-lg">
-                            <span class="text-slate-400 text-xs font-bold uppercase tracking-widest text-center">ROI Discovery</span>
+                            <span class="text-slate-400 text-xs font-bold uppercase tracking-widest text-center">Single Post Reach</span>
                             <span class="text-4xl font-black text-purple-400 mt-2 mb-1">2.900.000</span>
-                            <span class="text-xs font-medium bg-green-500/20 text-green-400 px-3 py-1 rounded-full border border-green-500/30 text-center mt-1">Single Content Reach</span>
+                            <span class="text-xs font-medium bg-green-500/20 text-green-400 px-3 py-1 rounded-full border border-green-500/30 text-center mt-1">Organic Traffic</span>
                         </div>
                     </div>
 
-                    <h3>1. Deteksi Efisiensi *Channel*</h3>
-                    <p>Orang lain mengikuti buku panduan lama; Pionir merancang efisiensi berdasarkan data waktu nyata (176k interaksi dianalisis):</p>
+                    <h3>1. Kenapa Instagram Kalah Persaingan?</h3>
+                    <p>Data menunjukkan bahwa Instagram kini menjadi "Red Ocean" di industri kecantikan. Engagement rate menurun karena pengguna lelah dengan konten promosi statis.</p>
                     
-                    <div class="table-container overflow-x-auto mb-10">
-                        <table class="min-w-full divide-y divide-slate-200 border border-slate-200 rounded-xl overflow-hidden">
-                            <thead class="bg-slate-50">
-                                <tr>
-                                    <th class="px-4 py-3 text-left text-xs font-bold text-slate-500 uppercase">Platform</th>
-                                    <th class="px-4 py-3 text-center text-xs font-bold text-slate-500 uppercase">Volume *Post*</th>
-                                    <th class="px-4 py-3 text-left text-xs font-bold text-slate-500 uppercase">Sinyal Peluang (ROI)</th>
-                                </tr>
-                            </thead>
-                            <tbody class="bg-white divide-y divide-slate-200 text-sm">
-                                <tr>
-                                    <td class="px-4 py-4 font-bold text-slate-800"><i class="fab fa-instagram mr-2 text-pink-500"></i>Instagram</td>
-                                    <td class="px-4 py-4 text-center font-bold">606 (+47%)</td>
-                                    <td class="px-4 py-4 text-slate-600">Pasar *Red Ocean*. Kompetitor membuang tenaga untuk spam 28 foto/hari dengan hasil stagnan. Jangan ikuti *crowd* ini.</td>
-                                </tr>
-                                <tr class="bg-purple-50/50 border-l-4 border-purple-500 hover:bg-purple-50 transition">
-                                    <td class="px-4 py-4 font-extrabold text-purple-800"><i class="fab fa-tiktok mr-2"></i>TikTok</td>
-                                    <td class="px-4 py-4 text-center font-extrabold text-purple-700">136 (+9.0%)</td>
-                                    <td class="px-4 py-4 text-purple-800 font-semibold">Distribusi konten tersepi, namun ber-ROI absolut. Ekosistem video pendek adalah tempat *brand* baru bisa viral mendadak.</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                    <div class="bg-slate-50 p-6 rounded-xl border border-slate-200 mb-10 not-prose">
+                        <h4 class="font-bold text-slate-800 mb-4">Perbandingan Platform:</h4>
+                        <div class="space-y-4">
+                            <div>
+                                <div class="flex justify-between text-sm mb-1"><span>Instagram (606 Post)</span> <span class="font-bold text-slate-500">Reach Stagnan</span></div>
+                                <div class="w-full bg-slate-200 rounded-full h-2"><div class="bg-slate-400 h-2 rounded-full" style="width: 40%"></div></div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between text-sm mb-1"><span>TikTok (136 Post)</span> <span class="font-bold text-purple-600">Reach Meledak</span></div>
+                                <div class="w-full bg-slate-200 rounded-full h-2"><div class="bg-purple-600 h-2 rounded-full" style="width: 85%"></div></div>
+                            </div>
+                        </div>
                     </div>
 
-                    <h3 class="flex items-center"><i class="fas fa-lightbulb text-amber-500 mr-2"></i> Inovasi Pionir (Action Plan)</h3>
-                    <div class="bg-white border-2 border-slate-200 p-6 rounded-2xl shadow-sm">
-                        <h4 class="text-purple-700 mt-0 text-lg">Jadilah Arsitek FYP (30 Hari)</h4>
-                        <ol class="text-slate-600 space-y-3 text-sm mt-4 pl-4 font-medium">
-                            <li><strong>Cut Budget IG Promo Cliche:</strong> Tarik dana dari desain *feed* IG yang statis dan kaku. Algoritma saat ini menghukum konten repetitif yang murni *hard-selling*.</li>
-                            <li><strong>Sebar 'Micro-Viral Seeds':</strong> Alokasikan budget tersebut ke 10-20 mikro-kreator lokal di kota spesifik. Biarkan ulasan jujur mereka (Hyper-local FYP) bekerja selagi *brand* nasional tertidur.</li>
-                        </ol>
-                    </div>
+                    <h3>2. Action Plan: Strategi Micro-Influencer</h3>
+                    <p>Jangan lagi gantungkan harapan pada iklan berbayar mahal. Pendekatan "Micro-Viral Seeds" terbukti lebih efektif.</p>
+                    <ul class="space-y-2 text-sm text-slate-600">
+                        <li><i class="fas fa-check text-green-500 mr-2"></i> Rekrut 10-20 mikro-kreator lokal (follower 10k-50k).</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i> Fokus pada konten "Behind The Scenes" & "Result Oriented".</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i> Biarkan algoritma FYP bekerja untuk Anda secara hiper-lokal.</li>
+                    </ul>
                 </div>
 
-                <!-- Footer & CTA Report 2 -->
                 <div class="bg-slate-900 text-white p-8 md:p-12 border-t border-slate-800 rounded-b-[2rem] text-center">
-                    <p class="text-sm text-purple-300 font-bold tracking-widest uppercase mb-6">Jangan Biarkan Kompetitor Mendahului Anda</p>
+                    <p class="text-sm text-purple-300 font-bold tracking-widest uppercase mb-6">Dapatkan Laporan Lengkap (PDF)</p>
                     <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                        <button onclick="showPage('home')" class="bg-slate-800 text-slate-300 border border-slate-700 px-8 py-3.5 rounded-full font-bold hover:bg-slate-700 hover:text-white transition shadow-sm w-full sm:w-auto flex items-center justify-center">
-                            <i class="fas fa-home text-lg mr-2"></i> Kembali ke Dashboard
-                        </button>
-                        <a href="https://wa.me/6281284942940?text=Halo%20Contentro%20Insights,%20saya%20butuh%20Laporan%20Lengkap%20PDF%20002%20untuk%20membangun%20strategi%20baru" target="_blank" class="bg-purple-600 text-white px-8 py-3.5 rounded-full font-bold hover:bg-purple-500 transition shadow-lg w-full sm:w-auto flex items-center justify-center">
-                            <i class="fas fa-file-pdf text-xl mr-2"></i> Dapatkan PDF Sinyal Lengkap
+                        <a href="https://wa.me/6281284942940?text=Halo%20Contentro,%20saya%20mau%20pesan%20Laporan%20TikTok%20ROI." target="_blank" class="inline-flex items-center bg-purple-600 text-white px-8 py-4 rounded-full font-bold hover:bg-purple-500 transition shadow-lg">
+                            <i class="fas fa-file-pdf mr-2"></i> Beli Laporan (Rp 100.000)
                         </a>
+                        <button onclick="goToMarketSignals()" class="bg-slate-700 text-slate-300 border border-slate-600 px-8 py-4 rounded-full font-bold hover:bg-slate-600 transition w-full sm:w-auto flex items-center justify-center">
+                            <i class="fas fa-arrow-left mr-2"></i> Kembali ke Daftar
+                        </button>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- ========================================== -->
-        <!-- REPORT 3: TREND FORECAST -->
-        <!-- ========================================== -->
+        <!-- REPORT 3 -->
         <div id="report3" class="report-content max-w-4xl mx-auto">
-             <button onclick="showPage('home')" class="text-slate-500 hover:text-teal-600 mb-8 flex items-center font-bold text-sm uppercase tracking-wider transition group bg-white px-4 py-2 rounded-full shadow-sm border border-slate-200">
+             <button onclick="goToMarketSignals()" class="text-slate-500 hover:text-teal-600 mb-8 flex items-center font-bold text-sm uppercase tracking-wider transition group bg-white px-4 py-2 rounded-full shadow-sm border border-slate-200">
                 <i class="fas fa-arrow-left mr-2 transform group-hover:-translate-x-1 transition"></i> Kembali ke Radar Pasar
             </button>
             
@@ -714,58 +528,51 @@
                     <div class="absolute right-0 bottom-0 opacity-10 transform translate-x-1/4 translate-y-1/4">
                         <i class="fas fa-microscope text-[200px]"></i>
                     </div>
-                    <span class="bg-teal-900 text-teal-100 border border-teal-500/50 px-4 py-1.5 rounded-full text-[10px] font-bold tracking-widest uppercase mb-4 inline-block shadow-sm">Architect Signal #003</span>
-                    <h1 class="text-3xl md:text-5xl font-extrabold mb-4 leading-tight">Trend Forecast & Competitor Edge</h1>
-                    <p class="text-teal-200 text-lg max-w-2xl">Visualisasikan masa depan. Identifikasi pergeseran massal menuju tren "Medical-Grade" dan intip invasi disruptor baru *mobile clinic*.</p>
+                    <span class="bg-teal-900 text-teal-100 border border-teal-500/50 px-4 py-1.5 rounded-full text-[10px] font-bold tracking-widest uppercase mb-4 inline-block shadow-sm">Signal #003: Emerging Trend</span>
+                    <h1 class="text-3xl md:text-5xl font-extrabold mb-4 leading-tight">Skin-Tech Takeover</h1>
+                    <p class="text-teal-200 text-lg max-w-2xl">Prediksi masa depan: Pergeseran massal dari skincare OTC (Over The Counter) menuju "Medical-Grade Treatment" berbasis teknologi.</p>
                 </div>
                 
                 <div class="p-10 md:p-12 prose prose-slate max-w-none prose-headings:text-slate-800">
-                    <div class="bg-teal-50 border-l-4 border-teal-500 p-6 rounded-r-2xl mb-10">
-                        <h4 class="font-extrabold text-teal-900 text-xl mb-2 flex items-center"><i class="fas fa-bolt mr-2"></i> Emerging Shift: "The Medical-Grade" Era</h4>
-                        <p class="text-teal-800 m-0 leading-relaxed text-sm">Audiens mulai cerdas. Kata kunci "Dokter" dan "Treatment" menyumbang 42,8% volume obrolan secara kolektif. Sensor *hashtag* kami mendeteksi lonjakan eksponensial pada term medis spesifik: <strong>#pdtlighttherapy</strong> (23 mentions organik) dan <strong>#terapicahaya</strong>. Ini membuktikan bahwa standar kecantikan telah bergeser dari sekadar krim wajah (Skincare) menuju intervensi teknologi klinis (Skin-tech) untuk mencapai hasil instan seperti "Jelly Skin".</p>
+                    <div class="bg-teal-50 border-l-4 border-teal-500 p-6 rounded-r-2xl mb-10 not-prose">
+                        <h4 class="font-extrabold text-teal-900 text-xl mb-2 flex items-center"><i class="fas fa-bolt mr-2"></i> Emerging Shift</h4>
+                        <p class="text-teal-800 m-0 leading-relaxed text-sm">Sensor kata kunci kami mendeteksi peningkatan drastis pada term <strong>#PDTLightTherapy</strong> dan <strong>#JellySkin</strong>. Audiens kini lebih memilih intervensi teknologi klinis (Skin-tech) dibanding penggunaan krim rutin.</p>
                     </div>
 
-                    <h3>1. Radar Manuver Kompetitor</h3>
-                    <p>Sebuah anomali terdeteksi dari pantauan pergerakan industri pada 25 Februari yang harus segera Anda ketahui dan antisipasi:</p>
-                    <ul class="space-y-4">
-                        <li class="bg-white border-2 border-slate-200 p-5 rounded-xl shadow-sm border-l-4 border-l-amber-500">
-                            <strong class="text-slate-900 text-lg block mb-1">Kemunculan: InstaFounderID (Mobile Clinic Disruptor)</strong>
-                            <p class="text-sm text-slate-700 m-0 italic bg-slate-50 p-3 rounded border">"Klinik kecantikan mobile pertama: perawatan premium & terjangkau langsung di ruang tamu Anda..."</p>
-                            <div class="mt-3 text-xs font-bold text-amber-600 bg-amber-50 p-2 rounded inline-block"><i class="fas fa-exclamation-circle mr-1"></i> Sinyal Bahaya: Potensi ancaman masif atas kenyamanan layanan model fisik (Brick & Mortar).</div>
-                        </li>
-                        <li class="bg-white border border-slate-200 p-5 rounded-xl shadow-sm">
-                            <strong class="text-slate-800 text-lg block mb-1">Manuver Dermapro & Bamed Clinic</strong>
-                            <p class="text-sm text-slate-600 m-0">Dermapro secara agresif mempromosikan "Jelly Skin Trend". Bamed fokus meluncurkan mesin <em>Oligio Treatment</em>. Keduanya memposisikan diri sebagai ahlinya teknologi *anti-aging* tingkat lanjut.</p>
-                        </li>
-                    </ul>
-
-                    <h3 class="flex items-center mt-10"><i class="fas fa-lightbulb text-amber-500 mr-2"></i> Inovasi Pionir (Action Plan)</h3>
-                    <div class="bg-white border-2 border-slate-200 p-6 rounded-2xl shadow-sm">
-                        <h4 class="text-teal-700 mt-0 text-lg">Bangun Arsitektur Penawaran Baru</h4>
-                        <p class="text-sm text-slate-600 mb-0 font-medium">Jadilah pionir dengan meluncurkan kampanye *Home-Care Medical* VIP untuk pasien *high-value* Anda. Jangan tunggu kompetitor memonopoli layanan dokter panggil ke rumah. Secara bersamaan, percepat rekomendasi pengadaan teknologi "Light Therapy" di cabang utama Anda untuk menunggangi gelombang tren sebelum mencapai puncaknya.</p>
+                    <h3>1. Pergerakan Kompetitor</h3>
+                    <p>Brand besar seperti Dermapro dan Bamed Clinic mulai menggaungkan "Jelly Skin Trend" dan teknologi <em>Oligio Treatment</em>. Jika brand Anda tidak mengikuti gelombang ini, Anda akan tertinggal di pasar "skincare konvensional" yang semakin mengecil.</p>
+                    
+                    <div class="bg-slate-50 p-6 rounded-xl border border-slate-200 mb-6 not-prose">
+                        <h4 class="font-bold text-slate-800 mb-2">Keyword Trending Bulan Ini:</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-teal-100 text-teal-700 px-3 py-1 rounded-full text-xs font-bold">#PDTTherapy</span>
+                            <span class="bg-teal-100 text-teal-700 px-3 py-1 rounded-full text-xs font-bold">#JellySkin</span>
+                            <span class="bg-teal-100 text-teal-700 px-3 py-1 rounded-full text-xs font-bold">#MedicalGrade</span>
+                            <span class="bg-teal-100 text-teal-700 px-3 py-1 rounded-full text-xs font-bold">#TreatmentKlinik</span>
+                        </div>
                     </div>
+
+                    <h3>2. Action Plan: Adaptasi Teknologi</h3>
+                    <p>Jangan hanya jual produk. Jual "pengalaman teknologi". Edukasi pasien bahwa treatment di klinik Anda menggunakan alat yang sudah tersertifikasi dan hasilnya terbukti klinis (clinical evidence), bukan sekadar klaim iklan.</p>
                 </div>
 
-                <!-- Footer & CTA Report 3 -->
                 <div class="bg-slate-900 text-white p-8 md:p-12 border-t border-slate-800 rounded-b-[2rem] text-center">
-                    <p class="text-sm text-teal-300 font-bold tracking-widest uppercase mb-6">Jangan Biarkan Kompetitor Mendahului Anda</p>
+                    <p class="text-sm text-teal-300 font-bold tracking-widest uppercase mb-6">Dapatkan Laporan Lengkap (PDF)</p>
                     <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                        <button onclick="showPage('home')" class="bg-slate-800 text-slate-300 border border-slate-700 px-8 py-3.5 rounded-full font-bold hover:bg-slate-700 hover:text-white transition shadow-sm w-full sm:w-auto flex items-center justify-center">
-                            <i class="fas fa-home text-lg mr-2"></i> Kembali ke Dashboard
-                        </button>
-                        <a href="https://wa.me/6281284942940?text=Halo%20Contentro%20Insights,%20saya%20butuh%20Laporan%20Lengkap%20PDF%20003%20untuk%20membangun%20strategi%20baru" target="_blank" class="bg-teal-600 text-white px-8 py-3.5 rounded-full font-bold hover:bg-teal-500 transition shadow-lg w-full sm:w-auto flex items-center justify-center">
-                            <i class="fas fa-file-pdf text-xl mr-2"></i> Dapatkan PDF Sinyal Lengkap
+                        <a href="https://wa.me/6281284942940?text=Halo%20Contentro,%20saya%20mau%20pesan%20Laporan%20Trend%20Forecast." target="_blank" class="inline-flex items-center bg-teal-600 text-white px-8 py-4 rounded-full font-bold hover:bg-teal-500 transition shadow-lg">
+                            <i class="fas fa-file-pdf mr-2"></i> Beli Laporan (Rp 100.000)
                         </a>
+                        <button onclick="goToMarketSignals()" class="bg-slate-700 text-slate-300 border border-slate-600 px-8 py-4 rounded-full font-bold hover:bg-slate-600 transition w-full sm:w-auto flex items-center justify-center">
+                            <i class="fas fa-arrow-left mr-2"></i> Kembali ke Daftar
+                        </button>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- ========================================== -->
-        <!-- REPORT 4: REGIONAL GROWTH -->
-        <!-- ========================================== -->
+        <!-- REPORT 4 -->
         <div id="report4" class="report-content max-w-4xl mx-auto">
-             <button onclick="showPage('home')" class="text-slate-500 hover:text-amber-600 mb-8 flex items-center font-bold text-sm uppercase tracking-wider transition group bg-white px-4 py-2 rounded-full shadow-sm border border-slate-200">
+             <button onclick="goToMarketSignals()" class="text-slate-500 hover:text-amber-600 mb-8 flex items-center font-bold text-sm uppercase tracking-wider transition group bg-white px-4 py-2 rounded-full shadow-sm border border-slate-200">
                 <i class="fas fa-arrow-left mr-2 transform group-hover:-translate-x-1 transition"></i> Kembali ke Radar Pasar
             </button>
             
@@ -774,62 +581,54 @@
                     <div class="absolute right-0 bottom-0 opacity-10 transform translate-x-1/4 translate-y-1/4">
                         <i class="fas fa-map-marked-alt text-[200px]"></i>
                     </div>
-                    <span class="bg-amber-800 text-amber-100 border border-amber-500/50 px-4 py-1.5 rounded-full text-[10px] font-bold tracking-widest uppercase mb-4 inline-block shadow-sm">Architect Signal #004</span>
-                    <h1 class="text-3xl md:text-5xl font-extrabold mb-4 leading-tight">Regional & Hyper-Local Targeting</h1>
-                    <p class="text-amber-100 text-lg max-w-2xl">Buka peta buta industri. Radar kami menyoroti titik-titik hiper-lokal bersuhu tinggi di luar Jawa yang sedang menunggu invasi *brand* Anda.</p>
+                    <span class="bg-amber-800 text-amber-100 border border-amber-500/50 px-4 py-1.5 rounded-full text-[10px] font-bold tracking-widest uppercase mb-4 inline-block shadow-sm">Signal #004: Geo-Expansion</span>
+                    <h1 class="text-3xl md:text-5xl font-extrabold mb-4 leading-tight">Regional Goldmine</h1>
+                    <p class="text-amber-100 text-lg max-w-2xl">Temukan tambang emas di luar Jawa: Data menunjukkan antusiasme tinggi di Kalimantan & Sumatera dengan kompetisi yang minim.</p>
                 </div>
                 
                 <div class="p-10 md:p-12 prose prose-slate max-w-none prose-headings:text-slate-800">
-                     <div class="flex flex-col md:flex-row gap-8 mb-10 items-center">
+                     <div class="flex flex-col md:flex-row gap-8 mb-10 items-center not-prose">
                         <div class="w-full md:w-1/2">
-                            <h3 class="mt-0 text-xl font-bold">Ledakan Sinyal Sumatera & Kalimantan</h3>
-                            <p class="text-sm leading-relaxed text-slate-600">Arsitek strategi yang hebat melihat apa yang orang lain abaikan. Daftar top penyumbang obrolan bulan ini justru bukan datang dari media gaya hidup Jakarta, melainkan meledak dari portal informasi daerah. Ini membuktikan adanya *shifting* pemerataan daya beli.</p>
+                            <h3 class="mt-0 text-xl font-bold text-slate-800">Kenyataan Pasar: Jakarta Jenuh</h3>
+                            <p class="text-sm leading-relaxed text-slate-600">Persaingan harga (price war) di Jakarta sangat ketat. Namun, radar kami mendeteksi sinyal kuat dari kota-kota di luar Jawa yang "lapar" akan layanan kecantikan premium namun aksesnya terbatas.</p>
                         </div>
                         <div class="w-full md:w-1/2 border-2 border-amber-400 bg-amber-50 p-6 rounded-2xl relative shadow-md">
-                            <div class="absolute top-0 right-0 bg-amber-500 text-white text-[10px] px-3 py-1 rounded-bl-lg font-bold"><i class="fas fa-broadcast-tower mr-1"></i> TOP HOTSPOT</div>
-                            <h4 class="font-black text-amber-900 text-xl mt-0 mb-1">info.kotim (Kalimantan)</h4>
-                            <p class="text-xs font-bold text-amber-600 mb-3 uppercase tracking-wider">Kotawaringin Timur</p>
-                            <p class="text-sm text-amber-800 m-0 font-medium">Satu portal Instagram lokal ini menyumbang <strong>10.6% Voice Share Nasional</strong> dengan mengeksekusi jangkauan <strong>913.570 Reach</strong>. Tingkat kesadaran kecantikan yang masif sedang mendidih di wilayah tambang & perkebunan ini.</p>
+                            <div class="absolute top-0 right-0 bg-amber-500 text-white text-[10px] px-3 py-1 rounded-bl-lg font-bold"><i class="fas fa-broadcast-tower mr-1"></i> HOTSPOT</div>
+                            <h4 class="font-black text-amber-900 text-xl mt-0 mb-1">Kotawaringin Timur (Kalimantan)</h4>
+                            <p class="text-sm text-amber-800 m-0 font-medium">Satu portal lokal menyumbang <strong>10.6% Voice Share Nasional</strong> dengan <strong>913.570 Reach</strong>. Indikasi daya beli tinggi di wilayah tambang & perkebunan.</p>
                         </div>
                     </div>
 
-                    <h3>1. Deteksi *Hashtag* Spesifik Regional</h3>
-                    <p class="text-sm text-slate-600">Kami mendeteksi aktivitas percakapan tingkat tinggi yang spesifik menanyakan lokasi klinik di area berikut:</p>
-                    <div class="bg-slate-50 p-6 rounded-xl border border-slate-200 mb-10">
-                        <div class="flex flex-wrap gap-3">
-                            <span class="bg-white px-4 py-2 rounded-full border shadow-sm font-semibold text-slate-700">#bandarlampung <span class="text-amber-500 ml-1">(35 Mention)</span></span>
-                            <span class="bg-white px-4 py-2 rounded-full border shadow-sm font-semibold text-slate-700">#purbalingga <span class="text-amber-500 ml-1">(25 Mention)</span></span>
-                            <span class="bg-white px-4 py-2 rounded-full border shadow-sm font-semibold text-slate-700">#lahat <span class="text-amber-500 ml-1">(19 Mention)</span></span>
-                        </div>
-                    </div>
-
-                    <h3 class="flex items-center"><i class="fas fa-lightbulb text-amber-500 mr-2"></i> Inovasi Pionir (Action Plan)</h3>
-                    <div class="bg-white border border-slate-200 p-6 rounded-2xl shadow-sm hover:shadow-md transition">
-                        <strong class="text-slate-900 text-lg block mb-2"><i class="fas fa-crosshairs text-amber-500 mr-2"></i> Eksploitasi Geo-Fencing Ads</strong>
-                        <p class="text-sm text-slate-600">Jadilah pelopor ekspansi digital tanpa perlu membuka cabang fisik. Ajukan anggaran untuk menembakkan iklan penawaran khusus ke area *blind spot* (Lampung, Purbalingga, Lahat) selagi *Cost-Per-Click* (CPC) di daerah tersebut masih sangat murah karena minimnya kompetitor ibukota yang membidik area ini.</p>
+                    <h3>1. Peluang Ekspansi Digital (Tanpa Cabang Fisik)</h3>
+                    <p class="text-sm text-slate-600 mb-6">Anda tidak perlu langsung buka cabang fisik. Manfaatkan data ini untuk menembakkan iklan digital (Geo-Fencing) ke wilayah potensial ini.</p>
+                    
+                    <div class="bg-slate-50 p-6 rounded-xl border border-slate-200 mb-10 not-prose">
+                        <h4 class="font-bold text-slate-800 mb-2">Area Potensial Lainnya:</h4>
+                        <ul class="space-y-2 text-sm text-slate-600">
+                            <li><i class="fas fa-map-pin text-amber-500 mr-2"></i> <strong>Bandar Lampung:</strong> 35 Mention aktif mencari rekomendasi klinik.</li>
+                            <li><i class="fas fa-map-pin text-amber-500 mr-2"></i> <strong>Purbalingga:</strong> 25 Mention diskusi lokal tentang treatment wajah.</li>
+                            <li><i class="fas fa-map-pin text-amber-500 mr-2"></i> <strong>Lahat:</strong> 19 Mention spesifik bertanya lokasi treatment terdekat.</li>
+                        </ul>
                     </div>
                 </div>
 
-                <!-- Footer & CTA Report 4 -->
                 <div class="bg-slate-900 text-white p-8 md:p-12 border-t border-slate-800 rounded-b-[2rem] text-center">
-                    <p class="text-sm text-amber-300 font-bold tracking-widest uppercase mb-6">Jangan Biarkan Kompetitor Mendahului Anda</p>
+                    <p class="text-sm text-amber-300 font-bold tracking-widest uppercase mb-6">Dapatkan Laporan Lengkap (PDF)</p>
                     <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                        <button onclick="showPage('home')" class="bg-slate-800 text-slate-300 border border-slate-700 px-8 py-3.5 rounded-full font-bold hover:bg-slate-700 hover:text-white transition shadow-sm w-full sm:w-auto flex items-center justify-center">
-                            <i class="fas fa-home text-lg mr-2"></i> Kembali ke Dashboard
-                        </button>
-                        <a href="https://wa.me/6281284942940?text=Halo%20Contentro%20Insights,%20saya%20butuh%20Laporan%20Lengkap%20PDF%20004%20untuk%20membangun%20strategi%20baru" target="_blank" class="bg-amber-500 text-slate-900 px-8 py-3.5 rounded-full font-bold hover:bg-amber-400 transition shadow-lg w-full sm:w-auto flex items-center justify-center">
-                            <i class="fas fa-file-pdf text-xl mr-2"></i> Dapatkan PDF Sinyal Lengkap
+                        <a href="https://wa.me/6281284942940?text=Halo%20Contentro,%20saya%20mau%20pesan%20Laporan%20Regional%20Goldmine." target="_blank" class="inline-flex items-center bg-amber-500 text-slate-900 px-8 py-4 rounded-full font-bold hover:bg-amber-400 transition shadow-lg">
+                            <i class="fas fa-file-pdf mr-2"></i> Beli Laporan (Rp 100.000)
                         </a>
+                        <button onclick="goToMarketSignals()" class="bg-slate-700 text-slate-300 border border-slate-600 px-8 py-4 rounded-full font-bold hover:bg-slate-600 transition w-full sm:w-auto flex items-center justify-center">
+                            <i class="fas fa-arrow-left mr-2"></i> Kembali ke Daftar
+                        </button>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- ========================================== -->
-        <!-- REPORT 5: REPUTATION ARMOR -->
-        <!-- ========================================== -->
+        <!-- REPORT 5 -->
         <div id="report5" class="report-content max-w-4xl mx-auto">
-             <button onclick="showPage('home')" class="text-slate-500 hover:text-red-600 mb-8 flex items-center font-bold text-sm uppercase tracking-wider transition group bg-white px-4 py-2 rounded-full shadow-sm border border-slate-200">
+             <button onclick="goToMarketSignals()" class="text-slate-500 hover:text-red-600 mb-8 flex items-center font-bold text-sm uppercase tracking-wider transition group bg-white px-4 py-2 rounded-full shadow-sm border border-slate-200">
                 <i class="fas fa-arrow-left mr-2 transform group-hover:-translate-x-1 transition"></i> Kembali ke Radar Pasar
             </button>
             
@@ -838,48 +637,47 @@
                     <div class="absolute right-0 bottom-0 opacity-10 transform translate-x-1/4 translate-y-1/4">
                         <i class="fas fa-radiation text-[200px]"></i>
                     </div>
-                    <span class="bg-red-900 text-red-100 border border-red-500/50 px-4 py-1.5 rounded-full text-[10px] font-bold tracking-widest uppercase mb-4 inline-block shadow-sm">Architect Signal #005</span>
-                    <h1 class="text-3xl md:text-5xl font-extrabold mb-4 leading-tight">Early Warning: Crisis Protocol</h1>
-                    <p class="text-red-200 text-lg max-w-2xl">Mendeteksi riak krisis sebelum menjadi tsunami. Prediksi runtuhnya kepercayaan konsumen dan siapkan arsitektur "Reputation Armor".</p>
+                    <span class="bg-red-900 text-red-100 border border-red-500/50 px-4 py-1.5 rounded-full text-[10px] font-bold tracking-widest uppercase mb-4 inline-block shadow-sm">Signal #005: Reputation Alert</span>
+                    <h1 class="text-3xl md:text-5xl font-extrabold mb-4 leading-tight">Crisis Protocol</h1>
+                    <p class="text-red-200 text-lg max-w-2xl">Deteksi dini sistem peringatan risiko reputasi: Studi kasus dampak "Malpraktik" dan "Reviewer Doktif" terhadap kepercayaan pasar.</p>
                 </div>
                 
                 <div class="p-10 md:p-12 prose prose-slate max-w-none prose-headings:text-slate-800">
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-10">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-10 not-prose">
                         <div class="bg-slate-50 p-6 rounded-xl border border-slate-200 flex flex-col justify-center items-center text-center shadow-sm">
-                            <span class="block text-xs font-bold text-slate-500 uppercase tracking-widest mb-2">Market Sentimen Saat Ini</span>
-                            <span class="text-3xl font-black text-slate-800"><i class="fas fa-heartbeat text-red-500 mr-2"></i>Fragile / Rentan</span>
-                            <span class="block text-xs text-slate-500 mt-2 font-medium">Meski sentimen negatif hanya 7%, efek dominonya merusak.</span>
+                            <span class="block text-xs font-bold text-slate-500 uppercase tracking-widest mb-2">Market Sentiment</span>
+                            <span class="text-3xl font-black text-slate-800"><i class="fas fa-heartbeat text-red-500 mr-2"></i>Fragile</span>
+                            <span class="block text-xs text-slate-500 mt-2 font-medium">Konsumen semakin kritis & mudah curiga.</span>
                         </div>
                         <div class="bg-red-50 p-6 rounded-xl border-2 border-red-300 relative shadow-inner">
-                            <h4 class="font-bold text-red-900 mt-0 text-lg">Sensor Krisis: Kasus Delliza</h4>
-                            <p class="text-sm text-red-800 m-0 leading-relaxed">Sistem mendeteksi sentimen toksik yang menjadi viral pada 20 Februari atas sebuah isu malpraktik. Bukti kutipan dari TikTok: <em class="block mt-2 font-semibold">"KLINIK KECANTIKAN DELLIZA MELAKUKAN MALL PRAKTIK SEHINGGA MEMBUAT BANYAK KORBAN KERUSAKAN"</em></p>
+                            <h4 class="font-bold text-red-900 mt-0 text-lg">Trigger Alert:</h4>
+                            <p class="text-sm text-red-800 m-0 leading-relaxed font-medium">Viralnya isu "Malpraktik" pada klinik tertentu dan maraknya "Reviewer Doktif" (reviewer bayaran) telah menciptakan trauma kolektif. Audiens kini mencurigai promosi yang "terlalu bagus".</p>
                         </div>
                     </div>
 
-                    <h3>1. Anatomi Kerusakan Pasar</h3>
-                    <p class="text-sm text-slate-600 mb-6">Dampak dari kasus di atas bersamaan dengan polemik *Reviewer Doktif*, menciptakan trauma kolektif pada pasar. Konsumen masa kini mulai mencurigai iklan <strong>"Klinik Promo Diskon Besar"</strong> sebagai indikasi <strong>"Klinik Abal-abal / Produk Oplosan"</strong>.</p>
+                    <h3>1. Perubahan Perilaku Konsumen</h3>
+                    <p class="text-sm text-slate-600 mb-6">Konsumen kini memvalidasi keamanan sebelum mempertimbangkan harga. Mereka mencari bukti legalitas (SIP Dokter, Alat Bersertifikat) lebih daripada testimoni video.</p>
 
-                    <h3 class="flex items-center"><i class="fas fa-lightbulb text-amber-500 mr-2"></i> Inovasi Pionir (Action Plan)</h3>
-                    <div class="bg-white border-l-4 border-slate-800 p-6 rounded-r-xl shadow-md">
-                        <h4 class="text-slate-900 mt-0 text-lg font-bold">Shift ke Model "Credential Marketing"</h4>
-                        <p class="text-sm text-slate-600 mb-4 font-medium">Ini adalah momen emas untuk merebut pangsa pasar dari kompetitor yang sedang dilanda krisis *trust*. Segera pivot strategi Anda:</p>
-                        <ul class="space-y-3 text-sm text-slate-700">
-                            <li class="flex"><i class="fas fa-shield-alt text-green-500 mr-3 mt-1"></i> <strong>Pamerkan Senjata Legalitas:</strong> Berhenti sejenak menampilkan wajah *glowing* model. Jadikan foto SIP (Surat Izin Praktik) dokter dan segel Kemenkes pada mesin laser sebagai materi utama iklan Anda bulan depan. Jual rasa aman.</li>
-                            <li class="flex"><i class="fas fa-shield-alt text-green-500 mr-3 mt-1"></i> <strong>SOP Ritual "Unboxing" Medis:</strong> Edukasi staf cabang untuk membongkar kotak jarum atau botol *filler* bersegel tepat di depan mata pasien. Jadikan ini standar operasional baru yang divisualisasikan di media sosial untuk membunuh keraguan.</li>
+                    <h3>2. Action Plan: Credential Marketing</h3>
+                    <div class="bg-white border-l-4 border-slate-800 p-6 rounded-r-xl shadow-md not-prose">
+                        <h4 class="text-slate-900 mt-0 text-lg font-bold">Solusi Strategis:</h4>
+                        <ul class="space-y-3 text-sm text-slate-700 mt-4">
+                            <li class="flex"><i class="fas fa-shield-alt text-green-500 mr-3 mt-1"></i> <strong>Pamerkan Legalitas:</strong> Jadikan foto SIP dokter & sertifikat alat sebagai materi iklan utama.</li>
+                            <li class="flex"><i class="fas fa-shield-alt text-green-500 mr-3 mt-1"></i> <strong>Transparansi Prosedur:</strong> Edukasi proses "Unboxing" jarum/seal filler di depan pasien untuk membangun kepercayaan.</li>
+                            <li class="flex"><i class="fas fa-shield-alt text-green-500 mr-3 mt-1"></i> <strong>Ambil Pasa Kompetitor:</strong> Brand yang aman akan menangkap pasar yang ketakutan dari kompetitor bermasalah.</li>
                         </ul>
                     </div>
                 </div>
 
-                <!-- Footer & CTA Report 5 -->
                 <div class="bg-slate-900 text-white p-8 md:p-12 border-t border-slate-800 rounded-b-[2rem] text-center">
-                    <p class="text-sm text-red-300 font-bold tracking-widest uppercase mb-6">Jangan Biarkan Kompetitor Mendahului Anda</p>
+                    <p class="text-sm text-red-300 font-bold tracking-widest uppercase mb-6">Dapatkan Laporan Lengkap (PDF)</p>
                     <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                        <button onclick="showPage('home')" class="bg-slate-800 text-slate-300 border border-slate-700 px-8 py-3.5 rounded-full font-bold hover:bg-slate-700 hover:text-white transition shadow-sm w-full sm:w-auto flex items-center justify-center">
-                            <i class="fas fa-home text-lg mr-2"></i> Kembali ke Dashboard
-                        </button>
-                        <a href="https://wa.me/6281284942940?text=Halo%20Contentro%20Insights,%20saya%20butuh%20Laporan%20Lengkap%20PDF%20005%20untuk%20membangun%20strategi%20baru" target="_blank" class="bg-red-600 text-white px-8 py-3.5 rounded-full font-bold hover:bg-red-500 transition shadow-lg w-full sm:w-auto flex items-center justify-center">
-                            <i class="fas fa-file-pdf text-xl mr-2"></i> Dapatkan PDF Sinyal Lengkap
+                        <a href="https://wa.me/6281284942940?text=Halo%20Contentro,%20saya%20mau%20pesan%20Laporan%20Crisis%20Protocol." target="_blank" class="inline-flex items-center bg-red-600 text-white px-8 py-4 rounded-full font-bold hover:bg-red-500 transition shadow-lg">
+                            <i class="fas fa-file-pdf mr-2"></i> Beli Laporan (Rp 100.000)
                         </a>
+                        <button onclick="goToMarketSignals()" class="bg-slate-700 text-slate-300 border border-slate-600 px-8 py-4 rounded-full font-bold hover:bg-slate-600 transition w-full sm:w-auto flex items-center justify-center">
+                            <i class="fas fa-arrow-left mr-2"></i> Kembali ke Daftar
+                        </button>
                     </div>
                 </div>
             </div>
@@ -888,77 +686,58 @@
     </main>
 
     <!-- FOOTER -->
-    <footer class="bg-white py-12 border-t border-slate-200 mt-10">
+    <footer class="bg-slate-900 py-12 mt-10 text-white">
         <div class="max-w-7xl mx-auto px-4 text-center">
             <div class="flex justify-center items-center mb-4">
-                <i class="fas fa-satellite-dish text-slate-300 text-2xl mr-2"></i>
-                <span class="font-bold text-xl tracking-tight text-slate-400">Contentro<span class="text-slate-300">Insights.</span></span>
+                <i class="fas fa-satellite-dish text-indigo-400 text-2xl mr-2"></i>
+                <span class="font-bold text-xl tracking-tight text-white">Contentro<span class="text-indigo-400">Insights</span></span>
             </div>
-            <p class="text-slate-500 text-sm font-medium">© 2026 Contentro Insights Analytics. Data-Driven Strategy Partner.</p>
+            <p class="text-slate-400 text-sm font-medium mb-6">Social Media Listener #1 Indonesia untuk Industri Kecantikan.</p>
+            <div class="flex justify-center space-x-6 text-slate-500 text-xl">
+                <a href="#" class="hover:text-indigo-400 transition"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="hover:text-indigo-400 transition"><i class="fab fa-linkedin"></i></a>
+                <a href="https://wa.me/6281284942940" target="_blank" class="hover:text-green-400 transition"><i class="fab fa-whatsapp"></i></a>
+            </div>
+            <p class="text-slate-600 text-xs mt-8 border-t border-slate-800 pt-6">© 2024 Contentro Insights Analytics. All rights reserved.</p>
         </div>
     </footer>
 
     <script>
         function showPage(pageId) {
             const selectedPage = document.getElementById(pageId);
-            
-            if (!selectedPage) {
-                console.error("Halaman tidak ditemukan:", pageId);
-                return;
-            }
+            if (!selectedPage) return;
 
-            const pages = document.querySelectorAll('.report-content');
-            pages.forEach(page => {
-                page.classList.remove('active');
-            });
-
+            document.querySelectorAll('.report-content').forEach(page => page.classList.remove('active'));
             selectedPage.classList.add('active');
+            // Default behavior: scroll to top (used for nav links)
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         function scrollToSection(sectionId) {
+            // Used for nav links on the home page
             showPage('home');
             setTimeout(() => {
                 const element = document.getElementById(sectionId);
-                if (element) {
-                    element.scrollIntoView({ behavior: 'smooth' });
-                }
+                if (element) element.scrollIntoView({ behavior: 'smooth' });
             }, 100);
         }
 
-        // Animate counter logic
-        document.addEventListener("DOMContentLoaded", () => {
-            const counters = document.querySelectorAll('.counter');
-            
-            const animateCounter = (counter) => {
-                const target = +counter.getAttribute('data-target');
-                const speed = 200; // The lower the slower
-                const updateCount = () => {
-                    const count = +counter.innerText;
-                    const inc = target / speed;
-                    if (count < target) {
-                        counter.innerText = Math.ceil(count + inc);
-                        setTimeout(updateCount, 15);
-                    } else {
-                        counter.innerText = target;
-                    }
-                };
-                updateCount();
-            };
+        // NEW FUNCTION: Specifically for returning to the Market Signals section
+        function goToMarketSignals() {
+            const homePage = document.getElementById('home');
+            const targetSection = document.getElementById('market-signals');
 
-            const observer = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        animateCounter(entry.target);
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.5 });
+            // Activate Home Page
+            document.querySelectorAll('.report-content').forEach(page => page.classList.remove('active'));
+            homePage.classList.add('active');
 
-            counters.forEach(counter => {
-                observer.observe(counter);
-            });
-        });
+            // Scroll to specific section after a tiny delay to ensure render
+            setTimeout(() => {
+                if (targetSection) {
+                    targetSection.scrollIntoView({ behavior: 'smooth' });
+                }
+            }, 100);
+        }
     </script>
 </body>
 </html>
