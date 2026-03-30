@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SKEMA JALUR ORANG DALAM - Abu Omar</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        bg: '#FFFFFF',
+                        fg: '#1F2937',
+                        muted: '#6B7280',
+                        accent: '#D4A853',
+                        accentDark: '#B8923F',
+                        cta: '#16A34A',
+                        ctaHover: '#15803D',
+                        danger: '#DC2626',
+                        card: '#F9FAFB',
+                        border: '#E5E7EB',
+                        dark: '#111827'
+                    },
+                    fontFamily: {
+                        display: ['Sora', 'sans-serif'],
+                        body: ['Plus Jakarta Sans', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        :root {
+            --bg: #FFFFFF;
+            --fg: #1F2937;
+            --muted: #6B7280;
+            --accent: #D4A853;
+            --cta: #16A34A;
+        }
+
+        * { box-sizing: border-box; }
+        
+        html { scroll-behavior: smooth; }
+        
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: var(--bg);
+            color: var(--fg);
+            -webkit-font-smoothing: antialiased;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Sora', sans-serif;
+            letter-spacing: -0.02em;
+            line-height: 1.3;
+        }
+
+        .chapter-card {
+            transition: all 0.2s ease;
+        }
+        
+        .chapter-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px -5px rgba(0,0,0,0.1);
+        }
+
+        .cta-btn {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.2s ease;
+        }
+
+        .cta-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .cta-btn:hover::before { left: 100%; }
+        
+        .cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px -5px rgba(22, 163, 74, 0.4);
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 12px;
+            border-radius: 100px;
+            font-size: 13px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .tag:hover {
+            transform: scale(1.02);
+        }
+
+        .check-icon {
+            width: 20px;
+            height: 20px;
+            background: #D1FAE5;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+        }
+
+        .float-anim {
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .price-strike {
+            position: relative;
+        }
+
+        .price-strike::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            width: 100%;
+            height: 2px;
+            background: #DC2626;
+        }
+    </style>
+</head>
+<body class="antialiased bg-bg">
+
+    <!-- Header -->
+    <header class="py-4 px-4 border-b border-border bg-white sticky top-0 z-50">
+        <div class="max-w-4xl mx-auto flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <div class="w-8 h-8 bg-accent rounded-lg flex items-center justify-center">
+                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                    </svg>
+                </div>
+                <span class="font-display font-bold text-sm text-fg">SKEMA JOD</span>
+            </div>
+            <a href="#order" class="bg-cta text-white text-sm font-semibold px-4 py-2 rounded-lg hover:bg-ctaHover transition-colors">
+                Beli Sekarang
+            </a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="px-4 py-12 md:py-16">
+        <div class="max-w-4xl mx-auto">
+            
+            <!-- Product Header -->
+            <section class="reveal grid md:grid-cols-2 gap-8 md:gap-12 items-center mb-16 md:mb-20">
+                <!-- Book Image -->
+                <div class="order-1 md:order-1 flex justify-center">
+                    <div class="float-anim relative">
+                        <img 
+                            src="images/1.png" 
+                            alt="SKEMA JALUR ORANG DALAM - Ebook Cover" 
+                            class="w-64 md:w-72 rounded-xl shadow-2xl"
+                        >
+                        <div class="absolute -top-3 -right-3 bg-accent text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg">
+                            32 CHAPTER
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Info -->
+                <div class="order-2 md:order-2 text-center md:text-left">
+                    <div class="inline-flex items-center gap-2 bg-cta/10 text-cta text-xs font-semibold px-3 py-1.5 rounded-full mb-4">
+                        <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                        </svg>
+                        BEST SELLER
+                    </div>
+                    
+                    <h1 class="font-display text-2xl sm:text-3xl md:text-4xl font-bold mb-3 text-dark">
+                        SKEMA JALUR ORANG DALAM
+                    </h1>
+                    
+                    <p class="text-muted text-base md:text-lg mb-4">
+                        Cara "Malas" Tapi Cuan dari Digital Marketing
+                    </p>
+                    
+                    <p class="text-fg text-sm md:text-base leading-relaxed mb-6">
+                        Panduan komprehensif untuk mengubah Anda dari sekadar pembuat konten menjadi <strong>Digital Marketer</strong> yang menghasilkan keuntungan finansial nyata — tanpa hard-selling, tanpa perlu terkenal, dan tanpa modal besar.
+                    </p>
+
+                    <!-- Author -->
+                    <div class="flex items-center justify-center md:justify-start gap-3 mb-6">
+                        <img src="images/face.png" alt="Abu Omar" class="w-10 h-10 rounded-full object-cover">
+                        <div class="text-left">
+                            <p class="font-semibold text-sm text-fg">Abu Omar</p>
+                            <p class="text-xs text-muted">Digital Marketing Specialist</p>
+                        </div>
+                    </div>
+
+                    <!-- Quick Stats -->
+                    <div class="flex flex-wrap justify-center md:justify-start gap-3 mb-6">
+                        <div class="tag bg-card border border-border text-fg">
+                            <svg class="w-4 h-4 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+                            32 Chapter
+                        </div>
+                        <div class="tag bg-card border border-border text-fg">
+                            <svg class="w-4 h-4 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                            PDF Format
+                        </div>
+                        <div class="tag bg-card border border-border text-fg">
+                            <svg class="w-4 h-4 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+                            Instant Download
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- What's Inside -->
+            <section class="reveal mb-16 md:mb-20">
+                <div class="text-center mb-8">
+                    <h2 class="font-display text-xl md:text-2xl font-bold text-dark mb-2">Apa Saja di Dalamnya?</h2>
+                    <p class="text-muted text-sm">6 Bagian utama + strategi yang bisa langsung Anda eksekusi</p>
+                </div>
+
+                <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <!-- Part 1 -->
+                    <div class="chapter-card bg-white p-5 rounded-xl border border-border">
+                        <div class="flex items-start gap-3 mb-3">
+                            <span class="w-8 h-8 bg-dark text-white rounded-lg flex items-center justify-center text-sm font-bold flex-shrink-0">1</span>
+                            <div>
+                                <h3 class="font-semibold text-fg text-sm">Perubahan Pola Pikir</h3>
+                            </div>
+                        </div>
+                        <p class="text-muted text-xs leading-relaxed pl-11">
+                            Hindari niche jenuh (Fashion, Food). Pindah ke niche spesifik dengan permintaan tinggi tapi pesaing sedikit.
+                        </p>
+                    </div>
+
+                    <!-- Part 2 -->
+                    <div class="chapter-card bg-white p-5 rounded-xl border border-border">
+                        <div class="flex items-start gap-3 mb-3">
+                            <span class="w-8 h-8 bg-dark text-white rounded-lg flex items-center justify-center text-sm font-bold flex-shrink-0">2</span>
+                            <div>
+                                <h3 class="font-semibold text-fg text-sm">Mesin Penjualan Digital</h3>
+                            </div>
+                        </div>
+                        <p class="text-muted text-xs leading-relaxed pl-11">
+                            Kekuatan produk digital: tanpa ongkir, margin profit hingga 99%, bekerja 24/7 tanpa Anda.
+                        </p>
+                    </div>
+
+                    <!-- Part 3 -->
+                    <div class="chapter-card bg-white p-5 rounded-xl border border-border">
+                        <div class="flex items-start gap-3 mb-3">
+                            <span class="w-8 h-8 bg-dark text-white rounded-lg flex items-center justify-center text-sm font-bold flex-shrink-0">3</span>
+                            <div>
+                                <h3 class="font-semibold text-fg text-sm">Algoritma & Konten Viral</h3>
+                            </div>
+                        </div>
+                        <p class="text-muted text-xs leading-relaxed pl-11">
+                            Social SEO + "Hook 3 Detik" untuk paksa algoritma menyebarkan konten ke calon pembeli baru.
+                        </p>
+                    </div>
+
+                    <!-- Part 4 -->
+                    <div class="chapter-card bg-white p-5 rounded-xl border border-border">
+                        <div class="flex items-start gap-3 mb-3">
+                            <span class="w-8 h-8 bg-dark text-white rounded-lg flex items-center justify-center text-sm font-bold flex-shrink-0">4</span>
+                            <div>
+                                <h3 class="font-semibold text-fg text-sm">Otoritas & Personal Branding</h3>
+                            </div>
+                        </div>
+                        <p class="text-muted text-xs leading-relaxed pl-11">
+                            Cara meyakinkan orang membeli meski followers sedikit. Termasuk strategi Faceless Marketing.
+                        </p>
+                    </div>
+
+                    <!-- Part 5 -->
+                    <div class="chapter-card bg-white p-5 rounded-xl border border-border">
+                        <div class="flex items-start gap-3 mb-3">
+                            <span class="w-8 h-8 bg-dark text-white rounded-lg flex items-center justify-center text-sm font-bold flex-shrink-0">5</span>
+                            <div>
+                                <h3 class="font-semibold text-fg text-sm">Teknik Penjualan (Closing)</h3>
+                            </div>
+                        </div>
+                        <p class="text-muted text-xs leading-relaxed pl-11">
+                            Psikologi closing via DM/WhatsApp tanpa takut di-ghosting. Obligation Trigger & Scarcity Loop.
+                        </p>
+                    </div>
+
+                    <!-- Part 6 -->
+                    <div class="chapter-card bg-white p-5 rounded-xl border border-border">
+                        <div class="flex items-start gap-3 mb-3">
+                            <span class="w-8 h-8 bg-dark text-white rounded-lg flex items-center justify-center text-sm font-bold flex-shrink-0">6</span>
+                            <div>
+                                <h3 class="font-semibold text-fg text-sm">Skalasi & Otomatisasi</h3>
+                            </div>
+                        </div>
+                        <p class="text-muted text-xs leading-relaxed pl-11">
+                            Bangun sistem dengan bot dan alat analitik. Bisnis jalan sendiri 24 jam (Autopilot Legacy).
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Hot Topics -->
+            <section class="reveal mb-16 md:mb-20 bg-card rounded-2xl p-6 md:p-8">
+                <div class="text-center mb-6">
+                    <h2 class="font-display text-xl md:text-2xl font-bold text-dark mb-2">Strategi "Orang Dalam" yang Anda dapatkan</h2>
+                    <p class="text-muted text-sm">Bukan teori, tapi taktik yang sudah terbukti menghasilkan</p>
+                </div>
+
+                <div class="grid sm:grid-cols-2 gap-4">
+                    <div class="flex items-start gap-3 bg-white p-4 rounded-xl border border-border">
+                        <div class="check-icon">
+                            <svg class="w-3 h-3 text-cta" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-fg text-sm mb-1">Invisible Thread</h4>
+                            <p class="text-muted text-xs leading-relaxed">Buat audiens merasa MEREKA yang butuh produk, bukan Anda yang butuh uang.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-3 bg-white p-4 rounded-xl border border-border">
+                        <div class="check-icon">
+                            <svg class="w-3 h-3 text-cta" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-fg text-sm mb-1">Zero-Gravity Profit</h4>
+                            <p class="text-muted text-xs leading-relaxed">Margin profit 99% dari produk digital tanpa kendala logistik.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-3 bg-white p-4 rounded-xl border border-border">
+                        <div class="check-icon">
+                            <svg class="w-3 h-3 text-cta" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-fg text-sm mb-1">Faceless Marketing</h4>
+                            <p class="text-muted text-xs leading-relaxed">Hasilkan uang tanpa tampil di kamera. Pakai avatar AI & visual fotorealistik.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-3 bg-white p-4 rounded-xl border border-border">
+                        <div class="check-icon">
+                            <svg class="w-3 h-3 text-cta" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-fg text-sm mb-1">Hook 3 Detik (Pattern Interrupt)</h4>
+                            <p class="text-muted text-xs leading-relaxed">Hentikan scroll jempol di 3 detik pertama dengan pembuka yang "memukul".</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-3 bg-white p-4 rounded-xl border border-border">
+                        <div class="check-icon">
+                            <svg class="w-3 h-3 text-cta" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-fg text-sm mb-1">Ghost Signals</h4>
+                            <p class="text-muted text-xs leading-relaxed">Akali algoritma dengan balas komentar di 15-30 menit pertama upload.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-3 bg-white p-4 rounded-xl border border-border">
+                        <div class="check-icon">
+                            <svg class="w-3 h-3 text-cta" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-fg text-sm mb-1">Obligation Trigger</h4>
+                            <p class="text-muted text-xs leading-relaxed">Teknik konsultasi DM yang bikin audiens "berhutang budi" sebelum ditawari.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Who Is This For -->
+            <section class="reveal mb-16 md:mb-20">
+                <div class="text-center mb-6">
+                    <h2 class="font-display text-xl md:text-2xl font-bold text-dark mb-2">Untuk Siapa Ini?</h2>
+                </div>
+
+                <div class="grid sm:grid-cols-2 gap-4 max-w-2xl mx-auto">
+                    <div class="flex items-center gap-3 p-4 bg-cta/5 rounded-xl border border-cta/20">
+                        <svg class="w-5 h-5 text-cta flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                        <span class="text-sm text-fg">Pembuat konten yang ingin monetize</span>
+                    </div>
+                    <div class="flex items-center gap-3 p-4 bg-cta/5 rounded-xl border border-cta/20">
+                        <svg class="w-5 h-5 text-cta flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                        <span class="text-sm text-fg">Introvert yang malu tampil di kamera</span>
+                    </div>
+                    <div class="flex items-center gap-3 p-4 bg-cta/5 rounded-xl border border-cta/20">
+                        <svg class="w-5 h-5 text-cta flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                        <span class="text-sm text-fg">Seller produk fisik yang ingin tambah income</span>
+                    </div>
+                    <div class="flex items-center gap-3 p-4 bg-cta/5 rounded-xl border border-cta/20">
+                        <svg class="w-5 h-5 text-cta flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                        <span class="text-sm text-fg">Pemula dengan followers sedikit</span>
+                    </div>
+                    <div class="flex items-center gap-3 p-4 bg-cta/5 rounded-xl border border-cta/20">
+                        <svg class="w-5 h-5 text-cta flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                        <span class="text-sm text-fg">Yang ingin income tanpa modal besar</span>
+                    </div>
+                    <div class="flex items-center gap-3 p-4 bg-cta/5 rounded-xl border border-cta/20">
+                        <svg class="w-5 h-5 text-cta flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                        <span class="text-sm text-fg">Yang ingin bisnis jalan otomatis</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Bonus -->
+            <section class="reveal mb-16 md:mb-20">
+                <div class="bg-accent/5 rounded-2xl p-6 md:p-8 border border-accent/20">
+                    <div class="text-center mb-6">
+                        <span class="inline-block bg-accent text-white text-xs font-bold px-3 py-1 rounded-full mb-3">BONUS SPESIAL</span>
+                        <h2 class="font-display text-lg md:text-xl font-bold text-dark">3 Bonus yang Anda dapatkan hari ini</h2>
+                    </div>
+
+                    <div class="grid sm:grid-cols-3 gap-4">
+                        <div class="bg-white p-4 rounded-xl border border-border text-center">
+                            <div class="w-10 h-10 bg-accent/10 rounded-lg flex items-center justify-center mx-auto mb-3">
+                                <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg>
+                            </div>
+                            <h4 class="font-semibold text-fg text-sm mb-1">Checklist Digital Echo-Location</h4>
+                            <p class="text-muted text-xs">Temukan titik di mana uang berputar</p>
+                        </div>
+
+                        <div class="bg-white p-4 rounded-xl border border-border text-center">
+                            <div class="w-10 h-10 bg-accent/10 rounded-lg flex items-center justify-center mx-auto mb-3">
+                                <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                            </div>
+                            <h4 class="font-semibold text-fg text-sm mb-1">Template Script Slippery Slide</h4>
+                            <p class="text-muted text-xs">Copy-paste script jualan yang mengalir</p>
+                        </div>
+
+                        <div class="bg-white p-4 rounded-xl border border-border text-center">
+                            <div class="w-10 h-10 bg-accent/10 rounded-lg flex items-center justify-center mx-auto mb-3">
+                                <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                            </div>
+                            <h4 class="font-semibold text-fg text-sm mb-1">Cheat Sheet 7-Day Blitz</h4>
+                            <p class="text-muted text-xs">Rencana aksi 7 hari dengan checklist</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Order Section -->
+            <section id="order" class="reveal">
+                <div class="bg-dark rounded-2xl p-6 md:p-10 text-white text-center relative overflow-hidden">
+                    <!-- Decorative -->
+                    <div class="absolute top-0 right-0 w-40 h-40 bg-accent/20 rounded-full blur-3xl"></div>
+                    <div class="absolute bottom-0 left-0 w-32 h-32 bg-cta/10 rounded-full blur-3xl"></div>
+                    
+                    <div class="relative z-10 max-w-md mx-auto">
+                        <p class="text-white/60 text-sm mb-2">Total nilai produk + bonus:</p>
+                        <p class="text-white/40 text-xl mb-4 price-strike inline-block">Rp 997.000</p>
+                        
+                        <p class="text-white/80 text-sm mb-1">Harga hari ini:</p>
+                        <div class="flex items-baseline justify-center gap-1 mb-6">
+                            <span class="text-4xl md:text-5xl font-bold text-accent font-display">Rp 149.000</span>
+                        </div>
+
+                        <a href="#" class="cta-btn block w-full bg-cta text-white text-center py-4 px-8 rounded-xl font-bold text-base shadow-lg mb-4">
+                            Download Sekarang
+                        </a>
+                        
+                        <p class="text-white/50 text-xs">
+                            Akses instan via email setelah pembayaran
+                        </p>
+
+                        <!-- Trust Badges -->
+                        <div class="flex items-center justify-center gap-6 mt-6 pt-6 border-t border-white/10">
+                            <div class="flex items-center gap-2 text-white/60 text-xs">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+                                Secure Payment
+                            </div>
+                            <div class="flex items-center gap-2 text-white/60 text-xs">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+                                Instant Download
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-8 px-4 border-t border-border">
+        <div class="max-w-4xl mx-auto text-center">
+            <p class="text-muted text-xs">
+                Hak Cipta 2024 - SKEMA JALUR ORANG DALAM by Abu Omar
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Simple reveal on scroll
+        const revealElements = document.querySelectorAll('.reveal');
+        
+        const revealOnScroll = () => {
+            revealElements.forEach(el => {
+                const rect = el.getBoundingClientRect();
+                const windowHeight = window.innerHeight;
+                
+                if (rect.top < windowHeight * 0.85) {
+                    el.classList.add('active');
+                }
+            });
+        };
+
+        window.addEventListener('scroll', revealOnScroll);
+        window.addEventListener('load', revealOnScroll);
+
+        // Smooth scroll for anchor
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
