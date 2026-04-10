@@ -92,50 +92,16 @@
 
     <!-- Logic JavaScript -->
     <script>
-        // --- DATA GAMBAR (UBAH LINK GAMBAR ANDA DISINI) ---
-        // Menggunakan path lokal dari folder images/ sesuai permintaan Anda
-        const samplePairs = [
-            {
-                before: "images/1b.jpeg", 
-                after: "images/1a.webp",  
-                name: "Koleksi Fashion 1"
-            },
-            {
-                before: "images/2b.jpeg", 
-                after: "images/2a.webp",  
-                name: "Koleksi Fashion 2"
-            },
-            {
-                before: "images/3b.jpeg", 
-                after: "images/3a.webp",  
-                name: "Koleksi Fashion 3"
-            },
-            {
-                before: "images/4b.jpeg", 
-                after: "images/4a.webp",  
-                name: "Koleksi Fashion 4"
-            },
-            {
-                before: "images/5b.jpeg", 
-                after: "images/5a.webp",  
-                name: "Koleksi Fashion 5"
-            },
-            {
-                before: "images/6b.jpeg", 
-                after: "images/6a.webp",  
-                name: "Koleksi Fashion 6"
-            }
-        ];
-
-        // Buat 20 slot data dari sampel di atas
+        // --- DATA GAMBAR ---
+        // Membuat 20 slot data secara otomatis memanggil dari 1b.jpeg s/d 20b.jpeg 
+        // dan 1a.webp s/d 20a.webp
         const galleryData = [];
-        for (let i = 0; i < 20; i++) {
-            const sample = samplePairs[i % samplePairs.length];
+        for (let i = 1; i <= 20; i++) {
             galleryData.push({
-                id: i + 1,
-                title: `${sample.name} - Slot ${i + 1}`,
-                beforeImg: sample.before,
-                afterImg: sample.after,
+                id: i,
+                title: `Koleksi Fashion ${i}`,
+                beforeImg: `images/${i}b.jpeg`,
+                afterImg: `images/${i}a.webp`,
             });
         }
 
