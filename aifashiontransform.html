@@ -12,6 +12,9 @@
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
 
     <style>
+        html {
+    scroll-behavior: smooth;
+        }
         /* CSS tambahan agar input slider lebih responsif di mobile */
         input[type=range] {
             -webkit-appearance: none; /* Menghilangkan default style */
@@ -114,8 +117,8 @@
 </section>
 
 <hr class="max-w-7xl mx-auto border-gray-200">
-    <!-- Main Content -->
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+    <!--  Content -->
+    < class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
         
         <!-- Banner Instruksi -->
         <div class="mb-10 md:mb-12 bg-indigo-50 border border-indigo-100 rounded-2xl p-5 md:p-8 text-center max-w-3xl mx-auto shadow-sm">
@@ -131,7 +134,57 @@
         </div>
 
     </main>
+    <section id="cta-section" class="bg-indigo-900 py-16 md:py-24 overflow-hidden relative">
+    <div class="absolute top-0 right-0 -translate-y-1/2 translate-x-1/4 w-96 h-96 bg-indigo-500 rounded-full blur-3xl opacity-20"></div>
+    <div class="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/4 w-96 h-96 bg-purple-500 rounded-full blur-3xl opacity-20"></div>
 
+    <div class="max-w-5xl mx-auto px-4 relative z-10">
+        <div class="bg-white rounded-3xl shadow-2xl overflow-hidden flex flex-col md:flex-row items-stretch">
+            
+            <div class="bg-gray-50 p-8 md:p-12 flex flex-col justify-center border-b md:border-b-0 md:border-r border-gray-100">
+                <span class="text-indigo-600 font-bold tracking-widest uppercase text-xs mb-2 block">Harga Spesial Launching</span>
+                <div class="flex items-baseline gap-1">
+                    <span class="text-2xl font-bold text-gray-900">Rp</span>
+                    <span class="text-6xl md:text-7xl font-black text-gray-900 tracking-tighter">100.000</span>
+                </div>
+                <p class="mt-4 text-gray-500 font-medium">Untuk Paket <span class="text-indigo-600">20 Transformasi Gambar</span></p>
+                
+                <div class="mt-6 py-3 px-4 bg-red-50 border-l-4 border-red-500 rounded-r-lg">
+                    <p class="text-red-700 text-sm font-semibold">
+                        <i class="ph ph-warning-circle mr-1"></i> 10x Lebih Murah dari Jasa Foto Studio!
+                    </p>
+                </div>
+            </div>
+
+            <div class="p-8 md:p-12 flex-1 flex flex-col justify-center">
+                <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-6">Investasi Terbaik untuk Brand Anda</h2>
+                
+                <ul class="space-y-4 mb-10">
+                    <li class="flex items-start gap-3 text-gray-700">
+                        <i class="ph ph-check-circle text-2xl text-green-500"></i>
+                        <span><strong>Tanpa Biaya Tambahan:</strong> Tidak perlu sewa model, MUA, atau fotografer pro yang harganya jutaan.</span>
+                    </li>
+                    <li class="flex items-start gap-3 text-gray-700">
+                        <i class="ph ph-check-circle text-2xl text-green-500"></i>
+                        <span><strong>Hemat Waktu:</strong> Hasil dikirim dalam waktu kurang dari 24 jam.</span>
+                    </li>
+                    <li class="flex items-start gap-3 text-gray-700">
+                        <i class="ph ph-check-circle text-2xl text-green-500"></i>
+                        <span><strong>Format Siap Pakai:</strong> Gambar High-Resolution untuk WhatsApp, Instagram, dan Marketplace.</span>
+                    </li>
+                </ul>
+
+                <a href="https://wa.me/6289501303251?text=Halo%20AI%20Fashion%20Transform,%20saya%20tertarik%20dengan%20promo%2020%20foto%20katalognya.%20Gimana%20cara%20ordernya?" 
+                   target="_blank" 
+                   class="inline-flex items-center justify-center gap-3 px-8 py-5 bg-green-600 hover:bg-green-700 text-white text-lg font-bold rounded-2xl shadow-lg shadow-green-200 transition-all transform hover:-translate-y-1 active:scale-95">
+                    <i class="ph ph-whatsapp-logo text-3xl"></i>
+                    Ambil Promo Sekarang
+                </a>
+                <p class="text-center mt-4 text-xs text-gray-400 font-medium tracking-wide uppercase">Konsultasi Gratis Sebelum Order</p>
+            </div>
+        </div>
+    </div>
+    </section>
     <!-- Footer -->
     <footer class="bg-white border-t border-gray-200 py-8 md:py-10 mt-8 md:mt-12">
         <div class="max-w-7xl mx-auto px-4 text-center">
@@ -240,4 +293,16 @@
         };
     </script>
 </body>
+    <div class="fixed bottom-6 right-6 z-[60] flex flex-col items-end gap-3">
+    <div class="bg-white px-4 py-2 rounded-lg shadow-xl border border-indigo-100 text-indigo-900 text-xs font-bold animate-bounce md:block hidden">
+        Dapatkan 20 Foto Hanya 100rb! ✨
+    </div>
+    
+    <a href="#cta-section" class="flex items-center gap-3 px-6 py-4 bg-indigo-600 hover:bg-indigo-700 text-white rounded-full shadow-[0_10px_25px_-5px_rgba(79,70,229,0.4)] transition-all duration-300 transform hover:scale-105 active:scale-95 group">
+        <span class="font-bold tracking-wide">Pesan Sekarang</span>
+        <div class="bg-white/20 p-1 rounded-full group-hover:rotate-12 transition-transform">
+            <i class="ph ph-shopping-cart-simple text-xl"></i>
+        </div>
+    </a>
+</div>
 </html>
