@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eksplorasi Wisata & Kuliner Magelang</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #f8fafc;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .glass {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        /* Custom map animation marker */
+        @keyframes pulse-ring {
+            0% { transform: scale(0.35); opacity: 1; }
+            80%, 100% { transform: scale(1.8); opacity: 0; }
+        }
+        .pulse-marker::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background-color: inherit;
+            animation: pulse-ring 1.8s cubic-bezier(0.215, 0.610, 0.355, 1) infinite;
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
+<body class="text-slate-800 min-h-screen flex flex-col">
+
+    <!-- Header / Hero Section -->
+    <header class="relative bg-emerald-950 text-white overflow-hidden py-16 px-6 md:px-12">
+        <!-- Decorative Background Pattern -->
+        <div class="absolute inset-0 opacity-15 mix-blend-overlay bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1601918774946-25832a4be0d6?auto=format&fit=crop&w=1600&q=80')"></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-emerald-950/40 via-emerald-950/85 to-emerald-950"></div>
+        
+        <div class="relative max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
+            <div class="space-y-4 max-w-2xl text-center md:text-left">
+                <span class="bg-emerald-500/20 text-emerald-300 px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider border border-emerald-500/30">
+                    <i class="fa-solid fa-compass class me-1.5"></i> Destinasi Alternatif Selain Borobudur
+                </span>
+                <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight leading-tight">
+                    Jalan Santai & Kulineran di <span class="text-emerald-400">Magelang</span>
+                </h1>
+                <p class="text-slate-300 text-base md:text-lg">
+                    Rekomendasi rute strolling terbaik dengan pemandangan gunung spektakuler serta santapan legendaris pengunggah selera.
+                </p>
+            </div>
+            
+            <!-- Quick Weather / Elevation Widget -->
+            <div class="glass text-slate-900 rounded-3xl p-6 shadow-xl w-full max-w-xs border border-white/20 flex flex-col justify-between">
+                <div class="flex items-center justify-between mb-4">
+                    <span class="font-bold text-slate-800">Magelang Highland</span>
+                    <span class="bg-emerald-100 text-emerald-800 text-xs px-2.5 py-0.5 rounded-full font-semibold">Aktif</span>
+                </div>
+                <div class="flex items-center gap-4">
+                    <div class="text-4xl text-emerald-600"><i class="fa-solid fa-cloud-sun"></i></div>
+                    <div>
+                        <div class="text-2xl font-bold">21°C - 26°C</div>
+                        <div class="text-xs text-slate-500">Sejuk & Segar di Pagi Hari</div>
+                    </div>
+                </div>
+                <hr class="my-4 border-slate-200">
+                <div class="text-xs text-slate-600 flex justify-between">
+                    <span>💡 Tips: Mulai jam 05:30 WIB</span>
+                    <span class="font-semibold text-emerald-600">Bebas Kabut</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="max-w-6xl mx-auto px-4 md:px-8 py-10 flex-grow w-full grid grid-cols-1 lg:grid-cols-12 gap-8">
+        
+        <!-- Left Column: Explorer Content (8 cols) -->
+        <div class="lg:col-span-8 space-y-8">
+            
+            <!-- Category Navigation -->
+            <div class="flex items-center justify-between border-b border-slate-200 pb-2">
+                <div class="flex gap-2" id="category-tabs">
+                    <button onclick="switchCategory('all')" id="tab-all" class="px-4 py-2.5 rounded-xl font-semibold text-sm transition-all duration-200 bg-emerald-600 text-white shadow-md">
+                        Semua Tempat
+                    </button>
+                    <button onclick="switchCategory('alam')" id="tab-alam" class="px-4 py-2.5 rounded-xl font-semibold text-sm transition-all duration-200 text-slate-600 hover:bg-slate-100">
+                        🏔️ Wisata Alam & View
+                    </button>
+                    <button onclick="switchCategory('kuliner')" id="tab-kuliner" class="px-4 py-2.5 rounded-xl font-semibold text-sm transition-all duration-200 text-slate-600 hover:bg-slate-100">
+                        🍲 Kuliner Legendaris
+                    </button>
+                </div>
+                <span class="text-xs text-slate-500 font-medium hidden md:inline" id="destination-count">Menampilkan 9 Lokasi</span>
+            </div>
+
+            <!-- Interactive Search & Filter Bar -->
+            <div class="relative">
+                <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
+                <input type="text" id="search-input" onkeyup="filterPlaces()" placeholder="Cari nama tempat, kuliner, atau aktivitas..." class="w-full bg-white border border-slate-200 rounded-2xl py-3.5 pl-12 pr-4 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 shadow-sm transition">
+            </div>
+
+            <!-- Destinations Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="destinations-grid">
+                <!-- Cards will be dynamically rendered here via JavaScript -->
+            </div>
+
+        </div>
+
+        <!-- Right Column: Interactive Planner & Custom Map Preview (4 cols) -->
+        <div class="lg:col-span-4 space-y-6">
+            
+            <!-- Simulated Visual Map -->
+            <div class="bg-white rounded-3xl p-5 shadow-sm border border-slate-100 space-y-4">
+                <div class="flex items-center justify-between">
+                    <h3 class="font-bold text-slate-800 flex items-center gap-2">
+                        <i class="fa-solid fa-map-location-dot text-emerald-600"></i> Visual Map Magelang
+                    </h3>
+                    <span class="text-[10px] bg-amber-100 text-amber-800 px-2 py-0.5 rounded font-semibold">Simulasi Offline</span>
+                </div>
+                
+                <!-- Mock Map Box -->
+                <div class="relative aspect-square bg-slate-50 rounded-2xl overflow-hidden border border-slate-100 shadow-inner flex items-center justify-center">
+                    <!-- Sumbing Mountain Peak -->
+                    <div class="absolute top-1/4 left-1/4 text-center">
+                        <i class="fa-solid fa-mountain text-slate-300 text-5xl"></i>
+                        <span class="block text-[9px] text-slate-400 font-bold">Gn. Sumbing</span>
+                    </div>
+                    <!-- Merapi Peak -->
+                    <div class="absolute top-1/2 right-12 text-center">
+                        <i class="fa-solid fa-mountain text-slate-300 text-4xl"></i>
+                        <span class="block text-[9px] text-slate-400 font-bold">Gn. Merapi</span>
+                    </div>
+
+                    <!-- Center Area (Magelang City) -->
+                    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center p-3 rounded-full border border-dashed border-slate-200">
+                        <span class="text-[10px] text-slate-400 font-bold block">Pusat Kota</span>
+                    </div>
+
+                    <!-- Interactive Map Markers dynamically placed -->
+                    <div id="map-pins-container">
+                        <!-- Pins inserted dynamically based on loaded places -->
+                    </div>
+                </div>
+                <p class="text-[11px] text-slate-400 text-center italic">Ketuk pin peta atau kartu di kiri untuk menyorot lokasi</p>
+            </div>
+
+            <!-- Strolling Route Planner (My Itinerary) -->
+            <div class="bg-gradient-to-br from-slate-900 to-slate-950 text-white rounded-3xl p-6 shadow-xl space-y-6 sticky top-6">
+                <div>
+                    <h3 class="font-bold text-lg flex items-center gap-2">
+                        <i class="fa-solid fa-route text-emerald-400"></i> Rencana Strolling Saya
+                    </h3>
+                    <p class="text-xs text-slate-400 mt-1">Buat daftar urutan kunjungan kuliner & pemandangan impian Anda.</p>
+                </div>
+
+                <div id="itinerary-list" class="space-y-3 max-h-60 overflow-y-auto pr-1 hide-scrollbar">
+                    <!-- Empty state -->
+                    <div id="itinerary-empty" class="text-center py-6 text-slate-500 border border-dashed border-slate-800 rounded-2xl">
+                        <i class="fa-solid fa-plus text-2xl mb-2 text-slate-600 block"></i>
+                        <span class="text-xs">Belum ada lokasi dipilih.<br>Klik "+ Tambah Rute" pada kartu lokasi!</span>
+                    </div>
+                </div>
+
+                <div id="itinerary-footer" class="hidden pt-4 border-t border-slate-800 space-y-3">
+                    <div class="flex justify-between items-center text-xs">
+                        <span class="text-slate-400">Total Perhentian:</span>
+                        <span id="itinerary-count" class="font-bold text-emerald-400">0 Lokasi</span>
+                    </div>
+                    <button onclick="clearItinerary()" class="w-full bg-slate-800 hover:bg-slate-700 transition text-slate-300 py-2.5 rounded-xl text-xs font-semibold flex items-center justify-center gap-1.5">
+                        <i class="fa-solid fa-trash"></i> Bersihkan Rute
+                    </button>
+                    <button onclick="generateShareablePlan()" class="w-full bg-emerald-500 hover:bg-emerald-400 transition text-slate-950 py-3 rounded-xl text-xs font-bold flex items-center justify-center gap-1.5">
+                        <i class="fa-solid fa-print"></i> Bagikan Rencana Perjalanan
+                    </button>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- Modal for Location Details & Photos -->
+    <div id="detail-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/75 backdrop-blur-md opacity-0 pointer-events-none transition-opacity duration-300 p-4">
+        <div class="bg-white rounded-3xl overflow-hidden shadow-2xl max-w-2xl w-full max-h-[90vh] flex flex-col transform translate-y-4 transition-transform duration-300" id="modal-content">
+            <!-- Modal Header / Large Photo -->
+            <div class="relative h-64 md:h-80 w-full overflow-hidden">
+                <img id="modal-img" src="" alt="Detail View" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
+                <button onclick="closeModal()" class="absolute top-4 right-4 bg-slate-950/50 hover:bg-slate-950/80 text-white w-9 h-9 rounded-full flex items-center justify-center transition">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+                <div class="absolute bottom-6 left-6 right-6 text-white space-y-1">
+                    <span id="modal-category" class="bg-emerald-500 text-slate-950 text-[10px] px-2.5 py-1 rounded-full font-bold uppercase tracking-wider">KATEGORI</span>
+                    <h2 id="modal-title" class="text-2xl md:text-3xl font-extrabold leading-tight">Nama Lokasi</h2>
+                </div>
+            </div>
+
+            <!-- Modal Body -->
+            <div class="p-6 overflow-y-auto space-y-6 flex-grow hide-scrollbar">
+                <!-- Location Info Strips -->
+                <div class="grid grid-cols-3 gap-2 text-center">
+                    <div class="bg-slate-50 p-3 rounded-xl border border-slate-100">
+                        <span class="text-[10px] text-slate-400 block uppercase font-semibold">Peringkat Google</span>
+                        <span class="font-bold text-amber-500 text-sm flex items-center justify-center gap-1 mt-1">
+                            <i class="fa-solid fa-star"></i> <span id="modal-rating">4.8</span>
+                        </span>
+                    </div>
+                    <div class="bg-slate-50 p-3 rounded-xl border border-slate-100">
+                        <span class="text-[10px] text-slate-400 block uppercase font-semibold">Jam Kunjung Terbaik</span>
+                        <span id="modal-hours" class="font-semibold text-slate-700 text-xs block mt-1">05:00 - 08:00</span>
+                    </div>
+                    <div class="bg-slate-50 p-3 rounded-xl border border-slate-100">
+                        <span class="text-[10px] text-slate-400 block uppercase font-semibold">Estimasi Biaya</span>
+                        <span id="modal-cost" class="font-semibold text-emerald-600 text-xs block mt-1">Murah Meriah</span>
+                    </div>
+                </div>
+
+                <!-- Descriptive Section -->
+                <div class="space-y-2">
+                    <h4 class="font-bold text-slate-800 text-sm flex items-center gap-1.5">
+                        <i class="fa-solid fa-circle-info text-slate-400"></i> Deskripsi & Daya Tarik
+                    </h4>
+                    <p id="modal-description" class="text-sm text-slate-600 leading-relaxed">Informasi lengkap tempat ini.</p>
+                </div>
+
+                <!-- Custom Itinerary Suggestions / Strolling Tips -->
+                <div class="bg-emerald-50 p-4 rounded-2xl border border-emerald-100 space-y-2">
+                    <h4 class="font-bold text-emerald-900 text-xs flex items-center gap-1.5 uppercase tracking-wider">
+                        <i class="fa-solid fa-shoe-prints"></i> Tips Strolling / Kulineran Di Sini
+                    </h4>
+                    <ul id="modal-tips" class="text-xs text-emerald-800 space-y-1.5 list-disc pl-4">
+                        <li>Gunakan sepatu jalan yang nyaman karena konturnya menanjak.</li>
+                        <li>Cobalah memadukannya dengan wedang hangat setempat.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="p-4 bg-slate-50 border-t border-slate-100 flex items-center justify-between">
+                <span class="text-xs text-slate-500" id="modal-coordinates">📍 Lat: -7.48, Long: 110.22</span>
+                <button id="modal-add-btn" class="bg-emerald-600 hover:bg-emerald-500 text-white px-5 py-2.5 rounded-xl text-xs font-bold transition flex items-center gap-1.5">
+                    <i class="fa-solid fa-plus"></i> Tambah Rute
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Alert Modal Box (Custom Toast instead of alert) -->
+    <div id="toast-box" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-slate-900 text-white py-3 px-6 rounded-full shadow-2xl text-xs font-medium tracking-wide flex items-center gap-2 transform translate-y-20 opacity-0 transition-all duration-300">
+        <i class="fa-solid fa-circle-info text-emerald-400" id="toast-icon"></i>
+        <span id="toast-message">Pesan sukses di sini!</span>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-slate-100 border-t border-slate-200 py-6 text-center text-xs text-slate-500 mt-12">
+        <p class="font-medium">🏔️ Magelang Strolling & Culinary Map Guide • Dibuat khusus untuk Anda</p>
+        <p class="mt-1">Peta & foto-foto menggunakan representasi interaktif visual Unsplash & Google Maps data mockups.</p>
+    </footer>
+
+    <!-- JS Logic -->
+    <script>
+        // Database Tempat (Wisata Alam & Kuliner)
+        const destinations = [
+            {
+                id: 1,
+                name: "Silancur Highland",
+                category: "alam",
+                rating: 4.8,
+                image: "https://images.unsplash.com/photo-1601918774946-25832a4be0d6?auto=format&fit=crop&w=800&q=80",
+                fallbackImage: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80", // beautiful landscape
+                bestHour: "Pagi Hari (05:00 - 07:00)",
+                cost: "Rp10.000 (Tiket Masuk)",
+                coordinates: "S: -7.4243, E: 110.0984",
+                mapPos: { top: '35%', left: '15%' },
+                tag: "Golden Sunrise Peak",
+                description: "Terletak di sebelah barat lereng Gunung Sumbing pada ketinggian sekitar 1.300 mdpl. Silancur Highland menyuguhkan taman bunga berlatar belakang pegunungan yang megah. Sangat menakjubkan bagi Anda yang suka berjalan santai di pagi hari ditemani angin segar sepoi-sepoi dan langit jingga.",
+                tips: [
+                    "Waktu terbaik adalah saat matahari terbit untuk mendapatkan view 5 gunung sekaligus jika cuaca cerah.",
+                    "Tersedia warung kopi lokal di sekitar area jika Anda butuh kehangatan ekstra.",
+                    "Sediakan jaket tebal karena suhu pagi bisa di bawah 17 derajat celcius."
+                ]
+            },
+            {
+                id: 2,
+                name: "Nepal Van Java",
+                category: "alam",
+                rating: 4.7,
+                image: "https://images.unsplash.com/photo-1583037189850-1921ae7c6c22?auto=format&fit=crop&w=800&q=80",
+                fallbackImage: "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=800&q=80", // terraces
+                bestHour: "Pagi-Siang (07:00 - 10:00)",
+                cost: "Rp15.000",
+                coordinates: "S: -7.4069, E: 110.0898",
+                mapPos: { top: '15%', left: '20%' },
+                tag: "Exotic Village",
+                description: "Sebuah dusun wisata bernama Dusun Butuh yang terletak tepat di kaki Gunung Sumbing. Keunikan dusun ini adalah jajaran rumah penduduk yang tampak bertingkat-tingkat di lereng curam, mirip dengan lanskap pemukiman khas di pegunungan Nepal.",
+                tips: [
+                    "Rute jalan di dalam desa merupakan tanjakan curam yang menantang tapi sangat asyik untuk dijelajahi dengan berjalan kaki.",
+                    "Sapa warga lokal yang ramah saat mereka sedang mengangkut sayuran segar hasil panen.",
+                    "Bawa kamera karena setiap sudut gang menyajikan perspektif arsitektur lokal yang unik."
+                ]
+            },
+            {
+                id: 3,
+                name: "Jalan Alternatif Nepal Van Java",
+                category: "alam",
+                rating: 4.6,
+                image: "https://images.unsplash.com/photo-1599940824399-b87987ceb72a?auto=format&fit=crop&w=800&q=80", // rural road
+                fallbackImage: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=800&q=80",
+                bestHour: "Pagi Hari (06:00 - 08:00)",
+                cost: "Gratis (Fasilitas Umum)",
+                coordinates: "S: -7.4120, E: 110.1105",
+                mapPos: { top: '28%', left: '33%' },
+                tag: "Scenic Path Route",
+                description: "Jalur rahasia bagi pelancong penikmat sepi. Jalan aspal pedesaan ini menyuguhkan pemandangan perkebunan kubis, kentang, dan daun bawang yang membentang luas langsung di bawah megahnya bayangan Gunung Sumbing.",
+                tips: [
+                    "Parkir kendaraan Anda di tempat yang aman lalu berjalan kakilah sejauh 1 km sepanjang aspal pedesaan ini.",
+                    "Waktu terbaik adalah saat petani lokal mulai turun menggarap ladang mereka.",
+                    "Sangat minim keramaian, cocok bagi pencari kedamaian visual."
+                ]
+            },
+            {
+                id: 4,
+                name: "Mangli Sky View",
+                category: "alam",
+                rating: 4.7,
+                image: "https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?auto=format&fit=crop&w=800&q=80", // camp
+                fallbackImage: "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=800&q=80",
+                bestHour: "Senja & Malam (16:00 - 20:00)",
+                cost: "Rp15.000",
+                coordinates: "S: -7.4294, E: 110.1211",
+                mapPos: { top: '42%', left: '26%' },
+                tag: "Above The Clouds",
+                description: "Destinasi di ketinggian 1.570 mdpl yang menawarkan pemandangan eksotis gardu pandang kayu dengan latar belakang awan putih. Ketika malam hari tiba, Anda bisa menyaksikan gemerlap jutaan lampu perkotaan Magelang di bawah sana.",
+                tips: [
+                    "Datanglah menjelang sore untuk merasakan sensasi sejuk pergantian hari dari langit merah ke malam bertabur bintang.",
+                    "Pesan mie rebus instan dan teh jahe panas di warung-warung kecil sekitar gardu pandang.",
+                    "Sediakan senter kecil jika Anda berminat berjalan ke titik atas di malam hari."
+                ]
+            },
+            {
+                id: 5,
+                name: "Ketep Pass Magelang",
+                category: "alam",
+                rating: 4.6,
+                image: "https://images.unsplash.com/photo-1626244439019-3540b6167c1f?auto=format&fit=crop&w=800&q=80", // volcano
+                fallbackImage: "https://images.unsplash.com/photo-1589182373726-e4f658ab50f0?auto=format&fit=crop&w=800&q=80",
+                bestHour: "Siang Hari Sejuk (11:00 - 14:00)",
+                cost: "Rp12.500",
+                coordinates: "S: -7.5023, E: 110.4011",
+                mapPos: { top: '65%', left: '85%' },
+                tag: "Volcano Observatory",
+                description: "Terletak di sela-sela antara Gunung Merapi dan Gunung Merbabu. Ketep Pass menjadi lokasi paling strategis untuk melihat langsung lanskap letusan bersejarah dan tubuh gagah dari dua gunung berapi raksasa di Jawa Tengah.",
+                tips: [
+                    "Gunakan teropong yang disediakan di gardu pandang untuk mengintip kawah Merapi yang masih mengepul aktif.",
+                    "Coba sensasi strolling di jalur setapak lingkar Ketep sambil makan jagung bakar khas setempat.",
+                    "Kunjungi bioskop mini Volcano Theatre di dalam kompleks untuk menambah wawasan geologis Anda."
+                ]
+            },
+            {
+                id: 6,
+                name: "Alun-Alun Kota Magelang",
+                category: "kuliner",
+                rating: 4.5,
+                image: "https://images.unsplash.com/photo-1596422846543-75c6fc18a523?auto=format&fit=crop&w=800&q=80", // street city park
+                fallbackImage: "https://images.unsplash.com/photo-1473448912268-2022ce9509d8?auto=format&fit=crop&w=800&q=80",
+                bestHour: "Sore & Malam (17:00 - 21:00)",
+                cost: "Gratis (Hanya parkir)",
+                coordinates: "S: -7.4812, E: 110.2198",
+                mapPos: { top: '55%', left: '50%' },
+                tag: "Heritage City Park",
+                description: "Jantung dari pusat kota Magelang. Kawasan ini merupakan taman terbuka yang sangat tertata rapi, bersih, berangin sejuk, serta dikelilingi arsitektur peninggalan Belanda seperti Menara Air Watertoren setinggi 21 meter.",
+                tips: [
+                    "Sangat direkomendasikan untuk strolling santai melingkari Alun-alun di malam hari karena jalurnya datar, mulus, dan bebas kendaraan bermotor.",
+                    "Lanjutkan langkah ke Jalan Pemuda (kawasan Pecinan) yang berada tepat di sisi selatan untuk menikmati suasana ruko vintage Magelang.",
+                    "Jangan lewatkan area sentra kuliner 'Tuin Van Java' di dalam kawasan Alun-Alun."
+                ]
+            },
+            {
+                id: 7,
+                name: "Kupat Tahu Pojok Magelang",
+                category: "kuliner",
+                rating: 4.8,
+                image: "https://images.unsplash.com/photo-1541518763669-27fef04b14ea?auto=format&fit=crop&w=800&q=80", // Indonesian tofu style
+                fallbackImage: "https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=800&q=80",
+                bestHour: "Makan Siang (11:00 - 14:00)",
+                cost: "Rp15.000 - Rp20.000 / Porsi",
+                coordinates: "S: -7.4820, E: 110.2205",
+                mapPos: { top: '59%', left: '52%' },
+                tag: "Legendary Culinary",
+                description: "Kuliner legendaris paling terkenal di Magelang yang berdiri sejak 1942. Warung makan legendaris ini terkenal karena kuah manis gurihnya yang encer namun sarat cita rasa rempah khas, berpadu dengan ketupat, kol, taoge segar, bakwan garing, dan tahu halus goreng hangat.",
+                tips: [
+                    "Mintalah level pedas sesuai selera Anda karena cabai langsung diulek di atas piring saat dipesan.",
+                    "Warung ini seringkali sangat padat saat jam makan siang, datanglah lebih awal (pukul 11.00) agar mendapatkan tempat duduk.",
+                    "Lihatlah pajangan foto tokoh-tokoh besar nasional di dinding warung sebagai saksi sejarah legendarisnya kuliner ini."
+                ]
+            },
+            {
+                id: 8,
+                name: "Sop Senerek Bu Atmo",
+                category: "kuliner",
+                rating: 4.7,
+                image: "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=800&q=80", // soup bowl
+                fallbackImage: "https://images.unsplash.com/photo-1541832676-9b763b0239ab?auto=format&fit=crop&w=800&q=80",
+                bestHour: "Sarapan Pagi (07:00 - 09:30)",
+                cost: "Rp20.000 / Porsi",
+                coordinates: "S: -7.4881, E: 110.2114",
+                mapPos: { top: '63%', left: '46%' },
+                tag: "Warm Comfort Food",
+                description: "Sop Senerek merupakan sup warisan kuliner asimilasi Belanda ('Snert' soup) berupa semangkuk sup hangat yang berisi kacang merah lembut, daun bayam, potongan wortel, serta irisan daging sapi tipis berkuah kaldu bening yang sangat menyegarkan tenggorokan.",
+                tips: [
+                    "Sangat pas disantap saat pagi hari ketika udara dingin Magelang masih menyelimuti kulit.",
+                    "Sandingkan sup senerek dengan paru goreng garing atau perkedel kentang lembut yang disajikan langsung di meja makan.",
+                    "Jangan datang terlalu sore karena sup senerek legendaris ini biasanya ludes terjual sebelum jam 2 siang."
+                ]
+            },
+            {
+                id: 9,
+                name: "Es Murni Magelang",
+                category: "kuliner",
+                rating: 4.6,
+                image: "https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?auto=format&fit=crop&w=800&q=80", // ice dessert
+                fallbackImage: "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=800&q=80",
+                bestHour: "Siang Terik (12:00 - 15:00)",
+                cost: "Rp12.000 - Rp25.000",
+                coordinates: "S: -7.4855, E: 110.2222",
+                mapPos: { top: '51%', left: '56%' },
+                tag: "Retro Sweet Dessert",
+                description: "Menyediakan aneka es tradisional segar sejak tahun 1962. Mulai dari Es Teler, Es Campur warna-warni, Es Burjo, hingga es krim puter bergaya kuno yang cocok meredakan dahaga setelah lelah berjalan-jalan.",
+                tips: [
+                    "Es Murni Pleret adalah menu andalan yang wajib dicoba (es dengan bulatan pleret kenyal manis gurih dari tepung beras dan siraman kuah santan gula jawa).",
+                    "Jika perut terasa lapar, mereka juga menyajikan hidangan gurih pendamping seperti bakso kuah hangat dan sate-satean tradisional.",
+                    "Interior toko didesain bergaya vintage yang nyaman sebagai ruang istirahat sementara dari penatnya perjalanan."
+                ]
+            }
+        ];
+
+        let selectedCategory = "all";
+        let itinerary = [];
+
+        // Initialize App
+        window.onload = function() {
+            renderDestinations();
+            renderMapPins();
+            loadItineraryFromMemory();
+        };
+
+        // Render Cards to the grid
+        function renderDestinations() {
+            const grid = document.getElementById("destinations-grid");
+            const searchVal = document.getElementById("search-input").value.toLowerCase();
+            grid.innerHTML = "";
+
+            let filtered = destinations.filter(dest => {
+                const matchesCategory = selectedCategory === "all" || dest.category === selectedCategory;
+                const matchesSearch = dest.name.toLowerCase().includes(searchVal) || 
+                                      dest.tag.toLowerCase().includes(searchVal) || 
+                                      dest.description.toLowerCase().includes(searchVal);
+                return matchesCategory && matchesSearch;
+            });
+
+            // Update count
+            document.getElementById("destination-count").innerText = `Menampilkan ${filtered.length} Lokasi`;
+
+            if(filtered.length === 0) {
+                grid.innerHTML = `
+                    <div class="col-span-1 md:col-span-2 text-center py-12 bg-white rounded-3xl border border-slate-100 shadow-sm">
+                        <i class="fa-solid fa-face-frown text-4xl text-slate-300 mb-3"></i>
+                        <h4 class="font-bold text-slate-700">Tempat tidak ditemukan</h4>
+                        <p class="text-xs text-slate-400 mt-1">Coba kata kunci lain atau pilih kategori yang berbeda.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            filtered.forEach(dest => {
+                const card = document.createElement("div");
+                card.className = "bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-md border border-slate-100 transition-all duration-300 flex flex-col group cursor-pointer";
+                card.onclick = (e) => {
+                    // Prevent triggering modal when clicking 'add to route' button
+                    if (e.target.closest('.add-btn')) return;
+                    openModal(dest.id);
+                };
+
+                const isAlreadyInItinerary = itinerary.some(item => item.id === dest.id);
+                const buttonText = isAlreadyInItinerary ? "Dalam Rute" : "+ Tambah Rute";
+                const buttonClass = isAlreadyInItinerary 
+                    ? "bg-slate-100 text-slate-500 font-medium cursor-default" 
+                    : "bg-emerald-50 hover:bg-emerald-100 text-emerald-700 font-semibold";
+
+                card.innerHTML = `
+                    <div class="relative h-48 w-full overflow-hidden bg-slate-100">
+                        <img src="${dest.image}" alt="${dest.name}" onerror="this.onerror=null; this.src='${dest.fallbackImage}'" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute top-3 left-3 flex gap-1.5 flex-wrap">
+                            <span class="bg-slate-900/75 text-white text-[9px] font-extrabold px-2.5 py-1 rounded-full uppercase tracking-wider backdrop-blur-sm">
+                                ${dest.category === 'alam' ? '🏔️ Alam' : '🍲 Kuliner'}
+                            </span>
+                        </div>
+                        <div class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm px-2.5 py-1 rounded-full text-[10px] font-bold text-amber-600 shadow-sm flex items-center gap-0.5">
+                            <i class="fa-solid fa-star"></i> ${dest.rating}
+                        </div>
+                    </div>
+                    
+                    <div class="p-5 flex-grow flex flex-col justify-between space-y-4">
+                        <div class="space-y-1.5">
+                            <span class="text-[10px] text-emerald-600 font-bold tracking-widest uppercase block">${dest.tag}</span>
+                            <h3 class="font-extrabold text-base text-slate-800 group-hover:text-emerald-700 transition-colors">${dest.name}</h3>
+                            <p class="text-xs text-slate-500 line-clamp-2 leading-relaxed">${dest.description}</p>
+                        </div>
+                        
+                        <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-[11px]">
+                            <span class="text-slate-400 font-medium">⏰ ${dest.bestHour.split(' ')[0]} ${dest.bestHour.split(' ')[1] || ''}</span>
+                            <button onclick="toggleItinerary(${dest.id})" class="add-btn px-3 py-1.5 rounded-xl text-[10px] transition ${buttonClass}">
+                                ${buttonText}
+                            </button>
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // Render custom interactive SVG map pins
+        function renderMapPins() {
+            const container = document.getElementById("map-pins-container");
+            container.innerHTML = "";
+
+            destinations.forEach(dest => {
+                const pin = document.createElement("button");
+                pin.className = `absolute z-10 p-1 group flex items-center justify-center -translate-x-1/2 -translate-y-1/2 transition-transform duration-300 hover:scale-125`;
+                pin.style.top = dest.mapPos.top;
+                pin.style.left = dest.mapPos.left;
+                pin.onclick = () => openModal(dest.id);
+
+                const colorClass = dest.category === 'alam' ? 'bg-emerald-500' : 'bg-amber-500';
+                const iconClass = dest.category === 'alam' ? 'fa-mountain' : 'fa-utensils';
+
+                pin.innerHTML = `
+                    <div class="${colorClass} w-6 h-6 rounded-full text-white flex items-center justify-center shadow-lg relative pulse-marker">
+                        <i class="fa-solid ${iconClass} text-[10px]"></i>
+                    </div>
+                    <!-- Tooltip label -->
+                    <span class="absolute bottom-full left-1/2 -translate-x-1/2 bg-slate-900 text-white text-[9px] py-1 px-2 rounded-lg opacity-0 pointer-events-none group-hover:opacity-100 transition shadow-md whitespace-nowrap z-20">
+                        ${dest.name} (★${dest.rating})
+                    </span>
+                `;
+                container.appendChild(pin);
+            });
+        }
+
+        // Switch active tab
+        function switchCategory(cat) {
+            selectedCategory = cat;
+            
+            // Toggle active classes on tab buttons
+            document.querySelectorAll("#category-tabs button").forEach(btn => {
+                btn.className = "px-4 py-2.5 rounded-xl font-semibold text-sm transition-all duration-200 text-slate-600 hover:bg-slate-100";
+            });
+
+            const activeBtn = document.getElementById(`tab-${cat}`);
+            activeBtn.className = "px-4 py-2.5 rounded-xl font-semibold text-sm transition-all duration-200 bg-emerald-600 text-white shadow-md";
+
+            renderDestinations();
+        }
+
+        // Filter search input
+        function filterPlaces() {
+            renderDestinations();
+        }
+
+        // Open Detail Modal
+        function openModal(id) {
+            const dest = destinations.find(d => d.id === id);
+            if (!dest) return;
+
+            document.getElementById("modal-img").src = dest.image;
+            document.getElementById("modal-img").onerror = function() {
+                this.src = dest.fallbackImage;
+            };
+            document.getElementById("modal-title").innerText = dest.name;
+            document.getElementById("modal-category").innerText = dest.category === 'alam' ? '🏔️ Wisata Alam' : '🍲 Kuliner Legendaris';
+            document.getElementById("modal-rating").innerText = dest.rating;
+            document.getElementById("modal-hours").innerText = dest.bestHour;
+            document.getElementById("modal-cost").innerText = dest.cost;
+            document.getElementById("modal-description").innerText = dest.description;
+            document.getElementById("modal-coordinates").innerText = `📍 Koordinat Google Maps: ${dest.coordinates}`;
+
+            // Render custom strolling tips
+            const tipsList = document.getElementById("modal-tips");
+            tipsList.innerHTML = "";
+            dest.tips.forEach(tip => {
+                const li = document.createElement("li");
+                li.innerText = tip;
+                tipsList.appendChild(li);
+            });
+
+            // Modal route button setup
+            const addBtn = document.getElementById("modal-add-btn");
+            const isInItinerary = itinerary.some(item => item.id === dest.id);
+            if(isInItinerary) {
+                addBtn.className = "bg-slate-200 text-slate-500 px-5 py-2.5 rounded-xl text-xs font-bold cursor-default flex items-center gap-1.5";
+                addBtn.innerHTML = `<i class="fa-solid fa-check"></i> Sudah Di Rute`;
+                addBtn.onclick = null;
+            } else {
+                addBtn.className = "bg-emerald-600 hover:bg-emerald-500 text-white px-5 py-2.5 rounded-xl text-xs font-bold transition flex items-center gap-1.5";
+                addBtn.innerHTML = `<i class="fa-solid fa-plus"></i> Tambah Rute`;
+                addBtn.onclick = () => {
+                    toggleItinerary(dest.id);
+                    openModal(dest.id); // Reload modal state
+                };
+            }
+
+            // Show modal with animations
+            const modal = document.getElementById("detail-modal");
+            const content = document.getElementById("modal-content");
+            modal.classList.remove("pointer-events-none", "opacity-0");
+            modal.classList.add("opacity-100");
+            content.classList.remove("translate-y-4");
+            content.classList.add("translate-y-0");
+        }
+
+        // Close Detail Modal
+        function closeModal() {
+            const modal = document.getElementById("detail-modal");
+            const content = document.getElementById("modal-content");
+            modal.classList.add("pointer-events-none", "opacity-0");
+            modal.classList.remove("opacity-100");
+            content.classList.add("translate-y-4");
+            content.classList.remove("translate-y-0");
+        }
+
+        // Toggle Itinerary adding / removing
+        function toggleItinerary(id) {
+            const dest = destinations.find(d => d.id === id);
+            const index = itinerary.findIndex(item => item.id === id);
+
+            if(index > -1) {
+                // If exists, do nothing (keep it in itinerary to act like stable route)
+                showToast(`"${dest.name}" sudah ada di dalam Rencana Jalan-Jalan.`);
+            } else {
+                // Add
+                itinerary.push(dest);
+                showToast(`"${dest.name}" ditambahkan ke Rencana Jalan-Jalan! 🚶‍♂️`);
+            }
+
+            saveItineraryToMemory();
+            renderItinerary();
+            renderDestinations();
+        }
+
+        // Remove single item from itinerary
+        function removeFromItinerary(id) {
+            itinerary = itinerary.filter(item => item.id !== id);
+            saveItineraryToMemory();
+            renderItinerary();
+            renderDestinations();
+            showToast("Lokasi telah dihapus dari rencana.");
+        }
+
+        // Render Itinerary list visually
+        function renderItinerary() {
+            const list = document.getElementById("itinerary-list");
+            const emptyState = document.getElementById("itinerary-empty");
+            const footer = document.getElementById("itinerary-footer");
+            const countLabel = document.getElementById("itinerary-count");
+
+            // Clear previous items except emptyState
+            const items = list.querySelectorAll(".itinerary-item");
+            items.forEach(el => el.remove());
+
+            if(itinerary.length === 0) {
+                emptyState.classList.remove("hidden");
+                footer.classList.add("hidden");
+                return;
+            }
+
+            emptyState.classList.add("hidden");
+            footer.classList.remove("hidden");
+            countLabel.innerText = `${itinerary.length} Lokasi`;
+
+            itinerary.forEach((item, idx) => {
+                const row = document.createElement("div");
+                row.className = "itinerary-item bg-slate-800 hover:bg-slate-750 p-3 rounded-2xl flex items-center justify-between gap-3 border border-slate-700/50 transition-all duration-200 group";
+                row.innerHTML = `
+                    <div class="flex items-center gap-3 overflow-hidden">
+                        <div class="bg-emerald-500/20 text-emerald-400 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold shrink-0">
+                            ${idx + 1}
+                        </div>
+                        <div class="overflow-hidden">
+                            <span class="font-bold text-xs text-white block truncate">${item.name}</span>
+                            <span class="text-[10px] text-slate-400 block">${item.category === 'alam' ? '🏔️ Pemandangan' : '🍲 Kuliner'}</span>
+                        </div>
+                    </div>
+                    <button onclick="removeFromItinerary(${item.id})" class="text-slate-500 hover:text-red-400 p-1.5 rounded-lg transition shrink-0">
+                        <i class="fa-solid fa-trash-can text-xs"></i>
+                    </button>
+                `;
+                list.appendChild(row);
+            });
+        }
+
+        // Save & Load Itinerary using Memory storage (Single Session)
+        function saveItineraryToMemory() {
+            sessionStorage.setItem("magelang_itinerary", JSON.stringify(itinerary));
+        }
+
+        function loadItineraryFromMemory() {
+            const stored = sessionStorage.getItem("magelang_itinerary");
+            if(stored) {
+                itinerary = JSON.parse(stored);
+                renderItinerary();
+                renderDestinations();
+            }
+        }
+
+        // Clear all itinerary items
+        function clearItinerary() {
+            itinerary = [];
+            saveItineraryToMemory();
+            renderItinerary();
+            renderDestinations();
+            showToast("Rute jalan-jalan berhasil dibersihkan!");
+        }
+
+        // Print & Share simulation
+        function generateShareablePlan() {
+            if (itinerary.length === 0) return;
+            
+            let printText = `✨ RENCANA PERJALANAN MAGELANG ✨\n================================\n`;
+            itinerary.forEach((item, idx) => {
+                printText += `${idx + 1}. ${item.name} [${item.category === 'alam' ? 'Wisata Alam' : 'Kuliner'}]\n`;
+                printText += `   📍 Koordinat: ${item.coordinates}\n`;
+                printText += `   ⏰ Waktu Terbaik: ${item.bestHour}\n`;
+                printText += `   💰 Estimasi: ${item.cost}\n\n`;
+            });
+            printText += `Selamat menikmati strolling & kulineran seru di Magelang!`;
+
+            // Display in a mock print modal using standard Clipboard copy
+            const el = document.createElement('textarea');
+            el.value = printText;
+            document.body.appendChild(el);
+            el.select();
+            document.execCommand('copy');
+            document.body.removeChild(el);
+
+            showToast("Rencana Perjalanan berhasil disalin ke Clipboard! 📋");
+        }
+
+        // Custom Toast system
+        function showToast(msg) {
+            const toast = document.getElementById("toast-box");
+            const toastMsg = document.getElementById("toast-message");
+            
+            toastMsg.innerText = msg;
+            toast.classList.remove("translate-y-20", "opacity-0");
+            toast.classList.add("translate-y-0", "opacity-100");
+
+            setTimeout(() => {
+                toast.classList.remove("translate-y-0", "opacity-100");
+                toast.classList.add("translate-y-20", "opacity-0");
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
