@@ -1,0 +1,1183 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Heritage Trail - Dieng, Magelang & Jogja</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #f7f9fc;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .glass {
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }
+        @keyframes pulse-ring {
+            0% { transform: scale(0.35); opacity: 1; }
+            80%, 100% { transform: scale(2.2); opacity: 0; }
+        }
+        .pulse-marker::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background-color: inherit;
+            animation: pulse-ring 2s cubic-bezier(0.215, 0.610, 0.355, 1) infinite;
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
+<body class="text-slate-800 min-h-screen flex flex-col">
+
+    <!-- Header / Hero Banner -->
+    <header class="relative bg-slate-950 text-white overflow-hidden py-16 md:py-20 px-6 md:px-12">
+        <div class="absolute inset-0 opacity-25 mix-blend-overlay bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1604999333679-b86d54738315?auto=format&fit=crop&w=1600&q=80')"></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-emerald-950/40 via-slate-900/90 to-slate-950"></div>
+        
+        <div class="relative max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-8">
+            <div class="space-y-4 max-w-3xl text-center lg:text-left">
+                <span class="bg-amber-400/20 text-amber-300 px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider border border-amber-400/30">
+                    <i class="fa-solid fa-map-location-dot me-1.5"></i> Segitiga Emas Wisata Jawa Tengah & DIY
+                </span>
+                <h1 class="text-3xl md:text-5xl font-extrabold tracking-tight leading-tight">
+                    Panduan Jelajah Alam, Budaya & Kuliner:<br>
+                    <span class="text-amber-400">Dieng, Magelang & Yogyakarta</span>
+                </h1>
+                <p class="text-slate-300 text-sm md:text-base max-w-2xl">
+                    Peta interaktif 24 tujuan terpopuler untuk hobi strolling, menikmati panorama lereng pegunungan megah, cagar warisan budaya kuno, serta cita rasa kuliner legendaris paling ikonik.
+                </p>
+            </div>
+            
+            <!-- Quick Weather / Info Widget -->
+            <div class="glass text-slate-900 rounded-3xl p-5 shadow-2xl w-full max-w-sm border border-white/20 space-y-3">
+                <div class="text-xs font-bold text-slate-500 uppercase tracking-widest border-b pb-2">Karakter & Suhu Wilayah</div>
+                <div class="grid grid-cols-3 gap-2">
+                    <div class="bg-sky-50 p-2.5 rounded-xl text-center border border-sky-100">
+                        <span class="text-[10px] font-bold text-sky-700 block">☁️ DIENG</span>
+                        <span class="text-xs font-extrabold text-slate-800">12°C - 18°C</span>
+                        <span class="text-[9px] text-slate-400 block mt-0.5">Vulkanik</span>
+                    </div>
+                    <div class="bg-emerald-50 p-2.5 rounded-xl text-center border border-emerald-100">
+                        <span class="text-[10px] font-bold text-emerald-700 block">🏔️ MAGELANG</span>
+                        <span class="text-xs font-extrabold text-slate-800">20°C - 26°C</span>
+                        <span class="text-[9px] text-slate-400 block mt-0.5">Pegunungan</span>
+                    </div>
+                    <div class="bg-amber-50 p-2.5 rounded-xl text-center border border-amber-100">
+                        <span class="text-[10px] font-bold text-amber-700 block">🕌 JOGJA</span>
+                        <span class="text-xs font-extrabold text-slate-800">25°C - 31°C</span>
+                        <span class="text-[9px] text-slate-400 block mt-0.5">Budaya Kota</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Section -->
+    <main class="max-w-7xl mx-auto px-4 md:px-8 py-8 flex-grow w-full grid grid-cols-1 lg:grid-cols-12 gap-8">
+        
+        <!-- Left Side: Explorer & Places List (8 cols) -->
+        <div class="lg:col-span-8 space-y-6">
+            
+            <!-- Dual Filtering System -->
+            <div class="bg-white rounded-3xl p-5 shadow-sm border border-slate-100 space-y-4">
+                <!-- Region Selector -->
+                <div>
+                    <label class="text-xs font-bold uppercase tracking-wider text-slate-400 block mb-2">Pilih Wilayah Eksplorasi</label>
+                    <div class="flex flex-wrap gap-2" id="region-tabs">
+                        <button onclick="filterRegion('all')" id="reg-all" class="px-4 py-2 rounded-xl text-xs font-bold transition-all bg-emerald-600 text-white shadow-sm">
+                            Semua Wilayah
+                        </button>
+                        <button onclick="filterRegion('dieng')" id="reg-dieng" class="px-4 py-2 rounded-xl text-xs font-bold text-slate-600 hover:bg-slate-50 transition-all border border-slate-100">
+                            ☁️ Dieng (8 Lokasi)
+                        </button>
+                        <button onclick="filterRegion('magelang')" id="reg-magelang" class="px-4 py-2 rounded-xl text-xs font-bold text-slate-600 hover:bg-slate-50 transition-all border border-slate-100">
+                            🏔️ Magelang (8 Lokasi)
+                        </button>
+                        <button onclick="filterRegion('jogja')" id="reg-jogja" class="px-4 py-2 rounded-xl text-xs font-bold text-slate-600 hover:bg-slate-50 transition-all border border-slate-100">
+                            🕌 Yogyakarta (8 Lokasi)
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Category Selector -->
+                <div class="pt-2 border-t border-slate-100">
+                    <label class="text-xs font-bold uppercase tracking-wider text-slate-400 block mb-2">Pilih Fokus Wisata</label>
+                    <div class="flex flex-wrap gap-2" id="category-tabs">
+                        <button onclick="filterCategory('all')" id="cat-all" class="px-4 py-1.5 rounded-lg text-xs font-semibold bg-slate-900 text-white">
+                            Semua Fokus
+                        </button>
+                        <button onclick="filterCategory('alam')" id="cat-alam" class="px-4 py-1.5 rounded-lg text-xs font-semibold text-slate-600 hover:bg-slate-50 border border-slate-100">
+                            🏔️ Pemandangan & Alam
+                        </button>
+                        <button onclick="filterCategory('budaya')" id="cat-budaya" class="px-4 py-1.5 rounded-lg text-xs font-semibold text-slate-600 hover:bg-slate-50 border border-slate-100">
+                            🏺 Warisan Budaya
+                        </button>
+                        <button onclick="filterCategory('kuliner')" id="cat-kuliner" class="px-4 py-1.5 rounded-lg text-xs font-semibold text-slate-600 hover:bg-slate-50 border border-slate-100">
+                            🍲 Kuliner Khas
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Search Field & Live Counter Indicator -->
+            <div class="space-y-2">
+                <div class="relative">
+                    <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
+                    <input type="text" id="search-input" onkeyup="filterPlaces()" placeholder="Cari nama tempat, kuliner, candi, atau aktivitas..." class="w-full bg-white border border-slate-200 rounded-2xl py-3.5 pl-12 pr-4 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 shadow-sm transition">
+                </div>
+                <div class="flex justify-between items-center px-2">
+                    <span class="text-xs text-slate-500 font-semibold" id="destination-count">Menampilkan 24 Destinasi</span>
+                    <span class="text-[11px] text-emerald-600 font-semibold flex items-center gap-1.5">
+                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span> Eksplorasi Aktif
+                    </span>
+                </div>
+            </div>
+
+            <!-- Grid of Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="destinations-grid">
+                <!-- Loaded dynamically via JavaScript -->
+            </div>
+
+        </div>
+
+        <!-- Right Side: Regional Map & Trip Planner (4 cols) -->
+        <div class="lg:col-span-4 space-y-6">
+            
+            <!-- Geographical Map Mockup -->
+            <div class="bg-white rounded-3xl p-5 shadow-sm border border-slate-100 space-y-4">
+                <div class="flex items-center justify-between">
+                    <h3 class="font-bold text-slate-800 text-sm flex items-center gap-2">
+                        <i class="fa-solid fa-route text-emerald-600"></i> Peta Visual Tengah Jawa
+                    </h3>
+                    <span class="text-[10px] bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded font-semibold">Interaktif</span>
+                </div>
+
+                <!-- Custom Vector Mock Map representing Central Java & DIY -->
+                <div class="relative aspect-[4/5] bg-gradient-to-tr from-sky-50 to-emerald-50 rounded-2xl overflow-hidden border border-slate-100 shadow-inner flex flex-col justify-between p-4">
+                    
+                    <!-- Dieng Label (North-West) -->
+                    <div class="absolute top-[12%] left-[15%] text-center">
+                        <div class="text-[9px] uppercase font-extrabold text-sky-600/60 leading-none">☁️ Dataran Tinggi</div>
+                        <span class="text-[10px] text-slate-500 font-extrabold">DIENG PLATEAU</span>
+                    </div>
+
+                    <!-- Sumbing mountain peak (West-Middle) -->
+                    <div class="absolute top-[38%] left-[10%] opacity-40 text-center">
+                        <i class="fa-solid fa-mountain text-slate-300 text-4xl"></i>
+                        <span class="block text-[8px] text-slate-400 font-bold">Gn. Sumbing</span>
+                    </div>
+
+                    <!-- Magelang Label (Middle-Center) -->
+                    <div class="absolute top-[42%] left-[48%] text-center">
+                        <div class="text-[9px] uppercase font-extrabold text-emerald-600/60 leading-none">🏔️ Lembah Hijau</div>
+                        <span class="text-[10px] text-slate-500 font-extrabold">MAGELANG</span>
+                    </div>
+
+                    <!-- Merapi Peak (East-Middle) -->
+                    <div class="absolute top-[50%] right-[10%] opacity-40 text-center">
+                        <i class="fa-solid fa-mountain text-slate-300 text-3xl"></i>
+                        <span class="block text-[8px] text-slate-400 font-bold">Gn. Merapi</span>
+                    </div>
+
+                    <!-- Yogyakarta Label (South) -->
+                    <div class="absolute bottom-[20%] left-[50%] -translate-x-1/2 text-center">
+                        <div class="text-[9px] uppercase font-extrabold text-amber-600/60 leading-none">🕌 Kota Budaya</div>
+                        <span class="text-[10px] text-slate-500 font-extrabold">YOGYAKARTA</span>
+                    </div>
+
+                    <!-- Pins will be rendered here dynamically -->
+                    <div id="map-pins-container" class="absolute inset-0 pointer-events-auto"></div>
+                </div>
+                <p class="text-[10px] text-slate-400 text-center italic">Ketuk pin peta untuk melihat ulasan foto dan detail lengkap tempat.</p>
+            </div>
+
+            <!-- Strolling & Culinary Route Builder -->
+            <div class="bg-slate-900 text-white rounded-3xl p-5 shadow-xl space-y-4">
+                <div>
+                    <h3 class="font-bold text-base flex items-center gap-2">
+                        <i class="fa-solid fa-heart text-amber-400"></i> Rencana Eksplorasi Saya
+                    </h3>
+                    <p class="text-[11px] text-slate-400 mt-1">Pilih destinasi dari Dieng, Magelang, & Jogja untuk rute perjalanan idaman Anda.</p>
+                </div>
+
+                <!-- Added items -->
+                <div id="itinerary-list" class="space-y-2.5 max-h-72 overflow-y-auto pr-1 hide-scrollbar">
+                    <div id="itinerary-empty" class="text-center py-8 text-slate-500 border border-dashed border-slate-800 rounded-2xl">
+                        <i class="fa-solid fa-shoe-prints text-xl mb-1.5 text-slate-600 block"></i>
+                        <span class="text-xs">Belum ada rute dipilih.<br>Klik "+ Tambah Rute" pada tempat wisata!</span>
+                    </div>
+                </div>
+
+                <!-- Planner controls -->
+                <div id="itinerary-footer" class="hidden pt-4 border-t border-slate-800 space-y-2">
+                    <div class="flex justify-between items-center text-xs">
+                        <span class="text-slate-400">Total Kunjungan:</span>
+                        <span id="itinerary-count" class="font-bold text-amber-400">0 Lokasi</span>
+                    </div>
+                    <button onclick="clearAllItinerary()" class="w-full bg-slate-800 hover:bg-slate-750 transition text-slate-300 py-2 rounded-xl text-xs font-semibold flex items-center justify-center gap-1.5">
+                        <i class="fa-solid fa-trash"></i> Hapus Semua Rencana
+                    </button>
+                    <button onclick="copyAndShareItinerary()" class="w-full bg-amber-500 hover:bg-amber-400 text-slate-950 py-2.5 rounded-xl text-xs font-bold transition flex items-center justify-center gap-1.5">
+                        <i class="fa-solid fa-share-nodes"></i> Salin Rencana Perjalanan
+                    </button>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- Detail & Information Modal popup -->
+    <div id="detail-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/80 backdrop-blur-md opacity-0 pointer-events-none transition-opacity duration-300 p-4">
+        <div class="bg-white rounded-3xl overflow-hidden shadow-2xl max-w-2xl w-full max-h-[90vh] flex flex-col transform translate-y-4 transition-transform duration-300" id="modal-content">
+            <!-- Header Image -->
+            <div class="relative h-60 md:h-72 w-full overflow-hidden">
+                <img id="modal-img" src="" alt="Detail View" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
+                <button onclick="closeModal()" class="absolute top-4 right-4 bg-slate-950/50 hover:bg-slate-950/80 text-white w-9 h-9 rounded-full flex items-center justify-center transition">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+                <div class="absolute bottom-6 left-6 right-6 text-white space-y-1">
+                    <div class="flex gap-2 items-center">
+                        <span id="modal-region-badge" class="bg-amber-400 text-slate-950 text-[9px] px-2.5 py-0.5 rounded-full font-bold uppercase tracking-wider">WILAYAH</span>
+                        <span id="modal-category-badge" class="bg-emerald-500 text-slate-950 text-[9px] px-2.5 py-0.5 rounded-full font-bold uppercase tracking-wider">FOKUS</span>
+                    </div>
+                    <h2 id="modal-title" class="text-xl md:text-2xl font-extrabold leading-tight">Nama Lokasi Tempat</h2>
+                </div>
+            </div>
+
+            <!-- Body -->
+            <div class="p-6 overflow-y-auto space-y-5 flex-grow hide-scrollbar">
+                <!-- Info Grid -->
+                <div class="grid grid-cols-3 gap-2 text-center text-[11px]">
+                    <div class="bg-slate-50 p-2.5 rounded-xl border border-slate-100">
+                        <span class="text-slate-400 block font-semibold uppercase">Rating</span>
+                        <span class="font-bold text-amber-500 text-xs flex items-center justify-center gap-1 mt-1">
+                            <i class="fa-solid fa-star"></i> <span id="modal-rating">4.8</span>
+                        </span>
+                    </div>
+                    <div class="bg-slate-50 p-2.5 rounded-xl border border-slate-100">
+                        <span class="text-slate-400 block font-semibold uppercase">Waktu Terbaik</span>
+                        <span id="modal-hours" class="font-bold text-slate-700 block mt-1">Pagi</span>
+                    </div>
+                    <div class="bg-slate-50 p-2.5 rounded-xl border border-slate-100">
+                        <span class="text-slate-400 block font-semibold uppercase">Estimasi Biaya</span>
+                        <span id="modal-cost" class="font-bold text-emerald-600 block mt-1">Terjangkau</span>
+                    </div>
+                </div>
+
+                <!-- Description -->
+                <div class="space-y-1">
+                    <h4 class="font-bold text-slate-800 text-xs uppercase tracking-wider flex items-center gap-1.5">
+                        <i class="fa-solid fa-circle-info text-slate-400"></i> Informasi & Nilai Wisata
+                    </h4>
+                    <p id="modal-description" class="text-xs text-slate-600 leading-relaxed">Penjelasan mendalam destinasi.</p>
+                </div>
+
+                <!-- Tips khusus strolling, budaya, kuliner -->
+                <div class="bg-amber-50/50 p-4 rounded-2xl border border-amber-100 space-y-1.5">
+                    <h4 class="font-bold text-amber-900 text-[11px] flex items-center gap-1.5 uppercase tracking-wider">
+                        <i class="fa-solid fa-lightbulb text-amber-600"></i> Panduan Strolling & Etika Setempat
+                    </h4>
+                    <ul id="modal-tips" class="text-xs text-amber-800 space-y-1 list-disc pl-4 leading-relaxed">
+                        <li>Gunakan sepatu jalan yang nyaman karena konturnya berbatu.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="p-4 bg-slate-50 border-t border-slate-100 flex items-center justify-between">
+                <span class="text-[10px] text-slate-400 font-medium" id="modal-coords">📍 S: -7.5, E: 110.2</span>
+                <button id="modal-add-btn" class="bg-emerald-600 hover:bg-emerald-500 text-white px-5 py-2 rounded-xl text-xs font-bold transition flex items-center gap-1.5">
+                    <i class="fa-solid fa-plus"></i> Tambah Rute
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Alert Toast Box -->
+    <div id="toast-box" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-slate-900 text-white py-2.5 px-5 rounded-full shadow-2xl text-xs font-semibold tracking-wide flex items-center gap-2 transform translate-y-24 opacity-0 transition-all duration-300">
+        <i class="fa-solid fa-circle-info text-amber-400" id="toast-icon"></i>
+        <span id="toast-message">Pesan sukses disini!</span>
+    </div>
+
+    <!-- Footer Page -->
+    <footer class="bg-slate-100 border-t border-slate-200 py-6 text-center text-xs text-slate-400 mt-12">
+        <p class="font-semibold text-slate-500">🗺️ Java Heritage Trail Guide • Dieng - Magelang - Yogyakarta</p>
+        <p class="mt-0.5">Dirancang dengan kurasi keindahan pemandangan, khazanah budaya kuno, dan kelezatan hidangan lokal Nusantara.</p>
+    </footer>
+
+    <!-- JS Logic -->
+    <script>
+        // Database 24 Tempat Terpopuler (Dieng, Magelang, Jogja)
+        const destinations = [
+            // ==================== DIENG REGION (8 LOKASI) ====================
+            {
+                id: 1,
+                name: "Bukit Sikunir Dieng",
+                region: "dieng",
+                category: "alam",
+                rating: 4.8,
+                image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80",
+                fallbackImage: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80",
+                bestHour: "Subuh (04:30 - 06:30)",
+                cost: "Rp15.000 / Orang",
+                coordinates: "S: -7.2214, E: 109.9234",
+                mapPos: { top: '10%', left: '15%' },
+                tag: "Spot Sunrise Terpopuler",
+                description: "Terkenal dengan julukan 'Golden Sunrise' terindah se-Asia Tenggara. Bukit Sikunir di desa tertinggi di Pulau Jawa menyajikan pemandangan magis kemunculan matahari pagi dari balik kabut awan dengan siluet Gunung Sindoro dan Gunung Sumbing.",
+                tips: [
+                    "Wajib memakai jaket gunung tebal dan sarung tangan karena suhu subuh berkisar 8°C - 12°C.",
+                    "Jalur trekking dari tempat parkir berupa tangga berbatu sepanjang 800 meter.",
+                    "Setelah turun bukit, belilah jajanan kentang goreng Dieng hangat berbumbu rempah lokal."
+                ]
+            },
+            {
+                id: 2,
+                name: "Kompleks Candi Arjuna",
+                region: "dieng",
+                category: "budaya",
+                rating: 4.7,
+                image: "https://images.unsplash.com/photo-1604999333679-b86d54738315?auto=format&fit=crop&w=800&q=80",
+                fallbackImage: "https://images.unsplash.com/photo-1596422846543-75c6fc18a523?auto=format&fit=crop&w=800&q=80",
+                bestHour: "Pagi Teduh (07:00 - 09:30)",
+                cost: "Rp25.000 (Terusan Telaga)",
+                coordinates: "S: -7.2031, E: 109.9077",
+                mapPos: { top: '14%', left: '26%' },
+                tag: "Candi Hindu Tertua",
+                description: "Situs candi Hindu peninggalan kerajaan Mataram Kuno yang diperkirakan dibangun abad ke-8 Masehi. Berada di tengah dataran rumput hijau luas yang kerap diselimuti kabut putih, menciptakan atmosfer damai untuk jalan santai lambat.",
+                tips: [
+                    "Jalur di kompleks candi ini sangat datar, rapi, dan nyaman untuk pejalan kaki segala usia.",
+                    "Jagalah kelestarian bangunan dengan tidak menaiki struktur batu candi.",
+                    "Di bulan Juli - Agustus, Anda bisa menyaksikan fenomena embun es (bun upas) di rumput sekitar candi pagi hari."
+                ]
+            },
+            {
+                id: 3,
+                name: "Telaga Warna Dieng",
+                region: "dieng",
+                category: "alam",
+                rating: 4.7,
+                image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80",
+                fallbackImage: "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=800&q=80",
+                bestHour: "Siang Cerah (10:00 - 13:00)",
+                cost: "Rp22.000 / Orang",
+                coordinates: "S: -7.2118, E: 109.9142",
+                mapPos: { top: '18%', left: '12%' },
+                tag: "Danau Vulkanik Unik",
+                description: "Danau purba unik yang airnya dapat berganti warna dari hijau, biru laut, hingga kuning kecokelatan akibat tingginya kandungan sulfur di dasar telaga yang memantulkan cahaya matahari.",
+                tips: [
+                    "Berjalanlah santai menyusuri jalan setapak kayu di pinggir telaga yang dikelilingi rimbun pohon pinus.",
+                    "Terdapat berbagai macam flora khas dataran tinggi yang asri di sepanjang rute pejalan kaki.",
+                    "Waktu terbaik berkunjung adalah saat langit bersih agar pantulan warnanya terlihat jelas."
+                ]
+            },
+            {
+                id: 4,
+                name: "Kawah Sikidang Dieng",
+                region: "dieng",
+                category: "alam",
+                rating: 4.6,
+                image: "https://images.unsplash.com/photo-1610375229632-c7158c35a537?auto=format&fit=crop&w=800&q=80",
+                fallbackImage: "https://images.unsplash.com/photo-1610375229632-c7158c35a537?auto=format&fit=crop&w=800&q=80",
+                bestHour: "Pagi / Sore (08:00 - 16:00)",
+                cost: "Rp20.000 / Orang",
+                coordinates: "S: -7.2185, E: 109.9262",
+                mapPos: { top: '22%', left: '20%' },
+                tag: "Kawah Vulkanik Aktif",
+                description: "Kawah belerang aktif terbesar di dataran tinggi Dieng. Keunikan kawah ini adalah kolam lumpur belerang mendidih yang selalu berpindah-pindah. Kini dilengkapi dengan jembatan kayu melingkar raksasa untuk menikmati pemandangan dengan aman.",
+                tips: [
+                    "Sangat disarankan memakai masker pelindung karena bau belerang yang cukup pekat di area tengah.",
+                    "Gunakan jembatan kayu panjang untuk berjalan santai mengitari kawah sembari menikmati panorama asap vulkanik.",
+                    "Mampirlah ke pedagang setempat yang menawarkan atraksi unik merebus telur langsung di air belerang kawah."
+                ]
+            },
+            {
+                id: 5,
+                name: "Batu Pandang Ratapan Angin",
+                region: "dieng",
+                category: "alam",
+                rating: 4.7,
+                image: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=800&q=80",
+                fallbackImage: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=800&q=80",
+                bestHour: "Siang Hari (09:00 - 14:00)",
+                cost: "Rp15.000 / Orang",
+                coordinates: "S: -7.2155, E: 109.9168",
+                mapPos: { top: '15%', left: '8%' },
+                tag: "Gardu Pandang Tebing",
+                description: "Dua tebing batu kokoh yang bertengger di atas bukit di dekat Telaga Warna. Memberikan sudut pandang panorama luar biasa indah menghadap ke arah dua telaga berdampingan, yaitu Telaga Warna dan Telaga Pengilon dari ketinggian.",
+                tips: [
+                    "Jalur trekking berupa anak tangga tanah berundak yang agak curam, melatih stamina saat jalan kaki.",
+                    "Berdirilah di atas batu dengan berhati-hati, lalu rasakan hembusan angin gunung yang berbisik merdu.",
+                    "Spot foto paling favorit di sini adalah duduk santai di atas formasi batu alami dengan latar belakang telaga."
+                ]
+            },
+            {
+                id: 6,
+                name: "Mie Ongklok Longkrang",
+                region: "dieng",
+                category: "kuliner",
+                rating: 4.6,
+                image: "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=800&q=80",
+                fallbackImage: "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=800&q=80",
+                bestHour: "Makan Siang / Sore (11:00 - 19:00)",
+                cost: "Rp20.000 / Porsi",
+                coordinates: "S: -7.3582, E: 109.9039",
+                mapPos: { top: '26%', left: '16%' },
+                tag: "Mie Rebus Khas Wonosobo",
+                description: "Kuliner legendaris yang sangat populer. Mie rebus hangat yang disiram kuah kental manis gurih dari ramuan pati sagu (jenang), ebi, dan campuran gula jawa. Disajikan bersama sayur kol, kucai segar, sate sapi, dan tempe kemul hangat garing.",
+                tips: [
+                    "Sangat nikmat disantap panas-panas untuk menghangatkan badan sehabis menjelajah area Dieng yang dingin.",
+                    "Mintalah kuah lodeh pedas tambahan jika Anda menyukai cita rasa pedas.",
+                    "Sandingkan dengan tempe kemul (tempe goreng tepung garing berwarna kuning) khas daerah Wonosobo."
+                ]
+            },
+            {
+                id: 7,
+                name: "Sentra Manisan Carica Dieng",
+                region: "dieng",
+                category: "kuliner",
+                rating: 4.5,
+                image: "https://images.unsplash.com/photo-1615485290382-441e4d049cb5?auto=format&fit=crop&w=800&q=80",
+                fallbackImage: "https://images.unsplash.com/photo-1615485290382-441e4d049cb5?auto=format&fit=crop&w=800&q=80",
+                bestHour: "Sore Hari (14:00 - 17:00)",
+                cost: "Rp15.000 - Rp45.000 / Paket",
+                coordinates: "S: -7.2100, E: 109.9100",
+                mapPos: { top: '8%', left: '23%' },
+                tag: "Buah Tangan Khas Dieng",
+                description: "Menyediakan olahan manisan buah Carica (pepaya gunung) segar yang hanya bisa tumbuh subur di wilayah dataran tinggi sejuk Dieng. Rasanya manis, sedikit asam segar, dan tekstur buahnya renyah kenyal khas.",
+                tips: [
+                    "Anda bisa mencicipi buah carica segar secara gratis di beberapa toko produksi rumahan lokal sebelum membeli.",
+                    "Sangat cocok dibeli dalam kemasan cup kecil praktis untuk dinikmati sepanjang perjalanan.",
+                    "Carica paling nikmat dikonsumsi dalam keadaan dingin setelah dimasukkan ke lemari es."
+                ]
+            },
+            {
+                id: 8,
+                name: "Telaga Pengilon Dieng",
+                region: "dieng",
+                category: "alam",
+                rating: 4.6,
+                image: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=800&q=80",
+                fallbackImage: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=800&q=80",
+                bestHour: "Pagi Cerah (08:00 - 11:00)",
+                cost: "Rp10.000 / Orang",
+                coordinates: "S: -7.2125, E: 109.9155",
+                mapPos: { top: '12%', left: '9%' },
+                tag: "Danau Cermin Sunyi",
+                description: "Danau tenang yang berlokasi persis di samping Telaga Warna. Berbeda dengan tetangganya, air di Telaga Pengilon sangat jernih seperti cermin tanpa kandungan belerang tinggi, sehingga memantulkan pemandangan hijau perbukitan sekitar dengan indah.",
+                tips: [
+                    "Jalurnya sangat tenang dan sunyi, cocok untuk berjalan lambat merenungi ketenangan alam.",
+                    "Bawa teropong kecil jika Anda gemar melihat aktivitas burung-burung air liar setempat.",
+                    "Gunakan alas kaki yang tidak licin karena pinggiran telaga kadang berumput basah."
+                ]
+            },
+
+            // ==================== MAGELANG REGION (8 LOKASI) ====================
+            {
+                id: 9,
+                name: "Silancur Highland Magelang",
+                region: "magelang",
+                category: "alam",
+                rating: 4.8,
+                image: "https://images.unsplash.com/photo-1601918774946-25832a4be0d6?auto=format&fit=crop&w=800&q=80",
+                fallbackImage: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80",
+                bestHour: "Matahari Terbit (05:00 - 07:30)",
+                cost: "Rp10.000 / Orang",
+                coordinates: "S: -7.4243, E: 110.0984",
+                mapPos: { top: '38%', left: '40%' },
+                tag: "Golden Sunrise Peak",
+                description: "Destinasi wisata di lereng tenggara Gunung Sumbing. Menawarkan kebun bunga teratur yang luas berlatar belakang siluet pegunungan megah, tempat favorit wisatawan berburu pemandangan matahari terbit yang spektakuler.",
+                tips: [
+                    "Sangat pas berjalan-jalan santai di sepanjang jalan setapak kayu saat kabut pagi perlahan mulai sirna.",
+                    "Gunakan jaket tebal karena hembusan angin dataran tinggi cukup menusuk di pagi hari.",
+                    "Tersedia kedai kopi hangat mini untuk beristirahat sembari menikmati pemandangan."
+                ]
+            },
+            {
+                id: 10,
+                name: "Nepal Van Java",
+                region: "magelang",
+                category: "alam",
+                rating: 4.7,
+                image: "https://images.unsplash.com/photo-1583037189850-1921ae7c6c22?auto=format&fit=crop&w=800&q=80",
+                fallbackImage: "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=800&q=80",
+                bestHour: "Pagi Segar (07:00 - 10:00)",
+                cost: "Rp15.000 / Orang",
+                coordinates: "S: -7.4069, E: 110.0898",
+                mapPos: { top: '44%', left: '36%' },
+                tag: "Pemukiman Lereng Gunung Sumbing",
+                description: "Sebuah dusun wisata bernama Dusun Butuh yang memiliki keunikan berupa rumah-rumah penduduk yang dicat warna-warni dan bertumpuk rapi mengikuti kontur lereng curam, menyerupai lanskap pegunungan di Nepal.",
+                tips: [
+                    "Rute jalan di dalam dusun berupa tanjakan yang cukup terjal namun seru untuk dijelajahi dengan berjalan kaki santai.",
+                    "Sapa petani lokal dengan ramah saat mereka mengangkut sayuran segar hasil panen ladang.",
+                    "Pesanlah minuman hangat di teras balkon warung setempat sambil menatap lembah hijau di bawah."
+                ]
+            },
+            {
+                id: 11,
+                name: "Jalan Alternatif Kaliangkrik",
+                region: "magelang",
+                category: "alam",
+                rating: 4.6,
+                image: "https://images.unsplash.com/photo-1599940824399-b87987ceb72a?auto=format&fit=crop&w=800&q=80",
+                fallbackImage: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=800&q=80",
+                bestHour: "Pagi Sunyi (06:00 - 08:30)",
+                cost: "Gratis (Fasilitas Umum)",
+                coordinates: "S: -7.4120, E: 110.1105",
+                mapPos: { top: '41%', left: '44%' },
+                tag: "Scenic Agriculture Route",
+                description: "Jalan aspal pedesaan yang membelah lereng pegunungan Kaliangkrik. Dikelilingi perkebunan kubis dan kentang milik warga lokal yang membentang luas berlatar belakang kemegahan Gunung Sumbing.",
+                tips: [
+                    "Parkir kendaraan Anda di titik aman, lalu berjalan kakilah sepanjang jalur pedesaan sepi ini.",
+                    "Sangat sunyi dan minim kendaraan bermotor, memberikan kedamaian visual bagi pecinta ketenangan.",
+                    "Bawa air minum sendiri karena jarang ada minimarket modern di sekitar rute ladang ini."
+                ]
+            },
+            {
+                id: 12,
+                name: "Mangli Sky View Magelang",
+                region: "magelang",
+                category: "alam",
+                rating: 4.7,
+                image: "https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?auto=format&fit=crop&w=800&q=80",
+                fallbackImage: "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=800&q=80",
+                bestHour: "Sore & Malam (16:00 - 20:00)",
+                cost: "Rp15.000 / Orang",
+                coordinates: "S: -7.4294, E: 110.1211",
+                mapPos: { top: '48%', left: '42%' },
+                tag: "Gardu Pandang Awan",
+                description: "Destinasi di ketinggian lereng Gunung Sumbing yang menyuguhkan gardu pandang kayu dengan panorama alam terbuka 360 derajat. Sangat populer untuk berkemah atau sekadar bersantai menikmati lautan awan putih.",
+                tips: [
+                    "Datanglah sore hari untuk menikmati perubahan warna langit dan gemerlap lampu kota Magelang dari ketinggian.",
+                    "Cobalah makan mi rebus instan hangat dan wedang ronde di warung kecil sekitar lokasi.",
+                    "Bawa tripod kamera untuk mengabadikan momen bintang bertaburan di malam hari jika cuaca cerah."
+                ]
+            },
+            {
+                id: 13,
+                name: "Ketep Pass Magelang",
+                region: "magelang",
+                category: "alam",
+                rating: 4.6,
+                image: "https://images.unsplash.com/photo-1626244439019-3540b6167c1f?auto=format&fit=crop&w=800&q=80",
+                fallbackImage: "https://images.unsplash.com/photo-1589182373726-e4f658ab50f0?auto=format&fit=crop&w=800&q=80",
+                bestHour: "Siang Sejuk (11:00 - 14:00)",
+                cost: "Rp12.500 / Orang",
+                coordinates: "S: -7.5023, E: 110.4011",
+                mapPos: { top: '53%', left: '50%' },
+                tag: "Volcano Observatory",
+                description: "Terletak di sela antara Gunung Merapi dan Gunung Merbabu. Menjadi lokasi paling populer untuk melihat langsung tubuh gagah dan puncak kubah lava aktif Merapi yang megah sembari menikmati udara pegunungan.",
+                tips: [
+                    "Gunakan teropong pandang yang disediakan di dek observasi untuk melihat struktur puncak gunung berapi.",
+                    "Cobalah sensasi jalan santai mengitari pelataran terbuka sembari mencicipi jagung bakar manis mentega hangat.",
+                    "Kunjungi museum kegunungapian Volcano Theatre di dalam kompleks untuk wawasan geologis seru."
+                ]
+            },
+            {
+                id: 14,
+                name: "Desa Wisata Candirejo",
+                region: "magelang",
+                category: "budaya",
+                rating: 4.6,
+                image: "https://images.unsplash.com/photo-1596422846543-75c6fc18a523?auto=format&fit=crop&w=800&q=80",
+                fallbackImage: "https://images.unsplash.com/photo-1473448912268-2022ce9509d8?auto=format&fit=crop&w=800&q=80",
+                bestHour: "Pagi / Sore Teduh (08:00 - 16:00)",
+                cost: "Rp20.000 (Sewa Sepeda Tambahan)",
+                coordinates: "S: -7.6321, E: 110.2241",
+                mapPos: { top: '57%', left: '45%' },
+                tag: "Warisan Budaya Desa Jawa",
+                description: "Desa wisata tradisional dekat Borobudur yang mempertahankan arsitektur joglo kuno asli, sistem pertanian ramah lingkungan, dan kesenian gamelan rakyat. Sangat menenangkan untuk strolling di bawah rimbun pohon.",
+                tips: [
+                    "Sewa andong (kereta kuda) tradisional untuk berkeliling sembari mengobrol asyik dengan kusir andong lokal.",
+                    "Saksikan langsung pembuatan anyaman bambu dan kerajinan tangan lokal di pelataran rumah warga.",
+                    "Nikmati makan siang prasmanan masakan rumahan ndeso berbahan sayuran organik segar hasil bumi desa."
+                ]
+            },
+            {
+                id: 15,
+                name: "Alun-Alun Kota Magelang",
+                region: "magelang",
+                category: "budaya",
+                rating: 4.5,
+                image: "https://images.unsplash.com/photo-1473448912268-2022ce9509d8?auto=format&fit=crop&w=800&q=80",
+                fallbackImage: "https://images.unsplash.com/photo-1473448912268-2022ce9509d8?auto=format&fit=crop&w=800&q=80",
+                bestHour: "Sore & Malam (17:00 - 21:00)",
+                cost: "Gratis (Hanya parkir)",
+                coordinates: "S: -7.4812, E: 110.2198",
+                mapPos: { top: '50%', left: '48%' },
+                tag: "Ruang Terbuka Hijau Heritage",
+                description: "Jantung kota Magelang yang sangat ramah pejalan kaki dengan trotoar pedestrian yang sangat lebar, rapi, bersih, serta dikelilingi bangunan kuno ikonik era kolonial seperti Menara Air Watertoren Belanda.",
+                tips: [
+                    "Sangat nyaman untuk strolling santai melingkari Alun-Alun di malam hari karena jalurnya steril kendaraan bermotor.",
+                    "Lanjutkan langkah ke Jalan Pemuda (pecinan) di sisi selatan untuk menikmati deretan pertokoan bergaya retro.",
+                    "Jangan lewatkan area pusat jajanan malam 'Tuin Van Java' yang menyajikan aneka wedangan hangat."
+                ]
+            },
+            {
+                id: 16,
+                name: "Tahu Pojok Magelang 1",
+                region: "magelang",
+                category: "kuliner",
+                rating: 4.8,
+                image: "https://images.unsplash.com/photo-1541518763669-27fef04b14ea?auto=format&fit=crop&w=800&q=80",
+                fallbackImage: "https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=800&q=80",
+                bestHour: "Makan Siang (11:00 - 15:00)",
+                cost: "Rp18.000 - Rp22.000 / Porsi",
+                coordinates: "S: -7.4820, E: 110.2205",
+                mapPos: { top: '53%', left: '46%' },
+                tag: "Kuliner Legenda Sejak 1942",
+                description: "Kuliner kupat tahu paling ikonik dan melegenda di Magelang. Berupa paduan tahu halus goreng hangat, ketupat, bakwan garing, tauge, kol segar, disiram kuah manis gurih encer dari kecap resep rahasia keluarga.",
+                tips: [
+                    "Bumbu cabai langsung diulek di atas piring saat dipesan, sampaikan level kepedasan Anda kepada pramusaji.",
+                    "Warung ini legendaris karena menjadi langganan para presiden, artis, dan pejabat negara saat berkunjung ke Magelang.",
+                    "Datanglah sebelum pukul 12:00 siang agar terhindar dari antrean panjang pembeli."
+                ]
+            },
+
+            // ==================== YOGYAKARTA REGION (8 LOKASI) ====================
+            {
+                id: 17,
+                name: "Pemandian Tamansari Jogja",
+                region: "jogja",
+                category: "budaya",
+                rating: 4.8,
+                image: "https://images.unsplash.com/photo-1584810359583-96fc3448beaa?auto=format&fit=crop&w=800&q=80",
+                fallbackImage: "https://images.unsplash.com/photo-1590059030431-a309e4f5119c?auto=format&fit=crop&w=800&q=80",
+                bestHour: "Pagi Teduh (08:30 - 11:30)",
+                cost: "Rp15.000 / Orang",
+                coordinates: "S: -7.8098, E: 110.3589",
+                mapPos: { top: '78%', left: '56%' },
+                tag: "Istana Air Kasultanan",
+                description: "Situs bekas kebun istana Kraton Yogyakarta yang dibangun Sultan Hamengkubuwono I. Terkenal karena kolam air biru jernih yang cantik, lorong rahasia bawah tanah, dan masjid bawah tanah Sumur Gumuling yang estetik.",
+                tips: [
+                    "Berjalan-jalanlah di perkampungan sekitar Tamansari yang asri, bersih, dan dipenuhi tembok lukisan mural seni kontemporer.",
+                    "Sangat disarankan memakai pemandu wisata lokal berlisensi agar mendapat kisah sejarah tersembunyi istana air ini.",
+                    "Gunakan pakaian berwarna cerah agar foto kontras dengan tekstur dinding batu bata bersejarah."
+                ]
+            },
+            {
+                id: 18,
+                name: "Keraton Yogyakarta",
+                region: "jogja",
+                category: "budaya",
+                rating: 4.8,
+                image: "https://images.unsplash.com/photo-1590059030431-a309e4f5119c?auto=format&fit=crop&w=800&q=80",
+                fallbackImage: "https://images.unsplash.com/photo-1590059030431-a309e4f5119c?auto=format&fit=crop&w=800&q=80",
+                bestHour: "Pagi Hari (08:30 - 12:30)",
+                cost: "Rp15.000 / Orang",
+                coordinates: "S: -7.8052, E: 110.3642",
+                mapPos: { top: '74%', left: '59%' },
+                tag: "Pusat Kebudayaan Jawa",
+                description: "Istana resmi kesultanan Ngayogyakarta Hadiningrat yang masih aktif hingga saat ini. Menampilkan arsitektur kraton Jawa klasik megah, koleksi museum bersejarah, serta penampilan tarian tradisional di bangsal utama.",
+                tips: [
+                    "Hargai etika setempat dengan berpakaian sopan dan tidak memakai topi di beberapa area sakral tertentu.",
+                    "Nikmati strolling tenang menyusuri pelataran luas berpasir pantai laut selatan di bawah keteduhan pohon beringin.",
+                    "Saksikan pertunjukan wayang kulit atau tarian klasik yang diadakan gratis pada jam-jam tertentu."
+                ]
+            },
+            {
+                id: 19,
+                name: "Pedestrian Malioboro",
+                region: "jogja",
+                category: "budaya",
+                rating: 4.7,
+                image: "https://images.unsplash.com/photo-1601919051950-bb9f3ff2dfee?auto=format&fit=crop&w=800&q=80",
+                fallbackImage: "https://images.unsplash.com/photo-1601919051950-bb9f3ff2dfee?auto=format&fit=crop&w=800&q=80",
+                bestHour: "Sore / Malam (16:30 - 21:30)",
+                cost: "Gratis (Fasilitas Publik)",
+                coordinates: "S: -7.7981, E: 110.3650",
+                mapPos: { top: '71%', left: '55%' },
+                tag: "Jalur Strolling Ikonik Jogja",
+                description: "Jalur pejalan kaki terlebar, ternyaman, dan paling hidup di Yogyakarta. Dihiasi lampu antik klasik, jajaran kursi kayu estetik, musisi jalanan tradisional yang merdu, serta berujung pada kawasan gedung kuno Titik Nol Kilometer.",
+                tips: [
+                    "Mulailah berjalan kaki santai dari arah utara (Stasiun Tugu) menyusuri trotoar Malioboro hingga ke Titik Nol Kilometer.",
+                    "Cobalah mampir membeli jajanan kue pia hangat yang baru matang di pinggir gang pertokoan.",
+                    "Nikmati penampilan musik angklung kreatif dari seniman lokal yang menghibur pejalan kaki di sepanjang jalan."
+                ]
+            },
+            {
+                id: 20,
+                name: "Hutan Pinus Mangunan",
+                region: "jogja",
+                category: "alam",
+                rating: 4.6,
+                image: "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=800&q=80",
+                fallbackImage: "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=800&q=80",
+                bestHour: "Pagi / Sore (08:00 - 16:30)",
+                cost: "Rp10.000 / Orang",
+                coordinates: "S: -7.9392, E: 110.4321",
+                mapPos: { top: '84%', left: '68%' },
+                tag: "Hutan Rindang Asri",
+                description: "Kawasan hutan wisata rimbun dengan jajaran pohon pinus yang menjulang tinggi di area perbukitan Dlingo, Bantul. Menyajikan keteduhan alami, kesunyian, serta udara yang bersih dan menyegarkan paru-paru.",
+                tips: [
+                    "Jalur strolling beralaskan tanah gembur pinus yang sangat teduh, nyaman untuk bersantai melepas penat.",
+                    "Terdapat kursi-kursi amfiteater berbahan kayu alami yang unik di tengah hutan untuk duduk santai menikmati suasana.",
+                    "Hirup aroma segar getah pinus alami yang memiliki efek menenangkan pikiran."
+                ]
+            },
+            {
+                id: 21,
+                name: "Puncak Becici Bantul",
+                region: "jogja",
+                category: "alam",
+                rating: 4.6,
+                image: "https://images.unsplash.com/photo-1472214222541-d510753a8707?auto=format&fit=crop&w=800&q=80",
+                fallbackImage: "https://images.unsplash.com/photo-1472214222541-d510753a8707?auto=format&fit=crop&w=800&q=80",
+                bestHour: "Sore Sunset (16:30 - 18:00)",
+                cost: "Rp10.000 / Orang",
+                coordinates: "S: -7.9255, E: 110.4288",
+                mapPos: { top: '81%', left: '64%' },
+                tag: "Sunset Pine Forest",
+                description: "Sisi tebing bukit pinus yang menawarkan gardu pandang terbuka menghadap ke arah barat lembah Yogyakarta. Sangat populer karena menyajikan momen pemandangan matahari terbenam yang sangat dramatis dan romantis.",
+                tips: [
+                    "Berjalanlah santai menuju ujung tebing untuk menikmati tiupan angin sore dengan panorama Gunung Merapi dari kejauhan.",
+                    "Sediakan kamera saku untuk mengabadikan keindahan siluet pepohonan pinus di kala senja tiba.",
+                    "Pernah dikunjungi mantan presiden AS, Barack Obama, karena reputasi keindahan panorama alamnya."
+                ]
+            },
+            {
+                id: 22,
+                name: "HeHa Sky View Gunungkidul",
+                region: "jogja",
+                category: "alam",
+                rating: 4.5,
+                image: "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=800&q=80",
+                fallbackImage: "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=800&q=80",
+                bestHour: "Sore & Malam (16:00 - 21:00)",
+                cost: "Rp20.000 - Rp25.000",
+                coordinates: "S: -7.8488, E: 110.4855",
+                mapPos: { top: '76%', left: '72%' },
+                tag: "Spot Foto Modern Ketinggian",
+                description: "Destinasi wisata pemandangan modern terpopuler di perbukitan Patuk, Gunungkidul. Menawarkan berbagai dek foto berdesain estetik dengan pemandangan lanskap perkotaan Yogyakarta dari ketinggian.",
+                tips: [
+                    "Sangat direkomendasikan berjalan kaki di sepanjang teras gantung lebar sambil menikmati segelas jus buah segar.",
+                    "Menjelang malam, lampu-lampu taman akan menyala, memberikan atmosfer romantis yang sangat hidup.",
+                    "Fasilitas lengkap dengan restoran bergaya kaca modern yang menghadap langsung ke arah kota."
+                ]
+            },
+            {
+                id: 23,
+                name: "Gudeg Yu Djum Wijilan",
+                region: "jogja",
+                category: "kuliner",
+                rating: 4.7,
+                image: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=800&q=80",
+                fallbackImage: "https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=800&q=80",
+                bestHour: "Sarapan / Makan Siang (07:00 - 13:00)",
+                cost: "Rp25.000 - Rp50.000 / Porsi",
+                coordinates: "S: -7.8041, E: 110.3688",
+                mapPos: { top: '78%', left: '61%' },
+                tag: "Gudeg Kering Legendaris",
+                description: "Sentra kuliner gudeg kering paling terkenal di Jogja yang bertempat di kawasan bersejarah Wijilan dekat Kraton. Olahan nangka muda manis gurih yang dimasak lambat dengan kayu bakar, dilengkapi krecek pedas dan ayam kampung.",
+                tips: [
+                    "Bagi penyuka masakan pedas, padukan porsi gudeg manis dengan porsi sambal goreng krecek gurih ekstra.",
+                    "Sangat dekat dengan benteng Kraton Jogja, pas dijadikan pengisi tenaga sehabis berjalan kaki keliling istana.",
+                    "Tersedia pilihan kemasan kendil tanah liat tradisional yang awet untuk dijadikan oleh-oleh pulang."
+                ]
+            },
+            {
+                id: 24,
+                name: "Kopi Klotok Pakem",
+                region: "jogja",
+                category: "kuliner",
+                rating: 4.7,
+                image: "https://images.unsplash.com/photo-1498804103079-a6351b050096?auto=format&fit=crop&w=800&q=80",
+                fallbackImage: "https://images.unsplash.com/photo-1498804103079-a6351b050096?auto=format&fit=crop&w=800&q=80",
+                bestHour: "Pagi / Sore Santai (07:00 - 17:00)",
+                cost: "Rp10.000 - Rp25.000 / Orang",
+                coordinates: "S: -7.6625, E: 110.4215",
+                mapPos: { top: '66%', left: '62%' },
+                tag: "Warung Kopi Sawah Merapi",
+                description: "Warung makan berdesain joglo tradisional di Sleman utara. Sangat populer karena menyajikan kopi klotok arang yang khas, hidangan lodeh rumahan ndeso, serta pisang goreng kepok panas di tepi hamparan sawah berlatar Merapi.",
+                tips: [
+                    "Sistem prasmanan, ambil sendiri sayur lodeh tempe, terong, atau kluwih sesuka hati di dapur joglo kayu.",
+                    "Duduklah santai di atas tikar pinggir sawah sembari menikmati semilir angin sepoi-sepoi yang sejuk.",
+                    "Pisang goreng kepok goreng tepung manis garing di sini adalah camilan wajib yang sangat cepat habis."
+                ]
+            }
+        ];
+
+        let activeRegion = "all";
+        let activeCategory = "all";
+        let itinerary = [];
+
+        // App Initialization
+        window.onload = function() {
+            renderDestinations();
+            renderMapPins();
+            loadItineraryFromMemory();
+        };
+
+        // Render Destinations cards to the list grid
+        function renderDestinations() {
+            const grid = document.getElementById("destinations-grid");
+            const searchVal = document.getElementById("search-input").value.toLowerCase();
+            grid.innerHTML = "";
+
+            let filtered = destinations.filter(dest => {
+                const matchesRegion = activeRegion === "all" || dest.region === activeRegion;
+                const matchesCategory = activeCategory === "all" || dest.category === activeCategory;
+                const matchesSearch = dest.name.toLowerCase().includes(searchVal) || 
+                                      dest.tag.toLowerCase().includes(searchVal) || 
+                                      dest.description.toLowerCase().includes(searchVal);
+                return matchesRegion && matchesCategory && matchesSearch;
+            });
+
+            // Update live counter label
+            document.getElementById("destination-count").innerText = `Menampilkan ${filtered.length} Destinasi`;
+
+            if(filtered.length === 0) {
+                grid.innerHTML = `
+                    <div class="col-span-1 md:col-span-2 text-center py-16 bg-white rounded-3xl border border-slate-100 shadow-sm">
+                        <i class="fa-solid fa-map-location text-5xl text-slate-200 mb-3 block"></i>
+                        <h4 class="font-bold text-slate-700">Rute atau tempat tidak ditemukan</h4>
+                        <p class="text-xs text-slate-400 mt-1">Coba sesuaikan kata kunci pencarian atau kategori filter Anda.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            filtered.forEach(dest => {
+                const card = document.createElement("div");
+                card.className = "bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-md border border-slate-100 transition-all duration-300 flex flex-col group cursor-pointer";
+                card.onclick = (e) => {
+                    if (e.target.closest('.add-btn')) return; // Avoid opening modal when clicking CTA button
+                    openModal(dest.id);
+                };
+
+                const isAlreadyInItinerary = itinerary.some(item => item.id === dest.id);
+                const buttonText = isAlreadyInItinerary ? "Di Rencana" : "+ Tambah Rute";
+                const buttonClass = isAlreadyInItinerary 
+                    ? "bg-slate-100 text-slate-400 font-medium cursor-default" 
+                    : "bg-emerald-50 hover:bg-emerald-100 text-emerald-700 font-semibold";
+
+                let regionBadge = "";
+                if(dest.region === 'dieng') regionBadge = "☁️ Dieng";
+                else if(dest.region === 'magelang') regionBadge = "🏔️ Magelang";
+                else if(dest.region === 'jogja') regionBadge = "🕌 Jogja";
+
+                let focusBadge = "";
+                if(dest.category === 'alam') focusBadge = "🏔️ Alam";
+                else if(dest.category === 'budaya') focusBadge = "🏺 Budaya";
+                else if(dest.category === 'kuliner') focusBadge = "🍲 Kuliner";
+
+                card.innerHTML = `
+                    <div class="relative h-44 w-full overflow-hidden bg-slate-100">
+                        <img src="${dest.image}" alt="${dest.name}" onerror="this.onerror=null; this.src='${dest.fallbackImage}'" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute top-3 left-3 flex gap-1.5 flex-wrap">
+                            <span class="bg-slate-900/80 text-white text-[9px] font-bold px-2.5 py-1 rounded-full backdrop-blur-sm">
+                                ${regionBadge}
+                            </span>
+                            <span class="bg-emerald-600/90 text-white text-[9px] font-bold px-2.5 py-1 rounded-full backdrop-blur-sm">
+                                ${focusBadge}
+                            </span>
+                        </div>
+                        <div class="absolute top-3 right-3 bg-white/95 backdrop-blur-sm px-2.5 py-1 rounded-full text-[10px] font-bold text-amber-500 shadow-sm flex items-center gap-0.5">
+                            <i class="fa-solid fa-star"></i> ${dest.rating}
+                        </div>
+                    </div>
+                    
+                    <div class="p-5 flex-grow flex flex-col justify-between space-y-3">
+                        <div class="space-y-1">
+                            <span class="text-[9px] text-amber-600 font-extrabold tracking-widest uppercase block">${dest.tag}</span>
+                            <h3 class="font-extrabold text-sm md:text-base text-slate-800 group-hover:text-emerald-700 transition-colors line-clamp-1">${dest.name}</h3>
+                            <p class="text-xs text-slate-500 line-clamp-2 leading-relaxed">${dest.description}</p>
+                        </div>
+                        
+                        <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-[11px]">
+                            <span class="text-slate-400 font-semibold">⏰ ${dest.bestHour.split(' ')[0]} ${dest.bestHour.split(' ')[1] || ''}</span>
+                            <button onclick="toggleItinerary(${dest.id})" class="add-btn px-3 py-1.5 rounded-xl text-[10px] transition ${buttonClass}">
+                                ${buttonText}
+                            </button>
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // Render interactive geographic map markers
+        function renderMapPins() {
+            const container = document.getElementById("map-pins-container");
+            container.innerHTML = "";
+
+            destinations.forEach(dest => {
+                const pin = document.createElement("button");
+                pin.className = "absolute z-10 p-1 group flex items-center justify-center -translate-x-1/2 -translate-y-1/2 transition-transform duration-300 hover:scale-125";
+                pin.style.top = dest.mapPos.top;
+                pin.style.left = dest.mapPos.left;
+                pin.onclick = () => openModal(dest.id);
+
+                let colorClass = "bg-emerald-500"; // Alam
+                let iconClass = "fa-mountain";
+                if(dest.category === 'budaya') {
+                    colorClass = "bg-sky-500";
+                    iconClass = "fa-gopuram";
+                } else if(dest.category === 'kuliner') {
+                    colorClass = "bg-amber-500";
+                    iconClass = "fa-bowl-food";
+                }
+
+                pin.innerHTML = `
+                    <div class="${colorClass} w-6 h-6 rounded-full text-white flex items-center justify-center shadow-lg relative pulse-marker border border-white/20">
+                        <i class="fa-solid ${iconClass} text-[9px]"></i>
+                    </div>
+                    <span class="absolute bottom-full left-1/2 -translate-x-1/2 bg-slate-900 text-white text-[9px] py-1 px-2.5 rounded-lg opacity-0 pointer-events-none group-hover:opacity-100 transition shadow-lg whitespace-nowrap z-20">
+                        ${dest.name} (★${dest.rating})
+                    </span>
+                `;
+                container.appendChild(pin);
+            });
+        }
+
+        // Region Filtering Tab Click
+        function filterRegion(region) {
+            activeRegion = region;
+            document.querySelectorAll("#region-tabs button").forEach(btn => {
+                btn.className = "px-4 py-2 rounded-xl text-xs font-bold text-slate-600 hover:bg-slate-50 transition-all border border-slate-100";
+            });
+            document.getElementById(`reg-${region}`).className = "px-4 py-2 rounded-xl text-xs font-bold transition-all bg-emerald-600 text-white shadow-sm";
+            renderDestinations();
+        }
+
+        // Category Filtering Tab Click
+        function filterCategory(category) {
+            activeCategory = category;
+            document.querySelectorAll("#category-tabs button").forEach(btn => {
+                btn.className = "px-4 py-1.5 rounded-lg text-xs font-semibold text-slate-600 hover:bg-slate-50 border border-slate-100";
+            });
+            document.getElementById(`cat-${category}`).className = "px-4 py-1.5 rounded-lg text-xs font-semibold bg-slate-900 text-white shadow-sm";
+            renderDestinations();
+        }
+
+        // Realtime typing filter
+        function filterPlaces() {
+            renderDestinations();
+        }
+
+        // Open Detail Modal Overlay
+        function openModal(id) {
+            const dest = destinations.find(d => d.id === id);
+            if (!dest) return;
+
+            document.getElementById("modal-img").src = dest.image;
+            document.getElementById("modal-img").onerror = function() {
+                this.src = dest.fallbackImage;
+            };
+            document.getElementById("modal-title").innerText = dest.name;
+            
+            // Map labels for badges
+            const regLabel = { dieng: "☁️ Dieng Plateau", magelang: "🏔️ Magelang", jogja: "🕌 Yogyakarta" };
+            const catLabel = { alam: "🏔️ Alam & View", budaya: "🏺 Budaya & Cagar", kuliner: "🍲 Kuliner Otentik" };
+            
+            document.getElementById("modal-region-badge").innerText = regLabel[dest.region];
+            document.getElementById("modal-category-badge").innerText = catLabel[dest.category];
+            
+            document.getElementById("modal-rating").innerText = dest.rating;
+            document.getElementById("modal-hours").innerText = dest.bestHour;
+            document.getElementById("modal-cost").innerText = dest.cost;
+            document.getElementById("modal-description").innerText = dest.description;
+            document.getElementById("modal-coords").innerText = `📍 Koordinat Maps: ${dest.coordinates}`;
+
+            // Render specific walking / cultural tips
+            const tipsList = document.getElementById("modal-tips");
+            tipsList.innerHTML = "";
+            dest.tips.forEach(tip => {
+                const li = document.createElement("li");
+                li.innerText = tip;
+                tipsList.appendChild(li);
+            });
+
+            // Action button state setup inside modal
+            const addBtn = document.getElementById("modal-add-btn");
+            const isInItinerary = itinerary.some(item => item.id === dest.id);
+            if(isInItinerary) {
+                addBtn.className = "bg-slate-200 text-slate-500 px-5 py-2 rounded-xl text-xs font-bold cursor-default flex items-center gap-1.5";
+                addBtn.innerHTML = `<i class="fa-solid fa-check"></i> Sudah Di Rencana`;
+                addBtn.onclick = null;
+            } else {
+                addBtn.className = "bg-emerald-600 hover:bg-emerald-500 text-white px-5 py-2 rounded-xl text-xs font-bold transition flex items-center gap-1.5";
+                addBtn.innerHTML = `<i class="fa-solid fa-plus"></i> Tambah Rute`;
+                addBtn.onclick = () => {
+                    toggleItinerary(dest.id);
+                    openModal(dest.id); // Refresh modal view
+                };
+            }
+
+            // Animate Modal Open
+            const modal = document.getElementById("detail-modal");
+            const content = document.getElementById("modal-content");
+            modal.classList.remove("pointer-events-none", "opacity-0");
+            modal.classList.add("opacity-100");
+            content.classList.remove("translate-y-4");
+            content.classList.add("translate-y-0");
+        }
+
+        // Close Detail Modal Overlay
+        function closeModal() {
+            const modal = document.getElementById("detail-modal");
+            const content = document.getElementById("modal-content");
+            modal.classList.add("pointer-events-none", "opacity-0");
+            modal.classList.remove("opacity-100");
+            content.classList.add("translate-y-4");
+            content.classList.remove("translate-y-0");
+        }
+
+        // Add/Remove Itinerary
+        function toggleItinerary(id) {
+            const dest = destinations.find(d => d.id === id);
+            const index = itinerary.findIndex(item => item.id === id);
+
+            if(index > -1) {
+                showToast(`"${dest.name}" sudah dimasukkan ke daftar rencana.`);
+            } else {
+                itinerary.push(dest);
+                showToast(`"${dest.name}" berhasil ditambahkan ke rencana! 🚶‍♂️`);
+            }
+
+            saveItineraryToMemory();
+            renderItinerary();
+            renderDestinations();
+        }
+
+        function removeSingleItinerary(id) {
+            itinerary = itinerary.filter(item => item.id !== id);
+            saveItineraryToMemory();
+            renderItinerary();
+            renderDestinations();
+            showToast("Destinasi dihapus dari rute.");
+        }
+
+        // Clear All Itinerary
+        function clearAllItinerary() {
+            itinerary = [];
+            saveItineraryToMemory();
+            renderItinerary();
+            renderDestinations();
+            showToast("Seluruh rute perjalanan berhasil dibersihkan.");
+        }
+
+        // Render current Itinerary list
+        function renderItinerary() {
+            const list = document.getElementById("itinerary-list");
+            const emptyState = document.getElementById("itinerary-empty");
+            const footer = document.getElementById("itinerary-footer");
+            const countLabel = document.getElementById("itinerary-count");
+
+            // Clear old items
+            const items = list.querySelectorAll(".itinerary-item");
+            items.forEach(el => el.remove());
+
+            if(itinerary.length === 0) {
+                emptyState.classList.remove("hidden");
+                footer.classList.add("hidden");
+                return;
+            }
+
+            emptyState.classList.add("hidden");
+            footer.classList.remove("hidden");
+            countLabel.innerText = `${itinerary.length} Destinasi`;
+
+            itinerary.forEach((item, idx) => {
+                let regionLabel = "Dieng";
+                if(item.region === 'magelang') regionLabel = "Magelang";
+                else if(item.region === 'jogja') regionLabel = "Yogyakarta";
+
+                const row = document.createElement("div");
+                row.className = "itinerary-item bg-slate-800 hover:bg-slate-750 p-3 rounded-2xl flex items-center justify-between gap-3 border border-slate-700/50 transition duration-200";
+                row.innerHTML = `
+                    <div class="flex items-center gap-3 overflow-hidden">
+                        <div class="bg-amber-400 text-slate-950 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold shrink-0">
+                            ${idx + 1}
+                        </div>
+                        <div class="overflow-hidden">
+                            <span class="font-bold text-xs text-white block truncate">${item.name}</span>
+                            <span class="text-[9px] text-slate-400 block">${regionLabel} • ${item.category === 'alam' ? 'Alam' : item.category === 'budaya' ? 'Budaya' : 'Kuliner'}</span>
+                        </div>
+                    </div>
+                    <button onclick="removeSingleItinerary(${item.id})" class="text-slate-500 hover:text-red-400 p-1.5 rounded-lg transition shrink-0">
+                        <i class="fa-solid fa-trash-can text-xs"></i>
+                    </button>
+                `;
+                list.appendChild(row);
+            });
+        }
+
+        // Storage helpers
+        function saveItineraryToMemory() {
+            sessionStorage.setItem("java_trail_itinerary", JSON.stringify(itinerary));
+        }
+
+        function loadItineraryFromMemory() {
+            const stored = sessionStorage.getItem("java_trail_itinerary");
+            if(stored) {
+                itinerary = JSON.parse(stored);
+                renderItinerary();
+                renderDestinations();
+            }
+        }
+
+        // Copy markdown output to clipboard
+        function copyAndShareItinerary() {
+            if(itinerary.length === 0) return;
+
+            let text = `✨ RENCANA PERJALANAN JAVA HERITAGE TRAIL ✨\n`;
+            text += `Rute Jalan Santai, Budaya, & Kuliner (Dieng, Magelang, Jogja)\n`;
+            text += `==========================================================\n\n`;
+
+            itinerary.forEach((item, idx) => {
+                let regLabel = item.region === 'dieng' ? 'Dieng Plateau' : item.region === 'magelang' ? 'Magelang' : 'Yogyakarta';
+                text += `${idx + 1}. ${item.name} (${regLabel})\n`;
+                text += `   🏺 Kategori: ${item.category === 'alam' ? 'Alam & Pemandangan' : item.category === 'budaya' ? 'Warisan Budaya' : 'Kuliner Khas'}\n`;
+                text += `   ⏰ Waktu Terbaik: ${item.bestHour}\n`;
+                text += `   💰 Biaya/Tiket: ${item.cost}\n`;
+                text += `   📍 Koordinat: ${item.coordinates}\n\n`;
+            });
+            text += `Disiapkan khusus untuk Anda. Selamat menjelajah tanah Jawa! 🚶‍♂️🌿`;
+
+            // Clipboard safe copy
+            const el = document.createElement('textarea');
+            el.value = text;
+            document.body.appendChild(el);
+            el.select();
+            document.execCommand('copy');
+            document.body.removeChild(el);
+
+            showToast("Rencana liburan berhasil disalin ke clipboard! 📋");
+        }
+
+        // Custom Toast system
+        function showToast(msg) {
+            const toast = document.getElementById("toast-box");
+            const toastMsg = document.getElementById("toast-message");
+            
+            toastMsg.innerText = msg;
+            toast.classList.remove("translate-y-24", "opacity-0");
+            toast.classList.add("translate-y-0", "opacity-100");
+
+            setTimeout(() => {
+                toast.classList.remove("translate-y-0", "opacity-100");
+                toast.classList.add("translate-y-24", "opacity-0");
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
