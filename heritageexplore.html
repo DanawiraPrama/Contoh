@@ -65,25 +65,34 @@
                 </p>
             </div>
             
-            <!-- Quick Weather / Info Widget -->
+            <!-- Quick Weather / Info Widget (Updated to Live Weather!) -->
             <div class="glass text-slate-900 rounded-3xl p-5 shadow-2xl w-full max-w-sm border border-white/20 space-y-3">
-                <div class="text-xs font-bold text-slate-500 uppercase tracking-widest border-b pb-2">Karakter & Suhu Wilayah</div>
+                <div class="text-xs font-bold text-slate-500 uppercase tracking-widest border-b pb-2 flex justify-between items-center">
+                    <span>Suhu Kawasan saat ini</span>
+                    <span class="flex items-center gap-1 text-[10px] text-red-600 font-bold animate-pulse">
+                        <span class="w-1.5 h-1.5 rounded-full bg-red-600"></span> LIVE
+                    </span>
+                </div>
                 <div class="grid grid-cols-3 gap-2">
-                    <div class="bg-sky-50 p-2.5 rounded-xl text-center border border-sky-100">
+                    <div class="bg-sky-50 p-2.5 rounded-xl text-center border border-sky-100 transition-all duration-300 hover:scale-105">
                         <span class="text-[10px] font-bold text-sky-700 block">☁️ DIENG</span>
-                        <span class="text-xs font-extrabold text-slate-800">12°C - 18°C</span>
-                        <span class="text-[9px] text-slate-400 block mt-0.5">Vulkanik</span>
+                        <span id="weather-temp-dieng" class="text-xs font-extrabold text-slate-800">--°C</span>
+                        <span id="weather-desc-dieng" class="text-[9px] text-slate-400 block mt-0.5 truncate">Memuat...</span>
                     </div>
-                    <div class="bg-emerald-50 p-2.5 rounded-xl text-center border border-emerald-100">
+                    <div class="bg-emerald-50 p-2.5 rounded-xl text-center border border-emerald-100 transition-all duration-300 hover:scale-105">
                         <span class="text-[10px] font-bold text-emerald-700 block">🏔️ MAGELANG</span>
-                        <span class="text-xs font-extrabold text-slate-800">20°C - 26°C</span>
-                        <span class="text-[9px] text-slate-400 block mt-0.5">Pegunungan</span>
+                        <span id="weather-temp-magelang" class="text-xs font-extrabold text-slate-800">--°C</span>
+                        <span id="weather-desc-magelang" class="text-[9px] text-slate-400 block mt-0.5 truncate">Memuat...</span>
                     </div>
-                    <div class="bg-amber-50 p-2.5 rounded-xl text-center border border-amber-100">
+                    <div class="bg-amber-50 p-2.5 rounded-xl text-center border border-amber-100 transition-all duration-300 hover:scale-105">
                         <span class="text-[10px] font-bold text-amber-700 block">🕌 JOGJA</span>
-                        <span class="text-xs font-extrabold text-slate-800">25°C - 31°C</span>
-                        <span class="text-[9px] text-slate-400 block mt-0.5">Budaya Kota</span>
+                        <span id="weather-temp-jogja" class="text-xs font-extrabold text-slate-800">--°C</span>
+                        <span id="weather-desc-jogja" class="text-[9px] text-slate-400 block mt-0.5 truncate">Memuat...</span>
                     </div>
+                </div>
+                <div class="text-[9px] text-slate-400 text-center flex justify-between items-center px-1">
+                    <span>Sumber: Open-Meteo API</span>
+                    <span id="weather-updated" class="font-medium">Pembaruan: --:--</span>
                 </div>
             </div>
         </div>
@@ -105,13 +114,13 @@
                             Semua Wilayah
                         </button>
                         <button onclick="filterRegion('dieng')" id="reg-dieng" class="px-4 py-2 rounded-xl text-xs font-bold text-slate-600 hover:bg-slate-50 transition-all border border-slate-100">
-                            ☁️ Dieng (8 Lokasi)
+                            ☁️ Dieng (16 Lokasi)
                         </button>
                         <button onclick="filterRegion('magelang')" id="reg-magelang" class="px-4 py-2 rounded-xl text-xs font-bold text-slate-600 hover:bg-slate-50 transition-all border border-slate-100">
-                            🏔️ Magelang (8 Lokasi)
+                            🏔️ Magelang (16 Lokasi)
                         </button>
                         <button onclick="filterRegion('jogja')" id="reg-jogja" class="px-4 py-2 rounded-xl text-xs font-bold text-slate-600 hover:bg-slate-50 transition-all border border-slate-100">
-                            🕌 Yogyakarta (8 Lokasi)
+                            🕌 Yogyakarta (16 Lokasi)
                         </button>
                     </div>
                 </div>
@@ -143,7 +152,7 @@
                     <input type="text" id="search-input" onkeyup="filterPlaces()" placeholder="Cari nama tempat, kuliner, candi, atau aktivitas..." class="w-full bg-white border border-slate-200 rounded-2xl py-3.5 pl-12 pr-4 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 shadow-sm transition">
                 </div>
                 <div class="flex justify-between items-center px-2">
-                    <span class="text-xs text-slate-500 font-semibold" id="destination-count">Menampilkan 24 Destinasi</span>
+                    <span class="text-xs text-slate-500 font-semibold" id="destination-count">Menampilkan 48 Destinasi</span>
                     <span class="text-[11px] text-emerald-600 font-semibold flex items-center gap-1.5">
                         <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span> Eksplorasi Aktif
                     </span>
@@ -364,7 +373,7 @@
                 tag: "Candi Hindu Tertua",
                 description: "Situs candi Hindu peninggalan kerajaan Mataram Kuno yang diperkirakan dibangun abad ke-8 Masehi. Berada di tengah dataran rumput hijau luas yang kerap diselimuti kabut putih, menciptakan atmosfer damai untuk jalan santai lambat.",
                 tips: [
-                    "Jalur di kompleks candi ini sangat datar, rapi, dan nyaman untuk pejalan kaki segala usia.",
+                    "Jalur di kompleks candi ini sangat datar, rapi, and nyaman untuk pejalan kaki segala usia.",
                     "Jagalah kelestarian bangunan dengan tidak menaiki struktur batu candi.",
                     "Di bulan Juli - Agustus, Anda bisa menyaksikan fenomena embun es (bun upas) di rumput sekitar candi pagi hari."
                 ]
@@ -812,6 +821,491 @@
                     "Duduklah santai di atas tikar pinggir sawah sembari menikmati semilir angin sepoi-sepoi yang sejuk.",
                     "Pisang goreng kepok goreng tepung manis garing di sini adalah camilan wajib yang sangat cepat habis."
                 ]
+            },
+            // ==================== DIENG REGION (TAMBAHAN 8 LOKASI) ====================
+            {
+                id: 25,
+                name: "Gunung Prau (Sunrise Camp)",
+                region: "dieng",
+                category: "alam",
+                rating: 4.9,
+                image: "https://images.unsplash.com/photo-1542640244-7e672d6cb466?auto=format&fit=crop&w=800&q=80",
+                fallbackImage: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80",
+                bestHour: "Subuh (04:30 - 08:00)",
+                cost: "Rp15.000 / Orang",
+                coordinates: "S: -7.1852, E: 109.9213",
+                mapPos: { top: '6%', left: '18%' },
+                tag: "Pendakian & Kemah Pagi",
+                description: "Gunung Prau adalah primadona Dieng dengan puncak bukit Teletubbies yang sangat luas. Merupakan jalur pendakian yang ramah bagi pemula namun memberikan hadiah pemandangan golden sunrise terbaik berlatar Gunung Sindoro-Sumbing.",
+                tips: [
+                    "Basecamp Patak Banteng adalah rute terpendek namun cukup menanjak.",
+                    "Siapkan jaket gunung yang sangat tebal karena suhu di puncak pada malam hari bisa mendekati titik beku.",
+                    "Bawa perlengkapan mendaki yang standar dan bawa kembali turun seluruh sampah Anda."
+                ]
+            },
+            {
+                id: 26,
+                name: "Kawah Candradimuka",
+                region: "dieng",
+                category: "alam",
+                rating: 4.5,
+                image: "https://images.unsplash.com/photo-1610375229632-c7158c35a537?auto=format&fit=crop&w=800&q=80",
+                fallbackImage: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=800&q=80",
+                bestHour: "Pagi / Sore (08:00 - 15:00)",
+                cost: "Rp5.000 / Orang",
+                coordinates: "S: -7.1950, E: 109.8780",
+                mapPos: { top: '8%', left: '10%' },
+                tag: "Kawah Misterius Legenda",
+                description: "Berbeda dengan Sikidang, kawah Candradimuka terletak agak tersembunyi dengan uap panas belerang yang muncul dari celah-celah tebing batu. Kawah ini kental dengan mitos pewayangan sebagai tempat mandi Raden Gatotkaca.",
+                tips: [
+                    "Jalan menuju ke kawah ini cukup berbatu, pastikan kendaraan Anda dalam performa yang baik.",
+                    "Anda dapat mencuci muka dengan sumber air hangat alami di sekitar area kawah yang dipercaya bagus untuk kulit.",
+                    "Nikmati suasana yang jauh lebih sunyi dibandingkan kawah utama Dieng."
+                ]
+            },
+            {
+                id: 27,
+                name: "Telaga Merdada",
+                region: "dieng",
+                category: "alam",
+                rating: 4.5,
+                image: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=800&q=80",
+                fallbackImage: "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=800&q=80",
+                bestHour: "Pagi Cerah (07:00 - 11:00)",
+                cost: "Rp5.000 / Orang",
+                coordinates: "S: -7.2136, E: 109.8825",
+                mapPos: { top: '16%', left: '8%' },
+                tag: "Telaga Terluas Dieng",
+                description: "Telaga Merdada adalah telaga terluas di dataran tinggi Dieng. Telaga ini sebenarnya merupakan cekungan kawah mati yang terisi air hujan, yang kini diapit oleh perbukitan yang penuh dengan terasering ladang kentang milik warga.",
+                tips: [
+                    "Anda bisa menyewa perahu kayu kecil untuk berkeliling di tengah luasnya telaga.",
+                    "Sangat nyaman untuk jalan santai di tepi telaga sembari melihat aktivitas para petani kentang di seberang air.",
+                    "Udara di telaga ini cenderung banyak angin, gunakan pelindung leher atau syal."
+                ]
+            },
+            {
+                id: 28,
+                name: "Candi Bima",
+                region: "dieng",
+                category: "budaya",
+                rating: 4.6,
+                image: "https://images.unsplash.com/photo-1596422846543-75c6fc18a523?auto=format&fit=crop&w=800&q=80",
+                fallbackImage: "https://images.unsplash.com/photo-1596422846543-75c6fc18a523?auto=format&fit=crop&w=800&q=80",
+                bestHour: "Pagi (08:00 - 10:00)",
+                cost: "Gratis (Tepi Jalan)",
+                coordinates: "S: -7.2140, E: 109.9110",
+                mapPos: { top: '18%', left: '25%' },
+                tag: "Candi Arsitektur Unik",
+                description: "Candi Bima merupakan salah satu candi yang paling menonjol karena bentuk atapnya menyerupai mangkuk terbalik (sikharanya mirip arsitektur candi di India Utara). Berdiri kokoh sendirian memancarkan aura magis kuno.",
+                tips: [
+                    "Terletak tepat di pinggir jalan menuju Kawah Sikidang, sangat mudah diakses.",
+                    "Bentuk relief kepala manusia (Kudu) di bagian jendela-jendela atap candi adalah fitur yang wajib Anda perhatikan secara dekat.",
+                    "Lokasinya sunyi dan minim turis, cocok bagi penyuka fotografi arsitektur warisan kuno."
+                ]
+            },
+            {
+                id: 29,
+                name: "Museum Kailasa Dieng",
+                region: "dieng",
+                category: "budaya",
+                rating: 4.6,
+                image: "https://images.unsplash.com/photo-1584810359583-96fc3448beaa?auto=format&fit=crop&w=800&q=80",
+                fallbackImage: "https://images.unsplash.com/photo-1584810359583-96fc3448beaa?auto=format&fit=crop&w=800&q=80",
+                bestHour: "Siang Hari (10:00 - 14:00)",
+                cost: "Rp5.000 / Orang",
+                coordinates: "S: -7.2088, E: 109.9044",
+                mapPos: { top: '15%', left: '28%' },
+                tag: "Pusat Informasi Sejarah Dieng",
+                description: "Bagi pelancong yang ingin memahami lebih dalam, Museum Kailasa menyimpan berbagai artefak kuno Hindu, lempengan prasasti, hingga informasi lengkap mengenai proses geologis terbentuknya dataran tinggi vulkanik Dieng.",
+                tips: [
+                    "Kunjungi museum ini sebelum menjelajahi candi-candi di Dieng agar Anda mendapat konteks sejarah yang memadai.",
+                    "Gedungnya memiliki taman kecil yang sangat sejuk untuk duduk santai membaca peta wisata.",
+                    "Perhatikan ruang teater mini yang sering memutar film dokumenter budaya anak berambut gembel khas Dieng."
+                ]
+            },
+            {
+                id: 30,
+                name: "Telaga Cebong",
+                region: "dieng",
+                category: "alam",
+                rating: 4.6,
+                image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80",
+                fallbackImage: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=800&q=80",
+                bestHour: "Pagi / Sore (07:00 - 17:00)",
+                cost: "Rp15.000 (Satu tiket Sikunir)",
+                coordinates: "S: -7.2280, E: 109.9205",
+                mapPos: { top: '12%', left: '18%' },
+                tag: "Danau di Desa Tertinggi",
+                description: "Terletak tepat di bawah Bukit Sikunir di Desa Sembungan. Telaga Cebong menawarkan permukaan air yang tenang berbayang pepohonan hijau. Dinamakan 'cebong' karena dari atas bukit bentuknya mirip berudu katak.",
+                tips: [
+                    "Tempat ini juga merupakan camping ground favorit sebelum para pendaki naik ke bukit Sikunir di waktu subuh.",
+                    "Berjalan kakilah mengitari tepian danau di pagi hari saat kabut tebal baru turun menyentuh permukaan air.",
+                    "Sangat nyaman untuk duduk makan pagi sembari melihat pantulan ladang kentang di riak air."
+                ]
+            },
+            {
+                id: 31,
+                name: "Sumur Jalatunda",
+                region: "dieng",
+                category: "alam",
+                rating: 4.4,
+                image: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=800&q=80",
+                fallbackImage: "https://images.unsplash.com/photo-1610375229632-c7158c35a537?auto=format&fit=crop&w=800&q=80",
+                bestHour: "Siang Hari (11:00 - 14:00)",
+                cost: "Rp5.000 / Orang",
+                coordinates: "S: -7.1855, E: 109.8450",
+                mapPos: { top: '5%', left: '12%' },
+                tag: "Lubang Kawah Raksasa",
+                description: "Bukan sumur buatan manusia, Jalatunda adalah ceruk kepundan kawah purba raksasa dengan diameter hampir 90 meter yang memiliki genangan air hijau pekat di dasarnya. Menyuguhkan pemandangan yang cukup mendebarkan.",
+                tips: [
+                    "Siapkan stamina untuk menaiki sekitar 258 anak tangga menuju bibir sumur kawah.",
+                    "Warga setempat memiliki mitos barangsiapa yang bisa melempar batu hingga menyeberangi sumur maka permohonannya akan terkabul.",
+                    "Berhati-hatilah saat berdiri di batas pagar bibir kawah karena angin sering bertiup kencang."
+                ]
+            },
+            {
+                id: 32,
+                name: "Kopi Purwaceng & Sagon",
+                region: "dieng",
+                category: "kuliner",
+                rating: 4.7,
+                image: "https://images.unsplash.com/photo-1498804103079-a6351b050096?auto=format&fit=crop&w=800&q=80",
+                fallbackImage: "https://images.unsplash.com/photo-1498804103079-a6351b050096?auto=format&fit=crop&w=800&q=80",
+                bestHour: "Malam Hari (18:00 - 21:00)",
+                cost: "Rp15.000 - Rp25.000",
+                coordinates: "S: -7.2060, E: 109.9070",
+                mapPos: { top: '20%', left: '20%' },
+                tag: "Wedang Tradisional Dieng",
+                description: "Purwaceng adalah tanaman herbal endemik dataran tinggi Dieng yang diseduh menyerupai kopi atau susu hangat. Minuman ini sangat ampuh mengusir hawa dingin ekstrem, apalagi jika dipadukan dengan jajanan kue sagon kelapa bakar.",
+                tips: [
+                    "Hampir setiap warung di kompleks Dieng menyajikan minuman serbuk purwaceng ini.",
+                    "Rasanya cenderung kuat dan berempah mirip gingseng; sangat enak dicampur dengan kental manis.",
+                    "Sagon bakar Dieng dimasak menggunakan tungku arang kayu yang memberikan aroma sedap tradisional."
+                ]
+            },
+
+            // ==================== MAGELANG REGION (TAMBAHAN 8 LOKASI) ====================
+            {
+                id: 33,
+                name: "Punthuk Setumbu (Borobudur Sunrise)",
+                region: "magelang",
+                category: "alam",
+                rating: 4.8,
+                image: "https://images.unsplash.com/photo-1601918774946-25832a4be0d6?auto=format&fit=crop&w=800&q=80",
+                fallbackImage: "https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?auto=format&fit=crop&w=800&q=80",
+                bestHour: "Subuh (04:30 - 06:30)",
+                cost: "Rp20.000 / Orang",
+                coordinates: "S: -7.6163, E: 110.1874",
+                mapPos: { top: '56%', left: '42%' },
+                tag: "Siluet Candi Borobudur",
+                description: "Sebuah bukit kecil berhutan yang menjadi lokasi paling legendaris untuk menangkap momen kemunculan matahari pagi yang menyinari siluet Candi Borobudur, lengkap dengan latar Gunung Merapi dan Merbabu di kejauhan.",
+                tips: [
+                    "Butuh waktu trekking ringan sekitar 15 menit dari tempat parkir menuju puncak bukit.",
+                    "Momen matahari terbit terbaik biasanya jatuh di musim kemarau (Juli-Agustus).",
+                    "Usai dari Punthuk Setumbu, Anda bisa berjalan-jalan mampir ke Gereja Ayam yang hanya berjarak dekat."
+                ]
+            },
+            {
+                id: 34,
+                name: "Bukit Rhema (Gereja Ayam)",
+                region: "magelang",
+                category: "budaya",
+                rating: 4.6,
+                image: "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=800&q=80",
+                fallbackImage: "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=800&q=80",
+                bestHour: "Pagi / Sore (07:00 - 16:00)",
+                cost: "Rp25.000 / Orang",
+                coordinates: "S: -7.6111, E: 110.1888",
+                mapPos: { top: '55%', left: '44%' },
+                tag: "Bangunan Unik & Pop-Culture",
+                description: "Bangunan tempat ibadah lintas agama dengan arsitektur menyerupai merpati raksasa bermahkota (sering disebut warga sebagai Gereja Ayam). Populer karena sempat menjadi lokasi syuting film sekuel AADC 2.",
+                tips: [
+                    "Tersedia mobil jeep angkutan jika Anda tidak ingin kelelahan berjalan mendaki menuju lokasi.",
+                    "Cobalah naik hingga ke bagian Mahkota untuk menikmati pemandangan alam terbuka hutan Magelang.",
+                    "Tiket masuk biasanya dapat ditukarkan dengan camilan singkong goreng khas yang lezat di kafe bagian ekor bangunan."
+                ]
+            },
+            {
+                id: 35,
+                name: "Candi Mendut",
+                region: "magelang",
+                category: "budaya",
+                rating: 4.7,
+                image: "https://images.unsplash.com/photo-1590059030431-a309e4f5119c?auto=format&fit=crop&w=800&q=80",
+                fallbackImage: "https://images.unsplash.com/photo-1604999333679-b86d54738315?auto=format&fit=crop&w=800&q=80",
+                bestHour: "Sore Teduh (15:00 - 17:00)",
+                cost: "Rp10.500 / Orang",
+                coordinates: "S: -7.6046, E: 110.2268",
+                mapPos: { top: '58%', left: '48%' },
+                tag: "Candi Buddha Relief Halus",
+                description: "Berada tepat dalam satu garis lurus geografis dengan Borobudur dan Pawon. Candi Mendut sangat terkenal karena memiliki patung Buddha tiga serangkai yang utuh di dalam biliknya serta relief batu eksterior yang sangat halus pahatannya.",
+                tips: [
+                    "Pelatarannya dikelilingi taman yang rapi serta deretan pohon beringin raksasa, sangat teduh untuk jalan kaki.",
+                    "Di pelataran luar candi, terdapat vihara Buddha yang aktif beribadah, mohon jaga ketenangan.",
+                    "Relief luar candi menceritakan banyak fabel (cerita hewan) Buddha yang menarik untuk diamati satu persatu."
+                ]
+            },
+            {
+                id: 36,
+                name: "Candi Pawon",
+                region: "magelang",
+                category: "budaya",
+                rating: 4.5,
+                image: "https://images.unsplash.com/photo-1604999333679-b86d54738315?auto=format&fit=crop&w=800&q=80",
+                fallbackImage: "https://images.unsplash.com/photo-1596422846543-75c6fc18a523?auto=format&fit=crop&w=800&q=80",
+                bestHour: "Pagi / Sore (08:00 - 16:00)",
+                cost: "Paket Terusan Mendut",
+                coordinates: "S: -7.6063, E: 110.2185",
+                mapPos: { top: '57%', left: '47%' },
+                tag: "Situs Mungil Pemukiman",
+                description: "Candi yang berukuran relatif kecil dibandingkan Borobudur dan Mendut. Berlokasi tepat di tengah-tengah pemukiman warga lokal. Konon fungsinya di masa lalu adalah sebagai tempat penyimpanan abu jenazah suci.",
+                tips: [
+                    "Meskipun mungil, ornamen relief Kinara-Kinari (manusia setengah burung) di dindingnya sangat indah.",
+                    "Lokasinya menempel dengan desa warga, sehingga Anda bisa melanjutkan kegiatan strolling ke area perumahan Jawa sekitar.",
+                    "Beli kopi luwak lokal yang sering dijajakan warga tepat di depan kompleks candi Pawon."
+                ]
+            },
+            {
+                id: 37,
+                name: "Air Terjun Kedung Kayang",
+                region: "magelang",
+                category: "alam",
+                rating: 4.7,
+                image: "https://images.unsplash.com/photo-1433086966358-54859d0ed716?auto=format&fit=crop&w=800&q=80",
+                fallbackImage: "https://images.unsplash.com/photo-1433086966358-54859d0ed716?auto=format&fit=crop&w=800&q=80",
+                bestHour: "Pagi Cerah (07:00 - 10:00)",
+                cost: "Rp5.000 / Orang",
+                coordinates: "S: -7.5028, E: 110.4215",
+                mapPos: { top: '48%', left: '55%' },
+                tag: "Lanskap Air Terjun & Merapi",
+                description: "Berlokasi tidak jauh dari Ketep Pass. Menawarkan pemandangan air terjun setinggi 39 meter yang airnya bersumber langsung dari Gunung Merbabu. Menyajikan latar belakang visual Gunung Merapi yang sangat epik dari atas pandangan.",
+                tips: [
+                    "Spot foto paling favorit bukanlah di bawah air terjun, melainkan dari atas pohon pandang kayu buatan warga.",
+                    "Jalan menuju ke bagian bawah air terjun cukup curam dan berbatu, pastikan sepatu Anda beralas anti selip.",
+                    "Jangan datang saat mendung atau hujan deras karena debit air bisa tiba-tiba naik."
+                ]
+            },
+            {
+                id: 38,
+                name: "Mangut Beong Sehati",
+                region: "magelang",
+                category: "kuliner",
+                rating: 4.6,
+                image: "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=800&q=80",
+                fallbackImage: "https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=800&q=80",
+                bestHour: "Makan Siang (11:00 - 15:00)",
+                cost: "Rp35.000 - Rp60.000 / Porsi",
+                coordinates: "S: -7.5950, E: 110.1585",
+                mapPos: { top: '59%', left: '45%' },
+                tag: "Pedas Ekstrem Ikan Sungai",
+                description: "Mangut Beong adalah kuliner pedas bersantan yang memadukan bumbu rempah kunyit dan cabai ekstra pedas. Ikan Beong adalah ikan air tawar endemik sungai Progo yang bentuknya mirip lele namun dagingnya jauh lebih padat dan gurih.",
+                tips: [
+                    "Tingkat kepedasan kuahnya cukup menyengat lidah, mintalah sayur daun singkong tambahan untuk meredakan pedas.",
+                    "Bagian paling favorit para pelanggan adalah bagian kepala Beong raksasa yang sangat lembut daging selanya.",
+                    "Biasanya ramai dikunjungi di jam makan siang, sediakan waktu luang untuk menunggu."
+                ]
+            },
+            {
+                id: 39,
+                name: "Wedang Kacang Kebon",
+                region: "magelang",
+                category: "kuliner",
+                rating: 4.8,
+                image: "https://images.unsplash.com/photo-1541518763669-27fef04b14ea?auto=format&fit=crop&w=800&q=80",
+                fallbackImage: "https://images.unsplash.com/photo-1541518763669-27fef04b14ea?auto=format&fit=crop&w=800&q=80",
+                bestHour: "Sore & Malam (17:00 - 21:00)",
+                cost: "Rp10.000 - Rp20.000",
+                coordinates: "S: -7.4780, E: 110.2225",
+                mapPos: { top: '51%', left: '48%' },
+                tag: "Camilan Malam Hari Kota",
+                description: "Kedai sederhana di tengah pusat kota Magelang ini menyajikan wedang (minuman hangat) kacang tanah yang direbus perlahan hingga kental, gurih manis, dan lumer di mulut. Diisi dengan bola-bulatan ketan kenyal.",
+                tips: [
+                    "Wedang kacang ini adalah teman sempurna setelah berjalan-jalan malam di sekitar Alun-alun.",
+                    "Banyak menu cemilan gurih yang tak kalah enak seperti sate pisang, tahu susur, dan lumpia goreng.",
+                    "Berlokasi di gang yang cukup tenang, memancarkan aura otentik kehidupan malam Magelang."
+                ]
+            },
+            {
+                id: 40,
+                name: "Omah Mbudur (Art & Kuliner)",
+                region: "magelang",
+                category: "budaya",
+                rating: 4.8,
+                image: "https://images.unsplash.com/photo-1583037189850-1921ae7c6c22?auto=format&fit=crop&w=800&q=80",
+                fallbackImage: "https://images.unsplash.com/photo-1596422846543-75c6fc18a523?auto=format&fit=crop&w=800&q=80",
+                bestHour: "Makan Siang / Sore (12:00 - 16:00)",
+                cost: "Rp75.000+ (Fine Dining Lokal)",
+                coordinates: "S: -7.6185, E: 110.2031",
+                mapPos: { top: '56%', left: '46%' },
+                tag: "Budaya Artistik Borobudur",
+                description: "Sebuah sanggar budaya dan restoran bernuansa Joglo Jawa klasik yang terletak dekat Borobudur. Menawarkan sajian hidangan lokal dengan standar presentasi berkelas, sambil menikmati karya pahat dan galeri seni dari seniman Jaka Anom.",
+                tips: [
+                    "Sangat eksklusif dan estetik, tempat terbaik untuk bersantai dalam balutan budaya Jawa premium.",
+                    "Anda bisa memesan paket membatik atau melihat langsung kerajinan ukir batu.",
+                    "Cobalah Nasi Menoreh atau olahan jamur khas yang ditata dengan dedaunan pisang artistik."
+                ]
+            },
+
+            // ==================== YOGYAKARTA REGION (TAMBAHAN 8 LOKASI) ====================
+            {
+                id: 41,
+                name: "Candi Prambanan",
+                region: "jogja",
+                category: "budaya",
+                rating: 4.8,
+                image: "https://images.unsplash.com/photo-1518250485600-4b2169720496?auto=format&fit=crop&w=800&q=80",
+                fallbackImage: "https://images.unsplash.com/photo-1518250485600-4b2169720496?auto=format&fit=crop&w=800&q=80",
+                bestHour: "Sore (15:00 - 17:30)",
+                cost: "Rp50.000 / Orang",
+                coordinates: "S: -7.7520, E: 110.4914",
+                mapPos: { top: '72%', left: '65%' },
+                tag: "Kompleks Hindu Terbesar",
+                description: "Situs mahakarya budaya Hindu terbesar di Indonesia yang dipersembahkan untuk Trimurti (Brahma, Wisnu, Siwa). Taman di sekitar candi sangat tertata, luas, hijau, dan dipenuhi burung rusa, memberikan kenyamanan mutlak untuk aktivitas jalan santai.",
+                tips: [
+                    "Datanglah di waktu sore hari menjelang matahari terbenam untuk mendapatkan cahaya emas yang menerpa puncak candi.",
+                    "Menjelang malam, pelataran candi ini sering digunakan sebagai panggung Sendratari Ramayana yang epik.",
+                    "Sewa payung atau bawa topi jika Anda harus menjelajah di siang bolong karena pelataran utama cukup terik."
+                ]
+            },
+            {
+                id: 42,
+                name: "Keraton Ratu Boko",
+                region: "jogja",
+                category: "budaya",
+                rating: 4.6,
+                image: "https://images.unsplash.com/photo-1590059030431-a309e4f5119c?auto=format&fit=crop&w=800&q=80",
+                fallbackImage: "https://images.unsplash.com/photo-1590059030431-a309e4f5119c?auto=format&fit=crop&w=800&q=80",
+                bestHour: "Sunset (16:30 - 18:00)",
+                cost: "Rp40.000 / Orang",
+                coordinates: "S: -7.7698, E: 110.4895",
+                mapPos: { top: '74%', left: '66%' },
+                tag: "Istana Kerajaan Kuno & Senja",
+                description: "Ratu Boko bukan candi biasa, melainkan kompleks reruntuhan keraton istana raja di atas bukit selatan Prambanan. Area hijau rumputnya sangat luas berpadu dengan gerbang istana batu megah yang menghadap langsung ke arah matahari terbenam.",
+                tips: [
+                    "Merupakan spot menikmati *sunset* paling ikonik di seluruh wilayah DI Yogyakarta.",
+                    "Pelatarannya berupa padang rumput datar yang sangat ramah pejalan kaki.",
+                    "Nikmati santapan malam di restoran resor setempat sembari melihat hamparan cahaya kota Jogja di bawah bukit."
+                ]
+            },
+            {
+                id: 43,
+                name: "Pantai Parangtritis",
+                region: "jogja",
+                category: "alam",
+                rating: 4.5,
+                image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80",
+                fallbackImage: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80",
+                bestHour: "Sore Hari (15:00 - 18:00)",
+                cost: "Rp10.000 / Orang",
+                coordinates: "S: -8.0261, E: 110.3294",
+                mapPos: { top: '95%', left: '50%' },
+                tag: "Garis Pantai Pasir Besi",
+                description: "Pantai ikonik Jogja yang menghadap langsung ke Samudera Hindia. Memiliki hamparan garis pasir hitam halus yang sangat panjang, deburan ombak besar khas laut selatan, dan tebing-tebing karang di sisi timurnya.",
+                tips: [
+                    "Sangat dilarang untuk berenang ke dalam ombak karena adanya tarikan arus rip-current laut selatan.",
+                    "Aktivitas terbaik adalah menyewa delman atau naik ATV menelusuri garis pantai saat senja.",
+                    "Mampir mencicipi sajian ikan bakar dan kelapa muda di jajaran warung tepi pantainya."
+                ]
+            },
+            {
+                id: 44,
+                name: "Gumuk Pasir Parangkusumo",
+                region: "jogja",
+                category: "alam",
+                rating: 4.6,
+                image: "https://images.unsplash.com/photo-1473448912268-2022ce9509d8?auto=format&fit=crop&w=800&q=80",
+                fallbackImage: "https://images.unsplash.com/photo-1473448912268-2022ce9509d8?auto=format&fit=crop&w=800&q=80",
+                bestHour: "Pagi / Senja (07:00 - 09:00, 16:00)",
+                cost: "Rp10.000 / Orang",
+                coordinates: "S: -8.0163, E: 110.3211",
+                mapPos: { top: '94%', left: '48%' },
+                tag: "Gurun Pasir Langka",
+                description: "Fenomena alam berupa bentang gundukan pasir menyerupai Gurun Sahara (tipe barchan) yang sangat jarang terjadi di area tropis. Angin yang membawa material vulkanik Merapi mengendapkannya selama ratusan tahun di pantai ini.",
+                tips: [
+                    "Gunakan kacamata hitam karena pantulan sinar dan tiupan pasirnya bisa cukup terik dan mengenai mata.",
+                    "Coba sensasi olahraga sandboarding (seluncur pasir) dengan menyewa papan dari warga.",
+                    "Sangat unik dan cantik untuk sesi fotografi bertema eksotis karena gundukan pasirnya tampak berpola alami."
+                ]
+            },
+            {
+                id: 45,
+                name: "Tebing Breksi",
+                region: "jogja",
+                category: "alam",
+                rating: 4.6,
+                image: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=800&q=80",
+                fallbackImage: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=800&q=80",
+                bestHour: "Sore Malam (16:00 - 20:00)",
+                cost: "Rp10.000 / Orang",
+                coordinates: "S: -7.7818, E: 110.5041",
+                mapPos: { top: '76%', left: '67%' },
+                tag: "Pahatan Batu Endapan Abu",
+                description: "Sebuah bekas kompleks pertambangan batu kapur vulkanik kuno yang kini disulap menjadi tebing seni dengan pahatan naga dan wayang raksasa. Dari puncak tebing, terhampar pemandangan landasan bandara dan kota Jogja.",
+                tips: [
+                    "Sangat ramah turis dengan undakan anak tangga beton menuju atas tebing batu kapur.",
+                    "Di malam hari, sorotan lampu dari bawah memberikan efek megah pada ukiran dinding tebing.",
+                    "Kerap diadakan acara konser akustik live di amfiteater batu tebing breksi di akhir pekan."
+                ]
+            },
+            {
+                id: 46,
+                name: "Sate Klathak Pak Pong",
+                region: "jogja",
+                category: "kuliner",
+                rating: 4.7,
+                image: "https://images.unsplash.com/photo-1541832676-9b763b0239ab?auto=format&fit=crop&w=800&q=80",
+                fallbackImage: "https://images.unsplash.com/photo-1541832676-9b763b0239ab?auto=format&fit=crop&w=800&q=80",
+                bestHour: "Makan Siang / Malam (11:00 - 21:00)",
+                cost: "Rp25.000 - Rp40.000 / Porsi",
+                coordinates: "S: -7.8681, E: 110.3814",
+                mapPos: { top: '85%', left: '55%' },
+                tag: "Sate Daging Kambing Otentik",
+                description: "Sentra daging kambing legenda di wilayah Bantul, Jogja selatan. Keunikannya terletak pada tusukan satenya yang menggunakan jeruji roda besi sepeda alih-alih bambu, membuat kematangan daging muda sangat merata, empuk, dan hanya dibumbui garam.",
+                tips: [
+                    "Pesan juga menu Tengkleng atau Tongseng Kambing kuah pedasnya yang sangat kaya rempah kari tebal.",
+                    "Karena popularitasnya yang luar biasa, Anda harus bersabar menunggu giliran antrean pembakaran.",
+                    "Nikmati hidangan bersama sajian es jeruk segar asli untuk menetralkan lemak."
+                ]
+            },
+            {
+                id: 47,
+                name: "Oseng Mercon Bu Narti",
+                region: "jogja",
+                category: "kuliner",
+                rating: 4.6,
+                image: "https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=800&q=80",
+                fallbackImage: "https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=800&q=80",
+                bestHour: "Malam Hari (18:00 - 23:00)",
+                cost: "Rp25.000 - Rp35.000",
+                coordinates: "S: -7.8010, E: 110.3540",
+                mapPos: { top: '73%', left: '53%' },
+                tag: "Pedas Mercon Khas Jogja",
+                description: "Bagi Anda yang bosan dengan makanan Jogja yang identik manis, oseng mercon ini adalah surganya hidangan koyor, gajih (lemak otot sapi), dan daging yang dimasak tumis dengan puluhan kilogram cabai rawit setan secara ekstrem.",
+                tips: [
+                    "Merupakan warung tenda lesehan lesehan pinggir jalan malam hari (khas Jogja banget).",
+                    "Jangan lupa memadukannya dengan minuman penawar pedas (seperti es teh manis porsi besar atau susu).",
+                    "Akan memberikan sensasi berkeringat seru di tengah dinginnya angin malam kota Jogja."
+                ]
+            },
+            {
+                id: 48,
+                name: "Museum Ullen Sentalu",
+                region: "jogja",
+                category: "budaya",
+                rating: 4.9,
+                image: "https://images.unsplash.com/photo-1584810359583-96fc3448beaa?auto=format&fit=crop&w=800&q=80",
+                fallbackImage: "https://images.unsplash.com/photo-1584810359583-96fc3448beaa?auto=format&fit=crop&w=800&q=80",
+                bestHour: "Pagi / Siang (09:00 - 15:00)",
+                cost: "Rp50.000 / Orang",
+                coordinates: "S: -7.6044, E: 110.4230",
+                mapPos: { top: '65%', left: '58%' },
+                tag: "Museum Kerajaan Termegah",
+                description: "Terletak di kawasan sejuk Kaliurang di bawah lereng Merapi. Museum ini sering dinobatkan sebagai salah satu museum terbaik di Indonesia. Menceritakan sejarah utuh para putri Keraton Mataram dalam sebuah bangunan arsitektur perpaduan Jawa dan Gotik.",
+                tips: [
+                    "Pengunjung tidak diizinkan mendokumentasikan foto di ruang pameran inti, nikmatilah tur secara mendalam.",
+                    "Pengalaman berkeliling menyusuri gang labirin batu, rimbun pinus, dan taman arca luar ruangan sangat menenangkan.",
+                    "Selesai tur, pengunjung akan dijamu wedang Ratu Mas (minuman herbal rahasia awet muda kerajaan)."
+                ]
             }
         ];
 
@@ -824,7 +1318,51 @@
             renderDestinations();
             renderMapPins();
             loadItineraryFromMemory();
+            updateLiveWeather(); // Fetch live weather on startup
         };
+
+        // Real-time Weather Fetching Function (No API Key Required)
+        async function updateLiveWeather() {
+            const coords = {
+                dieng: { lat: -7.21, lon: 109.91, fallbackTemp: 14, fallbackDesc: "Dingin ⛅" },
+                magelang: { lat: -7.48, lon: 110.22, fallbackTemp: 23, fallbackDesc: "Sejuk ⛅" },
+                jogja: { lat: -7.80, lon: 110.36, fallbackTemp: 28, fallbackDesc: "Hangat ⛅" }
+            };
+
+            const weatherCodes = {
+                0: "Cerah ☀️",
+                1: "Cerah Berawan 🌤️", 2: "Cerah Berawan 🌤️", 3: "Berawan ☁️",
+                45: "Kabut 🌫️", 48: "Kabut 🌫️",
+                51: "Gerimis Ringan 🌧️", 53: "Gerimis 🌧️", 55: "Gerimis Lebat 🌧️",
+                61: "Hujan Ringan 🌧️", 63: "Hujan Sedang 🌧️", 65: "Hujan Lebat 🌧️",
+                80: "Gerimis Sedang 🌧️", 81: "Hujan Mandi 🌧️", 82: "Hujan Deras 🌧️",
+                95: "Badai Petir ⛈️", 96: "Hujan Petir ⛈️", 99: "Badai Ekstrim ⛈️"
+            };
+
+            for (const [key, loc] of Object.entries(coords)) {
+                try {
+                    const response = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${loc.lat}&longitude=${loc.lon}&current=temperature_2m,weather_code`);
+                    if (!response.ok) throw new Error();
+                    const data = await response.json();
+                    
+                    const temp = Math.round(data.current.temperature_2m);
+                    const code = data.current.weather_code;
+                    const desc = weatherCodes[code] || "Berawan ☁️";
+                    
+                    document.getElementById(`weather-temp-${key}`).innerText = `${temp}°C`;
+                    document.getElementById(`weather-desc-${key}`).innerText = desc;
+                } catch (error) {
+                    // Fallback to static realistic ranges if API fails or is offline
+                    document.getElementById(`weather-temp-${key}`).innerText = `${loc.fallbackTemp}°C`;
+                    document.getElementById(`weather-desc-${key}`).innerText = loc.fallbackDesc;
+                }
+            }
+            
+            // Set update timestamp
+            const now = new Date();
+            const timeStr = now.toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' });
+            document.getElementById("weather-updated").innerText = `Pembaruan: ${timeStr} WIB`;
+        }
 
         // Render Destinations cards to the list grid
         function renderDestinations() {
