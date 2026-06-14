@@ -1,0 +1,1498 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PT. Adreena Investama Propertindo - General Supplier & Procurement Solution</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            navy: '#0b2545',
+                            blue: '#134074',
+                            accent: '#eeb902',
+                            light: '#8da9c4',
+                            bg: '#f4f4f9'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .page-transition {
+            transition: opacity 0.3s ease-in-out;
+        }
+        /* Custom scrollbar for beautiful UX */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #134074;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #0b2545;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-slate-800 font-sans min-h-screen flex flex-col">
+
+    <!-- TOP BAR INFO -->
+    <div class="bg-brand-navy text-white text-xs py-2 px-4 border-b border-brand-blue/30 hidden sm:block">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="flex items-center space-x-6">
+                <span><i class="fa-solid fa-phone text-brand-accent mr-2"></i>0878 9090 7000</span>
+                <span><i class="fa-solid fa-envelope text-brand-accent mr-2"></i>alisha@fortesindo.id</span>
+                <span><i class="fa-solid fa-map-marker-alt text-brand-accent mr-2"></i>Jakarta, Indonesia</span>
+            </div>
+            <div class="flex items-center space-x-4">
+                <span class="text-gray-300">Solusi Pengadaan Cepat, Tepat, & Terpercaya</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN HEADER & NAVIGATION -->
+    <header class="bg-white shadow-md sticky top-0 z-40">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <!-- Logo Section -->
+            <a href="#" onclick="navigateTo('beranda')" class="flex items-center space-x-3 cursor-pointer">
+                <div class="flex items-center">
+                    <!-- Custom SVG AIP Logo from Flyer -->
+                    <svg class="h-10 w-12" viewBox="0 0 100 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M10 70 L35 15 L50 48 L25 48" stroke="#0b2545" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M50 15 L50 70" stroke="#eeb902" stroke-width="10" stroke-linecap="round"/>
+                        <path d="M50 25 C65 25, 75 35, 75 45 C75 55, 65 65, 50 65" stroke="#0b2545" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+                        <circle cx="50" cy="45" r="5" fill="#eeb902"/>
+                    </svg>
+                    <div class="ml-2">
+                        <span class="text-lg font-extrabold tracking-wider text-brand-navy block leading-tight">ADREENA</span>
+                        <span class="text-[10px] font-bold tracking-widest text-brand-accent block uppercase leading-none">INVESTAMA PROPERTINDO</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Desktop Navigation Links -->
+            <nav class="hidden md:flex items-center space-x-6 lg:space-x-8 font-semibold text-brand-navy">
+                <button onclick="navigateTo('beranda')" id="nav-beranda" class="hover:text-brand-accent transition-colors duration-200 border-b-2 border-transparent py-1">Beranda</button>
+                <button onclick="navigateTo('tentang')" id="nav-tentang" class="hover:text-brand-accent transition-colors duration-200 border-b-2 border-transparent py-1">Tentang Kami</button>
+                <button onclick="navigateTo('produk')" id="nav-produk" class="hover:text-brand-accent transition-colors duration-200 border-b-2 border-transparent py-1">Produk & Layanan</button>
+                <button onclick="navigateTo('keunggulan')" id="nav-keunggulan" class="hover:text-brand-accent transition-colors duration-200 border-b-2 border-transparent py-1">Keunggulan</button>
+                <button onclick="navigateTo('kontak')" id="nav-kontak" class="hover:text-brand-accent transition-colors duration-200 border-b-2 border-transparent py-1">Hubungi Kami</button>
+            </nav>
+
+            <!-- Floating RFQ Cart & Mobile Toggle -->
+            <div class="flex items-center space-x-3">
+                <!-- RFQ Button -->
+                <button onclick="toggleCartModal()" class="relative bg-brand-navy hover:bg-brand-blue text-white p-2.5 rounded-full shadow-lg transition-transform active:scale-95 duration-150">
+                    <i class="fa-solid fa-file-invoice-dollar text-lg"></i>
+                    <span id="cart-count" class="absolute -top-1.5 -right-1.5 bg-brand-accent text-brand-navy text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center border-2 border-white">0</span>
+                </button>
+                
+                <!-- Quick Request Button (Desktop) -->
+                <button onclick="navigateTo('produk')" class="hidden lg:inline-block bg-brand-accent hover:bg-amber-500 text-brand-navy font-bold px-4 py-2 rounded-lg transition-all shadow hover:shadow-lg">
+                    Minta Penawaran
+                </button>
+
+                <!-- Mobile Menu Button -->
+                <button onclick="toggleMobileMenu()" class="md:hidden text-brand-navy p-2 focus:outline-none">
+                    <i class="fa-solid fa-bars text-2xl" id="menu-icon"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Panel -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 py-3 px-4 shadow-inner space-y-2">
+            <button onclick="navigateTo('beranda')" class="w-full text-left font-semibold text-brand-navy hover:text-brand-accent py-2 block border-b border-gray-100">Beranda</button>
+            <button onclick="navigateTo('tentang')" class="w-full text-left font-semibold text-brand-navy hover:text-brand-accent py-2 block border-b border-gray-100">Tentang Kami</button>
+            <button onclick="navigateTo('produk')" class="w-full text-left font-semibold text-brand-navy hover:text-brand-accent py-2 block border-b border-gray-100">Produk & Layanan</button>
+            <button onclick="navigateTo('keunggulan')" class="w-full text-left font-semibold text-brand-navy hover:text-brand-accent py-2 block border-b border-gray-100">Keunggulan</button>
+            <button onclick="navigateTo('kontak')" class="w-full text-left font-semibold text-brand-navy hover:text-brand-accent py-2 block">Hubungi Kami</button>
+        </div>
+    </header>
+
+    <!-- MAIN BODY CONTENT (CONTAINING 5 PAGES) -->
+    <main class="flex-grow">
+        
+        <!-- PAGE 1: BERANDA -->
+        <section id="page-beranda" class="page-transition">
+            <!-- Hero Banner Section -->
+            <div class="relative bg-gradient-to-r from-brand-navy via-brand-blue to-slate-900 text-white py-16 lg:py-24 overflow-hidden">
+                <div class="absolute inset-0 opacity-15 bg-cover bg-center mix-blend-overlay" style="background-image: url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=1200&q=80');"></div>
+                <div class="container mx-auto px-4 relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                    
+                    <div class="lg:col-span-7 space-y-6">
+                        <span class="inline-block bg-brand-accent/20 border border-brand-accent/30 text-brand-accent px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest">
+                            General Supplier & Procurement Solution
+                        </span>
+                        <h1 class="text-3xl md:text-5xl font-black tracking-tight leading-tight">
+                            PT. ADREENA INVESTAMA PROPERTINDO
+                        </h1>
+                        <p class="text-base md:text-lg text-gray-200 leading-relaxed max-w-2xl">
+                            Perusahaan tepercaya yang bergerak di bidang penyediaan barang dan jasa berkualitas tinggi untuk memenuhi kebutuhan berbagai sektor komersial, industri, proyek infrastruktur, maupun instansi pemerintah di Indonesia.
+                        </p>
+                        
+                        <div class="flex flex-wrap gap-4 pt-4">
+                            <button onclick="navigateTo('produk')" class="bg-brand-accent hover:bg-amber-500 text-brand-navy font-bold px-6 py-3 rounded-lg shadow-lg hover:shadow-amber-500/20 transition-all transform hover:-translate-y-0.5">
+                                <i class="fa-solid fa-boxes-stacked mr-2"></i> Jelajahi Produk Kami
+                            </button>
+                            <button onclick="navigateTo('tentang')" class="border-2 border-white hover:bg-white hover:text-brand-navy font-bold px-6 py-3 rounded-lg transition-all transform hover:-translate-y-0.5">
+                                Pelajari Lebih Lanjut
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Hero Side Visual Box -->
+                    <div class="lg:col-span-5 relative">
+                        <div class="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20 shadow-2xl relative overflow-hidden">
+                            <div class="absolute -top-12 -right-12 w-32 h-32 bg-brand-accent/20 rounded-full blur-2xl"></div>
+                            <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80" alt="Pengiriman Logistik dan Gudang PT Adreena" class="rounded-xl w-full object-cover h-64 shadow-inner mb-4">
+                            
+                            <div class="grid grid-cols-3 gap-2 text-center">
+                                <div class="bg-brand-navy/60 p-2.5 rounded-lg border border-white/10">
+                                    <i class="fa-solid fa-circle-check text-brand-accent text-lg block mb-1"></i>
+                                    <span class="text-[10px] uppercase font-bold text-gray-300 block">Kualitas</span>
+                                    <span class="text-xs font-bold text-white">Terjamin</span>
+                                </div>
+                                <div class="bg-brand-navy/60 p-2.5 rounded-lg border border-white/10">
+                                    <i class="fa-solid fa-clock text-brand-accent text-lg block mb-1"></i>
+                                    <span class="text-[10px] uppercase font-bold text-gray-300 block">Pengiriman</span>
+                                    <span class="text-xs font-bold text-white">Tepat Waktu</span>
+                                </div>
+                                <div class="bg-brand-navy/60 p-2.5 rounded-lg border border-white/10">
+                                    <i class="fa-solid fa-handshake text-brand-accent text-lg block mb-1"></i>
+                                    <span class="text-[10px] uppercase font-bold text-gray-300 block">Mitra</span>
+                                    <span class="text-xs font-bold text-white">Terpercaya</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+
+            <!-- Core Pitch Section -->
+            <div class="py-16 bg-white">
+                <div class="container mx-auto px-4">
+                    <div class="max-w-3xl mx-auto text-center space-y-4 mb-16">
+                        <h2 class="text-xs font-extrabold text-brand-accent uppercase tracking-widest">Siapa Kami</h2>
+                        <h3 class="text-2xl md:text-4xl font-extrabold text-brand-navy">Solusi Pengadaan Satu Atap untuk Efisiensi Bisnis Anda</h3>
+                        <div class="w-16 h-1 bg-brand-accent mx-auto rounded"></div>
+                        <p class="text-gray-600 leading-relaxed text-base md:text-lg">
+                            Kami hadir untuk memangkas kompleksitas rantai pasok Anda. Dengan komitmen penuh pada transparansi, ketepatan waktu, dan spesifikasi yang presisi, PT. Adreena Investama Propertindo siap menjadi mitra strategis pertumbuhan bisnis jangka panjang Anda.
+                        </p>
+                    </div>
+
+                    <!-- 4 Category Quick Jump Grid -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        
+                        <!-- Box 1 -->
+                        <div class="bg-gray-50 rounded-xl p-6 border border-gray-100 hover:border-brand-accent hover:shadow-xl transition-all duration-300 group flex flex-col justify-between">
+                            <div>
+                                <div class="w-12 h-12 bg-brand-navy/5 text-brand-navy rounded-lg flex items-center justify-center text-xl mb-4 group-hover:bg-brand-navy group-hover:text-white transition-colors">
+                                    <i class="fa-solid fa-hard-hat"></i>
+                                </div>
+                                <h4 class="font-bold text-lg text-brand-navy mb-2">Material Konstruksi</h4>
+                                <p class="text-sm text-gray-600 mb-4">Penyediaan besi, baja, semen, cat, dan kebutuhan material proyek pembangunan berkekuatan tinggi.</p>
+                            </div>
+                            <button onclick="navigateTo('produk', 'konstruksi')" class="text-xs font-bold text-brand-blue group-hover:text-brand-accent flex items-center transition-colors">
+                                Lihat Detail <i class="fa-solid fa-arrow-right ml-1 text-[10px]"></i>
+                            </button>
+                        </div>
+
+                        <!-- Box 2 -->
+                        <div class="bg-gray-50 rounded-xl p-6 border border-gray-100 hover:border-brand-accent hover:shadow-xl transition-all duration-300 group flex flex-col justify-between">
+                            <div>
+                                <div class="w-12 h-12 bg-brand-navy/5 text-brand-navy rounded-lg flex items-center justify-center text-xl mb-4 group-hover:bg-brand-navy group-hover:text-white transition-colors">
+                                    <i class="fa-solid fa-gears"></i>
+                                </div>
+                                <h4 class="font-bold text-lg text-brand-navy mb-2">Kebutuhan Industri</h4>
+                                <p class="text-sm text-gray-600 mb-4">Perlengkapan APD keselamatan kerja, peralatan mekanis, suku cadang mesin, hingga bahan kimia industri.</p>
+                            </div>
+                            <button onclick="navigateTo('produk', 'industri')" class="text-xs font-bold text-brand-blue group-hover:text-brand-accent flex items-center transition-colors">
+                                Lihat Detail <i class="fa-solid fa-arrow-right ml-1 text-[10px]"></i>
+                            </button>
+                        </div>
+
+                        <!-- Box 3 -->
+                        <div class="bg-gray-50 rounded-xl p-6 border border-gray-100 hover:border-brand-accent hover:shadow-xl transition-all duration-300 group flex flex-col justify-between">
+                            <div>
+                                <div class="w-12 h-12 bg-brand-navy/5 text-brand-navy rounded-lg flex items-center justify-center text-xl mb-4 group-hover:bg-brand-navy group-hover:text-white transition-colors">
+                                    <i class="fa-solid fa-briefcase"></i>
+                                </div>
+                                <h4 class="font-bold text-lg text-brand-navy mb-2">Peralatan Kantor</h4>
+                                <p class="text-sm text-gray-600 mb-4">Suplai ATK rutin, perabot furnitur premium, perangkat elektronik kerja, dan perlengkapan operasional kantor.</p>
+                            </div>
+                            <button onclick="navigateTo('produk', 'kantor')" class="text-xs font-bold text-brand-blue group-hover:text-brand-accent flex items-center transition-colors">
+                                Lihat Detail <i class="fa-solid fa-arrow-right ml-1 text-[10px]"></i>
+                            </button>
+                        </div>
+
+                        <!-- Box 4 -->
+                        <div class="bg-gray-50 rounded-xl p-6 border border-gray-100 hover:border-brand-accent hover:shadow-xl transition-all duration-300 group flex flex-col justify-between">
+                            <div>
+                                <div class="w-12 h-12 bg-brand-navy/5 text-brand-navy rounded-lg flex items-center justify-center text-xl mb-4 group-hover:bg-brand-navy group-hover:text-white transition-colors">
+                                    <i class="fa-solid fa-truck-ramp-box"></i>
+                                </div>
+                                <h4 class="font-bold text-lg text-brand-navy mb-2">Custom Procurement</h4>
+                                <p class="text-sm text-gray-600 mb-4">Konsolidasi pengadaan barang khusus yang disesuaikan presisi sesuai lembar spesifikasi (RFP) Anda.</p>
+                            </div>
+                            <button onclick="navigateTo('produk', 'kustom')" class="text-xs font-bold text-brand-blue group-hover:text-brand-accent flex items-center transition-colors">
+                                Lihat Detail <i class="fa-solid fa-arrow-right ml-1 text-[10px]"></i>
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dynamic Counters / Stats Block -->
+            <div class="bg-brand-navy text-white py-12">
+                <div class="container mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                    <div>
+                        <div class="text-3xl md:text-5xl font-extrabold text-brand-accent mb-2">99%+</div>
+                        <p class="text-xs md:text-sm text-gray-300 uppercase tracking-widest font-semibold">Tingkat Akurasi Spesifikasi</p>
+                    </div>
+                    <div>
+                        <div class="text-3xl md:text-5xl font-extrabold text-brand-accent mb-2">500+</div>
+                        <p class="text-xs md:text-sm text-gray-300 uppercase tracking-widest font-semibold">Sektor Produk Pengadaan</p>
+                    </div>
+                    <div>
+                        <div class="text-3xl md:text-5xl font-extrabold text-brand-accent mb-2">100%</div>
+                        <p class="text-xs md:text-sm text-gray-300 uppercase tracking-widest font-semibold">Pengiriman Seluruh Indonesia</p>
+                    </div>
+                    <div>
+                        <div class="text-3xl md:text-5xl font-extrabold text-brand-accent mb-2">24/7</div>
+                        <p class="text-xs md:text-sm text-gray-300 uppercase tracking-widest font-semibold">Dukungan Respon Cepat</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Interactive Banner Callout -->
+            <div class="py-16 bg-amber-50 border-y border-amber-200">
+                <div class="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-6">
+                    <div class="space-y-2">
+                        <h4 class="text-brand-navy text-xl md:text-3xl font-extrabold">Ingin memproses pengadaan dengan cepat?</h4>
+                        <p class="text-gray-700">Gunakan keranjang RFQ digital kami untuk meminta penawaran harga secara real-time.</p>
+                    </div>
+                    <button onclick="navigateTo('produk')" class="bg-brand-navy hover:bg-brand-blue text-white font-bold px-8 py-4 rounded-xl shadow-lg transition-transform active:scale-95 duration-100">
+                        Buat Daftar Pengadaan Sekarang <i class="fa-solid fa-arrow-right ml-2"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- PAGE 2: TENTANG KAMI -->
+        <section id="page-tentang" class="hidden page-transition py-16">
+            <div class="container mx-auto px-4">
+                
+                <div class="max-w-3xl mx-auto text-center space-y-4 mb-16">
+                    <span class="text-xs font-extrabold text-brand-accent uppercase tracking-widest block">Profil Perusahaan</span>
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-brand-navy">Lebih Dekat dengan PT. Adreena Investama Propertindo</h2>
+                    <div class="w-16 h-1 bg-brand-accent mx-auto rounded"></div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-16">
+                    <!-- Image Showcase Left -->
+                    <div class="lg:col-span-5 relative">
+                        <div class="absolute -inset-1 bg-gradient-to-tr from-brand-accent to-brand-blue rounded-2xl blur opacity-30"></div>
+                        <div class="relative bg-white p-2 rounded-2xl shadow-xl">
+                            <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=600&q=80" alt="Gedung kantor PT Adreena" class="rounded-xl w-full object-cover h-[450px]">
+                        </div>
+                    </div>
+
+                    <!-- Company History & Vision Right -->
+                    <div class="lg:col-span-7 space-y-6">
+                        <h3 class="text-2xl font-bold text-brand-navy border-l-4 border-brand-accent pl-3">Tentang Kami</h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            PT. Adreena Investama Propertindo berkomitmen untuk menjadi garda terdepan dalam dunia penyedia barang (general supplier) dan solusi pengadaan (procurement solution). Berdiri sebagai badan hukum resmi yang solid, kami telah melayani berbagai kebutuhan skala kecil, menengah, hingga pengerjaan proyek raksasa dengan standardisasi tinggi.
+                        </p>
+                        <p class="text-gray-600 leading-relaxed">
+                            Kami mendedikasikan layanan kami demi mempercepat alur kerja operasional mitra bisnis kami. Melalui sinergi erat bersama berbagai produsen/pabrikan terkemuka serta rantai logistik yang kuat, kami siap memberikan jaminan harga yang sangat kompetitif dan jaminan keaslian barang 100%.
+                        </p>
+
+                        <!-- Vision & Mission Tabs System -->
+                        <div class="border border-gray-100 rounded-xl overflow-hidden bg-white shadow-sm">
+                            <div class="flex border-b border-gray-100 bg-gray-50">
+                                <button onclick="switchTab('visi')" id="tab-btn-visi" class="flex-1 py-3 px-4 text-center font-bold text-brand-navy border-b-2 border-brand-accent bg-white transition-colors">
+                                    Visi Kami
+                                </button>
+                                <button onclick="switchTab('misi')" id="tab-btn-misi" class="flex-1 py-3 px-4 text-center font-bold text-gray-500 border-b-2 border-transparent hover:text-brand-navy transition-colors">
+                                    Misi Kami
+                                </button>
+                            </div>
+                            <div class="p-6">
+                                <div id="tab-content-visi" class="block space-y-3">
+                                    <p class="text-gray-600 leading-relaxed italic">
+                                        "Menjadi perusahaan penyedia barang dan solusi pengadaan terkemuka berskala nasional yang paling diandalkan, transparan, dan inovatif demi mendukung akselerasi kemajuan industri serta proyek di seluruh Indonesia."
+                                    </p>
+                                </div>
+                                <div id="tab-content-misi" class="hidden space-y-3">
+                                    <ul class="space-y-2 text-gray-600">
+                                        <li class="flex items-start">
+                                            <i class="fa-solid fa-circle-chevron-right text-brand-accent mt-1 mr-2 text-sm"></i>
+                                            <span>Memberikan produk berkualitas prima yang bergaransi resmi demi keamanan operasional pelanggan.</span>
+                                        </li>
+                                        <li class="flex items-start">
+                                            <i class="fa-solid fa-circle-chevron-right text-brand-accent mt-1 mr-2 text-sm"></i>
+                                            <span>Menerapkan inovasi teknologi pengadaan terpadu agar efisiensi waktu pemesanan dan pengiriman tercapai maksimal.</span>
+                                        </li>
+                                        <li class="flex items-start">
+                                            <i class="fa-solid fa-circle-chevron-right text-brand-accent mt-1 mr-2 text-sm"></i>
+                                            <span>Membangun kemitraan strategis yang harmonis, jujur, serta saling menguntungkan dengan para produsen global dan pelanggan domestik.</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Commitment Box (styled directly from the Blue Card in Flyer) -->
+                <div class="bg-gradient-to-r from-brand-navy to-brand-blue text-white rounded-2xl p-8 lg:p-12 shadow-2xl relative overflow-hidden">
+                    <div class="absolute -bottom-24 -right-24 w-80 h-80 bg-brand-accent/10 rounded-full blur-3xl"></div>
+                    <div class="relative z-10 max-w-4xl space-y-4">
+                        <span class="text-xs uppercase tracking-widest text-brand-accent font-extrabold"><i class="fa-solid fa-award mr-1"></i> Komitmen Manajemen</span>
+                        <h3 class="text-2xl lg:text-4xl font-extrabold leading-tight">KOMITMEN KAMI</h3>
+                        <p class="text-lg lg:text-xl text-gray-200 font-light leading-relaxed">
+                            "Menjadi mitra pengadaan yang dapat diandalkan dengan memberikan pelayanan terbaik, transparan, dan berorientasi penuh pada tingkat kepuasan pelanggan tertinggi."
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- PAGE 3: PRODUK & LAYANAN -->
+        <section id="page-produk" class="hidden page-transition py-16">
+            <div class="container mx-auto px-4">
+                
+                <div class="max-w-3xl mx-auto text-center space-y-4 mb-12">
+                    <span class="text-xs font-extrabold text-brand-accent uppercase tracking-widest block">Katalog Layanan</span>
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-brand-navy">Produk & Layanan Kami</h2>
+                    <div class="w-16 h-1 bg-brand-accent mx-auto rounded"></div>
+                    <p class="text-gray-600">Pilih dari katalog komparatif kami di bawah ini untuk mengidentifikasi kebutuhan pasokan Anda.</p>
+                </div>
+
+                <!-- Search & Filters Container -->
+                <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 mb-10 space-y-6">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                        <!-- Search Box -->
+                        <div class="relative flex-1 max-w-lg">
+                            <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                            <input type="text" id="product-search" oninput="filterCatalog()" placeholder="Cari nama barang atau kategori..." class="w-full pl-11 pr-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-brand-blue focus:border-brand-blue outline-none transition-all">
+                        </div>
+                        
+                        <!-- Mini Alert Info -->
+                        <div class="text-xs text-slate-500 bg-brand-bg px-4 py-2 rounded-lg border border-gray-100 flex items-center">
+                            <i class="fa-solid fa-info-circle text-brand-blue mr-2 text-sm"></i>
+                            <span>Klik <strong>"Minta Penawaran"</strong> pada produk untuk menyusun dokumen RFQ Anda.</span>
+                        </div>
+                    </div>
+
+                    <!-- Horizontal Filter Buttons -->
+                    <div class="flex flex-wrap gap-2 pt-2 border-t border-gray-50">
+                        <button onclick="setCategoryFilter('all')" id="filter-all" class="px-4 py-2 rounded-lg font-semibold text-xs md:text-sm bg-brand-navy text-white transition-all shadow-sm">Semua Sektor</button>
+                        <button onclick="setCategoryFilter('konstruksi')" id="filter-konstruksi" class="px-4 py-2 rounded-lg font-semibold text-xs md:text-sm bg-gray-100 hover:bg-gray-200 text-brand-navy transition-all">Material Konstruksi</button>
+                        <button onclick="setCategoryFilter('industri')" id="filter-industri" class="px-4 py-2 rounded-lg font-semibold text-xs md:text-sm bg-gray-100 hover:bg-gray-200 text-brand-navy transition-all">Kebutuhan Industri</button>
+                        <button onclick="setCategoryFilter('kantor')" id="filter-kantor" class="px-4 py-2 rounded-lg font-semibold text-xs md:text-sm bg-gray-100 hover:bg-gray-200 text-brand-navy transition-all">Kebutuhan Perkantoran</button>
+                        <button onclick="setCategoryFilter('kustom')" id="filter-kustom" class="px-4 py-2 rounded-lg font-semibold text-xs md:text-sm bg-gray-100 hover:bg-gray-200 text-brand-navy transition-all">Pengadaan Kustom</button>
+                    </div>
+                </div>
+
+                <!-- Products Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" id="products-container">
+                    <!-- Dynamic JS Injection will happen here. Falling back to structured hard-coded representation for speed and accuracy. -->
+                </div>
+
+                <!-- Custom/Ad-Hoc Procurement Solution Form (Special 4th Box in Flyer) -->
+                <div class="mt-16 bg-gradient-to-br from-brand-bg to-white rounded-3xl p-8 border border-brand-blue/10 shadow-lg grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                    <div class="lg:col-span-6 space-y-4">
+                        <span class="bg-brand-blue text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest inline-block">Sektor 4: Solusi Fleksibel</span>
+                        <h3 class="text-2xl md:text-3xl font-extrabold text-brand-navy">PENGADAAN BARANG SESUAI PERMINTAAN</h3>
+                        <p class="text-gray-600 leading-relaxed text-sm md:text-base">
+                            Tidak menemukan item spesifik dalam katalog standar? Kami memiliki tim khusus untuk menangani pengadaan di luar daftar regular sesuai lembar spesifikasi teknis dan blueprint proyek Anda.
+                        </p>
+                        <ul class="space-y-2 text-sm text-gray-700">
+                            <li class="flex items-center"><i class="fa-solid fa-circle-check text-green-500 mr-2"></i> Sistem Supply Sesuai Spesifikasi Teknis</li>
+                            <li class="flex items-center"><i class="fa-solid fa-circle-check text-green-500 mr-2"></i> Konsolidasi Pengiriman Global & Domestik</li>
+                            <li class="flex items-center"><i class="fa-solid fa-circle-check text-green-500 mr-2"></i> Quality Assurance Sebelum Pengiriman</li>
+                        </ul>
+                    </div>
+
+                    <div class="lg:col-span-6 bg-white p-6 rounded-2xl border border-gray-100 shadow-sm">
+                        <h4 class="font-bold text-brand-navy mb-4"><i class="fa-solid fa-file-signature text-brand-accent mr-2"></i>Form Permintaan Kustom</h4>
+                        <form id="custom-proc-form" onsubmit="handleCustomProcurement(event)" class="space-y-4">
+                            <div>
+                                <label class="block text-xs font-bold text-gray-600 uppercase mb-1">Nama Barang / Spesifikasi Singkat</label>
+                                <input type="text" id="custom-name" required placeholder="Contoh: Plat Besi ASTM A36 Tebal 10mm" class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-brand-blue outline-none text-sm">
+                            </div>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-xs font-bold text-gray-600 uppercase mb-1">Jumlah</label>
+                                    <input type="number" id="custom-qty" min="1" value="1" required class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-brand-blue outline-none text-sm">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-bold text-gray-600 uppercase mb-1">Satuan</label>
+                                    <input type="text" id="custom-unit" placeholder="Pcs/Kg/Ton" required class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-brand-blue outline-none text-sm">
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-gray-600 uppercase mb-1">Deskripsi Tambahan / Toleransi</label>
+                                <textarea id="custom-desc" rows="2" placeholder="Sebutkan merk prioritas atau instruksi penanganan..." class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-brand-blue outline-none text-sm"></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-brand-navy hover:bg-brand-blue text-white font-bold py-2.5 rounded-lg text-sm transition-colors shadow">
+                                Tambahkan ke Dokumen RFQ
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- PAGE 4: KEUNGGULAN & MITRA -->
+        <section id="page-keunggulan" class="hidden page-transition py-16">
+            <div class="container mx-auto px-4">
+                
+                <div class="max-w-3xl mx-auto text-center space-y-4 mb-12">
+                    <span class="text-xs font-extrabold text-brand-accent uppercase tracking-widest block">Keunggulan Bersaing</span>
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-brand-navy">Mengapa Memilih Kami?</h2>
+                    <div class="w-16 h-1 bg-brand-accent mx-auto rounded"></div>
+                    <p class="text-gray-600">Nilai-nilai fundamental yang kami tawarkan demi kesuksesan operasional berkelanjutan bisnis Anda.</p>
+                </div>
+
+                <!-- 5 Key Advantages with Interactive Detail Drawer -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 mb-16">
+                    
+                    <!-- Adv 1 -->
+                    <div class="bg-white rounded-xl p-6 border border-gray-100 shadow-sm hover:shadow-lg hover:border-brand-accent transition-all duration-300 text-center space-y-3 cursor-pointer" onclick="toggleAdvantageDetail('adv1')">
+                        <div class="w-12 h-12 bg-amber-100 text-brand-accent rounded-full flex items-center justify-center text-lg mx-auto">
+                            <i class="fa-solid fa-tags"></i>
+                        </div>
+                        <h4 class="font-bold text-brand-navy text-sm sm:text-base">Harga Kompetitif</h4>
+                        <p class="text-xs text-gray-500">Mendapatkan penawaran harga tangan pertama langsung dari pabrik utama.</p>
+                        <span class="text-[10px] text-brand-blue font-bold block uppercase tracking-wider">Ketuk Detail &rarr;</span>
+                    </div>
+
+                    <!-- Adv 2 -->
+                    <div class="bg-white rounded-xl p-6 border border-gray-100 shadow-sm hover:shadow-lg hover:border-brand-accent transition-all duration-300 text-center space-y-3 cursor-pointer" onclick="toggleAdvantageDetail('adv2')">
+                        <div class="w-12 h-12 bg-blue-100 text-brand-blue rounded-full flex items-center justify-center text-lg mx-auto">
+                            <i class="fa-solid fa-bolt"></i>
+                        </div>
+                        <h4 class="font-bold text-brand-navy text-sm sm:text-base">Respon Cepat & Profesional</h4>
+                        <p class="text-xs text-gray-500">Layanan konsultasi spesifikasi barang dibalas instan oleh tim expert.</p>
+                        <span class="text-[10px] text-brand-blue font-bold block uppercase tracking-wider">Ketuk Detail &rarr;</span>
+                    </div>
+
+                    <!-- Adv 3 -->
+                    <div class="bg-white rounded-xl p-6 border border-gray-100 shadow-sm hover:shadow-lg hover:border-brand-accent transition-all duration-300 text-center space-y-3 cursor-pointer" onclick="toggleAdvantageDetail('adv3')">
+                        <div class="w-12 h-12 bg-green-100 text-green-600 rounded-full flex items-center justify-center text-lg mx-auto">
+                            <i class="fa-solid fa-network-wired"></i>
+                        </div>
+                        <h4 class="font-bold text-brand-navy text-sm sm:text-base">Jaringan Supplier Luas</h4>
+                        <p class="text-xs text-gray-500">Relasi luas dengan pemegang brand manufaktur berskala global.</p>
+                        <span class="text-[10px] text-brand-blue font-bold block uppercase tracking-wider">Ketuk Detail &rarr;</span>
+                    </div>
+
+                    <!-- Adv 4 -->
+                    <div class="bg-white rounded-xl p-6 border border-gray-100 shadow-sm hover:shadow-lg hover:border-brand-accent transition-all duration-300 text-center space-y-3 cursor-pointer" onclick="toggleAdvantageDetail('adv4')">
+                        <div class="w-12 h-12 bg-red-100 text-red-600 rounded-full flex items-center justify-center text-lg mx-auto">
+                            <i class="fa-solid fa-truck"></i>
+                        </div>
+                        <h4 class="font-bold text-brand-navy text-sm sm:text-base">Pengiriman Tepat Waktu</h4>
+                        <p class="text-xs text-gray-500">Alokasi armada ekspedisi cepat demi menjaga timeline proyek Anda.</p>
+                        <span class="text-[10px] text-brand-blue font-bold block uppercase tracking-wider">Ketuk Detail &rarr;</span>
+                    </div>
+
+                    <!-- Adv 5 -->
+                    <div class="bg-white rounded-xl p-6 border border-gray-100 shadow-sm hover:shadow-lg hover:border-brand-accent transition-all duration-300 text-center space-y-3 cursor-pointer" onclick="toggleAdvantageDetail('adv5')">
+                        <div class="w-12 h-12 bg-purple-100 text-purple-600 rounded-full flex items-center justify-center text-lg mx-auto">
+                            <i class="fa-solid fa-credit-card"></i>
+                        </div>
+                        <h4 class="font-bold text-brand-navy text-sm sm:text-base">Pembayaran Fleksibel</h4>
+                        <p class="text-xs text-gray-500">Skema pembayaran yang dapat dinegosiasikan sesuai termin proyek.</p>
+                        <span class="text-[10px] text-brand-blue font-bold block uppercase tracking-wider">Ketuk Detail &rarr;</span>
+                    </div>
+
+                </div>
+
+                <!-- Advantage Detail Drawer Overlay -->
+                <div id="adv-detail-box" class="hidden bg-brand-bg rounded-2xl p-6 border border-brand-blue/10 mb-16 relative">
+                    <button onclick="closeAdvantageDetail()" class="absolute top-4 right-4 text-gray-400 hover:text-brand-navy"><i class="fa-solid fa-times text-lg"></i></button>
+                    <div class="flex flex-col md:flex-row gap-6 items-start">
+                        <div class="w-16 h-16 bg-white rounded-xl flex items-center justify-center text-2xl shadow-sm text-brand-navy shrink-0" id="adv-detail-icon">
+                            <i class="fa-solid fa-tags"></i>
+                        </div>
+                        <div class="space-y-2">
+                            <h5 class="text-lg font-bold text-brand-navy" id="adv-detail-title">Harga Kompetitif</h5>
+                            <p class="text-gray-600 text-sm leading-relaxed" id="adv-detail-desc">
+                                Melalui sistem kemitraan langsung dengan pemegang pabrik atau agen tunggal, kami berhasil mengeliminasi perantara yang tidak perlu. Ini berimbas langsung pada pemangkasan margin overhead sehingga harga penawaran yang kami ajukan selalu berada di rentang kompetitif pasar serta dapat diadu dengan pemasok konvensional lain.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Partner Supplier Section -->
+                <div class="bg-white rounded-2xl p-8 border border-gray-100 shadow-sm">
+                    <div class="text-center space-y-2 mb-8">
+                        <h4 class="text-xs uppercase font-extrabold text-brand-accent tracking-widest">Partner Supplier</h4>
+                        <h5 class="text-xl font-bold text-brand-navy">Didukung oleh Brand Manufaktur Global & Nasional</h5>
+                        <p class="text-xs text-gray-500">Kami menyalurkan produk orisinal langsung dari prinsipal tepercaya.</p>
+                    </div>
+
+                    <!-- Supplier Logos Display (styled exactly from the bottom row of the flyer) -->
+                    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6 items-center">
+                        <!-- Semen Indonesia -->
+                        <div class="bg-brand-bg/40 p-4 rounded-xl border border-gray-100 hover:border-brand-accent transition-all text-center flex flex-col justify-center items-center h-24 group">
+                            <i class="fa-solid fa-building-columns text-2xl text-red-600 mb-1 group-hover:scale-110 transition-transform"></i>
+                            <span class="text-xs font-black text-gray-800 tracking-wider">SEMEN INDONESIA</span>
+                        </div>
+                        <!-- Dewalt -->
+                        <div class="bg-brand-bg/40 p-4 rounded-xl border border-gray-100 hover:border-brand-accent transition-all text-center flex flex-col justify-center items-center h-24 group">
+                            <i class="fa-solid fa-screwdriver-wrench text-2xl text-amber-500 mb-1 group-hover:scale-110 transition-transform"></i>
+                            <span class="text-xs font-black text-amber-500 tracking-widest">DEWALT</span>
+                        </div>
+                        <!-- 3M -->
+                        <div class="bg-brand-bg/40 p-4 rounded-xl border border-gray-100 hover:border-brand-accent transition-all text-center flex flex-col justify-center items-center h-24 group">
+                            <span class="text-3xl font-extrabold text-red-600 group-hover:scale-110 transition-transform">3M</span>
+                            <span class="text-[9px] uppercase font-bold text-gray-500">Science. Applied.</span>
+                        </div>
+                        <!-- Bosch -->
+                        <div class="bg-brand-bg/40 p-4 rounded-xl border border-gray-100 hover:border-brand-accent transition-all text-center flex flex-col justify-center items-center h-24 group">
+                            <i class="fa-solid fa-bolt-lightning text-2xl text-red-600 mb-1 group-hover:scale-110 transition-transform"></i>
+                            <span class="text-xs font-extrabold text-gray-700 tracking-widest">BOSCH</span>
+                        </div>
+                        <!-- Krisbow -->
+                        <div class="bg-brand-bg/40 p-4 rounded-xl border border-gray-100 hover:border-brand-accent transition-all text-center flex flex-col justify-center items-center h-24 group">
+                            <i class="fa-solid fa-toolbox text-2xl text-amber-600 mb-1 group-hover:scale-110 transition-transform"></i>
+                            <span class="text-xs font-black text-gray-800 tracking-wider">KRISBOW</span>
+                        </div>
+                        <!-- Philips -->
+                        <div class="bg-brand-bg/40 p-4 rounded-xl border border-gray-100 hover:border-brand-accent transition-all text-center flex flex-col justify-center items-center h-24 group">
+                            <i class="fa-regular fa-lightbulb text-2xl text-blue-500 mb-1 group-hover:scale-110 transition-transform"></i>
+                            <span class="text-xs font-bold text-blue-900 tracking-widest">PHILIPS</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- PAGE 5: HUBUNGI KAMI -->
+        <section id="page-kontak" class="hidden page-transition py-16">
+            <div class="container mx-auto px-4">
+                
+                <div class="max-w-3xl mx-auto text-center space-y-4 mb-12">
+                    <span class="text-xs font-extrabold text-brand-accent uppercase tracking-widest block">Lokasi & Kontak</span>
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-brand-navy">Mulai Sinergi Sekarang</h2>
+                    <div class="w-16 h-1 bg-brand-accent mx-auto rounded"></div>
+                    <p class="text-gray-600">Tim representatif kami siap menyambut pertanyaan, kebutuhan brosur cetak, ataupun koordinasi tender proyek.</p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+                    
+                    <!-- Contact Info Panel (Left) -->
+                    <div class="lg:col-span-5 space-y-6">
+                        <div class="bg-brand-navy text-white rounded-2xl p-8 space-y-6 shadow-xl relative overflow-hidden">
+                            <div class="absolute -top-12 -left-12 w-32 h-32 bg-brand-blue rounded-full opacity-30"></div>
+                            <h3 class="text-xl font-bold border-b border-white/10 pb-4">PT. Adreena Investama Propertindo</h3>
+                            
+                            <div class="space-y-4">
+                                <div class="flex items-start space-x-4">
+                                    <div class="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center text-brand-accent shrink-0 mt-1">
+                                        <i class="fa-brands fa-whatsapp text-lg"></i>
+                                    </div>
+                                    <div>
+                                        <span class="block text-xs uppercase text-gray-400 font-bold">WhatsApp Resmi</span>
+                                        <a href="https://wa.me/6287890907000" target="_blank" class="text-base font-semibold hover:text-brand-accent transition-colors">0878 9090 7000</a>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-start space-x-4">
+                                    <div class="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center text-brand-accent shrink-0 mt-1">
+                                        <i class="fa-regular fa-envelope text-lg"></i>
+                                    </div>
+                                    <div>
+                                        <span class="block text-xs uppercase text-gray-400 font-bold">E-mail Korespondensi</span>
+                                        <a href="mailto:alisha@fortesindo.id" class="text-base font-semibold hover:text-brand-accent transition-colors">alisha@fortesindo.id</a>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-start space-x-4">
+                                    <div class="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center text-brand-accent shrink-0 mt-1">
+                                        <i class="fa-solid fa-location-dot text-lg"></i>
+                                    </div>
+                                    <div>
+                                        <span class="block text-xs uppercase text-gray-400 font-bold">Head Office</span>
+                                        <span class="text-sm font-semibold block text-gray-200">Jakarta, Indonesia</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Simulated Map Block (Highly Responsive with Fallback visual styling) -->
+                        <div class="bg-white rounded-2xl p-4 border border-gray-100 shadow-sm space-y-3">
+                            <div class="flex justify-between items-center text-xs font-bold text-gray-500 uppercase">
+                                <span><i class="fa-solid fa-map-marked mr-1"></i> Peta Wilayah Layanan</span>
+                                <span class="text-green-500"><i class="fa-solid fa-circle text-[8px] mr-1"></i>Nasional</span>
+                            </div>
+                            <div class="bg-brand-bg rounded-xl h-48 relative flex items-center justify-center overflow-hidden border border-gray-200">
+                                <div class="absolute inset-0 opacity-20 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&w=600&q=80');"></div>
+                                <div class="relative z-10 text-center space-y-2 p-4">
+                                    <i class="fa-solid fa-map-location-dot text-4xl text-brand-blue"></i>
+                                    <p class="text-xs font-bold text-brand-navy">Cakupan Pengiriman Seluruh Indonesia</p>
+                                    <span class="text-[10px] text-gray-500 bg-white px-2 py-1 rounded border shadow-sm inline-block">Jabodetabek, Jawa, Sumatera, Kalimantan, Sulawesi, Papua</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Interactive Contact Message Form (Right) -->
+                    <div class="lg:col-span-7 bg-white p-8 rounded-2xl border border-gray-100 shadow-xl space-y-6">
+                        <div class="space-y-1">
+                            <h3 class="text-lg font-bold text-brand-navy">Kirimkan Pesan Instan</h3>
+                            <p class="text-xs text-gray-500">Gunakan formulir di bawah ini untuk konsultasi non-pengadaan langsung.</p>
+                        </div>
+
+                        <form id="contact-direct-form" onsubmit="handleContactSubmit(event)" class="space-y-4">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-xs font-bold text-gray-600 uppercase mb-1">Nama Lengkap</label>
+                                    <input type="text" id="contact-name" required placeholder="Contoh: Budi Prasetyo" class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-brand-blue outline-none text-sm">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-bold text-gray-600 uppercase mb-1">Nama Perusahaan / Instansi</label>
+                                    <input type="text" id="contact-org" required placeholder="Contoh: PT. Maju Bersama" class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-brand-blue outline-none text-sm">
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-xs font-bold text-gray-600 uppercase mb-1">Nomor Telepon / WA</label>
+                                    <input type="tel" id="contact-phone" required placeholder="Contoh: 0812345678" class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-brand-blue outline-none text-sm">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-bold text-gray-600 uppercase mb-1">E-mail Aktif</label>
+                                    <input type="email" id="contact-email" required placeholder="Contoh: budi@perusahaan.com" class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-brand-blue outline-none text-sm">
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-bold text-gray-600 uppercase mb-1">Subjek Pertanyaan</label>
+                                <select id="contact-subject" class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-brand-blue outline-none text-sm">
+                                    <option value="Informasi Umum">Pertanyaan Umum / Info Brosur</option>
+                                    <option value="Pendaftaran Vendor">Pendaftaran Rekanan / Vendor Baru</option>
+                                    <option value="Tender / Proyek">Undangan Kerjasama Tender Proyek</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-bold text-gray-600 uppercase mb-1">Detail Pertanyaan Anda</label>
+                                <textarea id="contact-message" required rows="4" placeholder="Tuliskan detail permohonan kerjasama atau pertanyaan umum di sini..." class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-brand-blue outline-none text-sm"></textarea>
+                            </div>
+
+                            <button type="submit" class="w-full bg-brand-navy hover:bg-brand-blue text-white font-bold py-3 rounded-lg transition-colors shadow-lg">
+                                Kirim Pesan Sekarang <i class="fa-solid fa-paper-plane ml-2"></i>
+                            </button>
+                        </form>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+
+    <!-- CUSTOM NOTIFICATION/TOAST SYSTEM (Replacer for blocked window.alert) -->
+    <div id="custom-toast" class="fixed bottom-6 right-6 z-50 bg-brand-navy text-white px-5 py-4 rounded-xl shadow-2xl border border-brand-accent/20 max-w-sm flex items-start space-x-3 transform translate-y-24 opacity-0 transition-all duration-300 pointer-events-none">
+        <div class="w-8 h-8 bg-brand-accent text-brand-navy rounded-full flex items-center justify-center shrink-0" id="toast-icon">
+            <i class="fa-solid fa-check"></i>
+        </div>
+        <div class="space-y-1">
+            <h5 class="font-bold text-sm" id="toast-title">Berhasil!</h5>
+            <p class="text-xs text-gray-300" id="toast-message">Item berhasil ditambahkan ke dalam RFQ.</p>
+        </div>
+    </div>
+
+
+    <!-- FULL RFQ SHOPPING CART MODAL -->
+    <div id="cart-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white w-full max-w-2xl rounded-2xl shadow-2xl border border-gray-100 overflow-hidden flex flex-col max-h-[90vh]">
+            
+            <!-- Modal Header -->
+            <div class="bg-brand-navy text-white p-5 flex justify-between items-center">
+                <div class="flex items-center space-x-2">
+                    <i class="fa-solid fa-file-lines text-brand-accent text-xl"></i>
+                    <div>
+                        <h4 class="font-extrabold text-base md:text-lg">Dokumen Permohonan Penawaran (RFQ)</h4>
+                        <p class="text-xs text-gray-300">Konstruksi daftar barang yang ingin Anda mintakan penawaran harga.</p>
+                    </div>
+                </div>
+                <button onclick="toggleCartModal()" class="text-gray-300 hover:text-white"><i class="fa-solid fa-times text-xl"></i></button>
+            </div>
+
+            <!-- Modal Content (Scrollable list of products added) -->
+            <div class="p-6 overflow-y-auto flex-grow space-y-4" id="cart-items-container">
+                <!-- If Cart is empty: shown by default -->
+                <div id="cart-empty-state" class="text-center py-12 space-y-4">
+                    <i class="fa-solid fa-folder-open text-5xl text-gray-300"></i>
+                    <p class="text-gray-500 font-semibold text-sm">Dokumen RFQ Anda masih kosong.</p>
+                    <button onclick="toggleCartModal(); navigateTo('produk');" class="bg-brand-accent text-brand-navy font-bold px-4 py-2 rounded-lg text-xs hover:bg-amber-500">
+                        Cari & Tambah Produk
+                    </button>
+                </div>
+
+                <!-- List items loop injected by JS -->
+                <div id="cart-list" class="hidden space-y-3"></div>
+            </div>
+
+            <!-- Modal Footer (Form Submission & Summary) -->
+            <div class="bg-gray-50 p-5 border-t border-gray-100 space-y-4" id="cart-footer">
+                <div class="bg-brand-blue/5 border border-brand-blue/10 p-3 rounded-lg text-xs text-brand-blue flex items-center">
+                    <i class="fa-solid fa-shield-halved mr-2 text-sm"></i>
+                    <span>Permohonan RFQ akan diproses dan dikonfirmasi langsung oleh tim sales PT. AIP via WhatsApp/Email dalam 1x24 jam.</span>
+                </div>
+                
+                <form id="rfq-submission-form" onsubmit="handleRFQSubmit(event)" class="space-y-3 hidden">
+                    <div class="grid grid-cols-2 gap-3">
+                        <input type="text" id="rfq-client-name" required placeholder="Nama Anda" class="w-full px-3 py-2 border border-gray-200 rounded-lg text-xs outline-none focus:ring-2 focus:ring-brand-blue">
+                        <input type="text" id="rfq-client-company" required placeholder="Nama Perusahaan" class="w-full px-3 py-2 border border-gray-200 rounded-lg text-xs outline-none focus:ring-2 focus:ring-brand-blue">
+                    </div>
+                    <div class="grid grid-cols-2 gap-3">
+                        <input type="tel" id="rfq-client-phone" required placeholder="Nomor WhatsApp" class="w-full px-3 py-2 border border-gray-200 rounded-lg text-xs outline-none focus:ring-2 focus:ring-brand-blue">
+                        <input type="email" id="rfq-client-email" required placeholder="Alamat E-mail" class="w-full px-3 py-2 border border-gray-200 rounded-lg text-xs outline-none focus:ring-2 focus:ring-brand-blue">
+                    </div>
+                    <button type="submit" class="w-full bg-brand-accent hover:bg-amber-500 text-brand-navy font-extrabold py-3 rounded-lg text-xs uppercase tracking-wider transition-all shadow">
+                        Kirim Permohonan Penawaran Resmi <i class="fa-solid fa-paper-plane ml-1"></i>
+                    </button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- REALTIME SUBMISSION RECEIPT POPUP (MODAL OVERLAY) -->
+    <div id="receipt-modal" class="fixed inset-0 bg-slate-900/70 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white w-full max-w-lg rounded-2xl shadow-2xl border border-gray-100 overflow-hidden flex flex-col">
+            <div class="bg-green-600 text-white p-6 text-center space-y-2">
+                <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto text-3xl">
+                    <i class="fa-solid fa-circle-check"></i>
+                </div>
+                <h4 class="text-xl font-bold">RFQ Berhasil Terkirim!</h4>
+                <p class="text-xs text-gray-200">Salinan digital pengajuan pengadaan Anda telah diterbitkan.</p>
+            </div>
+            
+            <div class="p-6 space-y-4 text-xs md:text-sm">
+                <div class="border-b border-dashed border-gray-200 pb-3 space-y-1">
+                    <div class="flex justify-between text-gray-500"><span class="font-bold">ID Transaksi</span><span class="font-mono text-gray-800" id="receipt-id">AIP-RFQ-98762</span></div>
+                    <div class="flex justify-between text-gray-500"><span>Tanggal</span><span class="text-gray-800" id="receipt-date">12 Juni 2026</span></div>
+                    <div class="flex justify-between text-gray-500"><span>Nama Klien</span><span class="text-gray-800" id="receipt-client">Agus Santoso</span></div>
+                    <div class="flex justify-between text-gray-500"><span>Instansi</span><span class="text-gray-800" id="receipt-company">PT. Karya Konstruksi</span></div>
+                </div>
+
+                <div class="space-y-2">
+                    <span class="font-bold text-gray-600 uppercase text-[10px] tracking-wider block">Ringkasan Barang Diminta</span>
+                    <div class="max-h-32 overflow-y-auto space-y-1 bg-gray-50 p-2.5 rounded-lg border border-gray-100" id="receipt-items-list">
+                        <!-- Filled by JS -->
+                    </div>
+                </div>
+
+                <p class="text-xs text-gray-500 text-center leading-relaxed">
+                    Sistem otomatis kami sedang meneruskan RFQ ini ke Manager Penjualan PT. AIP. Kami akan segera menghubungi Anda melalui nomor WhatsApp yang diberikan. Terima kasih atas kepercayaan Anda.
+                </p>
+            </div>
+
+            <div class="p-4 border-t border-gray-100">
+                <button onclick="closeReceiptModal()" class="w-full bg-brand-navy hover:bg-brand-blue text-white font-bold py-2.5 rounded-lg text-xs transition-colors">
+                    Selesai & Tutup Jendela
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- PREMIUM FOOTER -->
+    <footer class="bg-brand-navy text-gray-300 pt-16 pb-8 border-t border-brand-blue/50">
+        <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 mb-12">
+            
+            <!-- Column 1: Brand Info -->
+            <div class="lg:col-span-4 space-y-4">
+                <div class="flex items-center space-x-3">
+                    <svg class="h-10 w-12" viewBox="0 0 100 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M10 70 L35 15 L50 48 L25 48" stroke="#ffffff" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M50 15 L50 70" stroke="#eeb902" stroke-width="10" stroke-linecap="round"/>
+                        <path d="M50 25 C65 25, 75 35, 75 45 C75 55, 65 65, 50 65" stroke="#ffffff" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <div>
+                        <span class="text-base font-extrabold text-white block uppercase tracking-wider">PT. Adreena Investama</span>
+                        <span class="text-[10px] font-bold text-brand-accent block uppercase tracking-widest">Propertindo</span>
+                    </div>
+                </div>
+                <p class="text-xs leading-relaxed text-gray-400">
+                    Penyedia pengadaan terlengkap berskala nasional, mendukung kelancaran operasional perusahaan manufaktur, kontraktor, perkantoran, dan entitas swasta maupun instansi lainnya di Indonesia.
+                </p>
+                <div class="flex space-x-3 text-lg">
+                    <a href="#" class="w-8 h-8 bg-white/5 rounded-full flex items-center justify-center hover:bg-brand-accent hover:text-brand-navy transition-all"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" class="w-8 h-8 bg-white/5 rounded-full flex items-center justify-center hover:bg-brand-accent hover:text-brand-navy transition-all"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="w-8 h-8 bg-white/5 rounded-full flex items-center justify-center hover:bg-brand-accent hover:text-brand-navy transition-all"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="https://wa.me/6287890907000" target="_blank" class="w-8 h-8 bg-white/5 rounded-full flex items-center justify-center hover:bg-brand-accent hover:text-brand-navy transition-all"><i class="fa-brands fa-whatsapp"></i></a>
+                </div>
+            </div>
+
+            <!-- Column 2: Quick Links Navigation -->
+            <div class="lg:col-span-3 lg:col-start-6 space-y-4">
+                <h4 class="text-sm font-extrabold text-white uppercase tracking-widest border-l-2 border-brand-accent pl-2">Peta Situs</h4>
+                <ul class="space-y-2 text-xs">
+                    <li><button onclick="navigateTo('beranda')" class="hover:text-brand-accent transition-colors block py-0.5">Beranda</button></li>
+                    <li><button onclick="navigateTo('tentang')" class="hover:text-brand-accent transition-colors block py-0.5">Tentang Kami</button></li>
+                    <li><button onclick="navigateTo('produk')" class="hover:text-brand-accent transition-colors block py-0.5">Produk & Layanan</button></li>
+                    <li><button onclick="navigateTo('keunggulan')" class="hover:text-brand-accent transition-colors block py-0.5">Keunggulan Layanan</button></li>
+                    <li><button onclick="navigateTo('kontak')" class="hover:text-brand-accent transition-colors block py-0.5">Hubungi Kami</button></li>
+                </ul>
+            </div>
+
+            <!-- Column 3: Slogan & Newsletter -->
+            <div class="lg:col-span-5 space-y-4">
+                <h4 class="text-sm font-extrabold text-white uppercase tracking-widest border-l-2 border-brand-accent pl-2">Solusi Cepat & Tepat</h4>
+                <p class="text-xs text-gray-400">
+                    "Solusi Pengadaan Cepat, Tepat, dan Terpercaya"
+                </p>
+                <div class="bg-white/5 p-4 rounded-xl border border-white/10 space-y-2 text-xs">
+                    <span class="block font-bold text-white"><i class="fa-solid fa-bell mr-1"></i>Langganan Info Pengadaan</span>
+                    <p class="text-gray-400 text-[11px]">Dapatkan update info stok semen, besi beton, dan promo logistik berkala.</p>
+                    <div class="flex mt-2">
+                        <input type="email" placeholder="Alamat email Anda" class="bg-white/10 border border-white/20 rounded-l-lg px-3 py-1.5 w-full text-xs text-white outline-none focus:ring-1 focus:ring-brand-accent">
+                        <button onclick="showToast('Sukses!', 'E-mail Anda berhasil didaftarkan.', 'check')" class="bg-brand-accent text-brand-navy font-bold px-3 py-1.5 rounded-r-lg text-xs hover:bg-amber-500 transition-colors">Daftar</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="container mx-auto px-4 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center text-[11px] text-gray-500">
+            <span>&copy; 2026 PT. Adreena Investama Propertindo. Hak Cipta Dilindungi Undang-Undang.</span>
+            <div class="flex space-x-4 mt-4 md:mt-0">
+                <a href="#" class="hover:text-gray-300">Syarat & Ketentuan</a>
+                <a href="#" class="hover:text-gray-300">Kebijakan Privasi</a>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- LOGIC APPLICATION JAVASCRIPT -->
+    <script>
+        // Catalog Products Data based on 3 standard Sektor groups in Flyer
+        const productsCatalog = [
+            // Sektor 1: Material Konstruksi & Bangunan
+            {
+                id: 'p1_1',
+                sector: 'konstruksi',
+                title: 'Besi dan Baja',
+                items: ['Besi Beton polos & ulir SNI', 'Besi WF (Wide Flange)', 'Besi H-Beam', 'Plat Besi Baja ASTM'],
+                icon: 'fa-solid fa-cubes-stacked'
+            },
+            {
+                id: 'p1_2',
+                sector: 'konstruksi',
+                title: 'Semen Proyek',
+                items: ['Semen Indonesia Group (SIG)', 'Semen Portland Type I', 'Semen Curah Silo Proyek', 'Mortar Instan'],
+                icon: 'fa-solid fa-mountain'
+            },
+            {
+                id: 'p1_3',
+                sector: 'konstruksi',
+                title: 'Material Proyek Dasar',
+                items: ['Batu Belah & Kerikil Cor', 'Pasir Beton Pasang', 'Bata Ringan / Hebel', 'Sirtu & Tanah Urugan'],
+                icon: 'fa-solid fa-truck-pickup'
+            },
+            {
+                id: 'p1_4',
+                sector: 'konstruksi',
+                title: 'Peralatan Konstruksi',
+                items: ['Sancole Scaffolding lengkap', 'Mesin Molen Beton Cor', 'Bar Cutter & Bar Bender', 'Palu Elektrik Demolition'],
+                icon: 'fa-solid fa-screwdriver-wrench'
+            },
+            {
+                id: 'p1_5',
+                sector: 'konstruksi',
+                title: 'Cat & Bahan Bangunan',
+                items: ['Cat Tembok Eksterior Weatherproof', 'Cat Dasar Besi Anti-Karat', 'Semen Waterproofing', 'Pipa PVC & Sambungan Paralon'],
+                icon: 'fa-solid fa-paint-roller'
+            },
+
+            // Sektor 2: Kebutuhan Industri
+            {
+                id: 'p2_1',
+                sector: 'industri',
+                title: 'Safety Equipment (APD)',
+                items: ['Helm Pengaman Proyek SNI', 'Sepatu Safety Boots Baja', 'Rompi Safety Jaring High-Visibility', 'Sarung Tangan Kulit Las'],
+                icon: 'fa-solid fa-user-shield'
+            },
+            {
+                id: 'p2_2',
+                sector: 'industri',
+                title: 'Tools & Peralatan Kerja',
+                items: ['Mesin Bor Listrik Bosch/Dewalt', 'Gunting Plat & Perkakas Krisbow', 'Mesin Gerinda Potong', 'Tang & Kunci Set Industrial'],
+                icon: 'fa-solid fa-toolbox'
+            },
+            {
+                id: 'p2_3',
+                sector: 'industri',
+                title: 'Sparepart Umum',
+                items: ['Bearing / Bantalan Mesin FAG/SKF', 'V-Belt & Rantai Transmisi', 'Seal Ring Gasket Anti-Bocor', 'Klem & Baut Kekuatan Tinggi'],
+                icon: 'fa-solid fa-gears'
+            },
+            {
+                id: 'p2_4',
+                sector: 'industri',
+                title: 'Perlengkapan Gudang',
+                items: ['Hand Pallet Truck Manual & Elektrik', 'Rak Heavy-Duty Gudang', 'Tali Cargo Pengikat Ratchet Lashing', 'Forklift Fork Cover'],
+                icon: 'fa-solid fa-warehouse'
+            },
+            {
+                id: 'p2_5',
+                sector: 'industri',
+                title: 'Bahan Kimia Industri',
+                items: ['Degreaser Pembersih Oli', 'Silicone Sealant Waterproof', 'Cairan Thinner Super ND', 'Pelumas Rantai Mesin'],
+                icon: 'fa-solid fa-flask'
+            },
+
+            // Sektor 3: Kebutuhan Perkantoran
+            {
+                id: 'p3_1',
+                sector: 'kantor',
+                title: 'ATK & Perlengkapan Kantor',
+                items: ['Kertas HVS A4 F4 Sinar Dunia', 'Pulpen Gel & Spidol Boardmarker', 'Buku Agenda & Nota Rangkap', 'Odner / Map Box Penyimpanan'],
+                icon: 'fa-solid fa-file-invoice'
+            },
+            {
+                id: 'p3_2',
+                sector: 'kantor',
+                title: 'Furniture Kantor',
+                items: ['Kursi Kerja Ergonomis Jaring', 'Meja Staff / Meja Meeting', 'Lemari Arsip Besi Pintu Geser', 'Sofa Lobby Tamu Premium'],
+                icon: 'fa-solid fa-chair'
+            },
+            {
+                id: 'p3_3',
+                sector: 'kantor',
+                title: 'Elektronik & Gadget Kerja',
+                items: ['Printer Ink-Tank Multifungsi Epson', 'Kabel LAN Cat 6 Belden', 'UPS Stabilizer Cadangan Daya', 'Proyektor Ruang Rapat'],
+                icon: 'fa-solid fa-laptop-code'
+            },
+            {
+                id: 'p3_4',
+                sector: 'kantor',
+                title: 'Perlengkapan Operasional',
+                items: ['Papan Tulis Whiteboard Magnetik', 'Kotak P3K Lengkap Isi', 'Tempat Sampah Pedal Higienis', 'Kipas Angin Dinding / Stand Fan'],
+                icon: 'fa-solid fa-soap'
+            },
+            {
+                id: 'p3_5',
+                sector: 'kantor',
+                title: 'Konsumsi Kantor (Pantry)',
+                items: ['Air Mineral Galon Aqua/Le Minerale', 'Kopi Sachet & Gula Pasir Ritel', 'Tisu Wajah Paseo Ratusan Lembar', 'Cairan Pembersih Lantai & Lap'],
+                icon: 'fa-solid fa-mug-hot'
+            },
+
+            // Sektor 4: Pengadaan Barang Sesuai Permintaan (Custom)
+            {
+                id: 'p4_1',
+                sector: 'kustom',
+                title: 'Supply Berkas Spesifikasi Teknis',
+                items: ['Pengadaan disesuaikan detail CAD', 'Pencarian pabrikan komponen impor', 'Pencarian supplier alternatif hemat biaya', 'Jaminan standardisasi industri'],
+                icon: 'fa-solid fa-clipboard-check'
+            },
+            {
+                id: 'p4_2',
+                sector: 'kustom',
+                title: 'Konsolidasi & Logistik',
+                items: ['Pengepakan peti kayu aman', 'Pengiriman multi-moda terintegrasi', 'Pelacakan armada logistik real-time', 'Bongkar muat di pelabuhan tujuan'],
+                icon: 'fa-solid fa-ship'
+            }
+        ];
+
+        // State Management variables
+        let rfqCart = [];
+        let currentSectorFilter = 'all';
+
+        // Initialize App on DOM Ready
+        window.onload = function() {
+            renderProducts(productsCatalog);
+        }
+
+        // Custom Navigation Logic
+        function navigateTo(pageId, optionalCategory = '') {
+            // Close mobile menu if active
+            document.getElementById('mobile-menu').classList.add('hidden');
+            document.getElementById('menu-icon').className = 'fa-solid fa-bars text-2xl';
+
+            // Hide all pages
+            const pages = ['beranda', 'tentang', 'produk', 'keunggulan', 'kontak'];
+            pages.forEach(p => {
+                const element = document.getElementById(`page-${p}`);
+                if (element) {
+                    element.classList.add('hidden');
+                }
+                const navBtn = document.getElementById(`nav-${p}`);
+                if (navBtn) {
+                    navBtn.className = "hover:text-brand-accent transition-colors duration-200 border-b-2 border-transparent py-1";
+                }
+            });
+
+            // Show active page
+            const targetPage = document.getElementById(`page-${pageId}`);
+            if (targetPage) {
+                targetPage.classList.remove('hidden');
+                targetPage.classList.add('block');
+                
+                // Add fade effect
+                targetPage.style.opacity = 0;
+                setTimeout(() => {
+                    targetPage.style.opacity = 1;
+                }, 50);
+            }
+
+            // Highlighting desktop active link
+            const activeNavBtn = document.getElementById(`nav-${pageId}`);
+            if (activeNavBtn) {
+                activeNavBtn.className = "text-brand-accent transition-colors duration-200 border-b-2 border-brand-accent py-1";
+            }
+
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            // Sektor routing helper from other pages
+            if (pageId === 'produk' && optionalCategory !== '') {
+                setCategoryFilter(optionalCategory);
+            }
+        }
+
+        // Mobile Menu Toggler
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const icon = document.getElementById('menu-icon');
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+                icon.className = 'fa-solid fa-xmark text-2xl';
+            } else {
+                menu.classList.add('hidden');
+                icon.className = 'fa-solid fa-bars text-2xl';
+            }
+        }
+
+        // Tentang Kami: Switching Sub-Tabs (Vision & Mission)
+        function switchTab(tabId) {
+            const btnVisi = document.getElementById('tab-btn-visi');
+            const btnMisi = document.getElementById('tab-btn-misi');
+            const contentVisi = document.getElementById('tab-content-visi');
+            const contentMisi = document.getElementById('tab-content-misi');
+
+            if (tabId === 'visi') {
+                btnVisi.className = "flex-1 py-3 px-4 text-center font-bold text-brand-navy border-b-2 border-brand-accent bg-white transition-colors";
+                btnMisi.className = "flex-1 py-3 px-4 text-center font-bold text-gray-500 border-b-2 border-transparent hover:text-brand-navy transition-colors bg-gray-50";
+                contentVisi.classList.remove('hidden');
+                contentVisi.classList.add('block');
+                contentMisi.classList.add('hidden');
+            } else {
+                btnMisi.className = "flex-1 py-3 px-4 text-center font-bold text-brand-navy border-b-2 border-brand-accent bg-white transition-colors";
+                btnVisi.className = "flex-1 py-3 px-4 text-center font-bold text-gray-500 border-b-2 border-transparent hover:text-brand-navy transition-colors bg-gray-50";
+                contentMisi.classList.remove('hidden');
+                contentMisi.classList.add('block');
+                contentVisi.classList.add('hidden');
+            }
+        }
+
+        // Render Product Cards to Screen
+        function renderProducts(catalogList) {
+            const container = document.getElementById('products-container');
+            container.innerHTML = '';
+
+            if (catalogList.length === 0) {
+                container.innerHTML = `
+                    <div class="col-span-full text-center py-12 text-gray-400 space-y-2">
+                        <i class="fa-solid fa-face-frown text-4xl"></i>
+                        <p class="font-bold">Barang tidak ditemukan</p>
+                        <p class="text-xs">Coba ketikkan kata kunci pencarian yang lain.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            catalogList.forEach(prod => {
+                const isItemInCart = rfqCart.some(cartItem => cartItem.id === prod.id);
+                const buttonText = isItemInCart ? 'Ditambahkan <i class="fa-solid fa-circle-check ml-1"></i>' : 'Minta Penawaran <i class="fa-solid fa-plus-circle ml-1"></i>';
+                const buttonClass = isItemInCart 
+                    ? 'w-full bg-brand-blue text-white text-xs font-bold py-2 rounded-lg transition-all flex items-center justify-center space-x-1 shadow-inner cursor-not-allowed' 
+                    : 'w-full bg-brand-navy hover:bg-brand-accent hover:text-brand-navy text-white text-xs font-bold py-2 rounded-lg transition-all flex items-center justify-center space-x-1 shadow active:scale-95 duration-100';
+
+                // Map category tag styling
+                let categoryLabel = '';
+                if (prod.sector === 'konstruksi') categoryLabel = 'Material Konstruksi';
+                else if (prod.sector === 'industri') categoryLabel = 'Kebutuhan Industri';
+                else if (prod.sector === 'kantor') categoryLabel = 'Perkantoran';
+                else categoryLabel = 'Custom Pengadaan';
+
+                const itemsListHTML = prod.items.map(it => `
+                    <li class="flex items-start text-xs text-slate-600">
+                        <span class="text-brand-accent mr-1.5">•</span>
+                        <span>${it}</span>
+                    </li>
+                `).join('');
+
+                const cardHTML = `
+                    <div class="bg-white rounded-2xl p-5 border border-gray-100 hover:border-brand-accent hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-start mb-3">
+                                <span class="bg-slate-100 text-brand-navy text-[10px] font-bold px-2 py-0.5 rounded uppercase">${categoryLabel}</span>
+                                <div class="text-brand-blue text-lg"><i class="${prod.icon}"></i></div>
+                            </div>
+                            <h4 class="font-extrabold text-brand-navy text-base mb-3 border-b border-gray-50 pb-2">${prod.title}</h4>
+                            <ul class="space-y-1.5 mb-5">
+                                ${itemsListHTML}
+                            </ul>
+                        </div>
+                        <button onclick="addToRFQCaret('${prod.id}')" ${isItemInCart ? 'disabled' : ''} class="${buttonClass}">
+                            ${buttonText}
+                        </button>
+                    </div>
+                `;
+                container.insertAdjacentHTML('beforeend', cardHTML);
+            });
+        }
+
+        // Filter Catalog based on search text & sector button
+        function filterCatalog() {
+            const searchText = document.getElementById('product-search').value.toLowerCase();
+            
+            const filtered = productsCatalog.filter(prod => {
+                const matchesSector = (currentSectorFilter === 'all' || prod.sector === currentSectorFilter);
+                
+                const matchesSearch = prod.title.toLowerCase().includes(searchText) || 
+                                      prod.items.some(item => item.toLowerCase().includes(searchText));
+                                      
+                return matchesSector && matchesSearch;
+            });
+
+            renderProducts(filtered);
+        }
+
+        // Set Sector filter and update CSS active class on buttons
+        function setCategoryFilter(sectorKey) {
+            currentSectorFilter = sectorKey;
+            
+            // Buttons list
+            const buttons = ['all', 'konstruksi', 'industri', 'kantor', 'kustom'];
+            buttons.forEach(btn => {
+                const el = document.getElementById(`filter-${btn}`);
+                if (el) {
+                    if (btn === sectorKey) {
+                        el.className = "px-4 py-2 rounded-lg font-semibold text-xs md:text-sm bg-brand-navy text-white transition-all shadow-sm";
+                    } else {
+                        el.className = "px-4 py-2 rounded-lg font-semibold text-xs md:text-sm bg-gray-100 hover:bg-gray-200 text-brand-navy transition-all";
+                    }
+                }
+            });
+
+            filterCatalog();
+        }
+
+        // Dynamic System Toast Notification
+        function showToast(title, message, iconType = 'check') {
+            const toast = document.getElementById('custom-toast');
+            const titleEl = document.getElementById('toast-title');
+            const msgEl = document.getElementById('toast-message');
+            const iconBox = document.getElementById('toast-icon');
+
+            titleEl.textContent = title;
+            msgEl.textContent = message;
+
+            if (iconType === 'check') {
+                iconBox.innerHTML = '<i class="fa-solid fa-check"></i>';
+                iconBox.className = "w-8 h-8 bg-green-500 text-white rounded-full flex items-center justify-center shrink-0";
+            } else if (iconType === 'cart') {
+                iconBox.innerHTML = '<i class="fa-solid fa-file-invoice-dollar"></i>';
+                iconBox.className = "w-8 h-8 bg-brand-accent text-brand-navy rounded-full flex items-center justify-center shrink-0";
+            } else {
+                iconBox.innerHTML = '<i class="fa-solid fa-circle-exclamation"></i>';
+                iconBox.className = "w-8 h-8 bg-red-500 text-white rounded-full flex items-center justify-center shrink-0";
+            }
+
+            // Animate In
+            toast.classList.remove('translate-y-24', 'opacity-0');
+            toast.classList.add('translate-y-0', 'opacity-100');
+
+            setTimeout(() => {
+                // Animate Out
+                toast.classList.remove('translate-y-0', 'opacity-100');
+                toast.classList.add('translate-y-24', 'opacity-0');
+            }, 3000);
+        }
+
+        // Add Product Standard to RFQ List
+        function addToRFQCaret(productId) {
+            const product = productsCatalog.find(p => p.id === productId);
+            if (!product) return;
+
+            // Check if already in list
+            if (rfqCart.some(item => item.id === productId)) return;
+
+            // Default adding structure
+            rfqCart.push({
+                id: product.id,
+                title: product.title,
+                qty: 1,
+                unit: 'Pcs',
+                type: 'standard',
+                details: product.items[0] // preview text
+            });
+
+            updateCartUI();
+            showToast('Barang Ditambahkan', `${product.title} sukses dimasukkan ke RFQ.`, 'cart');
+            renderProducts(productsCatalog); // Refresh buttons state
+        }
+
+        // Add Custom Request from form
+        function handleCustomProcurement(e) {
+            e.preventDefault();
+            const nameInput = document.getElementById('custom-name');
+            const qtyInput = document.getElementById('custom-qty');
+            const unitInput = document.getElementById('custom-unit');
+            const descInput = document.getElementById('custom-desc');
+
+            const customId = 'custom_' + Date.now();
+
+            rfqCart.push({
+                id: customId,
+                title: nameInput.value,
+                qty: parseInt(qtyInput.value),
+                unit: unitInput.value,
+                type: 'kustom',
+                details: descInput.value || 'Tanpa catatan spesifik.'
+            });
+
+            updateCartUI();
+            showToast('Permintaan Kustom', 'Spesifikasi kustom berhasil didaftarkan.', 'cart');
+
+            // Reset form
+            nameInput.value = '';
+            qtyInput.value = '1';
+            unitInput.value = '';
+            descInput.value = '';
+        }
+
+        // Update Counter Badges and Recalculate Items List UI
+        function updateCartUI() {
+            const countBadge = document.getElementById('cart-count');
+            countBadge.textContent = rfqCart.length;
+
+            const emptyState = document.getElementById('cart-empty-state');
+            const cartList = document.getElementById('cart-list');
+            const submissionForm = document.getElementById('rfq-submission-form');
+
+            if (rfqCart.length === 0) {
+                emptyState.classList.remove('hidden');
+                cartList.classList.add('hidden');
+                submissionForm.classList.add('hidden');
+            } else {
+                emptyState.classList.add('hidden');
+                cartList.classList.remove('hidden');
+                submissionForm.classList.remove('hidden');
+
+                // Render dynamic cart lines
+                cartList.innerHTML = '';
+                rfqCart.forEach((item, index) => {
+                    const lineHTML = `
+                        <div class="bg-gray-50 rounded-xl p-4 border border-gray-100 flex flex-col md:flex-row md:items-center justify-between gap-3 text-xs">
+                            <div class="space-y-1">
+                                <div class="flex items-center space-x-1.5">
+                                    <span class="font-bold text-brand-navy text-sm">${item.title}</span>
+                                    <span class="bg-brand-blue/10 text-brand-blue text-[8px] font-extrabold px-1.5 py-0.5 rounded uppercase">${item.type}</span>
+                                </div>
+                                <p class="text-gray-500 line-clamp-1">${item.details}</p>
+                            </div>
+                            
+                            <div class="flex items-center justify-between md:justify-end space-x-4">
+                                <div class="flex items-center space-x-2">
+                                    <span class="text-gray-500 font-bold">Qty:</span>
+                                    <input type="number" onchange="updateCartQty('${item.id}', this.value)" min="1" value="${item.qty}" class="w-12 px-1 py-1 text-center border border-gray-200 rounded focus:ring-1 focus:ring-brand-blue outline-none">
+                                    <input type="text" onchange="updateCartUnit('${item.id}', this.value)" value="${item.unit}" placeholder="Satuan" class="w-14 px-1 py-1 text-center border border-gray-200 rounded focus:ring-1 focus:ring-brand-blue outline-none">
+                                </div>
+                                <button onclick="removeFromRFQ('${item.id}')" class="text-red-500 hover:text-red-700 text-sm"><i class="fa-solid fa-trash"></i></button>
+                            </div>
+                        </div>
+                    `;
+                    cartList.insertAdjacentHTML('beforeend', lineHTML);
+                });
+            }
+        }
+
+        // Qty/Unit adjustments in RFQ Cart
+        function updateCartQty(id, newQty) {
+            const item = rfqCart.find(i => i.id === id);
+            if (item) {
+                item.qty = Math.max(1, parseInt(newQty) || 1);
+            }
+        }
+
+        function updateCartUnit(id, newUnit) {
+            const item = rfqCart.find(i => i.id === id);
+            if (item) {
+                item.unit = newUnit || 'Pcs';
+            }
+        }
+
+        function removeFromRFQ(id) {
+            rfqCart = rfqCart.filter(item => item.id !== id);
+            updateCartUI();
+            renderProducts(productsCatalog); // Refresh buttons
+        }
+
+        // Cart Modal Display toggle
+        function toggleCartModal() {
+            const modal = document.getElementById('cart-modal');
+            if (modal.classList.contains('hidden')) {
+                modal.classList.remove('hidden');
+                updateCartUI();
+            } else {
+                modal.classList.add('hidden');
+            }
+        }
+
+        // Handle RFQ Submission Form
+        function handleRFQSubmit(e) {
+            e.preventDefault();
+            
+            const clientName = document.getElementById('rfq-client-name').value;
+            const clientCompany = document.getElementById('rfq-client-company').value;
+            const clientPhone = document.getElementById('rfq-client-phone').value;
+            const clientEmail = document.getElementById('rfq-client-email').value;
+
+            // Render Digital Receipt Data
+            document.getElementById('receipt-id').textContent = 'AIP-RFQ-' + Math.floor(100000 + Math.random() * 900000);
+            
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            document.getElementById('receipt-date').textContent = new Date().toLocaleDateString('id-ID', options);
+            document.getElementById('receipt-client').textContent = clientName;
+            document.getElementById('receipt-company').textContent = clientCompany;
+
+            const receiptList = document.getElementById('receipt-items-list');
+            receiptList.innerHTML = '';
+            rfqCart.forEach(item => {
+                receiptList.insertAdjacentHTML('beforeend', `
+                    <div class="flex justify-between border-b border-gray-100 py-1 text-xs">
+                        <span class="font-semibold text-gray-800">${item.title}</span>
+                        <span class="text-brand-blue font-bold">${item.qty} ${item.unit}</span>
+                    </div>
+                `);
+            });
+
+            // Close cart modal, clear cart and show receipt
+            toggleCartModal();
+            rfqCart = [];
+            updateCartUI();
+            renderProducts(productsCatalog); // reset catalog button states
+
+            // Clear RFQ form
+            document.getElementById('rfq-submission-form').reset();
+
+            // Display Receipt
+            document.getElementById('receipt-modal').classList.remove('hidden');
+        }
+
+        // Contact Direct Message Submission
+        function handleContactSubmit(e) {
+            e.preventDefault();
+            const name = document.getElementById('contact-name').value;
+            const org = document.getElementById('contact-org').value;
+            
+            showToast('Pesan Terkirim!', `Yth Bapak/Ibu ${name} dari ${org}, pesan Anda berhasil direkam. Customer service kami akan membalas e-mail Anda.`, 'check');
+            document.getElementById('contact-direct-form').reset();
+        }
+
+        // Why Us: Interactive Akordeon
+        const advantageTexts = {
+            adv1: {
+                title: 'Harga Kompetitif',
+                desc: 'Melalui kemitraan yang kuat langsung dengan pabrikan Semen Indonesia, Dewalt, Bosch, Krisbow, dan pemegang agen tunggal, kami berhasil memangkas margin perantara. Seluruh penghematan biaya tersebut kami kembalikan langsung kepada Anda dalam bentuk penawaran harga terbaik yang transparan dan kompetitif.',
+                icon: 'fa-solid fa-tags'
+            },
+            adv2: {
+                title: 'Respon Cepat & Profesional',
+                desc: 'Kami menyadari bahwa waktu dalam dunia konstruksi dan industri sama berharganya dengan uang. Tim estimator handal kami didukung oleh staf teknis berpengalaman yang siap merespons permohonan penawaran harga Anda (RFQ) dengan cepat, akurat, serta menawarkan konsultasi spesifikasi yang presisi.',
+                icon: 'fa-solid fa-bolt'
+            },
+            adv3: {
+                title: 'Jaringan Supplier Luas & Terpercaya',
+                desc: 'Kami memiliki database supplier terverifikasi dan andal baik di dalam negeri maupun luar negeri. Apapun jenis barang yang Anda cari, dari material sipil standar hingga komponen sensor elektrik khusus, kami mampu menemukannya dengan jaminan keaslian serta kualitas standar industri tinggi.',
+                icon: 'fa-solid fa-network-wired'
+            },
+            adv4: {
+                title: 'Pengiriman Tepat Waktu',
+                desc: 'Didukung oleh skema logistik andalan dan kolaborasi ekspedisi darat/laut tepercaya, kami berkomitmen penuh untuk menjamin pengantaran logistik Anda sampai di lokasi kerja/site proyek sesuai jadwal rencana kerja demi mencegah penundaan (delay) proyek yang tidak efisien.',
+                icon: 'fa-solid fa-truck'
+            },
+            adv5: {
+                title: 'Sistem Pembayaran Fleksibel',
+                desc: 'Guna membangun kemitraan bisnis berkesinambungan jangka panjang, kami menawarkan keleluasaan model kerja sama. Mulai dari Cash on Delivery (COD) terverifikasi, penyerahan uang muka (down payment) proporsional, hingga negosiasi termin pembayaran (Term of Payment/TOP) khusus bagi kontrak proyek berkelanjutan.',
+                icon: 'fa-solid fa-credit-card'
+            }
+        };
+
+        function toggleAdvantageDetail(advId) {
+            const detailBox = document.getElementById('adv-detail-box');
+            const detailIcon = document.getElementById('adv-detail-icon');
+            const detailTitle = document.getElementById('adv-detail-title');
+            const detailDesc = document.getElementById('adv-detail-desc');
+
+            const advData = advantageTexts[advId];
+            if (advData) {
+                detailIcon.innerHTML = `<i class="${advData.icon}"></i>`;
+                detailTitle.textContent = advData.title;
+                detailDesc.textContent = advData.desc;
+                
+                detailBox.classList.remove('hidden');
+                
+                // Smooth scroll to details
+                detailBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
+        }
+
+        function closeAdvantageDetail() {
+            document.getElementById('adv-detail-box').classList.add('hidden');
+        }
+
+        // Auto Close Mobile Menu on window resizing to desktop size
+        window.addEventListener('resize', () => {
+            if (window.innerWidth >= 768) {
+                document.getElementById('mobile-menu').classList.add('hidden');
+                document.getElementById('menu-icon').className = 'fa-solid fa-bars text-2xl';
+            }
+        });
+    </script>
+</body>
+</html>
