@@ -87,7 +87,7 @@
                 <!-- Pempek Kapal Selam -->
                 <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-brand-border">
                     <div class="h-48 bg-gray-200">
-                        <img src="images/megskitchen/selam.webp" alt="Pempek Kapal Selam" class="w-full h-full object-cover">
+                        <img src="https://images.unsplash.com/photo-1626804475297-41609ea004eb?auto=format&fit=crop&w=600&q=80" alt="Pempek Kapal Selam" class="w-full h-full object-cover">
                     </div>
                     <div class="p-4">
                         <h3 class="font-playfair text-xl font-bold text-brand-dark">Pempek Kapal Selam</h3>
@@ -99,7 +99,7 @@
                 <!-- Pempek Lenjer -->
                 <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-brand-border">
                     <div class="h-48 bg-gray-200">
-                        <img src="images/megskitchen/lenjer.webp" alt="Pempek Lenjer" class="w-full h-full object-cover">
+                        <img src="https://images.unsplash.com/photo-1626804475517-5e6081c2084c?auto=format&fit=crop&w=600&q=80" alt="Pempek Lenjer" class="w-full h-full object-cover">
                     </div>
                     <div class="p-4">
                         <h3 class="font-playfair text-xl font-bold text-brand-dark">Pempek Lenjer</h3>
@@ -111,7 +111,7 @@
                 <!-- Tekwan -->
                 <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-brand-border">
                     <div class="h-48 bg-gray-200">
-                        <img src="images/megskitchen/tekwan.webp" alt="Tekwan" class="w-full h-full object-cover">
+                        <img src="https://images.unsplash.com/photo-1548943487-a2e4b43b4852?auto=format&fit=crop&w=600&q=80" alt="Tekwan" class="w-full h-full object-cover">
                     </div>
                     <div class="p-4">
                         <h3 class="font-playfair text-xl font-bold text-brand-dark">Tekwan</h3>
@@ -123,7 +123,7 @@
                 <!-- Mie Ayam Bangka -->
                 <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-brand-border">
                     <div class="h-48 bg-gray-200">
-                        <img src="images/megskitchen/bangka.webp" alt="Mie Ayam Bangka" class="w-full h-full object-cover">
+                        <img src="https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=600&q=80" alt="Mie Ayam Bangka" class="w-full h-full object-cover">
                     </div>
                     <div class="p-4">
                         <h3 class="font-playfair text-xl font-bold text-brand-dark">Mie Ayam Bangka</h3>
@@ -135,7 +135,7 @@
                 <!-- Es Kacang Merah -->
                 <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-brand-border sm:col-span-2 md:col-span-1 lg:col-span-2">
                     <div class="h-48 bg-gray-200">
-                        <img src="images/megskitchen/kacang.webp" alt="Es Kacang Merah" class="w-full h-full object-cover">
+                        <img src="https://images.unsplash.com/photo-1563805042-7684c8a9e9ce?auto=format&fit=crop&w=600&q=80" alt="Es Kacang Merah" class="w-full h-full object-cover">
                     </div>
                     <div class="p-4">
                         <h3 class="font-playfair text-xl font-bold text-brand-dark">Es Kacang Merah</h3>
@@ -243,7 +243,7 @@
                         </div>
                     </div>
 
-                    <div class="pt-2">
+                    <div class="pt-2 transition-all duration-300" id="scheduleContainer">
                         <label class="block text-sm font-bold text-brand-dark mb-1">Pick-up Schedule (Denver Time)</label>
                         <select id="inputTime" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-accent focus:border-brand-accent outline-none transition bg-white">
                             <option value="">-- Select Schedule --</option>
@@ -286,7 +286,7 @@
     <script>
         // ==========================================
         // MASUKKAN URL APPS SCRIPT ANDA DI SINI / INSERT YOUR APPS SCRIPT URL HERE
-        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxWl_KjlMfAHtuYBLNB68r0F1_8MMv1ilbXgPDMpCZsrcTsZYqH7x1dwf8M7fntKPkF/exec'; 
+        const SCRIPT_URL = 'URL_ASLI_MILIK_ANDA_YANG_BARU_DI_COPY'; 
         // ==========================================
 
         let sisaPorsi = 100; // Default set to 100
@@ -366,6 +366,28 @@
             }, 200);
         }
 
+        // --- NEW LOGIC: Toggling the Schedule Dropdown ---
+        const orderTypeRadios = document.querySelectorAll('input[name="orderType"]');
+        const scheduleContainer = document.getElementById('scheduleContainer');
+        const inputTime = document.getElementById('inputTime');
+
+        orderTypeRadios.forEach(radio => {
+            radio.addEventListener('change', function() {
+                if (this.value === 'Dine-in') {
+                    // Hide container and remove required attribute
+                    scheduleContainer.classList.add('hidden');
+                    inputTime.required = false;
+                    // Reset selected value so it doesn't accidentally carry over a wrong time
+                    inputTime.value = ""; 
+                } else {
+                    // Show container and make it required again for To-Go
+                    scheduleContainer.classList.remove('hidden');
+                    inputTime.required = true;
+                }
+            });
+        });
+        // ------------------------------------------------
+
         // Handle Submit Form
         form.addEventListener('submit', async function(e) {
             e.preventDefault();
@@ -373,10 +395,15 @@
             const name = document.getElementById('inputName').value;
             const email = document.getElementById('inputEmail').value;
             const phone = document.getElementById('inputPhone').value;
-            const time = document.getElementById('inputTime').value;
-            // Ambil data Order Type (To-Go atau Dine-in)
+            // Get Order Type first to determine if time needs fallback text
             const orderType = document.querySelector('input[name="orderType"]:checked').value;
             
+            // If Dine-in, assign a default string so it's not blank in the email/sheet
+            let time = document.getElementById('inputTime').value;
+            if (orderType === 'Dine-in') {
+                time = "Dine-in (No specific time)";
+            }
+
             const qtyInputs = document.querySelectorAll('.menu-qty');
             
             let totalQty = 0;
