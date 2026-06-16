@@ -243,6 +243,7 @@
                         </div>
                     </div>
 
+                    <!-- PICKUP SCHEDULE (DYNAMICALLY TOGGLED) -->
                     <div class="pt-2 transition-all duration-300" id="scheduleContainer">
                         <label class="block text-sm font-bold text-brand-dark mb-1">Pick-up Schedule (Denver Time)</label>
                         <select id="inputTime" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-accent focus:border-brand-accent outline-none transition bg-white">
@@ -286,7 +287,7 @@
     <script>
         // ==========================================
         // MASUKKAN URL APPS SCRIPT ANDA DI SINI / INSERT YOUR APPS SCRIPT URL HERE
-        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxWl_KjlMfAHtuYBLNB68r0F1_8MMv1ilbXgPDMpCZsrcTsZYqH7x1dwf8M7fntKPkF/exec'; 
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwWl_KjlMfAHtuYBLNB68r0F1_8MMv1ilbXgPDMpCZsrcTsZYqH7x1dwf8M7fntKPkF/exec'; 
         // ==========================================
 
         let sisaPorsi = 100; // Default set to 100
@@ -297,13 +298,39 @@
         const formContainer = document.getElementById('formContainer');
         const customModal = document.getElementById('customModal');
 
-        // Fetch live counter data from Google Sheets
+        // Elements for Dynamic Toggle
+        const orderTypeRadios = document.querySelectorAll('input[name="orderType"]');
+        const scheduleContainer = document.getElementById('scheduleContainer');
+        const inputTime = document.getElementById('inputTime');
+
+        // Dynamic Toggle Logic
+        orderTypeRadios.forEach(radio => {
+            radio.addEventListener('change', function() {
+                if (this.value === 'Dine-in') {
+                    // Hide Schedule Container gracefully
+                    scheduleContainer.classList.add('hidden');
+                    // Remove required constraint
+                    inputTime.required = false;
+                    // Reset selected value to avoid sending a wrong time
+                    inputTime.value = "";
+                } else {
+                    // Show Schedule Container
+                    scheduleContainer.classList.remove('hidden');
+                    // Make it required again
+                    inputTime.required = true;
+                }
+            });
+        });
+
+        // Fetch live counter data from Google Sheets (Cache-Busting Enabled)
         async function fetchLiveCounter() {
             try {
                 counterIcon.classList.replace('fa-fire', 'fa-spinner');
                 counterIcon.classList.add('fa-spin');
                 
-                const response = await fetch(SCRIPT_URL);
+                // Tambahkan Timestamp (?_t=...) agar browser tidak menampilkan data cache lama
+                const cacheBuster = SCRIPT_URL.includes('?') ? '&_t=' : '?_t=';
+                const response = await fetch(SCRIPT_URL + cacheBuster + Date.now());
                 const data = await response.json();
                 
                 if (data && data.sisaPorsi !== undefined) {
@@ -366,28 +393,6 @@
             }, 200);
         }
 
-        // --- NEW LOGIC: Toggling the Schedule Dropdown ---
-        const orderTypeRadios = document.querySelectorAll('input[name="orderType"]');
-        const scheduleContainer = document.getElementById('scheduleContainer');
-        const inputTime = document.getElementById('inputTime');
-
-        orderTypeRadios.forEach(radio => {
-            radio.addEventListener('change', function() {
-                if (this.value === 'Dine-in') {
-                    // Hide container and remove required attribute
-                    scheduleContainer.classList.add('hidden');
-                    inputTime.required = false;
-                    // Reset selected value so it doesn't accidentally carry over a wrong time
-                    inputTime.value = ""; 
-                } else {
-                    // Show container and make it required again for To-Go
-                    scheduleContainer.classList.remove('hidden');
-                    inputTime.required = true;
-                }
-            });
-        });
-        // ------------------------------------------------
-
         // Handle Submit Form
         form.addEventListener('submit', async function(e) {
             e.preventDefault();
@@ -395,10 +400,9 @@
             const name = document.getElementById('inputName').value;
             const email = document.getElementById('inputEmail').value;
             const phone = document.getElementById('inputPhone').value;
-            // Get Order Type first to determine if time needs fallback text
             const orderType = document.querySelector('input[name="orderType"]:checked').value;
             
-            // If Dine-in, assign a default string so it's not blank in the email/sheet
+            // Assign schedule dynamically
             let time = document.getElementById('inputTime').value;
             if (orderType === 'Dine-in') {
                 time = "Dine-in (No specific time)";
@@ -443,13 +447,12 @@
             submitBtn.classList.replace('bg-brand-accent', 'bg-gray-400');
             submitBtn.classList.replace('hover:bg-orange-700', 'hover:bg-gray-400');
 
-            // Data yang akan dikirim ke Backend
             const payload = {
                 name: name,
                 email: email,
                 phone: phone,
                 time: time,
-                orderType: orderType, // Mengirim Order Type
+                orderType: orderType,
                 totalQty: totalQty,
                 totalPrice: totalPrice,
                 detailPesananText: detailPesananMenuText.join('\n')
@@ -481,7 +484,7 @@
                             </div>
                             <p><strong>Total Portions:</strong> ${totalQty} Portion(s)</p>
                             <p><strong>Total Price:</strong> <span class="text-brand-accent font-bold">$${totalPrice.toFixed(2)}</span></p>
-                            <p><strong>Pick-up Schedule:</strong><br>${time}</p>
+                            <p><strong>Pick-up/Dining Schedule:</strong><br>${time}</p>
                         </div>
                         <p class="text-xs text-center mt-3 text-gray-500 italic"><i class="fa-solid fa-envelope"></i> A confirmation email has been sent to ${email}</p>
                     `;
@@ -490,6 +493,9 @@
                     updateCounterUI();
                     form.reset();
                     qtyInputs.forEach(input => input.value = 0);
+                    // Reset to-go schedule visibility just in case
+                    scheduleContainer.classList.remove('hidden');
+                    inputTime.required = true;
                 } else {
                     throw new Error(result.message);
                 }
