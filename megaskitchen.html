@@ -371,21 +371,7 @@
         const scheduleContainer = document.getElementById('scheduleContainer');
         const inputTime = document.getElementById('inputTime');
 
-        orderTypeRadios.forEach(radio => {
-            radio.addEventListener('change', function() {
-                if (this.value === 'Dine-in') {
-                    // Hide container and remove required attribute
-                    scheduleContainer.classList.add('hidden');
-                    inputTime.required = false;
-                    // Reset selected value so it doesn't accidentally carry over a wrong time
-                    inputTime.value = ""; 
-                } else {
-                    // Show container and make it required again for To-Go
-                    scheduleContainer.classList.remove('hidden');
-                    inputTime.required = true;
-                }
-            });
-        });
+       
         // ------------------------------------------------
 
         // Handle Submit Form
