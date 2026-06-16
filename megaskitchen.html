@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meg's kitchen - Pre-Order</title>
+    <title>Meg's Kitchen - Pre-Order</title>
     <!-- Tailwind CSS via CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts -->
@@ -87,7 +87,7 @@
                 <!-- Pempek Kapal Selam -->
                 <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-brand-border">
                     <div class="h-48 bg-gray-200">
-                        <img src="images/megskitchen/selam.webp" alt="Pempek Kapal Selam"class="w-full h-full object-cover">
+                        <img src="images/megskitchen/selam.webp" alt="Pempek Kapal Selam" class="w-full h-full object-cover">
                     </div>
                     <div class="p-4">
                         <h3 class="font-playfair text-xl font-bold text-brand-dark">Pempek Kapal Selam</h3>
@@ -228,6 +228,21 @@
                         </div>
                     </div>
 
+                    <!-- ORDER TYPE RADIO BUTTONS -->
+                    <div class="pt-2">
+                        <label class="block text-sm font-bold text-brand-dark mb-2">Order Type</label>
+                        <div class="flex gap-4">
+                            <label class="flex items-center gap-2 cursor-pointer bg-gray-50 px-4 py-2 border border-gray-200 rounded-lg hover:bg-orange-50 transition w-full">
+                                <input type="radio" name="orderType" value="To-Go" required class="accent-brand-accent w-4 h-4 cursor-pointer" checked>
+                                <span class="text-sm font-bold text-brand-dark">To-Go</span>
+                            </label>
+                            <label class="flex items-center gap-2 cursor-pointer bg-gray-50 px-4 py-2 border border-gray-200 rounded-lg hover:bg-orange-50 transition w-full">
+                                <input type="radio" name="orderType" value="Dine-in" required class="accent-brand-accent w-4 h-4 cursor-pointer">
+                                <span class="text-sm font-bold text-brand-dark">Dine-in</span>
+                            </label>
+                        </div>
+                    </div>
+
                     <div class="pt-2">
                         <label class="block text-sm font-bold text-brand-dark mb-1">Pick-up Schedule (Denver Time)</label>
                         <select id="inputTime" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-accent focus:border-brand-accent outline-none transition bg-white">
@@ -359,6 +374,9 @@
             const email = document.getElementById('inputEmail').value;
             const phone = document.getElementById('inputPhone').value;
             const time = document.getElementById('inputTime').value;
+            // Ambil data Order Type (To-Go atau Dine-in)
+            const orderType = document.querySelector('input[name="orderType"]:checked').value;
+            
             const qtyInputs = document.querySelectorAll('.menu-qty');
             
             let totalQty = 0;
@@ -375,9 +393,7 @@
                     totalQty += qty;
                     totalPrice += subtotal;
                     
-                    // HTML formatting for the success popup
                     detailPesananMenuHtml.push(`- ${input.dataset.menu} (<strong>${qty}</strong> portion(s) - $${subtotal.toFixed(2)})`);
-                    // Plain text formatting for Google Sheets
                     detailPesananMenuText.push(`- ${input.dataset.menu} (${qty} portion(s) - $${subtotal.toFixed(2)})`);
                 }
             });
@@ -400,11 +416,13 @@
             submitBtn.classList.replace('bg-brand-accent', 'bg-gray-400');
             submitBtn.classList.replace('hover:bg-orange-700', 'hover:bg-gray-400');
 
+            // Data yang akan dikirim ke Backend
             const payload = {
                 name: name,
                 email: email,
                 phone: phone,
                 time: time,
+                orderType: orderType, // Mengirim Order Type
                 totalQty: totalQty,
                 totalPrice: totalPrice,
                 detailPesananText: detailPesananMenuText.join('\n')
@@ -429,6 +447,7 @@
                         <div class="border-t border-b border-gray-200 py-2">
                             <p><strong>Order Number:</strong> <span class="text-brand-accent">${orderID}</span></p>
                             <p><strong>Name:</strong> ${name}</p>
+                            <p><strong>Order Type:</strong> <span class="bg-gray-200 text-xs px-2 py-1 rounded font-bold ml-1">${orderType.toUpperCase()}</span></p>
                             <div class="my-3 bg-white p-3 border border-gray-200 rounded shadow-sm text-sm">
                                 <p class="text-xs text-gray-500 mb-1 font-bold">Order Details:</p>
                                 ${gabunganMenuHtml}
