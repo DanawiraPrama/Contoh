@@ -20,10 +20,10 @@
                     },
                     colors: {
                         brand: {
-                            light: '#fdfaf3', // Cream background
+                            light: '#fdfaf3', 
                             border: '#e8dcc6',
-                            accent: '#c85a17', // Terracotta
-                            dark: '#2c241b', // Dark brown text
+                            accent: '#c85a17', 
+                            dark: '#2c241b', 
                             text: '#5c5247'
                         }
                     }
@@ -37,6 +37,11 @@
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: #fdfaf3; }
         ::-webkit-scrollbar-thumb { background: #c85a17; border-radius: 4px; }
+        /* Smooth fade in for modal */
+        .modal-enter { opacity: 0; transform: scale(0.95); }
+        .modal-enter-active { opacity: 1; transform: scale(1); transition: opacity 0.3s ease, transform 0.3s ease; }
+        .modal-exit { opacity: 1; transform: scale(1); }
+        .modal-exit-active { opacity: 0; transform: scale(0.95); transition: opacity 0.2s ease, transform 0.2s ease; }
     </style>
 </head>
 <body class="text-brand-text">
@@ -50,7 +55,7 @@
             
             <div class="bg-red-50 border border-red-200 text-red-700 px-6 py-2 rounded-full font-bold shadow-inner flex items-center gap-2" id="counterBadge">
                 <i class="fa-solid fa-fire text-red-500" id="counterIcon"></i>
-                <span>Remaining Quota: <span id="counterDisplay" class="text-xl">100</span></span>
+                <span>Remaining Quota: <span id="counterDisplay" class="text-xl">--</span></span>
             </div>
         </div>
     </header>
@@ -79,7 +84,8 @@
                 
                 <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-brand-border">
                     <div class="h-48 bg-gray-200">
-                        <img src="images/megskitchen/selam.webp" alt="Pempek Kapal Selam" class="w-full h-full object-cover">
+                        <!-- Placeholder images using picsum for demo if local images fail -->
+                        <img src="https://picsum.photos/seed/selam/400/300" alt="Pempek Kapal Selam" class="w-full h-full object-cover">
                     </div>
                     <div class="p-4">
                         <h3 class="font-playfair text-xl font-bold text-brand-dark">Pempek Kapal Selam</h3>
@@ -90,7 +96,7 @@
 
                 <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-brand-border">
                     <div class="h-48 bg-gray-200">
-                        <img src="images/megskitchen/lenjer.webp" alt="Pempek Lenjer" class="w-full h-full object-cover">
+                        <img src="https://picsum.photos/seed/lenjer/400/300" alt="Pempek Lenjer" class="w-full h-full object-cover">
                     </div>
                     <div class="p-4">
                         <h3 class="font-playfair text-xl font-bold text-brand-dark">Pempek Lenjer</h3>
@@ -101,7 +107,7 @@
 
                 <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-brand-border">
                     <div class="h-48 bg-gray-200">
-                        <img src="images/megskitchen/tekwan.webp" alt="Tekwan" class="w-full h-full object-cover">
+                        <img src="https://picsum.photos/seed/tekwan/400/300" alt="Tekwan" class="w-full h-full object-cover">
                     </div>
                     <div class="p-4">
                         <h3 class="font-playfair text-xl font-bold text-brand-dark">Tekwan</h3>
@@ -112,7 +118,7 @@
 
                 <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-brand-border">
                     <div class="h-48 bg-gray-200">
-                        <img src="images/megskitchen/bangka.webp" alt="Mie Ayam Bangka" class="w-full h-full object-cover">
+                        <img src="https://picsum.photos/seed/bangka/400/300" alt="Mie Ayam Bangka" class="w-full h-full object-cover">
                     </div>
                     <div class="p-4">
                         <h3 class="font-playfair text-xl font-bold text-brand-dark">Mie Ayam Bangka</h3>
@@ -123,7 +129,7 @@
 
                 <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-brand-border sm:col-span-2 md:col-span-1 lg:col-span-2">
                     <div class="h-48 bg-gray-200">
-                        <img src="images/megskitchen/kacang.webp" alt="Es Kacang Merah" class="w-full h-full object-cover">
+                        <img src="https://picsum.photos/seed/kacang/400/300" alt="Es Kacang Merah" class="w-full h-full object-cover">
                     </div>
                     <div class="p-4">
                         <h3 class="font-playfair text-xl font-bold text-brand-dark">Es Kacang Merah</h3>
@@ -159,6 +165,7 @@
                     <div class="space-y-2 pt-2">
                         <label class="block text-sm font-bold text-brand-dark mb-1">Select Menu & Portions</label>
                         
+                        <!-- Menu Items Generated via Loop for cleaner HTML, but keeping static structure for clarity -->
                         <div class="flex justify-between items-center p-3 border border-gray-200 rounded-lg bg-gray-50">
                             <div>
                                 <p class="font-bold text-sm text-brand-dark">Pempek Kapal Selam</p>
@@ -249,12 +256,13 @@
         </div>
     </main>
 
-    <div id="customModal" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-        <div class="bg-white rounded-2xl shadow-xl max-w-md w-full overflow-hidden transform scale-95 transition-all" id="modalContent">
+    <!-- Modal -->
+    <div id="customModal" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4 transition-opacity duration-300 opacity-0">
+        <div class="bg-white rounded-2xl shadow-xl max-w-md w-full overflow-hidden transform transition-all duration-300 scale-95" id="modalContent">
             <div id="modalHeader" class="p-6 text-center">
                 <div id="modalIcon" class="mx-auto w-16 h-16 rounded-full flex items-center justify-center mb-4"></div>
                 <h3 id="modalTitle" class="text-2xl font-playfair font-bold text-brand-dark">Title</h3>
-                <div id="modalBody" class="mt-4 text-left text-sm text-gray-600 space-y-2 bg-gray-50 p-4 rounded-lg"></div>
+                <div id="modalBody" class="mt-4 text-left text-sm text-gray-600 space-y-2 bg-gray-50 p-4 rounded-lg max-h-60 overflow-y-auto"></div>
             </div>
             <div class="px-6 py-4 bg-gray-50 text-center">
                 <button onclick="closeModal()" class="bg-brand-dark hover:bg-black text-white px-8 py-2 rounded-lg font-bold transition">Close</button>
@@ -265,6 +273,7 @@
     <script>
         // ==========================================
         // GANTI INI DENGAN URL WEB APP MACROS LOE SENDIRI!
+        // Pastikan sudah di-deploy "New Version" dan "Anyone"
         const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwI2R-8qNqLRE7v3k0o4_93wI-6Z5w8E3xFd4A9/exec'; 
         // ==========================================
 
@@ -298,8 +307,12 @@
             if (data && data.sisaPorsi !== undefined) {
                 sisaPorsi = parseInt(data.sisaPorsi);
                 updateCounterUI();
+            } else if (data && data.error) {
+                console.error("Counter Error:", data.error);
+                // Fallback if script fails, show 100 to not panic user
+                counterDisplay.innerText = "Error";
             }
-            // Hentikan animas loading
+            // Hentikan animasi loading
             counterIcon.classList.replace('fa-spinner', 'fa-fire');
             counterIcon.classList.remove('fa-spin');
         };
@@ -316,12 +329,22 @@
             
             // Bersihkan tag setelah selesai dimuat
             script.onload = () => document.body.removeChild(script);
+            script.onerror = () => {
+                counterIcon.classList.replace('fa-spinner', 'fa-fire');
+                counterIcon.classList.remove('fa-spin');
+                counterDisplay.innerText = "Err";
+                console.error("Failed to load counter script.");
+            };
         }
 
         function updateCounterUI() {
             counterDisplay.innerText = sisaPorsi;
             if (sisaPorsi <= 0) {
+                document.getElementById('counterBadge').classList.remove('bg-red-50', 'text-red-700', 'border-red-200');
+                document.getElementById('counterBadge').classList.add('bg-gray-800', 'text-white', 'border-gray-700');
                 document.getElementById('counterBadge').innerHTML = '<i class="fa-solid fa-lock"></i><span> Sold Out</span>';
+                
+                // Disable form visual
                 formContainer.innerHTML = `
                     <div class="text-center p-8 bg-red-50 rounded-xl border border-red-200">
                         <i class="fa-solid fa-lock text-4xl text-red-400 mb-4"></i>
@@ -340,11 +363,14 @@
             const modalTitle = document.getElementById('modalTitle');
             const modalBody = document.getElementById('modalBody');
 
+            // Reset classes
+            modalIcon.className = "mx-auto w-16 h-16 rounded-full flex items-center justify-center mb-4 transition-colors duration-300";
+
             if (type === 'success') {
-                modalIcon.className = "mx-auto w-16 h-16 rounded-full flex items-center justify-center mb-4 bg-green-100 text-green-600 text-3xl";
+                modalIcon.classList.add('bg-green-100', 'text-green-600', 'text-3xl');
                 modalIcon.innerHTML = '<i class="fa-solid fa-check"></i>';
             } else {
-                modalIcon.className = "mx-auto w-16 h-16 rounded-full flex items-center justify-center mb-4 bg-red-100 text-red-600 text-3xl";
+                modalIcon.classList.add('bg-red-100', 'text-red-600', 'text-3xl');
                 modalIcon.innerHTML = '<i class="fa-solid fa-xmark"></i>';
             }
 
@@ -352,6 +378,10 @@
             modalBody.innerHTML = htmlContent;
             
             customModal.classList.remove('hidden');
+            // Trigger reflow
+            void customModal.offsetWidth;
+            customModal.classList.remove('opacity-0');
+            
             setTimeout(() => {
                 document.getElementById('modalContent').classList.remove('scale-95');
                 document.getElementById('modalContent').classList.add('scale-100');
@@ -361,7 +391,8 @@
         function closeModal() {
             document.getElementById('modalContent').classList.remove('scale-100');
             document.getElementById('modalContent').classList.add('scale-95');
-            setTimeout(() => customModal.classList.add('hidden'), 200);
+            customModal.classList.add('opacity-0');
+            setTimeout(() => customModal.classList.add('hidden'), 300);
         }
 
         // Handle Submit Form
@@ -426,11 +457,16 @@
             };
 
             try {
-                const response = await fetch(SCRIPT_URL, {
+                // Tambahkan timestamp ke URL untuk mencegah caching agresif browser/proxy
+                const response = await fetch(SCRIPT_URL + "?t=" + new Date().getTime(), {
                     method: 'POST',
                     headers: { 'Content-Type': 'text/plain;charset=utf-8' },
                     body: JSON.stringify(payload)
                 });
+
+                if (!response.ok) {
+                    throw new Error(`Server returned ${response.status} ${response.statusText}`);
+                }
 
                 const result = await response.json();
 
@@ -464,10 +500,17 @@
                     // Tarik ulang porsi riil dari sheet setelah transaksi sukses
                     setTimeout(fetchLiveCounterJSONP, 1500);
                 } else {
-                    throw new Error(result.message);
+                    throw new Error(result.message || "Unknown server error");
                 }
             } catch (error) {
-                showModal('error', 'Failed to Submit', '<div class="text-center">An error occurred. Please try again.</div>');
+                console.error("Submission Error:", error);
+                showModal('error', 'Failed to Submit', `
+                    <div class="text-center">
+                        <p class="mb-2">An error occurred while submitting your order.</p>
+                        <p class="text-xs text-gray-500 font-mono bg-gray-100 p-2 rounded break-all text-left">${error.message}</p>
+                        <p class="mt-2 text-sm">Please check your connection or contact support.</p>
+                    </div>
+                `);
             } finally {
                 submitBtn.disabled = false;
                 submitBtn.innerHTML = originalBtnText;
