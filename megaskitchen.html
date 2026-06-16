@@ -82,6 +82,18 @@
             </div>
 
             <!-- Menu Highlight -->
+            <!-- Tambahan Menu Pempek Kapal Selam -->
+<div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-brand-border">
+    <div class="h-48 bg-gray-200">
+        <!-- Ganti link src di bawah dengan link gambar pempek Anda -->
+        <img src="https://images.unsplash.com/photo-contoh-pempek" alt="Pempek Kapal Selam" class="w-full h-full object-cover">
+    </div>
+    <div class="p-4">
+        <h3 class="font-playfair text-xl font-bold text-brand-dark">Pempek Kapal Selam</h3>
+        <p class="text-sm mt-2">Pempek isi telur dengan cuko kental yang pedas manis.</p>
+        <p class="text-brand-accent font-bold mt-3">$10.00 / Porsi</p>
+    </div>
+</div>
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-brand-border">
                     <div class="h-48 bg-gray-200">
@@ -130,7 +142,28 @@
 
                     <div class="space-y-2">
                         <label class="block text-sm font-bold text-brand-dark mb-1">Pilih Menu & Jumlah Porsi</label>
-                        
+                        <!-- Input Pempek Kapal Selam -->
+<div class="flex justify-between items-center p-3 border border-gray-200 rounded-lg bg-gray-50">
+    <div>
+        <p class="font-bold text-sm text-brand-dark">Pempek Kapal Selam</p>
+        <p class="text-xs text-brand-accent font-bold">$10.00</p>
+    </div>
+    <div class="w-20">
+        <!-- class="menu-qty" wajib ada, data-menu wajib diisi nama menunya -->
+        <input type="number" min="0" value="0" class="menu-qty w-full px-2 py-1.5 border border-gray-300 rounded-md text-center focus:ring-2 focus:ring-brand-accent outline-none" data-menu="Pempek Kapal Selam">
+    </div>
+</div>
+
+<!-- Input Pempek Lenjer -->
+<div class="flex justify-between items-center p-3 border border-gray-200 rounded-lg bg-gray-50">
+    <div>
+        <p class="font-bold text-sm text-brand-dark">Pempek Lenjer</p>
+        <p class="text-xs text-brand-accent font-bold">$8.00</p>
+    </div>
+    <div class="w-20">
+        <input type="number" min="0" value="0" class="menu-qty w-full px-2 py-1.5 border border-gray-300 rounded-md text-center focus:ring-2 focus:ring-brand-accent outline-none" data-menu="Pempek Lenjer">
+    </div>
+</div>
                         <div class="flex justify-between items-center p-3 border border-gray-200 rounded-lg bg-gray-50">
                             <div>
                                 <p class="font-bold text-sm text-brand-dark">Paket Nasi Nusantara</p>
