@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -55,7 +55,7 @@
             <!-- Live Counter Badge -->
             <div class="bg-red-50 border border-red-200 text-red-700 px-6 py-2 rounded-full font-bold shadow-inner flex items-center gap-2" id="counterBadge">
                 <i class="fa-solid fa-fire text-red-500" id="counterIcon"></i>
-                <span>Sisa Kuota: <span id="counterDisplay" class="text-xl">100</span> Porsi</span>
+                <span>Remaining Quota: <span id="counterDisplay" class="text-xl">100</span></span>
             </div>
         </div>
     </header>
@@ -64,69 +64,98 @@
         <!-- Left Column: Info & Menu -->
         <div class="lg:col-span-7 space-y-8">
             <div class="bg-white p-6 rounded-2xl shadow-sm border border-brand-border">
-                <h2 class="text-2xl font-playfair font-bold text-brand-dark mb-4">Sistem Pre-Order (Made by Order)</h2>
+                <h2 class="text-2xl font-playfair font-bold text-brand-dark mb-4">Pre-Order System (Made by Order)</h2>
                 <div class="space-y-3">
                     <p class="flex items-start gap-3">
                         <i class="fa-regular fa-calendar-check mt-1 text-brand-accent w-5"></i>
-                        <span><strong>Pemesanan:</strong> Ahad - Rabu (Otomatis tutup jika mencapai 100 porsi).</span>
+                        <span><strong>Ordering Window:</strong> Sunday - Wednesday (Closes automatically when 100 portions are reached).</span>
                     </p>
                     <p class="flex items-start gap-3">
                         <i class="fa-solid fa-bag-shopping mt-1 text-brand-accent w-5"></i>
-                        <span><strong>Jadwal Pick-up:</strong> Jumat & Sabtu.</span>
+                        <span><strong>Pick-up Schedule:</strong> Friday & Saturday.</span>
                     </p>
                     <p class="flex items-start gap-3">
                         <i class="fa-regular fa-clock mt-1 text-brand-accent w-5"></i>
-                        <span><strong>Waktu:</strong> 09:00 AM - 05:00 PM (Denver Time).</span>
+                        <span><strong>Time:</strong> 09:00 AM - 05:00 PM (Denver Time).</span>
                     </p>
                 </div>
             </div>
 
-            <!-- Menu Highlight -->
-            <!-- Tambahan Menu Pempek Kapal Selam -->
-<div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-brand-border">
-    <div class="h-48 bg-gray-200">
-        <!-- Ganti link src di bawah dengan link gambar pempek Anda -->
-        <img src="https://images.unsplash.com/photo-contoh-pempek" alt="Pempek Kapal Selam" class="w-full h-full object-cover">
-    </div>
-    <div class="p-4">
-        <h3 class="font-playfair text-xl font-bold text-brand-dark">Pempek Kapal Selam</h3>
-        <p class="text-sm mt-2">Pempek isi telur dengan cuko kental yang pedas manis.</p>
-        <p class="text-brand-accent font-bold mt-3">$10.00 / Porsi</p>
-    </div>
-</div>
+            <!-- Menu Highlight Grid -->
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                
+                <!-- Pempek Kapal Selam -->
                 <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-brand-border">
                     <div class="h-48 bg-gray-200">
-                        <img src="https://images.unsplash.com/photo-1564834724105-918b73d1b9e0?auto=format&fit=crop&w=600&q=80" alt="Nasi Campur" class="w-full h-full object-cover">
+                        <img src="https://images.unsplash.com/photo-1626804475297-41609ea004eb?auto=format&fit=crop&w=600&q=80" alt="Pempek Kapal Selam" class="w-full h-full object-cover">
                     </div>
                     <div class="p-4">
-                        <h3 class="font-playfair text-xl font-bold text-brand-dark">Paket Nasi Nusantara</h3>
-                        <p class="text-sm mt-2">Nasi hangat dengan ayam ungkep bumbu warisan, sambal terasi, dan lalapan segar.</p>
-                        <p class="text-brand-accent font-bold mt-3">$12.00 / Porsi</p>
+                        <h3 class="font-playfair text-xl font-bold text-brand-dark">Pempek Kapal Selam</h3>
+                        <p class="text-sm mt-2">Deep-fried savory fish cake filled with egg, served with our signature rich sweet & sour spicy sauce (cuko).</p>
+                        <p class="text-brand-accent font-bold mt-3">$10.00 / Portion</p>
                     </div>
                 </div>
+
+                <!-- Pempek Lenjer -->
                 <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-brand-border">
                     <div class="h-48 bg-gray-200">
-                        <img src="https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?auto=format&fit=crop&w=600&q=80" alt="Daging Rendang" class="w-full h-full object-cover">
+                        <img src="https://images.unsplash.com/photo-1626804475517-5e6081c2084c?auto=format&fit=crop&w=600&q=80" alt="Pempek Lenjer" class="w-full h-full object-cover">
                     </div>
                     <div class="p-4">
-                        <h3 class="font-playfair text-xl font-bold text-brand-dark">Paket Spesial Rendang</h3>
-                        <p class="text-sm mt-2">Daging sapi pilihan yang dimasak perlahan dengan rempah otentik Indonesia.</p>
-                        <p class="text-brand-accent font-bold mt-3">$15.00 / Porsi</p>
+                        <h3 class="font-playfair text-xl font-bold text-brand-dark">Pempek Lenjer</h3>
+                        <p class="text-sm mt-2">Traditional cylindrical savory fish cake, offering a firm and chewy texture. Served with cuko.</p>
+                        <p class="text-brand-accent font-bold mt-3">$8.00 / Portion</p>
                     </div>
                 </div>
+
+                <!-- Tekwan -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-brand-border">
+                    <div class="h-48 bg-gray-200">
+                        <img src="https://images.unsplash.com/photo-1548943487-a2e4b43b4852?auto=format&fit=crop&w=600&q=80" alt="Tekwan" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-playfair text-xl font-bold text-brand-dark">Tekwan</h3>
+                        <p class="text-sm mt-2">Palembang traditional fish cake soup enriched with savory shrimp broth, glass noodles, and mushrooms.</p>
+                        <p class="text-brand-accent font-bold mt-3">$9.00 / Portion</p>
+                    </div>
+                </div>
+
+                <!-- Mie Ayam Bangka -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-brand-border">
+                    <div class="h-48 bg-gray-200">
+                        <img src="https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=600&q=80" alt="Mie Ayam Bangka" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-playfair text-xl font-bold text-brand-dark">Mie Ayam Bangka</h3>
+                        <p class="text-sm mt-2">Bangka style chicken noodles topped with savory minced chicken, fresh greens, and flavorful broth.</p>
+                        <p class="text-brand-accent font-bold mt-3">$12.00 / Portion</p>
+                    </div>
+                </div>
+
+                <!-- Es Kacang Merah -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-brand-border sm:col-span-2 md:col-span-1 lg:col-span-2">
+                    <div class="h-48 bg-gray-200">
+                        <img src="https://images.unsplash.com/photo-1563805042-7684c8a9e9ce?auto=format&fit=crop&w=600&q=80" alt="Es Kacang Merah" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-playfair text-xl font-bold text-brand-dark">Es Kacang Merah</h3>
+                        <p class="text-sm mt-2">Refreshing shaved ice dessert featuring sweetened red beans, condensed milk, and syrup.</p>
+                        <p class="text-brand-accent font-bold mt-3">$5.00 / Portion</p>
+                    </div>
+                </div>
+
             </div>
         </div>
 
         <!-- Right Column: Order Form -->
         <div class="lg:col-span-5">
             <div class="bg-white p-6 md:p-8 rounded-2xl shadow-lg border border-brand-border sticky top-28" id="formContainer">
-                <h2 class="text-2xl font-playfair font-bold text-brand-dark mb-2">Formulir Pesanan</h2>
-                <p class="text-sm mb-6 pb-4 border-b border-gray-100">Silakan lengkapi data berikut untuk masuk ke antrean masak.</p>
+                <h2 class="text-2xl font-playfair font-bold text-brand-dark mb-2">Order Form</h2>
+                <p class="text-sm mb-6 pb-4 border-b border-gray-100">Please fill out the details below to secure your order.</p>
 
                 <form id="orderForm" class="space-y-4">
                     <div>
-                        <label class="block text-sm font-bold text-brand-dark mb-1">Nama Lengkap</label>
+                        <label class="block text-sm font-bold text-brand-dark mb-1">Full Name</label>
                         <input type="text" id="inputName" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-accent focus:border-brand-accent outline-none transition" placeholder="John Doe">
                     </div>
                     
@@ -136,74 +165,88 @@
                     </div>
 
                     <div>
-                        <label class="block text-sm font-bold text-brand-dark mb-1">No. WhatsApp</label>
+                        <label class="block text-sm font-bold text-brand-dark mb-1">WhatsApp Number</label>
                         <input type="tel" id="inputPhone" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-accent focus:border-brand-accent outline-none transition" placeholder="+1 (123) 456-7890">
                     </div>
 
-                    <div class="space-y-2">
-                        <label class="block text-sm font-bold text-brand-dark mb-1">Pilih Menu & Jumlah Porsi</label>
+                    <div class="space-y-2 pt-2">
+                        <label class="block text-sm font-bold text-brand-dark mb-1">Select Menu & Portions</label>
+                        
                         <!-- Input Pempek Kapal Selam -->
-<div class="flex justify-between items-center p-3 border border-gray-200 rounded-lg bg-gray-50">
-    <div>
-        <p class="font-bold text-sm text-brand-dark">Pempek Kapal Selam</p>
-        <p class="text-xs text-brand-accent font-bold">$10.00</p>
-    </div>
-    <div class="w-20">
-        <!-- class="menu-qty" wajib ada, data-menu wajib diisi nama menunya -->
-        <input type="number" min="0" value="0" class="menu-qty w-full px-2 py-1.5 border border-gray-300 rounded-md text-center focus:ring-2 focus:ring-brand-accent outline-none" data-menu="Pempek Kapal Selam">
-    </div>
-</div>
-
-<!-- Input Pempek Lenjer -->
-<div class="flex justify-between items-center p-3 border border-gray-200 rounded-lg bg-gray-50">
-    <div>
-        <p class="font-bold text-sm text-brand-dark">Pempek Lenjer</p>
-        <p class="text-xs text-brand-accent font-bold">$8.00</p>
-    </div>
-    <div class="w-20">
-        <input type="number" min="0" value="0" class="menu-qty w-full px-2 py-1.5 border border-gray-300 rounded-md text-center focus:ring-2 focus:ring-brand-accent outline-none" data-menu="Pempek Lenjer">
-    </div>
-</div>
                         <div class="flex justify-between items-center p-3 border border-gray-200 rounded-lg bg-gray-50">
                             <div>
-                                <p class="font-bold text-sm text-brand-dark">Paket Nasi Nusantara</p>
-                                <p class="text-xs text-brand-accent font-bold">$12.00</p>
+                                <p class="font-bold text-sm text-brand-dark">Pempek Kapal Selam</p>
+                                <p class="text-xs text-brand-accent font-bold">$10.00</p>
                             </div>
                             <div class="w-20">
-                                <input type="number" min="0" value="0" class="menu-qty w-full px-2 py-1.5 border border-gray-300 rounded-md text-center focus:ring-2 focus:ring-brand-accent outline-none" data-menu="Nasi Nusantara">
+                                <input type="number" min="0" value="0" class="menu-qty w-full px-2 py-1.5 border border-gray-300 rounded-md text-center focus:ring-2 focus:ring-brand-accent outline-none" data-menu="Pempek Kapal Selam" data-price="10">
                             </div>
                         </div>
 
+                        <!-- Input Pempek Lenjer -->
                         <div class="flex justify-between items-center p-3 border border-gray-200 rounded-lg bg-gray-50">
                             <div>
-                                <p class="font-bold text-sm text-brand-dark">Paket Spesial Rendang</p>
-                                <p class="text-xs text-brand-accent font-bold">$15.00</p>
+                                <p class="font-bold text-sm text-brand-dark">Pempek Lenjer</p>
+                                <p class="text-xs text-brand-accent font-bold">$8.00</p>
                             </div>
                             <div class="w-20">
-                                <input type="number" min="0" value="0" class="menu-qty w-full px-2 py-1.5 border border-gray-300 rounded-md text-center focus:ring-2 focus:ring-brand-accent outline-none" data-menu="Spesial Rendang">
+                                <input type="number" min="0" value="0" class="menu-qty w-full px-2 py-1.5 border border-gray-300 rounded-md text-center focus:ring-2 focus:ring-brand-accent outline-none" data-menu="Pempek Lenjer" data-price="8">
+                            </div>
+                        </div>
+
+                        <!-- Input Tekwan -->
+                        <div class="flex justify-between items-center p-3 border border-gray-200 rounded-lg bg-gray-50">
+                            <div>
+                                <p class="font-bold text-sm text-brand-dark">Tekwan</p>
+                                <p class="text-xs text-brand-accent font-bold">$9.00</p>
+                            </div>
+                            <div class="w-20">
+                                <input type="number" min="0" value="0" class="menu-qty w-full px-2 py-1.5 border border-gray-300 rounded-md text-center focus:ring-2 focus:ring-brand-accent outline-none" data-menu="Tekwan" data-price="9">
+                            </div>
+                        </div>
+
+                        <!-- Input Mie Ayam Bangka -->
+                        <div class="flex justify-between items-center p-3 border border-gray-200 rounded-lg bg-gray-50">
+                            <div>
+                                <p class="font-bold text-sm text-brand-dark">Mie Ayam Bangka</p>
+                                <p class="text-xs text-brand-accent font-bold">$12.00</p>
+                            </div>
+                            <div class="w-20">
+                                <input type="number" min="0" value="0" class="menu-qty w-full px-2 py-1.5 border border-gray-300 rounded-md text-center focus:ring-2 focus:ring-brand-accent outline-none" data-menu="Mie Ayam Bangka" data-price="12">
+                            </div>
+                        </div>
+
+                        <!-- Input Es Kacang Merah -->
+                        <div class="flex justify-between items-center p-3 border border-gray-200 rounded-lg bg-gray-50">
+                            <div>
+                                <p class="font-bold text-sm text-brand-dark">Es Kacang Merah</p>
+                                <p class="text-xs text-brand-accent font-bold">$5.00</p>
+                            </div>
+                            <div class="w-20">
+                                <input type="number" min="0" value="0" class="menu-qty w-full px-2 py-1.5 border border-gray-300 rounded-md text-center focus:ring-2 focus:ring-brand-accent outline-none" data-menu="Es Kacang Merah" data-price="5">
                             </div>
                         </div>
                     </div>
 
-                    <div>
-                        <label class="block text-sm font-bold text-brand-dark mb-1">Jadwal Pick-up (Denver Time)</label>
+                    <div class="pt-2">
+                        <label class="block text-sm font-bold text-brand-dark mb-1">Pick-up Schedule (Denver Time)</label>
                         <select id="inputTime" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-accent focus:border-brand-accent outline-none transition bg-white">
-                            <option value="">-- Pilih Jadwal --</option>
-                            <optgroup label="Jumat (Friday)">
-                                <option value="Jumat - 09:00 AM">09:00 AM</option>
-                                <option value="Jumat - 12:00 PM">12:00 PM</option>
-                                <option value="Jumat - 03:00 PM">03:00 PM</option>
+                            <option value="">-- Select Schedule --</option>
+                            <optgroup label="Friday">
+                                <option value="Friday - 09:00 AM">09:00 AM</option>
+                                <option value="Friday - 12:00 PM">12:00 PM</option>
+                                <option value="Friday - 03:00 PM">03:00 PM</option>
                             </optgroup>
-                            <optgroup label="Sabtu (Saturday)">
-                                <option value="Sabtu - 09:00 AM">09:00 AM</option>
-                                <option value="Sabtu - 12:00 PM">12:00 PM</option>
-                                <option value="Sabtu - 03:00 PM">03:00 PM</option>
+                            <optgroup label="Saturday">
+                                <option value="Saturday - 09:00 AM">09:00 AM</option>
+                                <option value="Saturday - 12:00 PM">12:00 PM</option>
+                                <option value="Saturday - 03:00 PM">03:00 PM</option>
                             </optgroup>
                         </select>
                     </div>
 
                     <button type="submit" id="submitBtn" class="w-full bg-brand-accent hover:bg-orange-700 text-white font-bold py-3 px-4 rounded-lg transition shadow-md mt-4">
-                        Pesan Sekarang
+                        Order Now
                     </button>
                 </form>
             </div>
@@ -219,7 +262,7 @@
                 <div id="modalBody" class="mt-4 text-left text-sm text-gray-600 space-y-2 bg-gray-50 p-4 rounded-lg"></div>
             </div>
             <div class="px-6 py-4 bg-gray-50 text-center">
-                <button onclick="closeModal()" class="bg-brand-dark hover:bg-black text-white px-8 py-2 rounded-lg font-bold transition">Tutup</button>
+                <button onclick="closeModal()" class="bg-brand-dark hover:bg-black text-white px-8 py-2 rounded-lg font-bold transition">Close</button>
             </div>
         </div>
     </div>
@@ -227,11 +270,11 @@
     <!-- JavaScript Logic -->
     <script>
         // ==========================================
-        // MASUKKAN URL APPS SCRIPT ANDA DI SINI
+        // MASUKKAN URL APPS SCRIPT ANDA DI SINI / INSERT YOUR APPS SCRIPT URL HERE
         const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxWl_KjlMfAHtuYBLNB68r0F1_8MMv1ilbXgPDMpCZsrcTsZYqH7x1dwf8M7fntKPkF/exec'; 
         // ==========================================
 
-        let sisaPorsi = 100; // Default diatur ke 100
+        let sisaPorsi = 100; // Default set to 100
 
         const counterDisplay = document.getElementById('counterDisplay');
         const counterIcon = document.getElementById('counterIcon');
@@ -239,10 +282,9 @@
         const formContainer = document.getElementById('formContainer');
         const customModal = document.getElementById('customModal');
 
-        // FUNGSI BARU: Tarik data live counter dari Google Sheets
+        // Fetch live counter data from Google Sheets
         async function fetchLiveCounter() {
             try {
-                // Efek loading counter
                 counterIcon.classList.replace('fa-fire', 'fa-spinner');
                 counterIcon.classList.add('fa-spin');
                 
@@ -254,9 +296,8 @@
                     updateCounterUI();
                 }
             } catch (error) {
-                console.log("Menggunakan kuota default karena:", error);
+                console.log("Using default quota due to:", error);
             } finally {
-                // Hentikan efek loading
                 counterIcon.classList.replace('fa-spinner', 'fa-fire');
                 counterIcon.classList.remove('fa-spin');
             }
@@ -266,18 +307,17 @@
             counterDisplay.innerText = sisaPorsi;
             
             if (sisaPorsi <= 0) {
-                document.getElementById('counterBadge').innerHTML = '<i class="fa-solid fa-lock"></i><span> Kuota Habis</span>';
+                document.getElementById('counterBadge').innerHTML = '<i class="fa-solid fa-lock"></i><span> Sold Out</span>';
                 formContainer.innerHTML = `
                     <div class="text-center p-8 bg-red-50 rounded-xl border border-red-200">
                         <i class="fa-solid fa-lock text-4xl text-red-400 mb-4"></i>
-                        <h2 class="text-2xl font-playfair font-bold text-red-700 mb-2">Pemesanan Ditutup</h2>
-                        <p class="text-red-600">Mohon maaf, kuota 100 porsi untuk minggu ini telah habis. Sampai jumpa di open PO selanjutnya!</p>
+                        <h2 class="text-2xl font-playfair font-bold text-red-700 mb-2">Orders Closed</h2>
+                        <p class="text-red-600">Sorry, our 100-portion quota for this week is fully booked. See you on the next pre-order!</p>
                     </div>
                 `;
             }
         }
 
-        // Jalankan fetch counter saat halaman pertama kali dimuat
         fetchLiveCounter();
 
         function showModal(type, title, htmlContent) {
@@ -322,27 +362,33 @@
             const qtyInputs = document.querySelectorAll('.menu-qty');
             
             let totalQty = 0;
+            let totalPrice = 0;
             let detailPesananMenuHtml = [];
             let detailPesananMenuText = [];
 
             qtyInputs.forEach(input => {
                 const qty = parseInt(input.value) || 0;
                 if (qty > 0) {
+                    const price = parseFloat(input.dataset.price);
+                    const subtotal = qty * price;
+                    
                     totalQty += qty;
-                    // Format untuk tampilan di struk web (HTML)
-                    detailPesananMenuHtml.push(`- ${input.dataset.menu} (<strong>${qty}</strong> porsi)`);
-                    // Format BARU untuk masuk ke Google Sheets (Plain Text tanpa Tag)
-                    detailPesananMenuText.push(`- ${input.dataset.menu} (${qty} porsi)`);
+                    totalPrice += subtotal;
+                    
+                    // HTML formatting for the success popup
+                    detailPesananMenuHtml.push(`- ${input.dataset.menu} (<strong>${qty}</strong> portion(s) - $${subtotal.toFixed(2)})`);
+                    // Plain text formatting for Google Sheets
+                    detailPesananMenuText.push(`- ${input.dataset.menu} (${qty} portion(s) - $${subtotal.toFixed(2)})`);
                 }
             });
 
             if (totalQty === 0) {
-                showModal('error', 'Pesanan Kosong', '<div class="text-center">Silakan isi minimal 1 porsi pada menu yang tersedia.</div>');
+                showModal('error', 'Empty Order', '<div class="text-center">Please select at least 1 portion from the menu.</div>');
                 return;
             }
 
             if (totalQty > sisaPorsi) {
-                showModal('error', 'Kuota Tidak Cukup', `<div class="text-center">Maaf, sisa porsi minggu ini tinggal <strong>${sisaPorsi} porsi</strong>.<br>Total pesanan Anda: ${totalQty} porsi. Silakan kurangi.</div>`);
+                showModal('error', 'Insufficient Quota', `<div class="text-center">Sorry, there are only <strong>${sisaPorsi} portions</strong> left for this week.<br>Your total order is ${totalQty} portions. Please reduce your quantity.</div>`);
                 return;
             }
             
@@ -350,7 +396,7 @@
             const originalBtnText = submitBtn.innerHTML;
             
             submitBtn.disabled = true;
-            submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin mr-2"></i> Sedang Memproses...';
+            submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin mr-2"></i> Processing...';
             submitBtn.classList.replace('bg-brand-accent', 'bg-gray-400');
             submitBtn.classList.replace('hover:bg-orange-700', 'hover:bg-gray-400');
 
@@ -360,7 +406,8 @@
                 phone: phone,
                 time: time,
                 totalQty: totalQty,
-                detailPesananText: detailPesananMenuText.join('\n') // Menggunakan teks murni \n (Enter) untuk spreadsheet
+                totalPrice: totalPrice,
+                detailPesananText: detailPesananMenuText.join('\n')
             };
 
             try {
@@ -378,18 +425,19 @@
                     const gabunganMenuHtml = detailPesananMenuHtml.join('<br>');
 
                     const strukHtml = `
-                        <p class="text-center mb-4 text-green-600 font-bold">Pesanan Berhasil Dicatat!</p>
+                        <p class="text-center mb-4 text-green-600 font-bold">Order Successfully Placed!</p>
                         <div class="border-t border-b border-gray-200 py-2">
-                            <p><strong>Nomor Pesanan:</strong> <span class="text-brand-accent">${orderID}</span></p>
-                            <p><strong>Nama:</strong> ${name}</p>
+                            <p><strong>Order Number:</strong> <span class="text-brand-accent">${orderID}</span></p>
+                            <p><strong>Name:</strong> ${name}</p>
                             <div class="my-3 bg-white p-3 border border-gray-200 rounded shadow-sm text-sm">
-                                <p class="text-xs text-gray-500 mb-1 font-bold">Detail Pesanan:</p>
+                                <p class="text-xs text-gray-500 mb-1 font-bold">Order Details:</p>
                                 ${gabunganMenuHtml}
                             </div>
-                            <p><strong>Total Keseluruhan:</strong> ${totalQty} Porsi</p>
-                            <p><strong>Jadwal Pick-up:</strong><br>${time}</p>
+                            <p><strong>Total Portions:</strong> ${totalQty} Portion(s)</p>
+                            <p><strong>Total Price:</strong> <span class="text-brand-accent font-bold">$${totalPrice.toFixed(2)}</span></p>
+                            <p><strong>Pick-up Schedule:</strong><br>${time}</p>
                         </div>
-                        <p class="text-xs text-center mt-3 text-gray-500 italic"><i class="fa-solid fa-envelope"></i> Email konfirmasi telah dikirim ke ${email}</p>
+                        <p class="text-xs text-center mt-3 text-gray-500 italic"><i class="fa-solid fa-envelope"></i> A confirmation email has been sent to ${email}</p>
                     `;
 
                     showModal('success', 'Order Confirmed', strukHtml);
@@ -400,7 +448,7 @@
                     throw new Error(result.message);
                 }
             } catch (error) {
-                showModal('error', 'Gagal Mengirim', '<div class="text-center">Terjadi kesalahan. Silakan coba lagi.<br><span class="text-xs text-gray-400">' + error + '</span></div>');
+                showModal('error', 'Failed to Submit', '<div class="text-center">An error occurred. Please try again.<br><span class="text-xs text-gray-400">' + error + '</span></div>');
             } finally {
                 submitBtn.disabled = false;
                 submitBtn.innerHTML = originalBtnText;
