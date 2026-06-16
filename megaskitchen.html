@@ -469,7 +469,10 @@
                             <p><strong>Total Price:</strong> <span class="text-brand-accent font-bold">$${totalPrice.toFixed(2)}</span></p>
                             <p><strong>Pick-up Schedule:</strong><br>${time}</p>
                         </div>
+                        <div class="mt-4 text-center text-xs text-gray-500 italic">
                         <p class="text-xs text-center mt-3 text-gray-500 italic"><i class="fa-solid fa-envelope"></i> A confirmation email has been sent to ${email}</p>
+                        <p class="mt-2 text-brand-accent font-bold">If you can't find our email, please check your spam folder and click "Report not spam" so you'll receive your next order in your inbox!</p>
+                        </div>
                     `;
 
                     showModal('success', 'Order Confirmed', strukHtml);
