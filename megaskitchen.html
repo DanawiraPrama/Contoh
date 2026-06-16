@@ -244,7 +244,7 @@
                     </div>
 
                     <div class="pt-2 transition-all duration-300" id="scheduleContainer">
-                        <label class="block text-sm font-bold text-brand-dark mb-1">Pick-up Schedule (Denver Time)</label>
+                        <label class="block text-sm font-bold text-brand-dark mb-1">Reservation / Pick-up Schedule (Denver Time)</label>
                         <select id="inputTime" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-accent focus:border-brand-accent outline-none transition bg-white">
                             <option value="">-- Select Schedule --</option>
                             <optgroup label="Friday">
@@ -384,11 +384,10 @@
             // Get Order Type first to determine if time needs fallback text
             const orderType = document.querySelector('input[name="orderType"]:checked').value;
             
-            // If Dine-in, assign a default string so it's not blank in the email/sheet
             let time = document.getElementById('inputTime').value;
-            if (orderType === 'Dine-in') {
-                time = "Dine-in (No specific time)";
-            }
+// JANGAN ganti 'time' menjadi string acak jika Dine-in.
+// Biarkan nilainya tetap "Friday - 09:00 AM" atau "Saturday - 12:00 PM"
+// agar fungsi getFormattedPickupDate di backend bisa membacanya.
 
             const qtyInputs = document.querySelectorAll('.menu-qty');
             
