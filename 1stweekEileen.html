@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campaign Eileen | Weekly Performance Infographic</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.plot.ly/plotly-2.24.1.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 650px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 320px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 380px;
+            }
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+        }
+        .vibrant-gradient {
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+        }
+        .status-badge {
+            padding: 2px 10px;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        .step-arrow::after {
+            content: "➔";
+            margin-left: 8px;
+            color: #94a3b8;
+        }
+        .step-arrow:last-child::after {
+            content: "";
+        }
+    </style>
+</head>
+<body class="text-slate-800">
+
+<!-- 
+    PLAN NARRATIVE:
+    1. Hook: Summary of the week's performance highlighting the S$38.35 CPL vs the S$40 target.
+    2. Overview: Core KPIs visualized via scorecards for immediate data digestion.
+    3. Campaign Duel: Direct comparison of Lucerne vs Thomson using Donut and Bar charts to show Thomson's lead dominance.
+    4. Market Health: Radar chart to show secondary metrics (CPM, CTR, Frequency) to diagnose 'why' costs are shifting.
+    5. Creative Audit: A specific focus on Lucerne's individual ad assets to guide optimization.
+    6. Future Strategy: A process flow for the upcoming week based on current data insights.
+
+    CHOSEN PALETTE: "Brilliant Blues & Energetic Teal"
+    Primary: #1E40AF (Deep Blue)
+    Secondary: #3B82F6 (Blue)
+    Accent 1: #06B6D4 (Cyan)
+    Accent 2: #10B981 (Emerald)
+    Neutral: #F59E0B (Amber)
+
+    VISUALIZATION JUSTIFICATION (NO SVG USED):
+    1. Lead Volume (Donut Chart) -> Goal: Inform Composition -> Chart.js (Canvas). Best for comparing share of leads.
+    2. CPL Benchmarking (Bar Chart) -> Goal: Compare Categories -> Chart.js (Canvas). Easiest way to see cost variance.
+    3. Delivery Efficiency (Radar Chart) -> Goal: Relationships -> Chart.js (Canvas). Good for multivariate comparisons of CTR/CPM.
+    4. Strategic Flow -> Goal: Process -> HTML/CSS Grid/Flex. Structured layout for logical progression.
+-->
+
+<!-- NO MERMAID JS NOR SVG WERE USED IN THIS OUTPUT -->
+
+<nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-200 py-4 px-6">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+        <div class="flex items-center space-x-2">
+            <div class="w-8 h-8 vibrant-gradient rounded-lg shadow-lg"></div>
+            <span class="font-bold text-xl tracking-tight text-slate-900">Eileen Campaign Report</span>
+        </div>
+        <div class="hidden md:flex space-x-8 text-sm font-semibold text-slate-500">
+            <a href="#overview" class="hover:text-blue-600 transition-colors">Overview</a>
+            <a href="#campaigns" class="hover:text-blue-600 transition-colors">Campaigns</a>
+            <a href="#creatives" class="hover:text-blue-600 transition-colors">Creatives</a>
+            <a href="#strategy" class="hover:text-blue-600 transition-colors">Strategy</a>
+        </div>
+        <div class="text-xs font-mono bg-slate-100 px-3 py-1 rounded text-slate-600">
+            JUN 29 - JUL 05
+        </div>
+    </div>
+</nav>
+
+<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    
+    <header class="mb-12">
+        <h1 class="text-4xl font-extrabold text-slate-900 mb-4 tracking-tight">Weekly Performance Performance Summary</h1>
+        <p class="text-lg text-slate-600 max-w-3xl leading-relaxed">
+            Campaign Eileen maintained efficient lead generation this week, closing with a total spend of <strong>S$498.54</strong> and delivering <strong>13 qualified leads</strong>. The cost per lead (CPL) settled at <strong>S$38.35</strong>, which is 4.1% below our target threshold of S$40.00. While engagement rates vary across channels, the overall campaign health remains strong.
+        </p>
+    </header>
+
+    <section id="overview" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+        <div class="glass-card p-6 rounded-2xl shadow-sm border-l-4 border-blue-600">
+            <p class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Amount Spent</p>
+            <h3 class="text-3xl font-extrabold text-slate-900">S$498.54</h3>
+            <p class="text-xs text-blue-600 font-semibold mt-2">99.7% Budget Pacing</p>
+        </div>
+        <div class="glass-card p-6 rounded-2xl shadow-sm border-l-4 border-emerald-500">
+            <p class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Total Leads</p>
+            <h3 class="text-3xl font-extrabold text-slate-900">13</h3>
+            <p class="text-xs text-emerald-600 font-semibold mt-2">Stable Delivery</p>
+        </div>
+        <div class="glass-card p-6 rounded-2xl shadow-sm border-l-4 border-cyan-500">
+            <p class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Avg. CPL</p>
+            <h3 class="text-3xl font-extrabold text-slate-900">S$38.35</h3>
+            <p class="text-xs text-cyan-600 font-semibold mt-2">Target: S$40.00</p>
+        </div>
+        <div class="glass-card p-6 rounded-2xl shadow-sm border-l-4 border-amber-500">
+            <p class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Frequency</p>
+            <h3 class="text-3xl font-extrabold text-slate-900">1.45</h3>
+            <p class="text-xs text-amber-600 font-semibold mt-2">Healthy Ad Refresh</p>
+        </div>
+    </section>
+
+    <section id="campaigns" class="mb-12">
+        <div class="bg-white rounded-3xl shadow-xl p-8 md:p-12 overflow-hidden">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-2xl font-bold text-slate-900 mb-4">Campaign Efficiency Breakdown</h2>
+                    <p class="text-slate-600 mb-8">
+                        The <strong>Thomson Campaign</strong> emerged as the primary efficiency engine, contributing over 60% of total leads at a significantly lower unit cost than Lucerne. While Lucerne commands higher engagement, its conversion friction results in a higher cost per acquisition.
+                    </p>
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between p-4 bg-slate-50 rounded-xl">
+                            <div>
+                                <span class="block text-sm font-bold text-slate-900">Thomson Efficiency</span>
+                                <span class="text-xs text-slate-500">Cost per lead significantly lower</span>
+                            </div>
+                            <span class="text-emerald-600 font-bold text-lg">S$30.84</span>
+                        </div>
+                        <div class="flex items-center justify-between p-4 bg-slate-50 rounded-xl">
+                            <div>
+                                <span class="block text-sm font-bold text-slate-900">Lucerne Engagement</span>
+                                <span class="text-xs text-slate-500">Highest Click-Through Rate</span>
+                            </div>
+                            <span class="text-blue-600 font-bold text-lg">0.97%</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 gap-8">
+                    <div class="chart-container">
+                        <canvas id="leadShareChart"></canvas>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="cplComparisonChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="market-dynamics" class="mb-12">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="glass-card p-8 rounded-3xl shadow-sm">
+                <h3 class="text-xl font-bold text-slate-900 mb-2">Delivery Dynamics</h3>
+                <p class="text-sm text-slate-500 mb-6">Analyzing the relationship between CPM, CTR, and Frequency to identify scaling opportunities.</p>
+                <div class="chart-container">
+                    <canvas id="marketRadarChart"></canvas>
+                </div>
+                <p class="mt-6 text-xs text-slate-500 italic text-center">Note: Metrics normalized for visual comparison on a radar scale.</p>
+            </div>
+            <div class="glass-card p-8 rounded-3xl shadow-sm flex flex-col justify-center">
+                <h3 class="text-xl font-bold text-slate-900 mb-6">Secondary Metric Analysis</h3>
+                <div class="space-y-8">
+                    <div class="relative pl-6 border-l-2 border-slate-200">
+                        <div class="absolute -left-1.5 top-0 w-3 h-3 bg-blue-600 rounded-full"></div>
+                        <h4 class="text-sm font-bold text-slate-800">CPM (Cost Per Mille)</h4>
+                        <p class="text-sm text-slate-600 mt-1">Average CPM of <strong>S$40.51</strong> indicates a moderately competitive auction. Lucerne is slightly more expensive due to higher video competition.</p>
+                    </div>
+                    <div class="relative pl-6 border-l-2 border-slate-200">
+                        <div class="absolute -left-1.5 top-0 w-3 h-3 bg-cyan-500 rounded-full"></div>
+                        <h4 class="text-sm font-bold text-slate-800">CTR (Engagement)</h4>
+                        <p class="text-sm text-slate-600 mt-1">The <strong>0.76%</strong> average CTR shows room for improvement in creative "thumb-stop" appeal, particularly in the Thomson campaign sets.</p>
+                    </div>
+                    <div class="relative pl-6 border-l-2 border-slate-200">
+                        <div class="absolute -left-1.5 top-0 w-3 h-3 bg-emerald-500 rounded-full"></div>
+                        <h4 class="text-sm font-bold text-slate-800">Reach Penetration</h4>
+                        <p class="text-sm text-slate-600 mt-1">Total reach of <strong>8,489</strong> unique individuals shows we are reaching a fresh audience with low frequency (1.45).</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="creatives" class="mb-12">
+        <h2 class="text-2xl font-bold text-slate-900 mb-6">Lucerne Creative Deep Dive</h2>
+        <div class="overflow-hidden glass-card rounded-2xl shadow-sm">
+            <div class="overflow-x-auto">
+                <table class="w-full text-left text-sm">
+                    <thead class="bg-slate-50 text-slate-500 font-bold uppercase text-[10px] tracking-widest border-b border-slate-100">
+                        <tr>
+                            <th class="px-6 py-4">Ad Creative Name</th>
+                            <th class="px-6 py-4 text-center">Spend</th>
+                            <th class="px-6 py-4 text-center">Leads</th>
+                            <th class="px-6 py-4 text-center">CTR</th>
+                            <th class="px-6 py-4 text-center">CPL</th>
+                            <th class="px-6 py-4 text-right">Performance Status</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-100">
+                        <tr>
+                            <td class="px-6 py-5 font-semibold text-slate-900">Video Ai Lucerne</td>
+                            <td class="px-6 py-5 text-center text-slate-600">S$213.88</td>
+                            <td class="px-6 py-5 text-center text-slate-600">4</td>
+                            <td class="px-6 py-5 text-center text-slate-600">1.02%</td>
+                            <td class="px-6 py-5 text-center text-slate-600 font-bold">S$53.47</td>
+                            <td class="px-6 py-5 text-right"><span class="status-badge bg-blue-100 text-blue-700">Volume Driver</span></td>
+                        </tr>
+                        <tr>
+                            <td class="px-6 py-5 font-semibold text-slate-900">Image 6 - VVIP Access</td>
+                            <td class="px-6 py-5 text-center text-slate-600">S$34.68</td>
+                            <td class="px-6 py-5 text-center text-slate-600">1</td>
+                            <td class="px-6 py-5 text-center text-slate-600">0.67%</td>
+                            <td class="px-6 py-5 text-center text-slate-600 font-bold text-emerald-600">S$34.68</td>
+                            <td class="px-6 py-5 text-right"><span class="status-badge bg-emerald-100 text-emerald-700">Efficiency Star</span></td>
+                        </tr>
+                        <tr>
+                            <td class="px-6 py-5 font-semibold text-slate-900">Image 3 - Comparisons</td>
+                            <td class="px-6 py-5 text-center text-slate-600">S$3.28</td>
+                            <td class="px-6 py-5 text-center text-slate-600">0</td>
+                            <td class="px-6 py-5 text-center text-slate-600">0.00%</td>
+                            <td class="px-6 py-5 text-center text-slate-600 font-bold">N/A</td>
+                            <td class="px-6 py-5 text-right"><span class="status-badge bg-red-100 text-red-700">Underperforming</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <section id="strategy" class="mb-20">
+        <h2 class="text-2xl font-bold text-slate-900 mb-8 text-center">Strategic Action Plan: Next Week</h2>
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 items-start">
+            <div class="p-6 bg-slate-900 text-white rounded-2xl shadow-xl relative md:mb-0 mb-8">
+                <span class="block text-blue-400 font-bold text-xs mb-2">STEP 01</span>
+                <h4 class="text-lg font-bold mb-3">Reallocate Budget</h4>
+                <p class="text-xs text-slate-400 leading-relaxed">Shift 15% budget from Lucerne to Thomson to capitalize on the lower CPL (S$30.84).</p>
+                <div class="hidden md:block absolute -right-4 top-1/2 -translate-y-1/2 text-2xl text-slate-300">➔</div>
+            </div>
+            <div class="p-6 bg-white border border-slate-200 rounded-2xl shadow-sm relative md:mb-0 mb-8">
+                <span class="block text-blue-600 font-bold text-xs mb-2">STEP 02</span>
+                <h4 class="text-lg font-bold mb-3 text-slate-900">Creative Swap</h4>
+                <p class="text-xs text-slate-500 leading-relaxed">Deploy the high-performing Lucerne Video asset into Thomson campaigns to fix the CTR gap.</p>
+                <div class="hidden md:block absolute -right-4 top-1/2 -translate-y-1/2 text-2xl text-slate-300">➔</div>
+            </div>
+            <div class="p-6 bg-white border border-slate-200 rounded-2xl shadow-sm relative md:mb-0 mb-8">
+                <span class="block text-blue-600 font-bold text-xs mb-2">STEP 03</span>
+                <h4 class="text-lg font-bold mb-3 text-slate-900">Scale Winners</h4>
+                <p class="text-xs text-slate-500 leading-relaxed">Increase daily spend on 'Image 6' which is delivering leads 15% below target CPL.</p>
+                <div class="hidden md:block absolute -right-4 top-1/2 -translate-y-1/2 text-2xl text-slate-300">➔</div>
+            </div>
+            <div class="p-6 bg-emerald-50 border border-emerald-200 rounded-2xl shadow-sm relative">
+                <span class="block text-emerald-600 font-bold text-xs mb-2">STEP 04</span>
+                <h4 class="text-lg font-bold mb-3 text-emerald-900">Final Pause</h4>
+                <p class="text-xs text-emerald-700/70 leading-relaxed">Deactivate 'Image 3' and high-CPM static banners to eliminate wasteful spending.</p>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<footer class="bg-slate-900 text-slate-500 py-12 px-6">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center">
+        <p class="text-sm">Campaign Eileen Weekly Analysis &copy; 2026</p>
+        <p class="text-[10px] uppercase tracking-widest mt-4 md:mt-0">Confidential Report | Prepared July 06, 2026</p>
+    </div>
+</footer>
+
+<script>
+    // Universal Tooltip Configuration for Multi-line support
+    const multiLineTooltip = {
+        callbacks: {
+            title: function(tooltipItems) {
+                const item = tooltipItems[0];
+                let label = item.chart.data.labels[item.dataIndex];
+                if (Array.isArray(label)) {
+                    return label.join(' ');
+                } else {
+                    return label;
+                }
+            }
+        }
+    };
+
+    // Label Wrapping Logic (> 16 chars)
+    function wrapLabels(labels) {
+        return labels.map(label => {
+            if (label.length > 16) {
+                const words = label.split(' ');
+                const lines = [];
+                let currentLine = '';
+                words.forEach(word => {
+                    if ((currentLine + word).length > 16) {
+                        lines.push(currentLine.trim());
+                        currentLine = word + ' ';
+                    } else {
+                        currentLine += word + ' ';
+                    }
+                });
+                lines.push(currentLine.trim());
+                return lines;
+            }
+            return label;
+        });
+    }
+
+    // Chart 1: Lead Share Donut
+    const ctxLeads = document.getElementById('leadShareChart').getContext('2d');
+    new Chart(ctxLeads, {
+        type: 'doughnut',
+        data: {
+            labels: wrapLabels(['Thomson Campaign', 'Lucerne Campaign']),
+            datasets: [{
+                data: [8, 5],
+                backgroundColor: ['#1E40AF', '#06B6D4'],
+                borderWidth: 0,
+                hoverOffset: 10
+            }]
+        },
+        options: {
+            maintainAspectRatio: false,
+            responsive: true,
+            plugins: {
+                tooltip: multiLineTooltip,
+                legend: { position: 'bottom', labels: { boxWidth: 12, padding: 20, font: { family: 'Inter', size: 11 } } },
+                title: { display: true, text: 'Lead Share Distribution', font: { size: 16, weight: 'bold' }, padding: 20 }
+            },
+            cutout: '70%'
+        }
+    });
+
+    // Chart 2: CPL Comparison Bar
+    const ctxCpl = document.getElementById('cplComparisonChart').getContext('2d');
+    new Chart(ctxCpl, {
+        type: 'bar',
+        data: {
+            labels: wrapLabels(['Thomson (Eff.)', 'Overall Average', 'Lucerne (High)']),
+            datasets: [{
+                label: 'CPL (S$)',
+                data: [30.84, 38.35, 50.37],
+                backgroundColor: ['#10B981', '#3B82F6', '#F59E0B'],
+                borderRadius: 8,
+                barThickness: 40
+            }]
+        },
+        options: {
+            maintainAspectRatio: false,
+            responsive: true,
+            indexAxis: 'y',
+            plugins: {
+                tooltip: multiLineTooltip,
+                legend: { display: false },
+                title: { display: true, text: 'Cost Per Lead Benchmark', font: { size: 16, weight: 'bold' }, padding: 20 }
+            },
+            scales: {
+                x: { grid: { display: false }, ticks: { font: { size: 10 } } },
+                y: { grid: { display: false }, ticks: { font: { size: 10 } } }
+            }
+        }
+    });
+
+    // Chart 3: Market Radar
+    const ctxRadar = document.getElementById('marketRadarChart').getContext('2d');
+    new Chart(ctxRadar, {
+        type: 'radar',
+        data: {
+            labels: wrapLabels(['CPM Performance', 'CTR Engagement', 'Frequency Health', 'Reach Expansion', 'Lead Velocity']),
+            datasets: [{
+                label: 'Normalized Performance',
+                data: [80, 65, 90, 85, 75],
+                fill: true,
+                backgroundColor: 'rgba(59, 130, 246, 0.2)',
+                borderColor: '#3B82F6',
+                pointBackgroundColor: '#3B82F6',
+                pointBorderColor: '#fff',
+                pointHoverBackgroundColor: '#fff',
+                pointHoverBorderColor: '#3B82F6'
+            }]
+        },
+        options: {
+            maintainAspectRatio: false,
+            responsive: true,
+            plugins: {
+                tooltip: multiLineTooltip,
+                legend: { display: false }
+            },
+            scales: {
+                r: {
+                    angleLines: { display: true },
+                    suggestedMin: 0,
+                    suggestedMax: 100,
+                    ticks: { display: false }
+                }
+            }
+        }
+    });
+</script>
+
+</body>
+</html>
