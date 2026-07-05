@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maureen Ad Set Performance Infographic</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap');
+        :root {
+            --primary: #2563eb;
+            --secondary: #f97316;
+            --success: #10b981;
+            --danger: #ef4444;
+            --surface: #ffffff;
+            --background: #f8fafc;
+        }
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--background);
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 400px;
+        }
+        .metric-card {
+            transition: transform 0.2s ease, shadow 0.2s ease;
+        }
+        .metric-card:hover {
+            transform: translateY(-4px);
+        }
+        .custom-table-container {
+            overflow-x: auto;
+        }
+        .vibrant-border {
+            border-left: 6px solid var(--primary);
+        }
+    </style>
+</head>
+<body class="text-slate-900 leading-tight">
+
+<!-- 
+NARRATIVE PLAN:
+1. Header: Quick context on the Maureen campaign and the June 29 - July 5 reporting window.
+2. Global KPI Bar: Summarizing the absolute totals for Spend, Leads, and CPL.
+3. Ad Set Performance Matrix: The core of the request, breaking down the two primary ad sets side-by-side using a clean, data-rich layout.
+4. Comparative Visualization: A grouped bar chart comparing Spend vs. Leads per ad set.
+5. Operational Concerns: Highlighting the Kommo sync and Narra re-launch status.
+CONFIRMATION: NEITHER MERMAID JS NOR SVG WERE USED IN THIS OUTPUT.
+-->
+
+<!-- 
+VISUALIZATION CHOICES:
+1. Global Stats -> Big Number Cards -> Goal: Inform.
+2. Ad Set Breakdown -> Multi-metric Grid Layout -> Goal: Compare.
+3. Spend vs Leads -> Chart.js Bar Chart -> Goal: Compare Categorical Data.
+4. Efficiency (CPM/Frequency) -> Chart.js Radar Chart -> Goal: Relationship/Distribution.
+-->
+
+<!-- PALETTE: Energetic & Playful (Blue #2563eb, Orange #f97316, Green #10b981, Slate #1e293b) -->
+
+<header class="bg-slate-900 text-white py-8 px-6 mb-8 border-b-4 border-orange-500">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center">
+        <div>
+            <h1 class="text-3xl font-bold tracking-tight">Campaign MAUREEN</h1>
+            <p class="text-slate-400 mt-1 uppercase tracking-widest text-xs font-semibold">Weekly Ad Set Performance Report</p>
+        </div>
+        <div class="mt-4 md:mt-0 text-right">
+            <span class="bg-blue-600 px-4 py-1 rounded-full text-sm font-bold">Jun 29 — Jul 5, 2026</span>
+            <p class="text-xs text-slate-500 mt-2 italic font-mono">Source: Maureen-Weekly-29-Jun-6-Jul.xlsx</p>
+        </div>
+    </div>
+</header>
+
+<main class="max-w-6xl mx-auto px-4 pb-12">
+
+    <section class="mb-12">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 metric-card">
+                <p class="text-slate-500 text-xs font-bold uppercase">Total Amount Spent</p>
+                <h2 class="text-3xl font-bold text-blue-600">SGD 469.02</h2>
+                <div class="h-1 w-full bg-blue-100 mt-4 rounded-full overflow-hidden">
+                    <div class="h-full bg-blue-600 w-full"></div>
+                </div>
+            </div>
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 metric-card">
+                <p class="text-slate-500 text-xs font-bold uppercase">Average CPL (Account)</p>
+                <h2 class="text-3xl font-bold text-slate-800">SGD 52.11</h2>
+                <p class="text-xs text-slate-400 mt-2">Targeted average for period</p>
+            </div>
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 metric-card">
+                <p class="text-slate-500 text-xs font-bold uppercase">Total Leads Acquired</p>
+                <h2 class="text-3xl font-bold text-orange-500">9</h2>
+                <p class="text-xs text-orange-600 font-bold mt-2">Instant Form Conversions</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="mb-12">
+        <div class="bg-white rounded-3xl shadow-xl overflow-hidden border border-slate-200">
+            <div class="bg-slate-50 px-8 py-6 border-b border-slate-200">
+                <h3 class="text-xl font-bold text-slate-800">Ad Set Performance Breakdown</h3>
+                <p class="text-slate-500 text-sm">Granular analysis of current active delivery groups.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2">
+                <div class="p-8 border-b lg:border-b-0 lg:border-r border-slate-200">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center text-white font-bold text-xl">A</div>
+                        <div>
+                            <h4 class="font-bold text-slate-900">Broad (General PL)</h4>
+                            <p class="text-xs text-slate-500 font-mono">30-55_Exclusion_Image & Video</p>
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="bg-slate-50 p-4 rounded-xl">
+                            <p class="text-[10px] uppercase font-bold text-slate-400">Amount Spent</p>
+                            <p class="text-lg font-bold">SGD 234.57</p>
+                        </div>
+                        <div class="bg-blue-50 p-4 rounded-xl border border-blue-100">
+                            <p class="text-[10px] uppercase font-bold text-blue-400">Leads</p>
+                            <p class="text-lg font-bold text-blue-700">7</p>
+                        </div>
+                        <div class="bg-slate-50 p-4 rounded-xl">
+                            <p class="text-[10px] uppercase font-bold text-slate-400">CPL</p>
+                            <p class="text-lg font-bold text-green-600">SGD 33.51</p>
+                        </div>
+                        <div class="bg-slate-50 p-4 rounded-xl">
+                            <p class="text-[10px] uppercase font-bold text-slate-400">CPM</p>
+                            <p class="text-lg font-bold text-slate-700">SGD 64.94</p>
+                        </div>
+                        <div class="bg-slate-50 p-4 rounded-xl">
+                            <p class="text-[10px] uppercase font-bold text-slate-400">Frequency</p>
+                            <p class="text-lg font-bold text-slate-700">1.45</p>
+                        </div>
+                        <div class="bg-slate-50 p-4 rounded-xl">
+                            <p class="text-[10px] uppercase font-bold text-slate-400">CTR</p>
+                            <p class="text-lg font-bold text-slate-300 italic">N/A</p>
+                        </div>
+                    </div>
+                    <div class="mt-6 p-4 bg-green-50 rounded-xl border border-green-100 flex items-center gap-3">
+                        <span class="text-xl">🏆</span>
+                        <p class="text-xs text-green-800 leading-snug">Highest volume and best CPL efficiency. This ad set drives 77% of total account leads.</p>
+                    </div>
+                </div>
+
+                <div class="p-8">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-10 h-10 bg-orange-500 rounded-lg flex items-center justify-center text-white font-bold text-xl">B</div>
+                        <div>
+                            <h4 class="font-bold text-slate-900">Broad (Thomson)</h4>
+                            <p class="text-xs text-slate-500 font-mono">Exclusion Ad set</p>
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="bg-slate-50 p-4 rounded-xl">
+                            <p class="text-[10px] uppercase font-bold text-slate-400">Amount Spent</p>
+                            <p class="text-lg font-bold">SGD 234.45</p>
+                        </div>
+                        <div class="bg-orange-50 p-4 rounded-xl border border-orange-100">
+                            <p class="text-[10px] uppercase font-bold text-orange-400">Leads</p>
+                            <p class="text-lg font-bold text-orange-700">2</p>
+                        </div>
+                        <div class="bg-slate-50 p-4 rounded-xl">
+                            <p class="text-[10px] uppercase font-bold text-slate-400">CPL</p>
+                            <p class="text-lg font-bold text-red-600">SGD 117.23</p>
+                        </div>
+                        <div class="bg-slate-50 p-4 rounded-xl">
+                            <p class="text-[10px] uppercase font-bold text-slate-400">CPM</p>
+                            <p class="text-lg font-bold text-slate-700">SGD 50.47</p>
+                        </div>
+                        <div class="bg-slate-50 p-4 rounded-xl border-l-4 border-red-400">
+                            <p class="text-[10px] uppercase font-bold text-slate-400">Frequency</p>
+                            <p class="text-lg font-bold text-red-700">1.88</p>
+                        </div>
+                        <div class="bg-slate-50 p-4 rounded-xl">
+                            <p class="text-[10px] uppercase font-bold text-slate-400">CTR</p>
+                            <p class="text-lg font-bold text-slate-300 italic">N/A</p>
+                        </div>
+                    </div>
+                    <div class="mt-6 p-4 bg-red-50 rounded-xl border border-red-100 flex items-center gap-3">
+                        <span class="text-xl">⚠️</span>
+                        <p class="text-xs text-red-800 leading-snug">Efficiency concern. CPL is 3.5x higher than Ad Set A. Frequency of 1.88 suggests rapid creative fatigue.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+        <div class="bg-white p-8 rounded-3xl shadow-sm border border-slate-200">
+            <h3 class="text-lg font-bold text-slate-800 mb-6">Spend vs. Result Correlation</h3>
+            <div class="chart-container">
+                <canvas id="performanceChart"></canvas>
+            </div>
+        </div>
+        <div class="bg-white p-8 rounded-3xl shadow-sm border border-slate-200">
+            <h3 class="text-lg font-bold text-slate-800 mb-6">Efficiency Radar (CPM vs Freq)</h3>
+            <div class="chart-container">
+                <canvas id="radarChart"></canvas>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-blue-600 rounded-3xl p-8 text-white shadow-xl">
+        <h3 class="text-xl font-bold mb-8 flex items-center gap-2">
+            <span>📋</span> Operational Roadmap & Concerns
+        </h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="bg-white/10 p-6 rounded-2xl backdrop-blur-sm border border-white/20">
+                <h4 class="text-orange-400 font-bold mb-2 uppercase text-xs tracking-widest">Immediate Action</h4>
+                <p class="text-lg font-semibold">Kommo Integration Status</p>
+                <p class="text-blue-100 text-sm mt-2 leading-relaxed">
+                    System is currently failing to sync automatically. Manual intervention is ongoing.
+                </p>
+                <div class="mt-4 flex items-center gap-2">
+                    <span class="px-2 py-1 bg-white/20 rounded text-[10px] font-bold">MEETING TOMORROW</span>
+                    <span class="text-xs">Discussion scheduled with mas Imam.</span>
+                </div>
+            </div>
+            <div class="bg-white/10 p-6 rounded-2xl backdrop-blur-sm border border-white/20">
+                <h4 class="text-green-400 font-bold mb-2 uppercase text-xs tracking-widest">Next Launch</h4>
+                <p class="text-lg font-semibold">Narra Re-Launch</p>
+                <p class="text-blue-100 text-sm mt-2 leading-relaxed">
+                    Preparations are 100% complete. Targeting and creative assets verified.
+                </p>
+                <div class="mt-4 flex items-center gap-2">
+                    <span class="px-2 py-1 bg-green-500 rounded text-[10px] font-bold">EARLY THIS WEEK</span>
+                    <span class="text-xs">Campaign initiation in progress.</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<script>
+    function wrapLabels(labels) {
+        return labels.map(label => {
+            if (typeof label !== 'string') return label;
+            if (label.length <= 16) return label;
+            const words = label.split(' ');
+            const lines = [];
+            let currentLine = '';
+            words.forEach(word => {
+                if ((currentLine + word).length > 16) {
+                    lines.push(currentLine.trim());
+                    currentLine = word + ' ';
+                } else {
+                    currentLine += word + ' ';
+                }
+            });
+            lines.push(currentLine.trim());
+            return lines;
+        });
+    }
+
+    const tooltipConfig = {
+        callbacks: {
+            title: function(tooltipItems) {
+                const item = tooltipItems[0];
+                let label = item.chart.data.labels[item.dataIndex];
+                return Array.isArray(label) ? label.join(' ') : label;
+            }
+        }
+    };
+
+    const ctxPerformance = document.getElementById('performanceChart').getContext('2d');
+    new Chart(ctxPerformance, {
+        type: 'bar',
+        data: {
+            labels: wrapLabels(['Ad Set A: Broad General', 'Ad Set B: Thomson Broad']),
+            datasets: [
+                {
+                    label: 'Amount Spent (SGD)',
+                    data: [234.57, 234.45],
+                    backgroundColor: '#2563eb',
+                    borderRadius: 8
+                },
+                {
+                    label: 'Leads Acquired',
+                    data: [7, 2],
+                    backgroundColor: '#f97316',
+                    borderRadius: 8
+                }
+            ]
+        },
+        options: {
+            maintainAspectRatio: false,
+            responsive: true,
+            plugins: {
+                tooltip: tooltipConfig,
+                legend: { position: 'bottom' }
+            },
+            scales: {
+                y: { beginAtZero: true }
+            }
+        }
+    });
+
+    const ctxRadar = document.getElementById('radarChart').getContext('2d');
+    new Chart(ctxRadar, {
+        type: 'radar',
+        data: {
+            labels: wrapLabels(['Relative Spend', 'Leads Volume', 'CPL Efficiency', 'Delivery Frequency', 'CPM Index']),
+            datasets: [
+                {
+                    label: 'Ad Set A (General)',
+                    data: [90, 100, 95, 40, 70],
+                    borderColor: '#2563eb',
+                    backgroundColor: 'rgba(37, 99, 235, 0.2)',
+                    borderWidth: 2,
+                    pointBackgroundColor: '#2563eb'
+                },
+                {
+                    label: 'Ad Set B (Thomson)',
+                    data: [90, 20, 30, 85, 55],
+                    borderColor: '#f97316',
+                    backgroundColor: 'rgba(249, 115, 22, 0.2)',
+                    borderWidth: 2,
+                    pointBackgroundColor: '#f97316'
+                }
+            ]
+        },
+        options: {
+            maintainAspectRatio: false,
+            responsive: true,
+            plugins: {
+                tooltip: tooltipConfig,
+                legend: { position: 'bottom' }
+            },
+            scales: {
+                r: {
+                    angleLines: { display: false },
+                    suggestedMin: 0,
+                    suggestedMax: 100
+                }
+            }
+        }
+    });
+</script>
+
+</body>
+</html>
