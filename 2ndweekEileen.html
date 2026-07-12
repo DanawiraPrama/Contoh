@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campaign Eileen | Weekly Performance Infographic</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 650px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 320px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 380px;
+            }
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+        }
+        .vibrant-gradient {
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+        }
+        .status-badge {
+            padding: 2px 10px;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body class="text-slate-800">
+
+<nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-200 py-4 px-6">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+        <div class="flex items-center space-x-2">
+            <div class="w-8 h-8 vibrant-gradient rounded-lg shadow-lg"></div>
+            <span class="font-bold text-xl tracking-tight text-slate-900">Eileen Campaign Report</span>
+        </div>
+        <div class="hidden md:flex space-x-8 text-sm font-semibold text-slate-500">
+            <a href="#overview" class="hover:text-blue-600 transition-colors">Overview</a>
+            <a href="#campaigns" class="hover:text-blue-600 transition-colors">Campaigns</a>
+            <a href="#creatives" class="hover:text-blue-600 transition-colors">Creatives</a>
+            <a href="#operations" class="hover:text-blue-600 transition-colors">Operations</a>
+            <a href="#strategy" class="hover:text-blue-600 transition-colors">Strategy</a>
+        </div>
+        <div class="text-xs font-mono bg-slate-100 px-3 py-1 rounded text-slate-600">
+            JUL 06 - JUL 12 (WEEK 2)
+        </div>
+    </div>
+</nav>
+
+<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    
+    <header class="mb-12">
+        <div class="flex flex-wrap items-center justify-between gap-4 mb-4">
+            <h1 class="text-4xl font-extrabold text-slate-900 tracking-tight">Weekly Performance Summary</h1>
+            <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-3 py-1.5 rounded-full uppercase tracking-wider">
+                Exceeded Lead Target!
+            </span>
+        </div>
+        <p class="text-lg text-slate-600 max-w-4xl leading-relaxed">
+            Campaign Eileen achieved a major breakthrough this week, delivering a total of <strong>18 high-intent leads</strong> (a 38.5% increase WoW) and dropping the average cost per lead by 23.2% to <strong>S$29.44</strong> (vs. S$38.35 last week). This massive improvement follows strategic optimizations, pausing underperforming creatives, and launching the new <em>Eileen - Personal Branding</em> campaign.
+        </p>
+    </header>
+
+    <!-- KPI Metrics WoW Comparison Section -->
+    <section id="overview" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+        <div class="glass-card p-6 rounded-2xl shadow-sm border-l-4 border-blue-600">
+            <p class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Amount Spent</p>
+            <h3 class="text-3xl font-extrabold text-slate-900">S$529.97</h3>
+            <p class="text-xs text-blue-600 font-semibold mt-2">
+                <span class="inline-block mr-1">▲</span>+6.3% vs. Last Week
+            </p>
+        </div>
+        <div class="glass-card p-6 rounded-2xl shadow-sm border-l-4 border-emerald-500">
+            <p class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Total Leads</p>
+            <h3 class="text-3xl font-extrabold text-slate-900">18</h3>
+            <p class="text-xs text-emerald-600 font-semibold mt-2">
+                <span class="inline-block mr-1">▲</span>+38.5% (Target 15 Exceeded!)
+            </p>
+        </div>
+        <div class="glass-card p-6 rounded-2xl shadow-sm border-l-4 border-cyan-500">
+            <p class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Avg. CPL</p>
+            <h3 class="text-3xl font-extrabold text-slate-950 text-emerald-600">S$29.44</h3>
+            <p class="text-xs text-emerald-600 font-semibold mt-2">
+                <span class="inline-block mr-1">▼</span>-23.2% (Target: S$40.00)
+            </p>
+        </div>
+        <div class="glass-card p-6 rounded-2xl shadow-sm border-l-4 border-amber-500">
+            <p class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Avg. Frequency</p>
+            <h3 class="text-3xl font-extrabold text-slate-900">1.62</h3>
+            <p class="text-xs text-amber-600 font-semibold mt-2">
+                Normal aging (1.45 last week)
+            </p>
+        </div>
+    </section>
+
+    <!-- Campaign Efficiency Analysis Section -->
+    <section id="campaigns" class="mb-12">
+        <div class="bg-white rounded-3xl shadow-xl p-8 md:p-12 overflow-hidden">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-2xl font-bold text-slate-900 mb-4">Campaign Efficiency Breakdown</h2>
+                    <p class="text-slate-600 mb-8">
+                        The <strong>Thomson Campaign</strong> achieved stellar gains, pulling in 11 leads with a CPL of just <strong>S$19.72</strong> due to a creative refresh. The new <strong>Personal Branding Campaign</strong> (image-only) recorded a highly encouraging debut at S$33.27 CPL with the highest CTR of all campaigns.
+                    </p>
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between p-4 bg-emerald-50 border border-emerald-100 rounded-xl">
+                            <div>
+                                <span class="block text-sm font-bold text-emerald-900">Thomson (Efficiency Winner)</span>
+                                <span class="text-xs text-emerald-600">Cost per lead reduced by 36.1% WoW</span>
+                            </div>
+                            <span class="text-emerald-600 font-bold text-lg">S$19.72</span>
+                        </div>
+                        <div class="flex items-center justify-between p-4 bg-blue-50 border border-blue-100 rounded-xl">
+                            <div>
+                                <span class="block text-sm font-bold text-blue-900">Personal Branding (Debut Winner)</span>
+                                <span class="text-xs text-blue-600">Highest overall Click-Through Rate</span>
+                            </div>
+                            <span class="text-blue-600 font-bold text-lg">1.30%</span>
+                        </div>
+                        <div class="flex items-center justify-between p-4 bg-slate-50 border border-slate-100 rounded-xl">
+                            <div>
+                                <span class="block text-sm font-bold text-slate-900">Lucerne (Optimized Out)</span>
+                                <span class="text-xs text-slate-500">CPL remained high; budget reallocated</span>
+                            </div>
+                            <span class="text-slate-500 font-bold text-lg">S$53.31</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 gap-8">
+                    <div class="chart-container">
+                        <canvas id="leadShareChart"></canvas>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="cplComparisonChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Week-over-Week Metrics Breakdown Section -->
+    <section id="market-dynamics" class="mb-12">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="glass-card p-8 rounded-3xl shadow-sm">
+                <h3 class="text-xl font-bold text-slate-900 mb-2">WoW Performance Dynamics</h3>
+                <p class="text-sm text-slate-500 mb-6">Visual comparison of core metrics from last week vs. this week. Cheaper impressions and higher conversions are clearly visible.</p>
+                <div class="chart-container">
+                    <canvas id="marketComparisonChart"></canvas>
+                </div>
+            </div>
+            <div class="glass-card p-8 rounded-3xl shadow-sm flex flex-col justify-center">
+                <h3 class="text-xl font-bold text-slate-900 mb-6">Secondary Metric Analysis (WoW)</h3>
+                <div class="space-y-8">
+                    <div class="relative pl-6 border-l-2 border-slate-200">
+                        <div class="absolute -left-1.5 top-0 w-3 h-3 bg-emerald-500 rounded-full"></div>
+                        <h4 class="text-sm font-bold text-slate-800 flex items-center justify-between">
+                            <span>CPM (Cost Per Mille)</span>
+                            <span class="text-xs text-emerald-600 font-semibold">▲ S$34.76 (-14.2% cheaper)</span>
+                        </h4>
+                        <p class="text-sm text-slate-600 mt-1">Our average CPM dropped from S$40.51 to S$34.76, largely driven by the extremely cost-effective auction for the new Personal Branding campaign (S$27.07 CPM).</p>
+                    </div>
+                    <div class="relative pl-6 border-l-2 border-slate-200">
+                        <div class="absolute -left-1.5 top-0 w-3 h-3 bg-blue-600 rounded-full"></div>
+                        <h4 class="text-sm font-bold text-slate-800 flex items-center justify-between">
+                            <span>CTR (Link Click-Through)</span>
+                            <span class="text-xs text-blue-600 font-semibold">▲ 0.84% (+10.5% WoW)</span>
+                        </h4>
+                        <p class="text-sm text-slate-600 mt-1">Average CTR rose to 0.84%, reflecting highly targeted reach. Lucerne kept its solid engagement (1.13%) while Personal Branding excelled at 1.30% CTR.</p>
+                    </div>
+                    <div class="relative pl-6 border-l-2 border-slate-200">
+                        <div class="absolute -left-1.5 top-0 w-3 h-3 bg-amber-500 rounded-full"></div>
+                        <h4 class="text-sm font-bold text-slate-800 flex items-center justify-between">
+                            <span>Audience Reach & Impressions</span>
+                            <span class="text-xs text-amber-600 font-semibold">▲ 15,248 (+23.9% WoW)</span>
+                        </h4>
+                        <p class="text-sm text-slate-600 mt-1">Impressions expanded significantly from 12,306 to 15,248 with a highly managed frequency of 1.62, showcasing healthy audience scaling.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Campaign Operations Section (On/Off/Relaunch) -->
+    <section id="operations" class="mb-12">
+        <h2 class="text-2xl font-bold text-slate-900 mb-6">Campaign Lifecycle & Status Changes</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="bg-red-50 border border-red-200 rounded-2xl p-6 shadow-sm">
+                <div class="flex items-center space-x-3 mb-4">
+                    <span class="w-2.5 h-2.5 bg-red-600 rounded-full"></span>
+                    <h3 class="text-lg font-bold text-red-900">PAUSED / TURNED OFF</h3>
+                </div>
+                <ul class="space-y-4 text-sm text-red-800">
+                    <li class="border-b border-red-200/50 pb-2">
+                        <strong>Image 3 (Lucerne Campaign):</strong>
+                        <p class="text-xs mt-1">Fully paused early in the week after zero leads and high CPM. Spent only S$0.96 vs S$3.28 in Week 1.</p>
+                    </li>
+                    <li>
+                        <strong>Video Ai Lucerne (Budget Slashed):</strong>
+                        <p class="text-xs mt-1">Budget pared down by 48.5% (S$110.15 vs S$213.88 in W1) to minimize exposure to its high S$110.15 CPL.</p>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="bg-emerald-50 border border-emerald-200 rounded-2xl p-6 shadow-sm">
+                <div class="flex items-center space-x-3 mb-4">
+                    <span class="w-2.5 h-2.5 bg-emerald-600 rounded-full"></span>
+                    <h3 class="text-lg font-bold text-emerald-900">SCALED UP / ACTIVE</h3>
+                </div>
+                <ul class="space-y-4 text-sm text-emerald-800">
+                    <li class="border-b border-emerald-200/50 pb-2">
+                        <strong>Image 6 (Lucerne Campaign):</strong>
+                        <p class="text-xs mt-1">Budget scaled up by <strong>+194.5%</strong> (to S$102.13). Maintained perfect efficiency with a CPL of S$34.04 (3 leads).</p>
+                    </li>
+                    <li>
+                        <strong>Thomson Ad Refresh:</strong>
+                        <p class="text-xs mt-1">Kept active with brand new ad creative additions, driving the campaign CPL down to a phenomenal <strong>S$19.72</strong>.</p>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="bg-blue-50 border border-blue-200 rounded-2xl p-6 shadow-sm">
+                <div class="flex items-center space-x-3 mb-4">
+                    <span class="w-2.5 h-2.5 bg-blue-600 rounded-full"></span>
+                    <h3 class="text-lg font-bold text-blue-900">NEWLY LAUNCHED</h3>
+                </div>
+                <ul class="space-y-4 text-sm text-blue-800">
+                    <li class="border-b border-blue-200/50 pb-2">
+                        <strong>Eileen - Personal Branding:</strong>
+                        <p class="text-xs mt-1">Launched on <strong>July 8, 2026</strong>. Focuses purely on highly engaging image formats with <strong>no video assets</strong>.</p>
+                    </li>
+                    <li>
+                        <strong>Initial Performance:</strong>
+                        <p class="text-xs mt-1">Spent S$99.82, generated 3 leads with a very strong 1.30% CTR and a healthy S$33.27 CPL.</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Granular Creatives Deep Dive Section -->
+    <section id="creatives" class="mb-12">
+        <h2 class="text-2xl font-bold text-slate-900 mb-6">Detailed Ad Creative Audit</h2>
+        
+        <!-- Thomson Campaign -->
+        <div class="mb-8 overflow-hidden glass-card rounded-2xl shadow-sm">
+            <div class="p-6 bg-slate-50 border-b border-slate-100 flex justify-between items-center">
+                <h3 class="font-bold text-slate-900 text-lg">Thomson - Eileen x Lumi NL (CTR: 0.61% | Avg CPL: S$19.72)</h3>
+                <span class="status-badge bg-emerald-100 text-emerald-800">Efficiency Star Campaign</span>
+            </div>
+            <div class="overflow-x-auto">
+                <table class="w-full text-left text-sm">
+                    <thead class="bg-slate-100 text-slate-500 font-bold uppercase text-[10px] tracking-widest border-b border-slate-100">
+                        <tr>
+                            <th class="px-6 py-4">Ad Asset Name</th>
+                            <th class="px-6 py-4 text-center">Spend</th>
+                            <th class="px-6 py-4 text-center">Leads</th>
+                            <th class="px-6 py-4 text-center">CTR</th>
+                            <th class="px-6 py-4 text-center">CPM</th>
+                            <th class="px-6 py-4 text-right">CPL</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-100">
+                        <tr>
+                            <td class="px-6 py-5 font-semibold text-slate-900">Image 2 - The 324-Transaction Insider</td>
+                            <td class="px-6 py-5 text-center text-slate-600">S$166.45</td>
+                            <td class="px-6 py-5 text-center text-slate-600">8</td>
+                            <td class="px-6 py-5 text-center text-slate-600">0.58%</td>
+                            <td class="px-6 py-5 text-center text-slate-600">S$33.40</td>
+                            <td class="px-6 py-5 text-right font-bold text-emerald-600">S$20.81</td>
+                        </tr>
+                        <tr>
+                            <td class="px-6 py-5 font-semibold text-slate-900">Video Ai Thomson (New)</td>
+                            <td class="px-6 py-5 text-center text-slate-600">S$50.46</td>
+                            <td class="px-6 py-5 text-center text-slate-600">3</td>
+                            <td class="px-6 py-5 text-center text-slate-600">0.73%</td>
+                            <td class="px-6 py-5 text-center text-slate-600">S$45.96</td>
+                            <td class="px-6 py-5 text-right font-bold text-emerald-600">S$16.82</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Lucerne Campaign -->
+        <div class="mb-8 overflow-hidden glass-card rounded-2xl shadow-sm">
+            <div class="p-6 bg-slate-50 border-b border-slate-100 flex justify-between items-center">
+                <h3 class="font-bold text-slate-900 text-lg">Lucerne - Eileen x Lumi NL (CTR: 1.13% | Avg CPL: S$53.31)</h3>
+                <span class="status-badge bg-blue-100 text-blue-800">Engagement Leader</span>
+            </div>
+            <div class="overflow-x-auto">
+                <table class="w-full text-left text-sm">
+                    <thead class="bg-slate-100 text-slate-500 font-bold uppercase text-[10px] tracking-widest border-b border-slate-100">
+                        <tr>
+                            <th class="px-6 py-4">Ad Asset Name</th>
+                            <th class="px-6 py-4 text-center">Spend</th>
+                            <th class="px-6 py-4 text-center">Leads</th>
+                            <th class="px-6 py-4 text-center">CTR</th>
+                            <th class="px-6 py-4 text-center">CPM</th>
+                            <th class="px-6 py-4 text-right">CPL</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-100">
+                        <tr>
+                            <td class="px-6 py-5 font-semibold text-slate-900">Image 6 - VVIP Access Angle -New</td>
+                            <td class="px-6 py-5 text-center text-slate-600">S$102.13</td>
+                            <td class="px-6 py-5 text-center text-slate-600">3</td>
+                            <td class="px-6 py-5 text-center text-slate-600">1.05%</td>
+                            <td class="px-6 py-5 text-center text-slate-600">S$38.22</td>
+                            <td class="px-6 py-5 text-right font-bold text-emerald-600">S$34.04</td>
+                        </tr>
+                        <tr>
+                            <td class="px-6 py-5 font-semibold text-slate-900">Video Ai Lucerne</td>
+                            <td class="px-6 py-5 text-center text-slate-600">S$110.15</td>
+                            <td class="px-6 py-5 text-center text-slate-600">1</td>
+                            <td class="px-6 py-5 text-center text-slate-600">1.25%</td>
+                            <td class="px-6 py-5 text-center text-slate-600">S$39.41</td>
+                            <td class="px-6 py-5 text-right font-bold text-red-500">S$110.15</td>
+                        </tr>
+                        <tr>
+                            <td class="px-6 py-5 font-semibold text-slate-900">Image 3 - Comparisons Angle</td>
+                            <td class="px-6 py-5 text-center text-slate-600">S$0.96</td>
+                            <td class="px-6 py-5 text-center text-slate-600">0</td>
+                            <td class="px-6 py-5 text-center text-slate-600">0.00%</td>
+                            <td class="px-6 py-5 text-center text-slate-600">S$64.00</td>
+                            <td class="px-6 py-5 text-right font-bold text-slate-400">N/A</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Personal Branding Campaign (Image Only) -->
+        <div class="overflow-hidden glass-card rounded-2xl shadow-sm">
+            <div class="p-6 bg-slate-50 border-b border-slate-100 flex justify-between items-center">
+                <h3 class="font-bold text-slate-900 text-lg">Eileen - Personal Branding (CTR: 1.30% | Avg CPL: S$33.27)</h3>
+                <span class="status-badge bg-cyan-100 text-cyan-800">Static Image Only</span>
+            </div>
+            <div class="overflow-x-auto">
+                <table class="w-full text-left text-sm">
+                    <thead class="bg-slate-100 text-slate-500 font-bold uppercase text-[10px] tracking-widest border-b border-slate-100">
+                        <tr>
+                            <th class="px-6 py-4">Ad Asset Name</th>
+                            <th class="px-6 py-4 text-center">Spend</th>
+                            <th class="px-6 py-4 text-center">Leads</th>
+                            <th class="px-6 py-4 text-center">CTR</th>
+                            <th class="px-6 py-4 text-center">CPM</th>
+                            <th class="px-6 py-4 text-right">CPL</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-100">
+                        <tr>
+                            <td class="px-6 py-5 font-semibold text-slate-900">Image 3 - The 324-Transaction Insider</td>
+                            <td class="px-6 py-5 text-center text-slate-600">S$68.38</td>
+                            <td class="px-6 py-5 text-center text-slate-600">2</td>
+                            <td class="px-6 py-5 text-center text-slate-600">1.07%</td>
+                            <td class="px-6 py-5 text-center text-slate-600">S$22.86</td>
+                            <td class="px-6 py-5 text-right font-bold text-emerald-600">S$34.19</td>
+                        </tr>
+                        <tr>
+                            <td class="px-6 py-5 font-semibold text-slate-900">Image 2 - S$1 Million VS S$2 Million</td>
+                            <td class="px-6 py-5 text-center text-slate-600">S$31.44</td>
+                            <td class="px-6 py-5 text-center text-slate-600">1</td>
+                            <td class="px-6 py-5 text-center text-slate-600">2.30%</td>
+                            <td class="px-6 py-5 text-center text-slate-600">S$45.17</td>
+                            <td class="px-6 py-5 text-right font-bold text-emerald-600">S$31.44</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Strategic Roadmap Section -->
+    <section id="strategy" class="mb-20">
+        <h2 class="text-2xl font-bold text-slate-900 mb-8 text-center font-extrabold">Next Week Action Plan (July 13 - 19)</h2>
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 items-start">
+            <div class="p-6 bg-slate-900 text-white rounded-2xl shadow-xl relative md:mb-0 mb-8">
+                <span class="block text-blue-400 font-bold text-xs mb-2">STEP 01</span>
+                <h4 class="text-lg font-bold mb-3">Maximize Thomson</h4>
+                <p class="text-xs text-slate-400 leading-relaxed">Continue to allocate the lion's share of funding to Thomson's top ad sets to leverage its incredible S$19.72 CPL.</p>
+                <div class="hidden md:block absolute -right-4 top-1/2 -translate-y-1/2 text-2xl text-slate-300">➔</div>
+            </div>
+            <div class="p-6 bg-white border border-slate-200 rounded-2xl shadow-sm relative md:mb-0 mb-8">
+                <span class="block text-blue-600 font-bold text-xs mb-2">STEP 02</span>
+                <h4 class="text-lg font-bold mb-3 text-slate-900">Cut Lucerne Video</h4>
+                <p class="text-xs text-slate-500 leading-relaxed">Fully pause Video Ai Lucerne (S$110.15 CPL) and direct all remaining campaign spend into Image 6 (S$34.04 CPL).</p>
+                <div class="hidden md:block absolute -right-4 top-1/2 -translate-y-1/2 text-2xl text-slate-300">➔</div>
+            </div>
+            <div class="p-6 bg-white border border-slate-200 rounded-2xl shadow-sm relative md:mb-0 mb-8">
+                <span class="block text-blue-600 font-bold text-xs mb-2">STEP 03</span>
+                <h4 class="text-lg font-bold mb-3 text-slate-900">Scale Brand Campaign</h4>
+                <p class="text-xs text-slate-500 leading-relaxed">Increase budget on Eileen - Personal Branding by 20% to exploit its low CPM (S$27.07) and high CTR hook (1.30%).</p>
+                <div class="hidden md:block absolute -right-4 top-1/2 -translate-y-1/2 text-2xl text-slate-300">➔</div>
+            </div>
+            <div class="p-6 bg-emerald-50 border border-emerald-200 rounded-2xl shadow-sm relative">
+                <span class="block text-emerald-600 font-bold text-xs mb-2">STEP 04</span>
+                <h4 class="text-lg font-bold mb-3 text-emerald-900">Hook Concept Replication</h4>
+                <p class="text-xs text-emerald-700/70 leading-relaxed">Replicate the concept of Personal Branding's Image 2 (2.30% CTR) and test it as a refreshed static banner inside the Thomson adset groups.</p>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<footer class="bg-slate-900 text-slate-500 py-12 px-6">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center">
+        <p class="text-sm">Campaign Eileen Weekly Analysis &copy; 2026</p>
+        <p class="text-[10px] uppercase tracking-widest mt-4 md:mt-0">Confidential Report | Prepared July 13, 2026</p>
+    </div>
+</footer>
+
+<script>
+    // Universal Tooltip Configuration for Multi-line support
+    const multiLineTooltip = {
+        callbacks: {
+            title: function(tooltipItems) {
+                const item = tooltipItems[0];
+                let label = item.chart.data.labels[item.dataIndex];
+                if (Array.isArray(label)) {
+                    return label.join(' ');
+                } else {
+                    return label;
+                }
+            }
+        }
+    };
+
+    // Label Wrapping Logic (> 16 chars)
+    function wrapLabels(labels) {
+        return labels.map(label => {
+            if (label.length > 16) {
+                const words = label.split(' ');
+                const lines = [];
+                let currentLine = '';
+                words.forEach(word => {
+                    if ((currentLine + word).length > 16) {
+                        lines.push(currentLine.trim());
+                        currentLine = word + ' ';
+                    } else {
+                        currentLine += word + ' ';
+                    }
+                });
+                lines.push(currentLine.trim());
+                return lines;
+            }
+            return label;
+        });
+    }
+
+    // Chart 1: Lead Share Donut (Week 2 Actual)
+    const ctxLeads = document.getElementById('leadShareChart').getContext('2d');
+    new Chart(ctxLeads, {
+        type: 'doughnut',
+        data: {
+            labels: wrapLabels(['Thomson Campaign', 'Lucerne Campaign', 'Personal Branding']),
+            datasets: [{
+                data: [11, 4, 3],
+                backgroundColor: ['#10B981', '#3B82F6', '#06B6D4'],
+                borderWidth: 0,
+                hoverOffset: 10
+            }]
+        },
+        options: {
+            maintainAspectRatio: false,
+            responsive: true,
+            plugins: {
+                tooltip: multiLineTooltip,
+                legend: { position: 'bottom', labels: { boxWidth: 12, padding: 20, font: { family: 'Inter', size: 11 } } },
+                title: { display: true, text: 'Lead Distribution Share (Week 2)', font: { size: 16, weight: 'bold' }, padding: 10 }
+            },
+            cutout: '70%'
+        }
+    });
+
+    // Chart 2: CPL Comparison Bar (Week 2 Actual)
+    const ctxCpl = document.getElementById('cplComparisonChart').getContext('2d');
+    new Chart(ctxCpl, {
+        type: 'bar',
+        data: {
+            labels: wrapLabels(['Thomson', 'Personal Brand', 'Overall Average', 'Lucerne']),
+            datasets: [{
+                label: 'CPL (S$)',
+                data: [19.72, 33.27, 29.44, 53.31],
+                backgroundColor: ['#10B981', '#06B6D4', '#64748B', '#F59E0B'],
+                borderRadius: 8,
+                barThickness: 40
+            }]
+        },
+        options: {
+            maintainAspectRatio: false,
+            responsive: true,
+            indexAxis: 'y',
+            plugins: {
+                tooltip: multiLineTooltip,
+                legend: { display: false },
+                title: { display: true, text: 'CPL Performance Comparison (Lower is Better)', font: { size: 16, weight: 'bold' }, padding: 10 }
+            },
+            scales: {
+                x: { grid: { display: false }, ticks: { font: { size: 10 } } },
+                y: { grid: { display: false }, ticks: { font: { size: 10 } } }
+            }
+        }
+    });
+
+    // Chart 3: Week-over-Week Comparison (Corrected Secondary Metrics)
+    const ctxMarket = document.getElementById('marketComparisonChart').getContext('2d');
+    new Chart(ctxMarket, {
+        type: 'bar',
+        data: {
+            labels: wrapLabels(['Total Leads', 'Avg. CPL (S$)', 'Avg. CPM (S$)', 'CTR (x100, %)', 'Total Spend (S$/10)']),
+            datasets: [
+                {
+                    label: 'Week 1 (Jun 29 - Jul 5)',
+                    data: [13, 38.35, 40.51, 76, 49.85],
+                    backgroundColor: '#94a3b8',
+                    borderRadius: 6
+                },
+                {
+                    label: 'Week 2 (Jul 6 - Jul 12)',
+                    data: [18, 29.44, 34.76, 84, 52.99],
+                    backgroundColor: '#1e40af',
+                    borderRadius: 6
+                }
+            ]
+        },
+        options: {
+            maintainAspectRatio: false,
+            responsive: true,
+            plugins: {
+                tooltip: multiLineTooltip,
+                legend: { position: 'bottom', labels: { boxWidth: 12, padding: 15, font: { family: 'Inter', size: 11 } } },
+                title: { display: true, text: 'Core Campaign Growth Indicators (WoW)', font: { size: 16, weight: 'bold' }, padding: 10 }
+            },
+            scales: {
+                x: { grid: { display: false } },
+                y: { grid: { color: '#f1f5f9' }, ticks: { font: { size: 10 } } }
+            }
+        }
+    });
+</script>
+
+</body>
+</html>
