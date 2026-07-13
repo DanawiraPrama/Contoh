@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sean's Campaign Weekly Infographic - Week-on-Week Analysis</title>
+    <!-- Tailwind CSS for modern design tokens -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js for data visualization -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Inter Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0B132B;
+            color: #E2E8F0;
+        }
+        .glass-card {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+        .glass-card-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .glass-card-hover:hover {
+            transform: translateY(-4px);
+            border-color: rgba(99, 102, 241, 0.4);
+            box-shadow: 0 12px 40px 0 rgba(99, 102, 241, 0.15);
+        }
+        .text-glow-teal {
+            text-shadow: 0 0 12px rgba(13, 148, 136, 0.6);
+        }
+        .text-glow-indigo {
+            text-shadow: 0 0 12px rgba(99, 102, 241, 0.6);
+        }
+        .chart-container {
+            position: relative;
+            height: 250px;
+            width: 100%;
+        }
+        /* Custom Scrollbar for sleek modern UI */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0B132B;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1E293B;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #4F46E5;
+        }
+    </style>
+</head>
+<body class="min-h-screen pb-16">
+
+    <!-- Premium Header and Nav -->
+    <header class="sticky top-0 z-50 glass-card border-b border-slate-800 py-4 px-6 md:px-12">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="flex items-center gap-3">
+                <div class="h-4 w-4 rounded-full bg-indigo-500 animate-pulse"></div>
+                <div>
+                    <h1 class="text-xl font-extrabold tracking-tight text-white flex items-center gap-2">
+                        SEAN CAMPAIGN <span class="bg-indigo-600 text-[10px] uppercase font-bold tracking-widest px-2 py-0.5 rounded text-white">Performance Hub</span>
+                    </h1>
+                    <p class="text-[11px] text-slate-400 mt-0.5">Source: <span class="font-semibold text-slate-300">Sean-Weekly-6-12July-Report_2.xlsx</span> & previous records</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-4">
+                <span class="text-xs bg-slate-800 text-slate-300 px-3 py-1.5 rounded-full font-medium border border-slate-700">
+                    Week comparison: <span class="text-teal-400">July 6-12</span> vs <span class="text-slate-400">Jun 29 - Jul 5</span>
+                </span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Workspace -->
+    <main class="max-w-7xl mx-auto px-4 md:px-8 lg:px-12 mt-8">
+
+        <!-- Executive Narrative Banner -->
+        <div class="glass-card rounded-2xl p-6 mb-8 border border-indigo-500/10">
+            <h2 class="text-lg font-bold text-white mb-2">Executive Performance Synopsis</h2>
+            <p class="text-slate-300 text-sm leading-relaxed">
+                Sean's campaign structure underwent a crucial optimization cycle on July 6. The non-performing Lucerne (Broad) was paused (<span class="text-rose-400 font-semibold">OFF</span>) and replaced by <span class="text-indigo-400 font-semibold">LLA 6% Relaunches</span> for both Lucerne and Thomson. Meanwhile, <span class="text-teal-400 font-semibold">Hougang</span> remains our stable high-performing baseline, maintaining excellent cost control at <span class="font-bold text-teal-400">SGD 20.51 CPL</span>. Despite high fatigue on LLA relaunches during this startup week, overall leads remained stable at <strong class="text-white">10 leads</strong> with an overall CPL of <strong class="text-white">SGD 49.90</strong>.
+            </p>
+        </div>
+
+        <!-- SECTION 1: Week-on-Week Executive KPI Metrics Grid -->
+        <h3 class="text-sm font-semibold text-slate-400 uppercase tracking-wider mb-4">Core Performance Indicators (WoW comparison)</h3>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+            
+            <!-- Leads KPI Card -->
+            <div class="glass-card glass-card-hover p-6 rounded-2xl relative overflow-hidden flex flex-col justify-between h-40">
+                <div>
+                    <div class="flex justify-between items-start">
+                        <span class="text-xs font-bold text-slate-400 uppercase tracking-widest">Total Leads</span>
+                        <span class="text-[10px] bg-slate-800 text-slate-400 px-2 py-0.5 rounded border border-slate-700">Leads</span>
+                    </div>
+                    <div class="flex items-baseline gap-2 mt-4">
+                        <span class="text-4xl font-black text-white text-glow-indigo">10</span>
+                        <span class="text-xs text-slate-400">leads</span>
+                    </div>
+                </div>
+                <div class="flex justify-between items-center border-t border-slate-800/80 pt-3 mt-4 text-xs">
+                    <span class="text-slate-400">Prev Wk: <span class="font-semibold text-white">10</span></span>
+                    <span class="text-slate-400 flex items-center gap-1 font-bold">
+                        <span class="w-2 h-2 rounded-full bg-slate-400"></span> Flat (0%)
+                    </span>
+                </div>
+            </div>
+
+            <!-- Ad Spend Card -->
+            <div class="glass-card glass-card-hover p-6 rounded-2xl relative overflow-hidden flex flex-col justify-between h-40">
+                <div>
+                    <div class="flex justify-between items-start">
+                        <span class="text-xs font-bold text-slate-400 uppercase tracking-widest">Amount Spent</span>
+                        <span class="text-[10px] bg-indigo-950/40 text-indigo-400 px-2 py-0.5 rounded border border-indigo-900/30">Budget</span>
+                    </div>
+                    <div class="flex items-baseline gap-2 mt-4">
+                        <span class="text-3xl font-black text-white">SGD 499.02</span>
+                    </div>
+                </div>
+                <div class="flex justify-between items-center border-t border-slate-800/80 pt-3 mt-4 text-xs">
+                    <span class="text-slate-400">Prev Wk: <span class="font-semibold text-white">SGD 490.29</span></span>
+                    <span class="text-rose-400 flex items-center gap-1 font-bold">
+                        ▲ +1.78% <span class="text-[10px] text-slate-400 font-normal">($8.73 more)</span>
+                    </span>
+                </div>
+            </div>
+
+            <!-- Cost Per Lead Card -->
+            <div class="glass-card glass-card-hover p-6 rounded-2xl relative overflow-hidden flex flex-col justify-between h-40">
+                <div>
+                    <div class="flex justify-between items-start">
+                        <span class="text-xs font-bold text-slate-400 uppercase tracking-widest">Average CPL</span>
+                        <span class="text-[10px] bg-emerald-950/40 text-emerald-400 px-2 py-0.5 rounded border border-emerald-900/30">Efficiency</span>
+                    </div>
+                    <div class="flex items-baseline gap-2 mt-4">
+                        <span class="text-3xl font-black text-emerald-400 text-glow-teal">SGD 49.90</span>
+                    </div>
+                </div>
+                <div class="flex justify-between items-center border-t border-slate-800/80 pt-3 mt-4 text-xs">
+                    <span class="text-slate-400">Prev Wk: <span class="font-semibold text-white">SGD 49.03</span></span>
+                    <span class="text-rose-400 flex items-center gap-1 font-bold">
+                        ▲ +1.78% <span class="text-[10px] text-slate-400 font-normal">($0.87 up)</span>
+                    </span>
+                </div>
+            </div>
+
+            <!-- CTR Card -->
+            <div class="glass-card glass-card-hover p-6 rounded-2xl relative overflow-hidden flex flex-col justify-between h-40">
+                <div>
+                    <div class="flex justify-between items-start">
+                        <span class="text-xs font-bold text-slate-400 uppercase tracking-widest">Average CTR</span>
+                        <span class="text-[10px] bg-slate-800 text-slate-400 px-2 py-0.5 rounded border border-slate-700">Engagement</span>
+                    </div>
+                    <div class="flex items-baseline gap-2 mt-4">
+                        <span class="text-3xl font-black text-teal-400 text-glow-teal">1.18%</span>
+                    </div>
+                </div>
+                <div class="flex justify-between items-center border-t border-slate-800/80 pt-3 mt-4 text-xs">
+                    <span class="text-slate-400">Prev Wk: <span class="font-semibold text-white">0.75%</span></span>
+                    <span class="text-teal-400 flex items-center gap-1 font-bold">
+                        ▲ +57.3% <span class="text-[10px] text-slate-400 font-normal">Highly Active</span>
+                    </span>
+                </div>
+            </div>
+
+            <!-- CPM Card -->
+            <div class="glass-card glass-card-hover p-6 rounded-2xl relative overflow-hidden flex flex-col justify-between h-40">
+                <div>
+                    <div class="flex justify-between items-start">
+                        <span class="text-xs font-bold text-slate-400 uppercase tracking-widest">Average CPM</span>
+                        <span class="text-[10px] bg-rose-950/40 text-rose-400 px-2 py-0.5 rounded border border-rose-900/30">Cost / 1K Imp</span>
+                    </div>
+                    <div class="flex items-baseline gap-2 mt-4">
+                        <span class="text-3xl font-black text-rose-400">SGD 35.57</span>
+                    </div>
+                </div>
+                <div class="flex justify-between items-center border-t border-slate-800/80 pt-3 mt-4 text-xs">
+                    <span class="text-slate-400">Prev Wk: <span class="font-semibold text-white">SGD 16.09</span></span>
+                    <span class="text-rose-400 flex items-center gap-1 font-bold">
+                        ▲ +121.1% <span class="text-[10px] text-slate-400 font-normal">(Audience Fatigue)</span>
+                    </span>
+                </div>
+            </div>
+
+            <!-- Frequency Card -->
+            <div class="glass-card glass-card-hover p-6 rounded-2xl relative overflow-hidden flex flex-col justify-between h-40">
+                <div>
+                    <div class="flex justify-between items-start">
+                        <span class="text-xs font-bold text-slate-400 uppercase tracking-widest">Average Frequency</span>
+                        <span class="text-[10px] bg-slate-800 text-slate-400 px-2 py-0.5 rounded border border-slate-700">Delivery Cap</span>
+                    </div>
+                    <div class="flex items-baseline gap-2 mt-4">
+                        <span class="text-3xl font-black text-white">1.27</span>
+                    </div>
+                </div>
+                <div class="flex justify-between items-center border-t border-slate-800/80 pt-3 mt-4 text-xs">
+                    <span class="text-slate-400">Prev Wk: <span class="font-semibold text-white">1.85</span></span>
+                    <span class="text-teal-400 flex items-center gap-1 font-bold">
+                        ▼ -31.4% <span class="text-[10px] text-slate-400 font-normal">(Fresh Reach)</span>
+                    </span>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- SECTION 2: Visual Comparison Graphs & Insights -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+            
+            <!-- Leads vs Cost comparison bar chart -->
+            <div class="glass-card p-6 md:p-8 rounded-2xl flex flex-col justify-between">
+                <div>
+                    <h4 class="text-lg font-bold text-white mb-2">Campaign Efficiency Breakdowns</h4>
+                    <p class="text-slate-400 text-xs mb-6">Visualizing lead generation outputs against real budget allocations across our current setups.</p>
+                </div>
+                <div class="chart-container">
+                    <canvas id="leadsCostChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Interactive Budget & Conversion Correlation Scatter Plot -->
+            <div class="glass-card p-6 md:p-8 rounded-2xl flex flex-col justify-between">
+                <div>
+                    <h4 class="text-lg font-bold text-white mb-2">Targeting Fatigue Matrix (CTR vs CPM)</h4>
+                    <p class="text-slate-400 text-xs mb-6 font-medium">Analyzing audience saturation. Higher CPM and low CTR signify structural fatigue.</p>
+                </div>
+                <div class="chart-container">
+                    <canvas id="fatigueScatterChart"></canvas>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- INTERACTIVE PLAYGROUND: Budget reallocation simulation -->
+        <div class="glass-card p-8 rounded-2xl border border-indigo-500/20 mb-12">
+            <h4 class="text-xl font-bold text-white mb-2 flex items-center gap-2">
+                📊 Interactive Strategy & Budget Optimizer
+            </h4>
+            <p class="text-slate-400 text-xs mb-6">Simulate moving budget from high CPL campaigns to our star campaign (Hougang) to predict CPL impact.</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Sliders column -->
+                <div class="md:col-span-2 space-y-6">
+                    <div>
+                        <div class="flex justify-between text-xs font-semibold text-slate-300 mb-2">
+                            <span>REALLOCATE BUDGET TO HOUGANG (Currently SGD 143.54)</span>
+                            <span id="reallocVal" class="text-teal-400 font-bold">SGD 0.00</span>
+                        </div>
+                        <input type="range" id="reallocSlider" min="0" max="250" value="0" step="10" 
+                               class="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-indigo-500">
+                        <div class="flex justify-between text-[10px] text-slate-500 mt-1">
+                            <span>0% change</span>
+                            <span>Scale up to SGD 393.54 (+SGD 250)</span>
+                        </div>
+                    </div>
+                    <div class="bg-indigo-950/20 rounded-xl p-4 border border-indigo-900/30 text-xs text-slate-300">
+                        <p class="font-semibold text-white mb-1">Optimizing Assumptions:</p>
+                        <p>We assume Hougang maintains a stable SGD 20.51 CPL while drawing budget from Thomson's expensive broad traffic segment (SGD 71.18 CPL).</p>
+                    </div>
+                </div>
+
+                <!-- Live Results Gauge -->
+                <div class="bg-slate-900/50 rounded-xl p-6 border border-slate-800/80 flex flex-col justify-between text-center">
+                    <div>
+                        <span class="text-[10px] bg-teal-950 text-teal-400 font-bold tracking-widest px-2.5 py-1 rounded-full uppercase">Simulated Savings</span>
+                        <div id="simCpl" class="text-3xl font-black text-white mt-4 text-glow-indigo">SGD 49.90</div>
+                        <p class="text-[11px] text-slate-400 mt-1">Projected Overall CPL</p>
+                    </div>
+                    <div class="border-t border-slate-800 pt-3 mt-4 flex justify-between items-center text-xs text-slate-400">
+                        <span>New Leads: <span id="simLeads" class="font-bold text-white">10.0</span></span>
+                        <span id="simPct" class="text-emerald-400 font-bold">0% Change</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION 3: Campaign Performance Breakdown Table -->
+        <div class="glass-card rounded-2xl overflow-hidden mb-12">
+            <div class="p-6 md:p-8 border-b border-slate-800 bg-slate-900/40 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                <div>
+                    <h4 class="text-xl font-bold text-white">Campaign Performance Ledger</h4>
+                    <p class="text-slate-400 text-xs mt-1">Click a campaign row to access ad set/creative variations breakdowns.</p>
+                </div>
+                <div class="flex gap-2">
+                    <span class="text-[11px] bg-emerald-950 text-emerald-400 border border-emerald-900 px-2.5 py-1 rounded-full font-bold">● ON</span>
+                    <span class="text-[11px] bg-amber-950 text-amber-400 border border-amber-900 px-2.5 py-1 rounded-full font-bold">↻ RELAUNCHED</span>
+                    <span class="text-[11px] bg-rose-950 text-rose-400 border border-rose-900 px-2.5 py-1 rounded-full font-bold">■ OFF</span>
+                </div>
+            </div>
+            
+            <div class="overflow-x-auto">
+                <table class="w-full text-left text-sm whitespace-nowrap">
+                    <thead class="bg-slate-900/60 text-slate-400 text-xs uppercase font-bold tracking-wider">
+                        <tr>
+                            <th class="px-6 py-4">Status</th>
+                            <th class="px-6 py-4">Campaign Name</th>
+                            <th class="px-6 py-4 text-right">Spend</th>
+                            <th class="px-6 py-4 text-center">Leads</th>
+                            <th class="px-6 py-4 text-right">CPL</th>
+                            <th class="px-6 py-4 text-right">CPM</th>
+                            <th class="px-6 py-4 text-right">CTR</th>
+                            <th class="px-6 py-4 text-center">Freq</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-800">
+                        
+                        <!-- Hougang - ON -->
+                        <tr class="hover:bg-slate-800/40 cursor-pointer transition-colors" onclick="toggleDetails('details-hougang')">
+                            <td class="px-6 py-4">
+                                <span class="bg-emerald-950 text-emerald-400 text-[10px] font-bold px-2.5 py-1 rounded border border-emerald-900">ACTIVE ON</span>
+                            </td>
+                            <td class="px-6 py-4">
+                                <div class="font-bold text-white">Hougang Sean x Lumi</div>
+                                <div class="text-[10px] text-slate-500 mt-0.5">Broad targeting - Highest overall efficiency</div>
+                            </td>
+                            <td class="px-6 py-4 text-right text-slate-300">SGD 143.54</td>
+                            <td class="px-6 py-4 text-center text-teal-400 font-bold">7</td>
+                            <td class="px-6 py-4 text-right text-teal-400 font-bold">SGD 20.51</td>
+                            <td class="px-6 py-4 text-right text-slate-400">SGD 16.51</td>
+                            <td class="px-6 py-4 text-right text-slate-400">1.18%</td>
+                            <td class="px-6 py-4 text-center text-slate-400">1.11</td>
+                        </tr>
+                        <!-- Hougang Details Row -->
+                        <tr id="details-hougang" class="bg-slate-900/80 hidden">
+                            <td colspan="8" class="px-8 py-4">
+                                <div class="border-l-2 border-teal-500 pl-4 space-y-2">
+                                    <h5 class="text-xs font-bold text-white uppercase tracking-wider">Creative Level Insights:</h5>
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                                        <div class="bg-slate-800/50 p-3 rounded border border-slate-700/60">
+                                            <p class="font-semibold text-slate-200">Ai Video (Primary Creative)</p>
+                                            <div class="flex justify-between mt-1 text-slate-400">
+                                                <span>Spend: SGD 143.54</span>
+                                                <span>Leads: <strong class="text-teal-400">7</strong></span>
+                                                <span>CPL: SGD 20.51</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <!-- Thomson Broad - ON -->
+                        <tr class="hover:bg-slate-800/40 cursor-pointer transition-colors" onclick="toggleDetails('details-thomson-broad')">
+                            <td class="px-6 py-4">
+                                <span class="bg-emerald-950 text-emerald-400 text-[10px] font-bold px-2.5 py-1 rounded border border-emerald-900">ACTIVE ON</span>
+                            </td>
+                            <td class="px-6 py-4">
+                                <div class="font-bold text-white">Thomson Sean x Lumi</div>
+                                <div class="text-[10px] text-slate-500 mt-0.5">Broad targeting - Undergoing creative review</div>
+                            </td>
+                            <td class="px-6 py-4 text-right text-slate-300">SGD 213.53</td>
+                            <td class="px-6 py-4 text-center text-indigo-400 font-bold">3</td>
+                            <td class="px-6 py-4 text-right text-rose-400 font-semibold">SGD 71.18</td>
+                            <td class="px-6 py-4 text-right text-slate-400">SGD 73.28</td>
+                            <td class="px-6 py-4 text-right text-slate-400">1.78%</td>
+                            <td class="px-6 py-4 text-center text-slate-400">1.37</td>
+                        </tr>
+                        <!-- Thomson Details Row -->
+                        <tr id="details-thomson-broad" class="bg-slate-900/80 hidden">
+                            <td colspan="8" class="px-8 py-4">
+                                <div class="border-l-2 border-indigo-500 pl-4 space-y-2">
+                                    <h5 class="text-xs font-bold text-white uppercase tracking-wider">Creative Level Insights:</h5>
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                                        <div class="bg-slate-800/50 p-3 rounded border border-slate-700/60">
+                                            <p class="font-semibold text-slate-200">Ai Video</p>
+                                            <div class="flex justify-between mt-1 text-slate-400">
+                                                <span>Spend: SGD 159.76</span>
+                                                <span>Leads: <strong class="text-white">2</strong></span>
+                                                <span>CPL: SGD 79.88</span>
+                                            </div>
+                                        </div>
+                                        <div class="bg-slate-800/50 p-3 rounded border border-slate-700/60">
+                                            <p class="font-semibold text-slate-200">Image 1 - VVIP Access Ad</p>
+                                            <div class="flex justify-between mt-1 text-slate-400">
+                                                <span>Spend: SGD 53.77</span>
+                                                <span>Leads: <strong class="text-white">1</strong></span>
+                                                <span>CPL: SGD 53.77</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <!-- Lucerne Relaunch - RELAUNCHED -->
+                        <tr class="hover:bg-slate-800/40 cursor-pointer transition-colors" onclick="toggleDetails('details-lucerne-relaunch')">
+                            <td class="px-6 py-4">
+                                <span class="bg-amber-950 text-amber-400 text-[10px] font-bold px-2.5 py-1 rounded border border-amber-900">RELAUNCHED LLA</span>
+                            </td>
+                            <td class="px-6 py-4">
+                                <div class="font-bold text-white">Lucerne NL Campaign - Re Launch</div>
+                                <div class="text-[10px] text-slate-500 mt-0.5">LLA 6% Relaunch July 6 - Low conversion phase</div>
+                            </td>
+                            <td class="px-6 py-4 text-right text-slate-300">SGD 121.80</td>
+                            <td class="px-6 py-4 text-center text-slate-500">0</td>
+                            <td class="px-6 py-4 text-right text-slate-500">N/A</td>
+                            <td class="px-6 py-4 text-right text-slate-400">SGD 56.08</td>
+                            <td class="px-6 py-4 text-right text-rose-400 font-semibold">0.37%</td>
+                            <td class="px-6 py-4 text-center text-slate-400">1.35</td>
+                        </tr>
+                        <!-- Lucerne Relaunch Details Row -->
+                        <tr id="details-lucerne-relaunch" class="bg-slate-900/80 hidden">
+                            <td colspan="8" class="px-8 py-4">
+                                <div class="border-l-2 border-amber-500 pl-4 space-y-2">
+                                    <h5 class="text-xs font-bold text-white uppercase tracking-wider">Creative Level Insights:</h5>
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                                        <div class="bg-slate-800/50 p-3 rounded border border-slate-700/60">
+                                            <p class="font-semibold text-slate-200">Image 1 - Project Specific Insider Ad</p>
+                                            <div class="flex justify-between mt-1 text-slate-400">
+                                                <span>Spend: SGD 111.84</span>
+                                                <span>Leads: <strong class="text-slate-500">0</strong></span>
+                                                <span>CTR: 0.30%</span>
+                                            </div>
+                                        </div>
+                                        <div class="bg-slate-800/50 p-3 rounded border border-slate-700/60">
+                                            <p class="font-semibold text-slate-200">Ai Video</p>
+                                            <div class="flex justify-between mt-1 text-slate-400">
+                                                <span>Spend: SGD 9.96</span>
+                                                <span>Leads: <strong class="text-slate-500">0</strong></span>
+                                                <span>CTR: 1.25%</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <!-- Thomson Relaunch - RELAUNCHED -->
+                        <tr class="hover:bg-slate-800/40 cursor-pointer transition-colors" onclick="toggleDetails('details-thomson-relaunch')">
+                            <td class="px-6 py-4">
+                                <span class="bg-amber-950 text-amber-400 text-[10px] font-bold px-2.5 py-1 rounded border border-amber-900">RELAUNCHED LLA</span>
+                            </td>
+                            <td class="px-6 py-4">
+                                <div class="font-bold text-white">Thomson NL Campaign - Re Launch</div>
+                                <div class="text-[10px] text-slate-500 mt-0.5">LLA 6% Relaunch July 6 - Low traffic volume</div>
+                            </td>
+                            <td class="px-6 py-4 text-right text-slate-300">SGD 15.77</td>
+                            <td class="px-6 py-4 text-center text-slate-500">0</td>
+                            <td class="px-6 py-4 text-right text-slate-500">N/A</td>
+                            <td class="px-6 py-4 text-right text-slate-400">SGD 81.29</td>
+                            <td class="px-6 py-4 text-right text-slate-400">1.03%</td>
+                            <td class="px-6 py-4 text-center text-slate-400">1.10</td>
+                        </tr>
+                        <!-- Thomson Relaunch Details Row -->
+                        <tr id="details-thomson-relaunch" class="bg-slate-900/80 hidden">
+                            <td colspan="8" class="px-8 py-4">
+                                <div class="border-l-2 border-amber-500 pl-4 space-y-2">
+                                    <h5 class="text-xs font-bold text-white uppercase tracking-wider">Creative Level Insights:</h5>
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                                        <div class="bg-slate-800/50 p-3 rounded border border-slate-700/60">
+                                            <p class="font-semibold text-slate-200">Image 1 - VVIP Access Ad</p>
+                                            <div class="flex justify-between mt-1 text-slate-400">
+                                                <span>Spend: SGD 13.88</span>
+                                                <span>Leads: <strong class="text-slate-500">0</strong></span>
+                                                <span>CTR: 0.55%</span>
+                                            </div>
+                                        </div>
+                                        <div class="bg-slate-800/50 p-3 rounded border border-slate-700/60">
+                                            <p class="font-semibold text-slate-200">Ai Video</p>
+                                            <div class="flex justify-between mt-1 text-slate-400">
+                                                <span>Spend: SGD 1.89</span>
+                                                <span>Leads: <strong class="text-slate-500">0</strong></span>
+                                                <span>CTR: 7.69%</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <!-- Lucerne Broad - OFF -->
+                        <tr class="hover:bg-slate-800/40 cursor-pointer transition-colors" onclick="toggleDetails('details-lucerne-broad')">
+                            <td class="px-6 py-4">
+                                <span class="bg-rose-950 text-rose-400 text-[10px] font-bold px-2.5 py-1 rounded border border-rose-900">PAUSED OFF</span>
+                            </td>
+                            <td class="px-6 py-4">
+                                <div class="font-bold text-slate-400">Lucerne Sean x Lumi (Broad)</div>
+                                <div class="text-[10px] text-slate-500 mt-0.5">Deactivated to allow LLA 6% restructure</div>
+                            </td>
+                            <td class="px-6 py-4 text-right text-slate-500">SGD 4.38</td>
+                            <td class="px-6 py-4 text-center text-slate-500">0</td>
+                            <td class="px-6 py-4 text-right text-slate-500">N/A</td>
+                            <td class="px-6 py-4 text-right text-slate-500">SGD 75.52</td>
+                            <td class="px-6 py-4 text-right text-slate-500">N/A</td>
+                            <td class="px-6 py-4 text-center text-slate-500">1.02</td>
+                        </tr>
+                        <!-- Lucerne Broad Details Row -->
+                        <tr id="details-lucerne-broad" class="bg-slate-900/80 hidden">
+                            <td colspan="8" class="px-8 py-4">
+                                <div class="border-l-2 border-rose-500 pl-4 space-y-2">
+                                    <h5 class="text-xs font-bold text-white uppercase tracking-wider">Remaining Spend Insights:</h5>
+                                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+                                        <div class="bg-slate-800/50 p-3 rounded border border-slate-700/60">
+                                            <p class="font-semibold text-slate-200">Ai Video</p>
+                                            <div class="flex justify-between mt-1 text-slate-400">
+                                                <span>Spend: SGD 2.84</span>
+                                                <span>CPM: SGD 64.55</span>
+                                            </div>
+                                        </div>
+                                        <div class="bg-slate-800/50 p-3 rounded border border-slate-700/60">
+                                            <p class="font-semibold text-slate-200">Image 3 - Comparisons Angle</p>
+                                            <div class="flex justify-between mt-1 text-slate-400">
+                                                <span>Spend: SGD 1.49</span>
+                                                <span>CPM: SGD 124.17</span>
+                                            </div>
+                                        </div>
+                                        <div class="bg-slate-800/50 p-3 rounded border border-slate-700/60">
+                                            <p class="font-semibold text-slate-200">Image 2 - VVIP ACCESS Angle</p>
+                                            <div class="flex justify-between mt-1 text-slate-400">
+                                                <span>Spend: SGD 0.05</span>
+                                                <span>CPM: SGD 25.00</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- SECTION 4: Strategic Timeline & Optimization Roadmap -->
+        <h3 class="text-sm font-semibold text-slate-400 uppercase tracking-wider mb-4">Strategic Timeline & Roadmap</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            
+            <div class="glass-card p-6 rounded-2xl relative">
+                <div class="absolute -top-3 left-6 bg-rose-600 text-[10px] font-bold px-2 py-0.5 rounded tracking-wider text-white">STEP 1: RESTRUCTURED</div>
+                <h5 class="text-base font-bold text-white mt-2 mb-2">Broad Campaigns Deactivation</h5>
+                <p class="text-xs text-slate-300 leading-relaxed">
+                    Lucerne (Broad) was fully deactivated on July 6 due to conversion fatigue and high overall CPL. This successfully cut waste on high-frequency, non-converting cold broad segments.
+                </p>
+            </div>
+
+            <div class="glass-card p-6 rounded-2xl relative">
+                <div class="absolute -top-3 left-6 bg-amber-600 text-[10px] font-bold px-2 py-0.5 rounded tracking-wider text-white">STEP 2: RUNNING (LLA 6%)</div>
+                <h5 class="text-base font-bold text-white mt-2 mb-2">Restructuring Into LLA 6%</h5>
+                <p class="text-xs text-slate-300 leading-relaxed">
+                    July 6 launched new high-intent Lookalike Audiences (LLA 6%) for Thomson and Lucerne. Currently, they show strong click signals (Thomson LLA CTR at 1.03%) but are suffering from high CPM thresholds. Let the algorithm optimize.
+                </p>
+            </div>
+
+            <div class="glass-card p-6 rounded-2xl relative">
+                <div class="absolute -top-3 left-6 bg-emerald-600 text-[10px] font-bold px-2 py-0.5 rounded tracking-wider text-white">STEP 3: ACTION ITEMS</div>
+                <h5 class="text-base font-bold text-white mt-2 mb-2">Scale Success, Trim Fatigue</h5>
+                <p class="text-xs text-slate-300 leading-relaxed">
+                    Reallocate budget from Thomson Broad (CPL SGD 71.18) to Hougang (CPL SGD 20.51). Provide creative freshness to Lucerne's LLA relaunch to bypass high CPMs.
+                </p>
+            </div>
+
+        </div>
+
+    </main>
+
+    <footer class="mt-16 text-center text-slate-500 text-[11px] px-4">
+        <p>INTERNAL MEDIA BUYING DASHBOARD — CONFIDENTIAL PROPERTY OF SEAN CAMPAIGN MANAGER</p>
+        <p class="mt-1">© 2026. All analytics synthesized from historical campaign worksheets.</p>
+    </footer>
+
+    <!-- Scripts & Charts Configurations -->
+    <script>
+        // Custom interactive details toggle logic
+        function toggleDetails(rowId) {
+            const el = document.getElementById(rowId);
+            if(el.classList.contains('hidden')) {
+                el.classList.remove('hidden');
+            } else {
+                el.classList.add('hidden');
+            }
+        }
+
+        // Labels Wrapping Helper
+        const wrapLabel = (label) => {
+            if (label.length <= 16) return label;
+            const words = label.split(' ');
+            const lines = [];
+            let currentLine = '';
+            words.forEach(word => {
+                if ((currentLine + word).length > 16) {
+                    lines.push(currentLine.trim());
+                    currentLine = word + ' ';
+                } else {
+                    currentLine += word + ' ';
+                }
+            });
+            if (currentLine) lines.push(currentLine.trim());
+            return lines;
+        };
+
+        const tooltipConfig = {
+            backgroundColor: '#0F172A',
+            titleColor: '#FFFFFF',
+            bodyColor: '#94A3B8',
+            borderColor: '#334155',
+            borderWidth: 1,
+            padding: 10,
+            callbacks: {
+                title: function(tooltipItems) {
+                    const item = tooltipItems[0];
+                    let label = item.chart.data.labels[item.dataIndex];
+                    return Array.isArray(label) ? label.join(' ') : label;
+                }
+            }
+        };
+
+        // CHART 1: Campaign Performance Breakdown (Leads vs Spend)
+        const ctxLeadsCost = document.getElementById('leadsCostChart').getContext('2d');
+        new Chart(ctxLeadsCost, {
+            type: 'bar',
+            data: {
+                labels: [
+                    wrapLabel('Hougang (Broad)'),
+                    wrapLabel('Thomson (Broad)'),
+                    wrapLabel('Lucerne (LLA 6%)'),
+                    wrapLabel('Thomson (LLA 6%)')
+                ],
+                datasets: [
+                    {
+                        label: 'Leads (Units)',
+                        data: [7, 3, 0, 0],
+                        backgroundColor: '#0D9488',
+                        borderRadius: 6,
+                        yAxisID: 'y'
+                    },
+                    {
+                        label: 'Ad Spend (SGD)',
+                        data: [143.54, 213.53, 121.80, 15.77],
+                        backgroundColor: '#6366F1',
+                        borderRadius: 6,
+                        yAxisID: 'y1'
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: { color: '#94A3B8', font: { size: 11, family: 'Inter' } }
+                    },
+                    tooltip: tooltipConfig
+                },
+                scales: {
+                    x: {
+                        grid: { color: 'rgba(255, 255, 255, 0.04)' },
+                        ticks: { color: '#94A3B8', font: { size: 10 } }
+                    },
+                    y: {
+                        type: 'linear',
+                        display: true,
+                        position: 'left',
+                        grid: { color: 'rgba(255, 255, 255, 0.04)' },
+                        ticks: { color: '#0D9488', font: { size: 10 } },
+                        title: { display: true, text: 'Leads Generated', color: '#0D9488', font: { size: 10, weight: 'bold' } }
+                    },
+                    y1: {
+                        type: 'linear',
+                        display: true,
+                        position: 'right',
+                        grid: { drawOnChartArea: false },
+                        ticks: { color: '#6366F1', font: { size: 10 } },
+                        title: { display: true, text: 'Ad Spend (SGD)', color: '#6366F1', font: { size: 10, weight: 'bold' } }
+                    }
+                }
+            }
+        });
+
+        // CHART 2: Targeting Fatigue Matrix (Scatter Plot of CTR vs CPM)
+        const ctxScatter = document.getElementById('fatigueScatterChart').getContext('2d');
+        new Chart(ctxScatter, {
+            type: 'scatter',
+            data: {
+                datasets: [
+                    {
+                        label: 'Hougang Broad',
+                        data: [{ x: 1.18, y: 16.51 }],
+                        backgroundColor: '#0D9488',
+                        pointRadius: 10,
+                        pointHoverRadius: 12
+                    },
+                    {
+                        label: 'Thomson Broad',
+                        data: [{ x: 1.78, y: 73.28 }],
+                        backgroundColor: '#3B82F6',
+                        pointRadius: 10,
+                        pointHoverRadius: 12
+                    },
+                    {
+                        label: 'Lucerne LLA 6%',
+                        data: [{ x: 0.37, y: 56.08 }],
+                        backgroundColor: '#F59E0B',
+                        pointRadius: 10,
+                        pointHoverRadius: 12
+                    },
+                    {
+                        label: 'Thomson LLA 6%',
+                        data: [{ x: 1.03, y: 81.29 }],
+                        backgroundColor: '#EC4899',
+                        pointRadius: 10,
+                        pointHoverRadius: 12
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: { color: '#94A3B8', font: { size: 10, family: 'Inter' } }
+                    },
+                    tooltip: {
+                        backgroundColor: '#0F172A',
+                        callbacks: {
+                            label: function(context) {
+                                return `${context.dataset.label}: CTR ${context.raw.x}%, CPM SGD ${context.raw.y}`;
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        title: { display: true, text: 'Click-Through Rate (CTR %)', color: '#94A3B8', font: { size: 10, weight: 'bold' } },
+                        grid: { color: 'rgba(255, 255, 255, 0.04)' },
+                        ticks: { color: '#94A3B8' }
+                    },
+                    y: {
+                        title: { display: true, text: 'Cost per 1K Impressions (CPM SGD)', color: '#94A3B8', font: { size: 10, weight: 'bold' } },
+                        grid: { color: 'rgba(255, 255, 255, 0.04)' },
+                        ticks: { color: '#94A3B8' }
+                    }
+                }
+            }
+        });
+
+        // INTERACTIVE SLIDER LOGIC
+        const reallocSlider = document.getElementById('reallocSlider');
+        const reallocVal = document.getElementById('reallocVal');
+        const simCpl = document.getElementById('simCpl');
+        const simLeads = document.getElementById('simLeads');
+        const simPct = document.getElementById('simPct');
+
+        reallocSlider.addEventListener('input', (e) => {
+            const shiftedVal = parseFloat(e.target.value);
+            reallocVal.innerText = `SGD ${shiftedVal.toFixed(2)}`;
+
+            // Current state constants
+            const totalSpend = 499.02;
+            const currentLeads = 10;
+            
+            // Calculate simulated impact
+            // Hougang CPL = SGD 20.51, Thomson Broad CPL = SGD 71.18
+            // Removing budget from Thomson Broad means fewer leads from Thomson Broad, more leads from Hougang
+            const leadsReducedFromThomson = shiftedVal / 71.18;
+            const leadsAddedToHougang = shiftedVal / 20.51;
+
+            const netLeadsAdded = leadsAddedToHougang - leadsReducedFromThomson;
+            const finalLeads = currentLeads + netLeadsAdded;
+            const finalCpl = totalSpend / finalLeads;
+
+            // Render updates
+            simCpl.innerText = `SGD ${finalCpl.toFixed(2)}`;
+            simLeads.innerText = finalLeads.toFixed(1);
+
+            const percentageLeadChange = ((finalLeads - currentLeads) / currentLeads) * 100;
+            if(percentageLeadChange >= 0) {
+                simPct.innerText = `▲ +${percentageLeadChange.toFixed(1)}% Conversion`;
+                simPct.className = 'text-emerald-400 font-bold';
+            } else {
+                simPct.innerText = `▼ ${percentageLeadChange.toFixed(1)}% Conversion`;
+                simPct.className = 'text-rose-400 font-bold';
+            }
+        });
+    </script>
+</body>
+</html>
