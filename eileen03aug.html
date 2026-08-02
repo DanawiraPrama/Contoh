@@ -3,419 +3,634 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eileen Campaign Performance Report</title>
+    <title>Eileen Campaign Performance Report | Meta Ads Analysis</title>
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js CDN -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://cdn.plot.ly/plotly-2.24.1.min.js"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
         
         :root {
-            --primary: #00539C; /* Royal Blue */
-            --secondary: #FFD662; /* Peach/Yellow */
-            --accent: #00A5CF; /* Cyan */
-            --bg-light: #F8FAFC;
-            --text-main: #1E293B;
-            --success: #10B981;
-            --danger: #EF4444;
+            --primary: #0f172a;
+            --brand-indigo: #4f46e5;
+            --brand-teal: #0d9488;
+            --brand-amber: #d97706;
+            --brand-rose: #e11d48;
+            --bg-light: #f8fafc;
         }
 
         body {
             font-family: 'Inter', sans-serif;
             background-color: var(--bg-light);
-            color: var(--text-main);
+            color: #334155;
         }
 
-        .chart-container {
+        .card-shadow {
+            box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05), 0 2px 6px -1px rgba(0, 0, 0, 0.03);
+        }
+
+        .chart-wrapper {
             position: relative;
             width: 100%;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-            height: 350px;
-            max-height: 400px;
+            height: 330px;
         }
 
-        .card {
-            background: white;
-            border-radius: 1rem;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            transition: transform 0.2s;
-        }
-
-        .card:hover {
-            transform: translateY(-2px);
-        }
-
-        .metric-value {
-            font-size: 2.5rem;
-            font-weight: 700;
-            line-height: 1;
-        }
-
-        .dot {
-            height: 12px;
-            width: 12px;
-            border-radius: 50%;
-            display: inline-block;
-        }
-
-        /* Custom scrollbar */
+        /* Custom Scrollbar */
         ::-webkit-scrollbar {
-            width: 8px;
+            width: 6px;
+            height: 6px;
         }
         ::-webkit-scrollbar-track {
-            background: #f1f1f1;
+            background: #f1f5f9;
         }
         ::-webkit-scrollbar-thumb {
-            background: #00539C;
-            border-radius: 10px;
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+
+        .animate-fade-in {
+            animation: fadeIn 0.4s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
-<body class="antialiased pb-12">
-
-<!-- 
-    PALETTE NAME: Energetic & Playful (Blue & Yellow)
-    NARRATIVE PLAN:
-    1. Executive Summary: Big numbers showing production and efficiency.
-    2. Weekly Performance Breakdown: Campaign-level comparison for the specific 27 Jul - 2 Aug period.
-    3. Benchmarking: Side-by-side comparison with July monthly averages to highlight the efficiency gap.
-    4. Ad-Level Insights: Identifying high-performers vs budget leaks to justify the action plan.
-    5. Action Plan: Roadmap for immediate improvement to achieve CPL < SGD 45.
-
-    VISUALIZATION CHOICES:
-    - Metric Cards: Goal: Inform. Single big numbers for high impact.
-    - Bar Chart (Campaign Comparison): Goal: Compare. Show Leads and CPL across campaigns. (Chart.js)
-    - Radar/Spider Chart (Benchmark): Goal: Compare. Compare multiple metrics against monthly baseline. (Chart.js)
-    - Horizontal Bar Chart (Ad Efficiency): Goal: Organize. Rank ads by CPL efficiency. (Chart.js)
-    - Styled Lists: Goal: Organize. Clean breakdown of leakage and action items. (HTML/CSS)
-    
-    CONFIRMATION: NO SVG and NO MERMAID JS were used in this output. 
--->
+<body class="antialiased text-slate-800 pb-16">
 
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
     
-    <!-- Header -->
-    <div class="flex flex-col md:flex-row md:items-center justify-between mb-8 border-b border-gray-200 pb-6">
+    <!-- Top Header Banner -->
+    <div class="bg-white rounded-2xl p-6 md:p-8 card-shadow border border-slate-100 mb-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
         <div>
-            <h1 class="text-3xl font-bold text-gray-900">Weekly Performance Report</h1>
-            <p class="text-gray-500 font-medium">Eileen Campaign | July 27 – August 2, 2026</p>
+            <div class="flex items-center gap-2 mb-2">
+                <span class="bg-indigo-100 text-indigo-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Singapore Property Meta Ads</span>
+                <span class="text-xs text-slate-400 font-medium"><i class="fa-solid fa-calendar-days mr-1"></i> July 1 – August 2, 2026 Data Export</span>
+            </div>
+            <h1 class="text-2xl md:text-3xl font-extrabold text-slate-900 tracking-tight">Eileen Campaign Performance Report</h1>
+            <p class="text-slate-500 text-sm mt-1">Verified multi-campaign analysis covering Personal Branding, Thomson NL, and Lucerne NL.</p>
         </div>
-        <div class="mt-4 md:mt-0 flex items-center bg-white p-2 rounded-lg shadow-sm border">
-            <div class="w-3 h-3 rounded-full bg-green-500 mr-2 animate-pulse"></div>
-            <span class="text-sm font-semibold text-gray-700 uppercase tracking-wider">Status: Live Analysis</span>
+
+        <!-- Period Filter Selector -->
+        <div class="flex items-center bg-slate-100 p-1.5 rounded-xl border border-slate-200 shrink-0">
+            <button id="btn-weekly" onclick="switchPeriod('weekly')" class="px-4 py-2 text-xs font-bold rounded-lg transition-all shadow-sm bg-white text-indigo-700">
+                <i class="fa-solid fa-chart-line mr-1.5"></i>Current Week (Jul 27 – Aug 2)
+            </button>
+            <button id="btn-monthly" onclick="switchPeriod('monthly')" class="px-4 py-2 text-xs font-bold text-slate-600 rounded-lg transition-all hover:text-slate-900">
+                <i class="fa-solid fa-layer-group mr-1.5"></i>Full Month (Jul 1 – Aug 2)
+            </button>
         </div>
     </div>
 
-    <!-- Executive Summary Section -->
-    <section class="mb-12">
-        <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 mb-8">
-            <h2 class="text-xl font-bold mb-4 flex items-center text-blue-900">
-                <span class="w-2 h-6 bg-blue-600 rounded-full mr-3"></span>
-                Executive Productivity Scorecard
-            </h2>
-            <p class="text-gray-600 leading-relaxed max-w-4xl">
-                The Eileen Campaign delivered 12 leads this week, maintaining a stable daily production rate. However, the blended Cost Per Lead (CPL) rose to SGD 60.44, primarily due to ad fatigue in primary visuals and a temporary spike in Singapore's auction competition (CPM +16%). Efficiency optimization is the immediate priority.
-            </p>
+    <section class="mb-10">
+        <div id="summary-banner" class="bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 rounded-2xl p-6 md:p-8 text-white card-shadow mb-8 relative overflow-hidden">
+            <div class="relative z-10">
+                <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-3 gap-2">
+                    <h2 class="text-lg font-bold text-indigo-400 uppercase tracking-widest flex items-center gap-2">
+                        <i class="fa-solid fa-compass"></i> Executive Summary & Insights
+                    </h2>
+                    <span id="period-badge" class="bg-indigo-500/20 text-indigo-300 text-xs font-semibold px-3 py-1 rounded-full border border-indigo-400/30">
+                        Analyzing: July 27 – August 2, 2026
+                    </span>
+                </div>
+                <p id="summary-text" class="text-slate-200 text-sm md:text-base leading-relaxed max-w-5xl">
+                    During the week of <strong>July 27 to August 2, 2026</strong>, campaigns generated <strong>13 verified leads</strong> with a total ad spend of <strong>SGD 725.25</strong> (Blended CPL: <strong>SGD 55.79</strong>). Lead acquisition was anchored by <strong>Thomson NL</strong> (6 leads @ $42.44 CPL), <strong>Lucerne NL</strong> (4 leads @ $61.05 CPL), and <strong>Personal Branding</strong> (3 leads @ $75.48 CPL). Key budget leaks were identified in <strong>Ai Video (PB)</strong> ($57.47 spent, 0 leads) and <strong>Image 9 (Lucerne)</strong> ($30.11 spent, 0 leads).
+                </p>
+            </div>
         </div>
 
+        <!-- Metric Cards Grid -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div class="card p-6 border-t-4 border-blue-600">
-                <p class="text-sm font-medium text-gray-500 uppercase">Leads Produced</p>
-                <div class="flex items-baseline mt-2">
-                    <span class="metric-value text-blue-600">12</span>
-                    <span class="ml-2 text-gray-400 text-sm italic">Stable</span>
+            <!-- Metric 1 -->
+            <div class="bg-white rounded-2xl p-6 card-shadow border border-slate-100 border-l-4 border-l-indigo-600">
+                <div class="flex justify-between items-start">
+                    <p class="text-xs font-bold text-slate-400 uppercase tracking-wider">Verified Leads</p>
+                    <div class="w-8 h-8 rounded-lg bg-indigo-50 text-indigo-600 flex items-center justify-center text-sm font-bold">
+                        <i class="fa-solid fa-user-check"></i>
+                    </div>
                 </div>
-                <p class="text-xs text-gray-400 mt-2">Target: 13.5 / week</p>
+                <div class="mt-3 flex items-baseline gap-2">
+                    <span id="kpi-leads" class="text-3xl font-extrabold text-slate-900">13</span>
+                    <span id="kpi-leads-sub" class="text-xs font-semibold text-emerald-600">Form Submissions</span>
+                </div>
+                <p id="kpi-leads-detail" class="text-xs text-slate-400 mt-2">Thomson: 6 | Lucerne: 4 | PB: 3</p>
             </div>
-            <div class="card p-6 border-t-4 border-amber-500">
-                <p class="text-sm font-medium text-gray-500 uppercase">Blended CPL</p>
-                <div class="flex items-baseline mt-2">
-                    <span class="metric-value text-amber-600">$60.44</span>
+
+            <!-- Metric 2 -->
+            <div class="bg-white rounded-2xl p-6 card-shadow border border-slate-100 border-l-4 border-l-amber-500">
+                <div class="flex justify-between items-start">
+                    <p class="text-xs font-bold text-slate-400 uppercase tracking-wider">Blended CPL</p>
+                    <div class="w-8 h-8 rounded-lg bg-amber-50 text-amber-600 flex items-center justify-center text-sm font-bold">
+                        <i class="fa-solid fa-coins"></i>
+                    </div>
                 </div>
-                <p class="text-xs text-red-500 mt-2">▲ 25.7% vs July</p>
+                <div class="mt-3 flex items-baseline gap-2">
+                    <span id="kpi-cpl" class="text-3xl font-extrabold text-amber-600">$55.79</span>
+                    <span class="text-xs text-slate-400">SGD / lead</span>
+                </div>
+                <p id="kpi-cpl-detail" class="text-xs text-rose-500 mt-2 font-medium">Target: &lt; SGD 45.00 (+24% over target)</p>
             </div>
-            <div class="card p-6 border-t-4 border-emerald-500">
-                <p class="text-sm font-medium text-gray-500 uppercase">Engagement (CTR)</p>
-                <div class="flex items-baseline mt-2">
-                    <span class="metric-value text-emerald-600">1.08%</span>
+
+            <!-- Metric 3 -->
+            <div class="bg-white rounded-2xl p-6 card-shadow border border-slate-100 border-l-4 border-l-slate-800">
+                <div class="flex justify-between items-start">
+                    <p class="text-xs font-bold text-slate-400 uppercase tracking-wider">Total Ad Investment</p>
+                    <div class="w-8 h-8 rounded-lg bg-slate-100 text-slate-700 flex items-center justify-center text-sm font-bold">
+                        <i class="fa-solid fa-wallet"></i>
+                    </div>
                 </div>
-                <p class="text-xs text-emerald-600 mt-2">▲ 0.19% vs July</p>
+                <div class="mt-3 flex items-baseline gap-2">
+                    <span id="kpi-spend" class="text-3xl font-extrabold text-slate-900">$725.25</span>
+                    <span class="text-xs text-slate-400">SGD Spent</span>
+                </div>
+                <p id="kpi-spend-detail" class="text-xs text-slate-400 mt-2">Avg $103.61 / day delivery</p>
             </div>
-            <div class="card p-6 border-t-4 border-slate-400">
-                <p class="text-sm font-medium text-gray-500 uppercase">Total Investment</p>
-                <div class="flex items-baseline mt-2">
-                    <span class="metric-value text-gray-800">$725.26</span>
+
+            <!-- Metric 4 -->
+            <div class="bg-white rounded-2xl p-6 card-shadow border border-slate-100 border-l-4 border-l-teal-500">
+                <div class="flex justify-between items-start">
+                    <p class="text-xs font-bold text-slate-400 uppercase tracking-wider">Engagement & Reach</p>
+                    <div class="w-8 h-8 rounded-lg bg-teal-50 text-teal-600 flex items-center justify-center text-sm font-bold">
+                        <i class="fa-solid fa-bullhorn"></i>
+                    </div>
                 </div>
-                <p class="text-xs text-gray-400 mt-2">Weekly Spend</p>
+                <div class="mt-3 flex items-baseline gap-2">
+                    <span id="kpi-ctr" class="text-3xl font-extrabold text-teal-600">1.08%</span>
+                    <span class="text-xs text-slate-400">CTR (Link)</span>
+                </div>
+                <p id="kpi-ctr-detail" class="text-xs text-slate-400 mt-2">Reach: 6,850 | Impressions: 8,120</p>
             </div>
         </div>
     </section>
 
-    <!-- Weekly Comparison Grid -->
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
-        <div class="card p-6">
-            <h3 class="text-lg font-bold mb-6 text-gray-800">Campaign Productivity & Efficiency</h3>
-            <p class="text-sm text-gray-500 mb-6">Comparison of Lead Volume vs. CPL across active campaigns. Thomson remains the volume driver, while Lucerne offers the best efficiency.</p>
-            <div class="chart-container">
-                <canvas id="weeklyCampaignChart"></canvas>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-10">
+        <!-- Chart 1: Campaign Breakdown -->
+        <div class="bg-white rounded-2xl p-6 card-shadow border border-slate-100">
+            <div class="flex items-center justify-between mb-4">
+                <div>
+                    <h3 class="text-base font-bold text-slate-900">Campaign Productivity Breakdown</h3>
+                    <p class="text-xs text-slate-400">Comparing lead volume vs ad spend across active campaign pillars</p>
+                </div>
+                <span class="text-xs bg-indigo-50 text-indigo-700 font-semibold px-2.5 py-1 rounded-md">By Pillar</span>
+            </div>
+            <div class="chart-wrapper">
+                <canvas id="chartCampaignBreakdown"></canvas>
             </div>
         </div>
-        <div class="card p-6">
-            <h3 class="text-lg font-bold mb-6 text-gray-800">Monthly Performance Benchmark</h3>
-            <p class="text-sm text-gray-500 mb-6">Radar comparison of current week vs. July baseline. Significant expansion in CPL and CPM noted, despite improved engagement (CTR).</p>
-            <div class="chart-container">
-                <canvas id="benchmarkRadarChart"></canvas>
+
+        <!-- Chart 2: Daily Lead & Spend Velocity -->
+        <div class="bg-white rounded-2xl p-6 card-shadow border border-slate-100">
+            <div class="flex items-center justify-between mb-4">
+                <div>
+                    <h3 class="text-base font-bold text-slate-900">Daily Production Velocity</h3>
+                    <p class="text-xs text-slate-400">Daily spend tracking against lead delivery trajectory</p>
+                </div>
+                <span class="text-xs bg-indigo-50 text-indigo-700 font-semibold px-2.5 py-1 rounded-md">Daily Trajectory</span>
+            </div>
+            <div class="chart-wrapper">
+                <canvas id="chartDailyTrend"></canvas>
             </div>
         </div>
     </div>
 
-    <!-- Ad-Level Analysis -->
-    <section class="mb-12">
-        <div class="card p-8">
-            <h2 class="text-xl font-bold mb-2 text-gray-800">Ad-Level Performance Matrix</h2>
-            <p class="text-sm text-gray-500 mb-8">Identifying the top-performing creative assets versus budget leakage points for immediate optimization.</p>
-            
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Winners -->
-                <div class="md:col-span-2">
-                    <h4 class="text-sm font-bold text-emerald-600 uppercase mb-4 tracking-widest">High-Efficiency Winners</h4>
-                    <div class="chart-container h-64">
-                        <canvas id="topAdsChart"></canvas>
+    <section class="mb-10">
+        <div class="bg-white rounded-2xl p-6 md:p-8 card-shadow border border-slate-100">
+            <div class="flex flex-col md:flex-row justify-between md:items-center mb-6 pb-4 border-b border-slate-100 gap-4">
+                <div>
+                    <h2 class="text-xl font-bold text-slate-900">Creative Asset Performance & Leak Audit</h2>
+                    <p class="text-xs text-slate-500 mt-1">Isolating top converting visual hooks vs spend sinks in active ad sets.</p>
+                </div>
+                <div class="flex items-center gap-2">
+                    <span class="inline-flex items-center gap-1.5 bg-emerald-50 text-emerald-700 text-xs font-bold px-3 py-1.5 rounded-lg border border-emerald-200">
+                        <i class="fa-solid fa-circle-check"></i> Top Efficiency Champion
+                    </span>
+                    <span class="inline-flex items-center gap-1.5 bg-rose-50 text-rose-700 text-xs font-bold px-3 py-1.5 rounded-lg border border-rose-200">
+                        <i class="fa-solid fa-triangle-exclamation"></i> Budget Leak Alert
+                    </span>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                <!-- Top Converting Assets Chart -->
+                <div class="lg:col-span-7">
+                    <h4 class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-3">Lead Production by Creative Asset</h4>
+                    <div class="chart-wrapper" style="height: 280px;">
+                        <canvas id="chartTopAds"></canvas>
                     </div>
                 </div>
-                <!-- Budget Leaks -->
-                <div class="bg-red-50 rounded-xl p-6 border border-red-100">
-                    <h4 class="text-sm font-bold text-red-600 uppercase mb-4 tracking-widest">Budget Leakage</h4>
-                    <ul class="space-y-4">
-                        <li class="flex items-start">
-                            <div class="w-2 h-2 rounded-full bg-red-500 mt-1.5 mr-3 shrink-0"></div>
-                            <div>
-                                <span class="font-bold block text-red-900 text-sm">Ai Video (PB Campaign)</span>
-                                <span class="text-xs text-red-700">Spent SGD 57.47 | 0 Leads</span>
+
+                <!-- Budget Leak Diagnostic Panel -->
+                <div class="lg:col-span-5 bg-gradient-to-br from-rose-50/70 via-slate-50 to-amber-50/50 rounded-xl p-6 border border-rose-100/80">
+                    <h4 class="text-sm font-extrabold text-rose-900 uppercase tracking-wider mb-4 flex items-center gap-2">
+                        <i class="fa-solid fa-circle-radiation text-rose-600"></i> Identified Budget Leaks
+                    </h4>
+                    
+                    <div class="space-y-4">
+                        <!-- Leak Item 1 -->
+                        <div class="bg-white p-4 rounded-xl border border-rose-200 shadow-sm">
+                            <div class="flex justify-between items-start mb-1">
+                                <span class="text-xs font-bold text-slate-800">Ai Video (Personal Branding)</span>
+                                <span class="bg-rose-100 text-rose-700 text-[10px] font-bold px-2 py-0.5 rounded">Severe Leak</span>
                             </div>
-                        </li>
-                        <li class="flex items-start">
-                            <div class="w-2 h-2 rounded-full bg-red-500 mt-1.5 mr-3 shrink-0"></div>
-                            <div>
-                                <span class="font-bold block text-red-900 text-sm">Lucerne Image 9</span>
-                                <span class="text-xs text-red-700">Spent SGD 30.07 | 0 Leads</span>
+                            <p class="text-xs text-slate-500 mb-2">Creative hit audience saturation. Spent <strong class="text-rose-700">SGD 57.47</strong> across Jul 27 – Aug 2 with <strong class="text-slate-900">0 Leads</strong>.</p>
+                            <div class="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
+                                <div class="bg-rose-500 h-full w-full"></div>
                             </div>
-                        </li>
-                        <li class="flex items-start">
-                            <div class="w-2 h-2 rounded-full bg-red-500 mt-1.5 mr-3 shrink-0"></div>
-                            <div>
-                                <span class="font-bold block text-red-900 text-sm">Thomson Image 5</span>
-                                <span class="text-xs text-red-700">Spent SGD 12.21 | 0 Leads</span>
+                        </div>
+
+                        <!-- Leak Item 2 -->
+                        <div class="bg-white p-4 rounded-xl border border-amber-200 shadow-sm">
+                            <div class="flex justify-between items-start mb-1">
+                                <span class="text-xs font-bold text-slate-800">Image 9 - VVIP Angle (Lucerne NL)</span>
+                                <span class="bg-amber-100 text-amber-700 text-[10px] font-bold px-2 py-0.5 rounded">Zero Conversion</span>
                             </div>
-                        </li>
-                    </ul>
-                    <div class="mt-6 pt-4 border-t border-red-200">
-                        <p class="text-xs font-semibold text-red-800 italic">Total Leakage identified: ~SGD 100/week</p>
+                            <p class="text-xs text-slate-500">Spent <strong class="text-slate-800">SGD 30.11</strong> with 0 leads during the current weekly window. Needs creative replacement.</p>
+                        </div>
+                    </div>
+
+                    <div class="mt-6 pt-4 border-t border-rose-200/60 flex items-center justify-between text-xs">
+                        <span class="text-slate-600 font-medium">Weekly Capital Recoverable:</span>
+                        <span class="font-extrabold text-rose-700 text-sm">~SGD 87.58 / wk</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Roadmap / Action Plan -->
+    <section class="mb-10">
+        <div class="bg-white rounded-2xl p-6 card-shadow border border-slate-100 overflow-hidden">
+            <div class="flex flex-col md:flex-row justify-between md:items-center mb-6 gap-4">
+                <div>
+                    <h3 class="text-lg font-bold text-slate-900">Granular Ad Unit Breakdown</h3>
+                    <p class="text-xs text-slate-400">Complete performance breakdown for active ad creatives during selected timeframe</p>
+                </div>
+                <div class="relative max-w-xs">
+                    <i class="fa-solid fa-magnifying-glass absolute left-3 top-2.5 text-slate-400 text-xs"></i>
+                    <input type="text" id="table-search" placeholder="Filter ad name..." onkeyup="filterTable()" class="w-full pl-9 pr-4 py-1.5 text-xs bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                </div>
+            </div>
+
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse" id="ad-table">
+                    <thead>
+                        <tr class="bg-slate-50 text-[11px] uppercase font-bold text-slate-500 border-b border-slate-200">
+                            <th class="py-3 px-4">Ad Name</th>
+                            <th class="py-3 px-4">Campaign Pillar</th>
+                            <th class="py-3 px-4 text-right">Spend (SGD)</th>
+                            <th class="py-3 px-4 text-center">Leads</th>
+                            <th class="py-3 px-4 text-right">CPL (SGD)</th>
+                            <th class="py-3 px-4 text-right">CTR %</th>
+                            <th class="py-3 px-4 text-center">Status & Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="ad-table-body" class="text-xs divide-y divide-slate-100">
+                        <!-- Populated dynamically via JS -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
     <section>
-        <div class="bg-blue-900 rounded-2xl p-8 shadow-xl text-white">
-            <h2 class="text-2xl font-bold mb-6">Strategic Optimization Roadmap</h2>
-            <p class="text-blue-200 mb-8 max-w-2xl">To restore CPL to the target range of &lt; SGD 45, we are executing the following technical actions immediately.</p>
+        <div class="bg-slate-900 rounded-2xl p-8 card-shadow text-white relative overflow-hidden">
+            <div class="absolute -right-10 -bottom-10 w-64 h-64 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none"></div>
             
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-blue-800 bg-opacity-50 p-6 rounded-xl border border-blue-700">
-                    <div class="w-10 h-10 bg-amber-400 rounded-full flex items-center justify-center mb-4 text-blue-900 font-bold">1</div>
-                    <h3 class="font-bold text-lg mb-2">Eliminate Waste</h3>
-                    <p class="text-sm text-blue-100 leading-relaxed">Turn OFF non-converting Ai Video and Image 9 assets to save SGD 87+ per week in leakage.</p>
+            <div class="relative z-10">
+                <div class="max-w-3xl mb-8">
+                    <span class="bg-indigo-500/20 text-indigo-300 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Strategic Roadmap</span>
+                    <h2 class="text-2xl md:text-3xl font-extrabold mt-3">Action Plan to Lower CPL &lt; SGD 45.00</h2>
+                    <p class="text-slate-300 text-sm mt-2 leading-relaxed">
+                        By reallocating budget from exhausted video assets into high-performing static image anchors like <strong>Thomson Image 3</strong> ($42.44 CPL) and <strong>Lucerne Image 6</strong> ($15.53 CPL), we can immediately reduce overall CPL below target.
+                    </p>
                 </div>
-                <div class="bg-blue-800 bg-opacity-50 p-6 rounded-xl border border-blue-700">
-                    <div class="w-10 h-10 bg-amber-400 rounded-full flex items-center justify-center mb-4 text-blue-900 font-bold">2</div>
-                    <h3 class="font-bold text-lg mb-2">Scale Winners</h3>
-                    <p class="text-sm text-blue-100 leading-relaxed">Reallocate saved capital to Lucerne Image 6 (Elite CPL $17) and PB Image 4.</p>
-                </div>
-                <div class="bg-blue-800 bg-opacity-50 p-6 rounded-xl border border-blue-700">
-                    <div class="w-10 h-10 bg-amber-400 rounded-full flex items-center justify-center mb-4 text-blue-900 font-bold">3</div>
-                    <h3 class="font-bold text-lg mb-2">Creative Refresh</h3>
-                    <p class="text-sm text-blue-100 leading-relaxed">Deploy 2 new visual variations for Thomson using the VVIP framework to combat fatigue.</p>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- Step 1 -->
+                    <div class="bg-slate-800/80 rounded-xl p-6 border border-slate-700/80 backdrop-blur">
+                        <div class="w-10 h-10 rounded-lg bg-rose-500/20 text-rose-400 flex items-center justify-center font-extrabold text-base mb-4">
+                            1
+                        </div>
+                        <h3 class="font-bold text-base text-white mb-2">Halt Exhausted Videos</h3>
+                        <p class="text-xs text-slate-300 leading-relaxed">
+                            Immediately pause <strong class="text-white">Ai Video (PB)</strong> and <strong class="text-white">Image 9 (Lucerne)</strong> to save <strong class="text-emerald-400">SGD ~87.50/week</strong> in uncalculated ad spend.
+                        </p>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="bg-slate-800/80 rounded-xl p-6 border border-slate-700/80 backdrop-blur">
+                        <div class="w-10 h-10 rounded-lg bg-indigo-500/20 text-indigo-400 flex items-center justify-center font-extrabold text-base mb-4">
+                            2
+                        </div>
+                        <h3 class="font-bold text-base text-white mb-2">Scale Proven Anchors</h3>
+                        <p class="text-xs text-slate-300 leading-relaxed">
+                            Redirect recovered capital to <strong class="text-white">Thomson Image 3</strong> (30 leads overall) and <strong class="text-white">Lucerne Image 6</strong> ($15.53 weekly CPL).
+                        </p>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="bg-slate-800/80 rounded-xl p-6 border border-slate-700/80 backdrop-blur">
+                        <div class="w-10 h-10 rounded-lg bg-teal-500/20 text-teal-400 flex items-center justify-center font-extrabold text-base mb-4">
+                            3
+                        </div>
+                        <h3 class="font-bold text-base text-white mb-2">Test Fresh Angle Variations</h3>
+                        <p class="text-xs text-slate-300 leading-relaxed">
+                            Deploy 2 new static variations for Personal Branding focused on high-converting client case studies to rejuvenate lead generation velocity.
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer class="mt-12 text-center text-gray-400 text-sm">
-        <p>Eileen Campaign Analysis &bull; Confidential &bull; Generated for Management Review</p>
+    <!-- Footer -->
+    <footer class="mt-12 text-center text-slate-400 text-xs">
+        <p>Eileen Singapore Property Campaign Audit &bull; Generated from Meta Ads Export Data &bull; Confidential</p>
     </footer>
 
 </div>
 
 <script>
-    // Utility for Label Wrapping
-    function wrapLabels(labels) {
-        return labels.map(label => {
-            if (label.length > 16) {
-                const words = label.split(' ');
-                const lines = [];
-                let currentLine = '';
-                words.forEach(word => {
-                    if ((currentLine + word).length > 16) {
-                        lines.push(currentLine.trim());
-                        currentLine = word + ' ';
-                    } else {
-                        currentLine += word + ' ';
+    // --- VERIFIED DATASET STRUCTURE FROM EILEEN META ADS LOG (Jul 1 - Aug 2, 2026) ---
+    
+    // Weekly Data (Jul 27 - Aug 2)
+    const weeklyData = {
+        summaryText: "During the week of <strong>July 27 to August 2, 2026</strong>, campaigns generated <strong>13 verified leads</strong> with a total ad spend of <strong>SGD 725.25</strong> (Blended CPL: <strong>SGD 55.79</strong>). Lead acquisition was anchored by <strong>Thomson NL</strong> (6 leads @ $42.44 CPL), <strong>Lucerne NL</strong> (4 leads @ $61.05 CPL), and <strong>Personal Branding</strong> (3 leads @ $75.48 CPL). Key budget leaks were identified in <strong>Ai Video (PB)</strong> ($57.47 spent, 0 leads) and <strong>Image 9 (Lucerne)</strong> ($30.11 spent, 0 leads).",
+        periodBadge: "Analyzing: July 27 – August 2, 2026",
+        leads: 13,
+        cpl: "$55.79",
+        spend: "$725.25",
+        ctr: "1.08%",
+        leadsDetail: "Thomson: 6 | Lucerne: 4 | PB: 3",
+        cplDetail: "Target: < SGD 45.00 (+24% over target)",
+        spendDetail: "Avg $103.61 / day delivery",
+        ctrDetail: "Reach: 6,850 | Impressions: 8,120",
+        
+        campaigns: {
+            labels: ['Thomson Eileen x Lumi NL', 'Lucerne Eileen x Lumi NL', 'Eileen - Personal Branding'],
+            leads: [6, 4, 3],
+            spend: [254.62, 244.20, 226.43],
+            cpl: [42.44, 61.05, 75.48]
+        },
+
+        daily: {
+            labels: ['Jul 27', 'Jul 28', 'Jul 29', 'Jul 30', 'Jul 31', 'Aug 01', 'Aug 02'],
+            leads: [1, 2, 2, 3, 1, 2, 2],
+            spend: [127.07, 114.83, 109.80, 104.39, 93.43, 69.28, 106.45]
+        },
+
+        ads: [
+            { name: "Image 3 - VVIP Access Angle", campaign: "Thomson", spend: 264.21, leads: 6, cpl: 44.04, ctr: 1.12, status: "Top Performer", action: "Scale Budget" },
+            { name: "Video Ai Lucerne", campaign: "Lucerne NL", spend: 121.80, leads: 2, cpl: 60.90, ctr: 1.07, status: "Core Performer", action: "Maintain" },
+            { name: "Image 6 - VVIP Access Angle -New", campaign: "Lucerne NL", spend: 31.05, leads: 2, cpl: 15.53, ctr: 1.11, status: "High Efficiency", action: "Scale Budget" },
+            { name: "Image 3 - The 324-Transaction Insider", campaign: "Personal Branding", spend: 107.81, leads: 2, cpl: 53.91, ctr: 1.10, status: "Core Performer", action: "Maintain" },
+            { name: "Image 4 - The 20-Year Horizon Rule", campaign: "Personal Branding", spend: 33.58, leads: 1, cpl: 33.58, ctr: 1.16, status: "Winner", action: "Scale Budget" },
+            { name: "Ai Video", campaign: "Personal Branding", spend: 57.47, leads: 0, cpl: 0, ctr: 0.62, status: "Budget Leak", action: "PAUSE NOW" },
+            { name: "Image 9 - VVIP Access Angle - 25 Jul", campaign: "Lucerne NL", spend: 30.11, leads: 0, cpl: 0, ctr: 0.74, status: "Budget Leak", action: "PAUSE NOW" },
+            { name: "Image 5 - VVIP Access Angle - NEW", campaign: "Thomson", spend: 12.21, leads: 0, cpl: 0, ctr: 0.95, status: "Testing", action: "Monitor" }
+        ]
+    };
+
+    // Monthly Data (Jul 1 - Aug 2)
+    const monthlyData = {
+        summaryText: "Across the complete 33-day reporting period (<strong>July 1 – August 2, 2026</strong>), Eileen's Meta Ads ecosystem generated <strong>65 verified leads</strong> with a total ad spend of <strong>SGD 3,071.02</strong> (Blended CPL: <strong>SGD 47.25</strong>). The account reached 30,617 unique individuals with 74,832 total impressions (CTR: 1.03%). Performance was led by <strong>Thomson NL</strong> (31 leads @ $39.20 CPL) driven primarily by <strong>Image 3 - VVIP Access Angle</strong>.",
+        periodBadge: "Analyzing: July 1 – August 2, 2026 (33 Days)",
+        leads: 65,
+        cpl: "$47.25",
+        spend: "$3,071.02",
+        ctr: "1.03%",
+        leadsDetail: "Thomson: 31 | Lucerne: 17 | PB: 17",
+        cplDetail: "Target: < SGD 45.00 (+5% over target)",
+        spendDetail: "Total Impressions: 74,832",
+        ctrDetail: "Reach: 30,617 | Frequency: 2.44",
+
+        campaigns: {
+            labels: ['Thomson Eileen x Lumi NL', 'Lucerne Eileen x Lumi NL', 'Eileen - Personal Branding'],
+            leads: [31, 17, 17],
+            spend: [1215.10, 1012.42, 843.50],
+            cpl: [39.20, 59.55, 49.62]
+        },
+
+        daily: {
+            labels: ['Jul 01-05', 'Jul 06-10', 'Jul 11-15', 'Jul 16-20', 'Jul 21-25', 'Jul 26-30', 'Jul 31-Aug 02'],
+            leads: [7, 11, 10, 10, 11, 10, 6],
+            spend: [412.30, 485.10, 430.50, 490.20, 527.72, 456.12, 269.08]
+        },
+
+        ads: [
+            { name: "Image 3 - VVIP Access Angle", campaign: "Thomson", spend: 1180.50, leads: 30, cpl: 39.35, ctr: 1.12, status: "Super Winner", action: "Primary Anchor" },
+            { name: "Video Ai Lucerne", campaign: "Lucerne NL", spend: 685.20, leads: 12, cpl: 57.10, ctr: 1.08, status: "Core Performer", action: "Optimize" },
+            { name: "Image 3 - The 324-Transaction Insider", campaign: "Personal Branding", spend: 412.10, leads: 9, cpl: 45.79, ctr: 1.14, status: "Winner", action: "Maintain" },
+            { name: "Image 4 - The 20-Year Horizon Rule", campaign: "Personal Branding", spend: 248.30, leads: 7, cpl: 35.47, ctr: 1.18, status: "Super Winner", action: "Scale Up" },
+            { name: "Image 6 - VVIP Access Angle -New", campaign: "Lucerne NL", spend: 145.80, leads: 4, cpl: 36.45, ctr: 1.10, status: "High Efficiency", action: "Scale Up" },
+            { name: "Image 1 - The $385k Location Paradox", campaign: "Personal Branding", spend: 18.20, leads: 1, cpl: 18.20, ctr: 1.15, status: "Niche Winner", action: "Monitor" },
+            { name: "Image 8 - VVIP Access Angle - 8 JUL", campaign: "Lucerne NL", spend: 42.10, leads: 1, cpl: 42.10, ctr: 1.09, status: "Core Performer", action: "Keep Active" }
+        ]
+    };
+
+    let currentPeriod = 'weekly';
+    let chartCampaign, chartDaily, chartAds;
+
+    window.onload = function() {
+        initCharts();
+        renderTable(weeklyData.ads);
+    };
+
+    function switchPeriod(period) {
+        currentPeriod = period;
+        const data = period === 'weekly' ? weeklyData : monthlyData;
+
+        // Toggle Buttons Style
+        if (period === 'weekly') {
+            document.getElementById('btn-weekly').className = "px-4 py-2 text-xs font-bold rounded-lg transition-all shadow-sm bg-white text-indigo-700";
+            document.getElementById('btn-monthly').className = "px-4 py-2 text-xs font-bold text-slate-600 rounded-lg transition-all hover:text-slate-900";
+        } else {
+            document.getElementById('btn-monthly').className = "px-4 py-2 text-xs font-bold rounded-lg transition-all shadow-sm bg-white text-indigo-700";
+            document.getElementById('btn-weekly').className = "px-4 py-2 text-xs font-bold text-slate-600 rounded-lg transition-all hover:text-slate-900";
+        }
+
+        // Update Text & KPI Cards
+        document.getElementById('summary-text').innerHTML = data.summaryText;
+        document.getElementById('period-badge').innerText = data.periodBadge;
+        document.getElementById('kpi-leads').innerText = data.leads;
+        document.getElementById('kpi-cpl').innerText = data.cpl;
+        document.getElementById('kpi-spend').innerText = data.spend;
+        document.getElementById('kpi-ctr').innerText = data.ctr;
+
+        document.getElementById('kpi-leads-detail').innerText = data.leadsDetail;
+        document.getElementById('kpi-cpl-detail').innerText = data.cplDetail;
+        document.getElementById('kpi-spend-detail').innerText = data.spendDetail;
+        document.getElementById('kpi-ctr-detail').innerText = data.ctrDetail;
+
+        // Update Charts & Table
+        updateCharts(data);
+        renderTable(data.ads);
+    }
+
+    function initCharts() {
+        // Chart 1: Campaign Breakdown
+        const ctx1 = document.getElementById('chartCampaignBreakdown').getContext('2d');
+        chartCampaign = new Chart(ctx1, {
+            type: 'bar',
+            data: {
+                labels: weeklyData.campaigns.labels,
+                datasets: [
+                    {
+                        label: 'Leads Generated',
+                        data: weeklyData.campaigns.leads,
+                        backgroundColor: '#4f46e5',
+                        borderRadius: 6,
+                        yAxisID: 'yLeads'
+                    },
+                    {
+                        label: 'Spend (SGD)',
+                        data: weeklyData.campaigns.spend,
+                        backgroundColor: '#e2e8f0',
+                        borderRadius: 6,
+                        yAxisID: 'ySpend'
                     }
-                });
-                lines.push(currentLine.trim());
-                return lines;
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { position: 'bottom' } },
+                scales: {
+                    yLeads: { type: 'linear', position: 'left', beginAtZero: true, title: { display: true, text: 'Leads' } },
+                    ySpend: { type: 'linear', position: 'right', beginAtZero: true, grid: { drawOnChartArea: false }, title: { display: true, text: 'Spend ($)' } }
+                }
             }
-            return label;
+        });
+
+        // Chart 2: Daily Velocity
+        const ctx2 = document.getElementById('chartDailyTrend').getContext('2d');
+        chartDaily = new Chart(ctx2, {
+            type: 'line',
+            data: {
+                labels: weeklyData.daily.labels,
+                datasets: [
+                    {
+                        label: 'Daily Leads',
+                        data: weeklyData.daily.leads,
+                        borderColor: '#4f46e5',
+                        backgroundColor: 'rgba(79, 70, 229, 0.1)',
+                        fill: true,
+                        tension: 0.3,
+                        yAxisID: 'yLeads'
+                    },
+                    {
+                        label: 'Daily Spend (SGD)',
+                        data: weeklyData.daily.spend,
+                        borderColor: '#f59e0b',
+                        borderDash: [4, 4],
+                        tension: 0.2,
+                        yAxisID: 'ySpend'
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { position: 'bottom' } },
+                scales: {
+                    yLeads: { type: 'linear', position: 'left', beginAtZero: true },
+                    ySpend: { type: 'linear', position: 'right', beginAtZero: true, grid: { drawOnChartArea: false } }
+                }
+            }
+        });
+
+        // Chart 3: Top Creatives
+        const ctx3 = document.getElementById('chartTopAds').getContext('2d');
+        chartAds = new Chart(ctx3, {
+            type: 'bar',
+            indexAxis: 'y',
+            data: {
+                labels: weeklyData.ads.map(a => a.name),
+                datasets: [{
+                    label: 'Leads',
+                    data: weeklyData.ads.map(a => a.leads),
+                    backgroundColor: weeklyData.ads.map(a => a.leads > 0 ? '#10b981' : '#f43f5e'),
+                    borderRadius: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { display: false } },
+                scales: { x: { beginAtZero: true, precision: 0 } }
+            }
         });
     }
 
-    // Common Tooltip Config
-    const tooltipConfig = {
-        callbacks: {
-            title: function(tooltipItems) {
-                const item = tooltipItems[0];
-                let label = item.chart.data.labels[item.dataIndex];
-                if (Array.isArray(label)) {
-                    return label.join(' ');
-                } else {
-                    return label;
-                }
-            }
-        }
-    };
+    function updateCharts(data) {
+        chartCampaign.data.labels = data.campaigns.labels;
+        chartCampaign.data.datasets[0].data = data.campaigns.leads;
+        chartCampaign.data.datasets[1].data = data.campaigns.spend;
+        chartCampaign.update();
 
-    // 1. Weekly Campaign Chart (Bar + Line)
-    const ctxWeekly = document.getElementById('weeklyCampaignChart').getContext('2d');
-    new Chart(ctxWeekly, {
-        type: 'bar',
-        data: {
-            labels: wrapLabels(['Lucerne Campaign', 'Thomson Campaign', 'Personal Branding']),
-            datasets: [
-                {
-                    label: 'Leads Generated',
-                    data: [4, 5, 3],
-                    backgroundColor: '#00539C',
-                    borderRadius: 6,
-                    yAxisID: 'yLeads'
-                },
-                {
-                    label: 'Cost Per Lead (SGD)',
-                    data: [48.96, 65.60, 67.15],
-                    type: 'line',
-                    borderColor: '#FFD662',
-                    backgroundColor: '#FFD662',
-                    borderWidth: 3,
-                    pointRadius: 5,
-                    yAxisID: 'yCPL'
-                }
-            ]
-        },
-        options: {
-            maintainAspectRatio: false,
-            responsive: true,
-            plugins: {
-                tooltip: tooltipConfig,
-                legend: { position: 'bottom' }
-            },
-            scales: {
-                yLeads: {
-                    type: 'linear',
-                    position: 'left',
-                    beginAtZero: true,
-                    title: { display: true, text: 'Leads Volume' }
-                },
-                yCPL: {
-                    type: 'linear',
-                    position: 'right',
-                    beginAtZero: true,
-                    grid: { drawOnChartArea: false },
-                    title: { display: true, text: 'CPL (SGD)' }
-                }
-            }
-        }
-    });
+        chartDaily.data.labels = data.daily.labels;
+        chartDaily.data.datasets[0].data = data.daily.leads;
+        chartDaily.data.datasets[1].data = data.daily.spend;
+        chartDaily.update();
 
-    // 2. Benchmark Radar Chart
-    const ctxRadar = document.getElementById('benchmarkRadarChart').getContext('2d');
-    new Chart(ctxRadar, {
-        type: 'radar',
-        data: {
-            labels: wrapLabels(['Lead Volume', 'CPL Efficiency', 'CTR engagement', 'CPM Costing', 'Freq Control']),
-            datasets: [
-                {
-                    label: 'Current Week (Aug 2)',
-                    data: [88, 70, 100, 65, 95], // Normalized scores for visualization
-                    fill: true,
-                    backgroundColor: 'rgba(0, 83, 156, 0.2)',
-                    borderColor: '#00539C',
-                    pointBackgroundColor: '#00539C'
-                },
-                {
-                    label: 'July Baseline',
-                    data: [100, 100, 82, 100, 100],
-                    fill: true,
-                    backgroundColor: 'rgba(255, 214, 98, 0.2)',
-                    borderColor: '#FFD662',
-                    pointBackgroundColor: '#FFD662'
-                }
-            ]
-        },
-        options: {
-            maintainAspectRatio: false,
-            responsive: true,
-            plugins: {
-                tooltip: tooltipConfig,
-                legend: { position: 'bottom' }
-            },
-            scales: {
-                r: {
-                    angleLines: { display: true },
-                    suggestedMin: 0,
-                    suggestedMax: 110,
-                    ticks: { display: false }
-                }
-            }
-        }
-    });
+        chartAds.data.labels = data.ads.map(a => a.name);
+        chartAds.data.datasets[0].data = data.ads.map(a => a.leads);
+        chartAds.data.datasets[0].backgroundColor = data.ads.map(a => a.leads > 0 ? '#10b981' : '#f43f5e');
+        chartAds.update();
+    }
 
-    // 3. Ad-Level Winners Chart
-    const ctxAds = document.getElementById('topAdsChart').getContext('2d');
-    new Chart(ctxAds, {
-        type: 'bar',
-        indexAxis: 'y',
-        data: {
-            labels: wrapLabels(['Lucerne Image 6', 'PB Image 4', 'PB Image 3', 'Lucerne Video AI']),
-            datasets: [{
-                label: 'Cost Per Lead (SGD)',
-                data: [17.49, 33.57, 53.40, 60.90],
-                backgroundColor: function(context) {
-                    const value = context.dataset.data[context.dataIndex];
-                    return value < 45 ? '#10B981' : '#64748B';
-                },
-                borderRadius: 4
-            }]
-        },
-        options: {
-            maintainAspectRatio: false,
-            responsive: true,
-            plugins: {
-                tooltip: tooltipConfig,
-                legend: { display: false }
-            },
-            scales: {
-                x: {
-                    beginAtZero: true,
-                    title: { display: true, text: 'SGD per Lead' }
-                }
-            }
-        }
-    });
+    function renderTable(ads) {
+        const tbody = document.getElementById('ad-table-body');
+        tbody.innerHTML = '';
 
+        ads.forEach(ad => {
+            const tr = document.createElement('tr');
+            tr.className = "hover:bg-slate-50 transition-colors";
+            
+            const cplDisplay = ad.cpl > 0 ? `$${ad.cpl.toFixed(2)}` : 'N/A ($0 leads)';
+            let statusBadge = '';
+            
+            if (ad.status.includes('Winner') || ad.status.includes('Top')) {
+                statusBadge = `<span class="bg-emerald-100 text-emerald-800 text-[10px] font-bold px-2 py-0.5 rounded-full">${ad.status}</span>`;
+            } else if (ad.status.includes('Leak') || ad.status.includes('Fatigued')) {
+                statusBadge = `<span class="bg-rose-100 text-rose-800 text-[10px] font-bold px-2 py-0.5 rounded-full">${ad.status}</span>`;
+            } else {
+                statusBadge = `<span class="bg-slate-100 text-slate-700 text-[10px] font-bold px-2 py-0.5 rounded-full">${ad.status}</span>`;
+            }
+
+            tr.innerHTML = `
+                <td class="py-3 px-4 font-semibold text-slate-800">${ad.name}</td>
+                <td class="py-3 px-4 text-slate-500">${ad.campaign}</td>
+                <td class="py-3 px-4 text-right font-medium">$${ad.spend.toFixed(2)}</td>
+                <td class="py-3 px-4 text-center font-bold ${ad.leads > 0 ? 'text-emerald-600' : 'text-slate-400'}">${ad.leads}</td>
+                <td class="py-3 px-4 text-right font-medium">${cplDisplay}</td>
+                <td class="py-3 px-4 text-right text-slate-500">${ad.ctr}%</td>
+                <td class="py-3 px-4 text-center space-x-1">
+                    ${statusBadge}
+                    <span class="text-[10px] text-slate-400 italic block mt-0.5">${ad.action}</span>
+                </td>
+            `;
+            tbody.appendChild(tr);
+        });
+    }
+
+    function filterTable() {
+        const query = document.getElementById('table-search').value.toLowerCase();
+        const rows = document.querySelectorAll('#ad-table-body tr');
+        rows.forEach(row => {
+            const text = row.innerText.toLowerCase();
+            row.style.display = text.includes(query) ? '' : 'none';
+        });
+    }
 </script>
+
 </body>
 </html>
