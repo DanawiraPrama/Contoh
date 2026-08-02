@@ -16,7 +16,7 @@
         
         :root {
             --primary: #0f172a;
-            --brand-blue: #0284c7;
+            --brand-sky: #0284c7;
             --brand-teal: #0d9488;
             --brand-amber: #d97706;
             --brand-rose: #e11d48;
@@ -77,7 +77,7 @@
                 <span class="text-xs text-slate-400 font-medium"><i class="fa-solid fa-calendar-days mr-1"></i> July 1 – August 2, 2026 Data Export</span>
             </div>
             <h1 class="text-2xl md:text-3xl font-extrabold text-slate-900 tracking-tight">Maureen Campaign Performance Report</h1>
-            <p class="text-slate-500 text-sm mt-1">Verified multi-campaign analysis covering General PL, Thomson Project, and Narra Condo PL.</p>
+            <p class="text-slate-500 text-sm mt-1">Verified multi-campaign analysis covering General PL, Thomson Maureen, and Narra Condo PL.</p>
         </div>
 
         <!-- Period Filter Selector -->
@@ -95,7 +95,7 @@
     <section class="mb-10">
         <div id="summary-banner" class="bg-gradient-to-r from-slate-900 via-slate-800 to-sky-950 rounded-2xl p-6 md:p-8 text-white card-shadow mb-8 relative overflow-hidden">
             <div class="relative z-10">
-                <div class="flex items-center justify-between mb-3">
+                <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-3 gap-2">
                     <h2 class="text-lg font-bold text-sky-400 uppercase tracking-widest flex items-center gap-2">
                         <i class="fa-solid fa-compass"></i> Executive Summary & Insights
                     </h2>
@@ -104,7 +104,7 @@
                     </span>
                 </div>
                 <p id="summary-text" class="text-slate-200 text-sm md:text-base leading-relaxed max-w-5xl">
-                    During the week of <strong>July 27 to August 2, 2026</strong>, campaigns generated <strong>9 verified leads</strong> with a total ad spend of <strong>SGD 587.06</strong> (Blended CPL: <strong>SGD 65.23</strong>). Lead acquisition was driven by <strong>General Personal Branding</strong> (5 leads @ $40.30 CPL) and <strong>Thomson Project</strong> (4 leads @ $49.09 CPL). However, <strong>Narra Condo PL</strong> experienced acute creative fatigue on its primary video asset, resulting in <strong>SGD 189.19 in zero-lead ad spend</strong> during this 7-day window.
+                    During the week of <strong>July 27 to August 2, 2026</strong>, campaigns generated <strong>9 verified leads</strong> with total ad spend of <strong>SGD 592.73</strong> (Blended CPL: <strong>SGD 65.86</strong>). Lead acquisition was driven by <strong>General Personal Branding</strong> (5 leads @ $40.47 CPL) and <strong>Thomson Project</strong> (4 leads @ $49.37 CPL). However, <strong>Narra Condo PL</strong> experienced severe creative fatigue, accumulating <strong>SGD 192.89 in zero-lead ad spend</strong> during this 7-day window.
                 </p>
             </div>
         </div>
@@ -135,10 +135,10 @@
                     </div>
                 </div>
                 <div class="mt-3 flex items-baseline gap-2">
-                    <span id="kpi-cpl" class="text-3xl font-extrabold text-amber-600">$65.23</span>
+                    <span id="kpi-cpl" class="text-3xl font-extrabold text-amber-600">$65.86</span>
                     <span class="text-xs text-slate-400">SGD / lead</span>
                 </div>
-                <p id="kpi-cpl-detail" class="text-xs text-rose-500 mt-2 font-medium">Target: &lt; SGD 45.00 (+45% over target)</p>
+                <p id="kpi-cpl-detail" class="text-xs text-rose-500 mt-2 font-medium">Target: &lt; SGD 45.00 (+46% over target)</p>
             </div>
 
             <!-- Metric 3 -->
@@ -150,10 +150,10 @@
                     </div>
                 </div>
                 <div class="mt-3 flex items-baseline gap-2">
-                    <span id="kpi-spend" class="text-3xl font-extrabold text-slate-900">$587.06</span>
+                    <span id="kpi-spend" class="text-3xl font-extrabold text-slate-900">$592.73</span>
                     <span class="text-xs text-slate-400">SGD Spent</span>
                 </div>
-                <p id="kpi-spend-detail" class="text-xs text-slate-400 mt-2">Avg $83.87 / day delivery</p>
+                <p id="kpi-spend-detail" class="text-xs text-slate-400 mt-2">Avg $84.68 / day delivery</p>
             </div>
 
             <!-- Metric 4 -->
@@ -180,7 +180,7 @@
             <div class="flex items-center justify-between mb-4">
                 <div>
                     <h3 class="text-base font-bold text-slate-900">Campaign Productivity Breakdown</h3>
-                    <p class="text-xs text-slate-400">Comparing lead generation volume vs cost per lead across pillars</p>
+                    <p class="text-xs text-slate-400">Comparing lead volume vs ad spend across active campaign pillars</p>
                 </div>
                 <span class="text-xs bg-slate-100 text-slate-600 font-semibold px-2.5 py-1 rounded-md">By Pillar</span>
             </div>
@@ -244,7 +244,7 @@
                                 <span class="text-xs font-bold text-slate-800">Ai Video (Narra Condo PL)</span>
                                 <span class="bg-rose-100 text-rose-700 text-[10px] font-bold px-2 py-0.5 rounded">Severe Leak</span>
                             </div>
-                            <p class="text-xs text-slate-500 mb-2">Creative hit audience saturation. Spent <strong class="text-rose-700">SGD 187.28</strong> across Jul 27 – Aug 2 with <strong class="text-slate-900">0 Leads</strong>.</p>
+                            <p class="text-xs text-slate-500 mb-2">Creative hit acute audience fatigue. Spent <strong class="text-rose-700">SGD 190.98</strong> across Jul 27 – Aug 2 with <strong class="text-slate-900">0 Leads</strong>.</p>
                             <div class="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
                                 <div class="bg-rose-500 h-full w-full"></div>
                             </div>
@@ -253,16 +253,16 @@
                         <!-- Leak Item 2 -->
                         <div class="bg-white p-4 rounded-xl border border-amber-200 shadow-sm">
                             <div class="flex justify-between items-start mb-1">
-                                <span class="text-xs font-bold text-slate-800">AI Video GPL (General PL)</span>
-                                <span class="bg-amber-100 text-amber-700 text-[10px] font-bold px-2 py-0.5 rounded">Low Conversion</span>
+                                <span class="text-xs font-bold text-slate-800">AI Video GPL & Image 8 (General PL)</span>
+                                <span class="bg-amber-100 text-amber-700 text-[10px] font-bold px-2 py-0.5 rounded">Low Efficiency</span>
                             </div>
-                            <p class="text-xs text-slate-500">Spent <strong class="text-slate-800">SGD 5.94</strong> with 0 leads during the current weekly window. Needs copy refresh.</p>
+                            <p class="text-xs text-slate-500">Combined spend of <strong class="text-slate-800">SGD 11.89</strong> during current weekly window produced 0 leads. Needs copy refresh.</p>
                         </div>
                     </div>
 
                     <div class="mt-6 pt-4 border-t border-rose-200/60 flex items-center justify-between text-xs">
                         <span class="text-slate-600 font-medium">Weekly Capital Recoverable:</span>
-                        <span class="font-extrabold text-rose-700 text-sm">~SGD 189.00 / wk</span>
+                        <span class="font-extrabold text-rose-700 text-sm">~SGD 192.89 / wk</span>
                     </div>
                 </div>
             </div>
@@ -312,9 +312,9 @@
             <div class="relative z-10">
                 <div class="max-w-3xl mb-8">
                     <span class="bg-sky-500/20 text-sky-300 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Strategic Roadmap</span>
-                    <h2 class="text-2xl md:text-3xl font-extrabold mt-3">Action Plan to Restore CPL &lt; SGD 45.00</h2>
+                    <h2 class="text-2xl md:text-3xl font-extrabold mt-3">Action Plan to Lower CPL &lt; SGD 45.00</h2>
                     <p class="text-slate-300 text-sm mt-2 leading-relaxed">
-                        By reallocating spend away from exhausted video assets into high-converting static image anchors, we can immediately compress blended CPL below our $45 threshold while boosting weekly lead volume to 14–16 leads.
+                        By reallocating spend away from exhausted video assets into high-converting static image anchors like <strong>General PL Image 5</strong> ($37.44 CPL) and <strong>Thomson Image 8</strong> ($48.84 CPL), we can immediately reduce overall CPL below target.
                     </p>
                 </div>
 
@@ -326,7 +326,7 @@
                         </div>
                         <h3 class="font-bold text-base text-white mb-2">Halt Narra Video Spend</h3>
                         <p class="text-xs text-slate-300 leading-relaxed">
-                            Immediately turn OFF <strong class="text-white">Narra Ai Video</strong> to recover <strong class="text-emerald-400">SGD ~187/week</strong> in wasted capital. The creative has reached creative exhaustion.
+                            Immediately turn OFF <strong class="text-white">Narra Ai Video</strong> to recover <strong class="text-emerald-400">SGD ~191/week</strong> in wasted capital. The creative has hit acute fatigue.
                         </p>
                     </div>
 
@@ -335,9 +335,9 @@
                         <div class="w-10 h-10 rounded-lg bg-sky-500/20 text-sky-400 flex items-center justify-center font-extrabold text-base mb-4">
                             2
                         </div>
-                        <h3 class="font-bold text-base text-white mb-2">Scale Proven Image Anchors</h3>
+                        <h3 class="font-bold text-base text-white mb-2">Scale Proven Anchors</h3>
                         <p class="text-xs text-slate-300 leading-relaxed">
-                            Redirect recovered budget to <strong class="text-white">Image 5 (Budget & Area Anchor)</strong> and <strong class="text-white">Image 8 - VVIP Angle</strong>, which consistently yield leads at SGD 25 - 48 CPL.
+                            Redirect recovered budget to <strong class="text-white">Image 5 (Budget & Area Anchor)</strong> (28 leads overall) and <strong class="text-white">Image 8 - VVIP Angle (Thomson)</strong>.
                         </p>
                     </div>
 
@@ -346,7 +346,7 @@
                         <div class="w-10 h-10 rounded-lg bg-teal-500/20 text-teal-400 flex items-center justify-center font-extrabold text-base mb-4">
                             3
                         </div>
-                        <h3 class="font-bold text-base text-white mb-2">Deploy 2 Fresh Angles</h3>
+                        <h3 class="font-bold text-base text-white mb-2">Deploy Fresh Angles</h3>
                         <p class="text-xs text-slate-300 leading-relaxed">
                             Launch 2 new Narra Condo PL static variations (e.g., floorplan entry pricing hook & PSF comparison matrix) to refresh audience engagement.
                         </p>
@@ -364,84 +364,83 @@
 </div>
 
 <script>
-    // --- VERIFIED DATASET STRUCTURE FROM META ADS LOG (Jul 1 - Aug 2, 2026) ---
     
     // Weekly Data (Jul 27 - Aug 2)
     const weeklyData = {
-        summaryText: "During the week of <strong>July 27 to August 2, 2026</strong>, campaigns generated <strong>9 verified leads</strong> with total ad spend of <strong>SGD 587.06</strong> (Blended CPL: <strong>SGD 65.23</strong>). Acquisition was driven by <strong>General Personal Branding</strong> (5 leads @ $40.30 CPL) and <strong>Thomson Project</strong> (4 leads @ $49.09 CPL). However, <strong>Narra Condo PL</strong> suffered severe creative fatigue, accumulating <strong>SGD 189.19 in zero-lead spend</strong>.",
+        summaryText: "During the week of <strong>July 27 to August 2, 2026</strong>, campaigns generated <strong>9 verified leads</strong> with total ad spend of <strong>SGD 592.73</strong> (Blended CPL: <strong>SGD 65.86</strong>). Lead acquisition was driven by <strong>General Personal Branding</strong> (5 leads @ $40.47 CPL) and <strong>Thomson Project</strong> (4 leads @ $49.37 CPL). However, <strong>Narra Condo PL</strong> experienced severe creative fatigue, accumulating <strong>SGD 192.89 in zero-lead ad spend</strong> during this 7-day window.",
         periodBadge: "Analyzing: July 27 – August 2, 2026",
         leads: 9,
-        cpl: "$65.23",
-        spend: "$587.06",
+        cpl: "$65.86",
+        spend: "$592.73",
         ctr: "1.08%",
         leadsDetail: "Gen PL: 5 | Thomson: 4 | Narra: 0",
-        cplDetail: "Target: < SGD 45.00 (+45% over target)",
-        spendDetail: "Avg $83.87 / day delivery",
+        cplDetail: "Target: < SGD 45.00 (+46% over target)",
+        spendDetail: "Avg $84.68 / day delivery",
         ctrDetail: "Reach: 6,854 | Impressions: 7,921",
         
         campaigns: {
-            labels: ['General PL (Maureen x LA)', 'Thomson Maureen x Lumi', 'Narra Condo PL (Re Launch)'],
+            labels: ['General PL Maureen x LA', 'Thomson Maureen x Lumi', 'Narra Condo PL x Lumi'],
             leads: [5, 4, 0],
-            spend: [201.50, 196.37, 189.19],
-            cpl: [40.30, 49.09, 0] // 0 means N/A
+            spend: [202.36, 197.48, 192.89],
+            cpl: [40.47, 49.37, 0] // 0 means N/A
         },
 
         daily: {
             labels: ['Jul 27', 'Jul 28', 'Jul 29', 'Jul 30', 'Jul 31', 'Aug 01', 'Aug 02'],
-            leads: [1, 3, 1, 1, 1, 1, 1],
-            spend: [73.20, 103.24, 95.72, 96.13, 78.98, 51.28, 88.51]
+            leads: [2, 3, 1, 1, 1, 1, 1],
+            spend: [73.20, 103.24, 95.72, 96.13, 78.98, 51.28, 94.18]
         },
 
         ads: [
-            { name: "Image 5 - Budget & Area Anchor", campaign: "General PL", spend: 186.32, leads: 5, cpl: 37.26, ctr: 1.15, status: "Winner", action: "Scale Budget" },
-            { name: "Image 8 - VVIP Angle", campaign: "Thomson", spend: 194.26, leads: 4, cpl: 48.57, ctr: 0.92, status: "Core Performer", action: "Maintain" },
-            { name: "Ai Video", campaign: "Narra Condo PL", spend: 187.28, leads: 0, cpl: 0, ctr: 0.68, status: "Budget Leak", action: "PAUSE NOW" },
-            { name: "AI Video GPL", campaign: "General PL", spend: 5.94, leads: 0, cpl: 0, ctr: 0.42, status: "Low Conv", action: "Refresh Copy" },
-            { name: "Image 8 - Comparison Math", campaign: "General PL", spend: 5.91, leads: 0, cpl: 0, ctr: 0.85, status: "Low Spend", action: "Monitor" },
+            { name: "Image 5 - Budget & Area Anchor - reTry", campaign: "General PL", spend: 187.18, leads: 5, cpl: 37.44, ctr: 1.18, status: "Top Performer", action: "Scale Budget" },
+            { name: "Image 8 - VVIP Angle", campaign: "Thomson", spend: 195.37, leads: 4, cpl: 48.84, ctr: 0.96, status: "Core Performer", action: "Maintain" },
+            { name: "Ai Video", campaign: "Narra Condo PL", spend: 190.98, leads: 0, cpl: 0, ctr: 0.73, status: "Budget Leak", action: "PAUSE NOW" },
+            { name: "AI Video GPL", campaign: "General PL", spend: 5.98, leads: 0, cpl: 0, ctr: 0.45, status: "Low Conv", action: "Refresh Copy" },
+            { name: "Image 8 - The Comparison Math", campaign: "General PL", spend: 5.91, leads: 0, cpl: 0, ctr: 0.82, status: "Low Spend", action: "Monitor" },
+            { name: "Image 6 - The Budget", campaign: "General PL", spend: 3.11, leads: 0, cpl: 0, ctr: 0.65, status: "Low Spend", action: "Monitor" },
             { name: "Image 10 - VVIP Angle White", campaign: "Thomson", spend: 2.08, leads: 0, cpl: 0, ctr: 0.51, status: "Testing", action: "Pause" }
         ]
     };
 
     // Monthly Data (Jul 1 - Aug 2)
     const monthlyData = {
-        summaryText: "Across the complete 33-day reporting period (<strong>July 1 – August 2, 2026</strong>), Maureen's Meta Ads ecosystem produced <strong>42 verified leads</strong> on a total expenditure of <strong>SGD 2,345.34</strong> (Blended CPL: <strong>SGD 55.84</strong>). The campaign generated 87,982 impressions and 1,190 direct link clicks (CTR: 1.35%). <strong>Image 5 (General PL)</strong> was the dominant top performer overall, generating 22 total leads (52.4% share of all leads).",
+        summaryText: "Across the complete 33-day reporting period (<strong>July 1 – August 2, 2026</strong>), Maureen's Meta Ads ecosystem produced <strong>42 verified leads</strong> on a total expenditure of <strong>SGD 2,351.00</strong> (Blended CPL: <strong>SGD 55.98</strong>). The campaign generated 36,685 impressions and 478 direct link clicks (CTR: 1.30%). <strong>Image 5 (General PL)</strong> was the dominant top performer overall, generating 28 total leads (66.7% share of all leads).",
         periodBadge: "Analyzing: July 1 – August 2, 2026 (33 Days)",
         leads: 42,
-        cpl: "$55.84",
-        spend: "$2,345.34",
-        ctr: "1.35%",
-        leadsDetail: "Gen PL: 29 | Narra: 8 | Thomson: 5",
+        cpl: "$55.98",
+        spend: "$2,351.00",
+        ctr: "1.30%",
+        leadsDetail: "Gen PL: 30 | Narra: 6 | Thomson: 6",
         cplDetail: "Target: < SGD 45.00 (+24% over target)",
-        spendDetail: "Total Impressions: 87,982",
-        ctrDetail: "Total Link Clicks: 1,190 | CPC: $1.97",
+        spendDetail: "Total Impressions: 36,685",
+        ctrDetail: "Total Link Clicks: 478 | CPC: $4.92",
 
         campaigns: {
-            labels: ['General PL (Maureen x LA)', 'Narra Condo PL (Re Launch)', 'Thomson Maureen x Lumi'],
-            leads: [29, 8, 5],
-            spend: [1150.40, 680.20, 514.74],
-            cpl: [39.67, 85.03, 102.95]
+            labels: ['General PL Maureen x LA', 'Narra Condo PL x Lumi', 'Thomson Maureen x Lumi'],
+            leads: [30, 6, 6],
+            spend: [1150.40, 680.20, 520.40],
+            cpl: [38.35, 113.37, 86.73]
         },
 
         daily: {
             labels: ['Jul 01-05', 'Jul 06-10', 'Jul 11-15', 'Jul 16-20', 'Jul 21-25', 'Jul 26-30', 'Jul 31-Aug 02'],
-            leads: [5, 4, 4, 10, 10, 6, 3],
-            spend: [310.50, 290.40, 285.10, 420.30, 450.80, 380.20, 208.04]
+            leads: [8, 3, 5, 11, 7, 5, 3],
+            spend: [310.50, 290.40, 285.10, 420.30, 450.80, 380.20, 213.70]
         },
 
         ads: [
-            { name: "Image 5 - Budget & Area Anchor", campaign: "General PL", spend: 812.45, leads: 22, cpl: 36.93, ctr: 1.48, status: "Super Winner", action: "Main Anchor" },
-            { name: "Ai Video", campaign: "Narra Condo PL", spend: 520.10, leads: 7, cpl: 74.30, ctr: 1.12, status: "Fatigued", action: "Replace Creative" },
-            { name: "Image 8 - VVIP Angle", campaign: "Thomson", spend: 310.40, leads: 4, cpl: 77.60, ctr: 0.98, status: "Core Performer", action: "Optimize" },
-            { name: "AI Video GPL", campaign: "General PL", spend: 185.30, leads: 2, cpl: 92.65, ctr: 0.88, status: "Low Conv", action: "Pause" },
-            { name: "Image 6 - The Budget", campaign: "General PL", spend: 45.20, leads: 1, cpl: 45.20, ctr: 1.05, status: "Niche", action: "Keep Active" }
+            { name: "Image 5 - Budget & Area Anchor - reTry", campaign: "General PL", spend: 812.45, leads: 28, cpl: 29.02, ctr: 1.42, status: "Super Winner", action: "Main Anchor" },
+            { name: "Ai Video", campaign: "Narra Condo PL", spend: 520.10, leads: 6, cpl: 86.68, ctr: 1.12, status: "Fatigued", action: "Replace Creative" },
+            { name: "Image 8 - VVIP Angle", campaign: "Thomson", spend: 310.40, leads: 5, cpl: 62.08, ctr: 0.98, status: "Core Performer", action: "Maintain" },
+            { name: "Ai Video Thomson Maureen", campaign: "Thomson", spend: 185.30, leads: 1, cpl: 185.30, ctr: 1.05, status: "Low Conv", action: "Pause" },
+            { name: "Image 6 - The Budget", campaign: "General PL", spend: 45.20, leads: 1, cpl: 45.20, ctr: 1.05, status: "Niche Winner", action: "Keep Active" },
+            { name: "AI Video GPL", campaign: "General PL", spend: 35.80, leads: 1, cpl: 35.80, ctr: 0.88, status: "Niche Winner", action: "Keep Active" }
         ]
     };
 
-    // Active state variable
     let currentPeriod = 'weekly';
     let chartCampaign, chartDaily, chartAds;
 
-    // Initialize Dashboard Charts
     window.onload = function() {
         initCharts();
         renderTable(weeklyData.ads);
@@ -473,10 +472,8 @@
         document.getElementById('kpi-spend-detail').innerText = data.spendDetail;
         document.getElementById('kpi-ctr-detail').innerText = data.ctrDetail;
 
-        // Update Charts
+        // Update Charts & Table
         updateCharts(data);
-
-        // Update Table
         renderTable(data.ads);
     }
 
@@ -576,19 +573,16 @@
     }
 
     function updateCharts(data) {
-        // Update Chart 1
         chartCampaign.data.labels = data.campaigns.labels;
         chartCampaign.data.datasets[0].data = data.campaigns.leads;
         chartCampaign.data.datasets[1].data = data.campaigns.spend;
         chartCampaign.update();
 
-        // Update Chart 2
         chartDaily.data.labels = data.daily.labels;
         chartDaily.data.datasets[0].data = data.daily.leads;
         chartDaily.data.datasets[1].data = data.daily.spend;
         chartDaily.update();
 
-        // Update Chart 3
         chartAds.data.labels = data.ads.map(a => a.name);
         chartAds.data.datasets[0].data = data.ads.map(a => a.leads);
         chartAds.data.datasets[0].backgroundColor = data.ads.map(a => a.leads > 0 ? '#10b981' : '#f43f5e');
@@ -606,7 +600,7 @@
             const cplDisplay = ad.cpl > 0 ? `$${ad.cpl.toFixed(2)}` : 'N/A ($0 leads)';
             let statusBadge = '';
             
-            if (ad.status.includes('Winner')) {
+            if (ad.status.includes('Winner') || ad.status.includes('Top')) {
                 statusBadge = `<span class="bg-emerald-100 text-emerald-800 text-[10px] font-bold px-2 py-0.5 rounded-full">${ad.status}</span>`;
             } else if (ad.status.includes('Leak') || ad.status.includes('Fatigued')) {
                 statusBadge = `<span class="bg-rose-100 text-rose-800 text-[10px] font-bold px-2 py-0.5 rounded-full">${ad.status}</span>`;
