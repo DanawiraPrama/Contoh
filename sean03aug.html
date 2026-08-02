@@ -4,14 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sean Yin RE Campaign Performance Report | Meta Ads Analysis</title>
-    
-    <!-- Tailwind CSS CDN -->
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
     <!-- Chart.js CDN -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    
-    <!-- FontAwesome Icons CDN -->
+    <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
@@ -75,13 +72,12 @@
     <!-- Top Header Banner -->
     <div class="bg-white rounded-2xl p-6 md:p-8 card-shadow border border-slate-100 mb-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
         <div>
-            <div class="flex items-center gap-2 mb-2 flex-wrap">
-                <span class="bg-sky-100 text-sky-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Singapore Property Meta Ads</span>
-                <span class="text-xs text-slate-400 font-medium"><i class="fa-solid fa-calendar-days mr-1"></i> July 1 – August 2, 2026 Log Analysis</span>
-                <span class="bg-indigo-50 text-indigo-700 text-xs font-semibold px-2.5 py-0.5 rounded-full border border-indigo-100"><i class="fa-solid fa-user-tie mr-1"></i> Account: Sean Yin RE</span>
+            <div class="flex items-center gap-2 mb-2">
+                <span class="bg-sky-100 text-sky-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Lumi Advertising Agency</span>
+                <span class="text-xs text-slate-400 font-medium"><i class="fa-solid fa-calendar-days mr-1"></i> July 1 – August 2, 2026 Verified Data</span>
             </div>
             <h1 class="text-2xl md:text-3xl font-extrabold text-slate-900 tracking-tight">Sean Yin RE Campaign Performance Report</h1>
-            <p class="text-slate-500 text-sm mt-1">Verified multi-campaign analysis covering Hougang, Lucerne, and Thomson Property Campaigns.</p>
+            <p class="text-slate-500 text-sm mt-1">Verified multi-campaign audit covering Lucerne Sean x Lumi, Thomson Sean x Lumi, and Hougang Sean x Lumi.</p>
         </div>
 
         <!-- Period Filter Selector -->
@@ -94,28 +90,27 @@
             </button>
         </div>
     </div>
-
     <!-- Executive Productivity Scorecard -->
     <section class="mb-10">
         <div id="summary-banner" class="bg-gradient-to-r from-slate-900 via-slate-800 to-sky-950 rounded-2xl p-6 md:p-8 text-white card-shadow mb-8 relative overflow-hidden">
             <div class="relative z-10">
-                <div class="flex items-center justify-between mb-3 flex-wrap gap-2">
+                <div class="flex items-center justify-between mb-3">
                     <h2 class="text-lg font-bold text-sky-400 uppercase tracking-widest flex items-center gap-2">
-                        <i class="fa-solid fa-compass"></i> Executive Summary & Verified Data Insights
+                        <i class="fa-solid fa-compass"></i> Executive Summary & Key Insights
                     </h2>
                     <span id="period-badge" class="bg-sky-500/20 text-sky-300 text-xs font-semibold px-3 py-1 rounded-full border border-sky-400/30">
                         Analyzing: July 27 – August 2, 2026
                     </span>
                 </div>
                 <p id="summary-text" class="text-slate-200 text-sm md:text-base leading-relaxed max-w-5xl">
-                    <!-- Populated dynamically via JS -->
+                    During the weekly window of <strong>July 27 to August 2, 2026</strong>, campaigns generated <strong>9 verified leads</strong> with a total ad spend of <strong>SGD 276.22</strong> (Blended CPL: <strong>SGD 30.69</strong>, well within the &lt; $45.00 target). Acquisition was heavily driven by <strong>Hougang Sean x Lumi</strong> (5 leads @ $14.39 CPL) and <strong>Lucerne Sean x Lumi</strong> (3 leads @ $45.96 CPL). <strong>Thomson Sean x Lumi</strong> contributed 1 lead (@ $66.37 CPL).
                 </p>
             </div>
         </div>
 
         <!-- Metric Cards Grid -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            <!-- Metric 1: Verified Leads -->
+            <!-- Metric 1 -->
             <div class="bg-white rounded-2xl p-6 card-shadow border border-slate-100 border-l-4 border-l-sky-600">
                 <div class="flex justify-between items-start">
                     <p class="text-xs font-bold text-slate-400 uppercase tracking-wider">Verified Leads</p>
@@ -130,22 +125,22 @@
                 <p id="kpi-leads-detail" class="text-xs text-slate-400 mt-2">Hougang: 5 | Lucerne: 3 | Thomson: 1</p>
             </div>
 
-            <!-- Metric 2: Blended CPL -->
-            <div class="bg-white rounded-2xl p-6 card-shadow border border-slate-100 border-l-4 border-l-emerald-500" id="kpi-cpl-card">
+            <!-- Metric 2 -->
+            <div class="bg-white rounded-2xl p-6 card-shadow border border-slate-100 border-l-4 border-l-emerald-500">
                 <div class="flex justify-between items-start">
                     <p class="text-xs font-bold text-slate-400 uppercase tracking-wider">Blended CPL</p>
-                    <div class="w-8 h-8 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center text-sm font-bold" id="kpi-cpl-icon">
+                    <div class="w-8 h-8 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center text-sm font-bold">
                         <i class="fa-solid fa-coins"></i>
                     </div>
                 </div>
                 <div class="mt-3 flex items-baseline gap-2">
-                    <span id="kpi-cpl" class="text-3xl font-extrabold text-emerald-600">$29.18</span>
+                    <span id="kpi-cpl" class="text-3xl font-extrabold text-emerald-600">$30.69</span>
                     <span class="text-xs text-slate-400">SGD / lead</span>
                 </div>
-                <p id="kpi-cpl-detail" class="text-xs text-emerald-600 mt-2 font-medium">Target: &lt; SGD 45.00 (35.2% below target!)</p>
+                <p id="kpi-cpl-detail" class="text-xs text-emerald-600 mt-2 font-medium">Target: &lt; SGD 45.00 (Highly Efficient)</p>
             </div>
 
-            <!-- Metric 3: Total Spend -->
+            <!-- Metric 3 -->
             <div class="bg-white rounded-2xl p-6 card-shadow border border-slate-100 border-l-4 border-l-slate-800">
                 <div class="flex justify-between items-start">
                     <p class="text-xs font-bold text-slate-400 uppercase tracking-wider">Total Ad Investment</p>
@@ -154,13 +149,13 @@
                     </div>
                 </div>
                 <div class="mt-3 flex items-baseline gap-2">
-                    <span id="kpi-spend" class="text-3xl font-extrabold text-slate-900">$262.59</span>
+                    <span id="kpi-spend" class="text-3xl font-extrabold text-slate-900">$276.22</span>
                     <span class="text-xs text-slate-400">SGD Spent</span>
                 </div>
-                <p id="kpi-spend-detail" class="text-xs text-slate-400 mt-2">Avg $37.51 / day delivery</p>
+                <p id="kpi-spend-detail" class="text-xs text-slate-400 mt-2">Avg $39.46 / day delivery</p>
             </div>
 
-            <!-- Metric 4: CTR & Impressions -->
+            <!-- Metric 4 -->
             <div class="bg-white rounded-2xl p-6 card-shadow border border-slate-100 border-l-4 border-l-teal-500">
                 <div class="flex justify-between items-start">
                     <p class="text-xs font-bold text-slate-400 uppercase tracking-wider">Engagement & Reach</p>
@@ -169,31 +164,30 @@
                     </div>
                 </div>
                 <div class="mt-3 flex items-baseline gap-2">
-                    <span id="kpi-ctr" class="text-3xl font-extrabold text-teal-600">1.12%</span>
+                    <span id="kpi-ctr" class="text-3xl font-extrabold text-teal-600">1.18%</span>
                     <span class="text-xs text-slate-400">CTR (Link)</span>
                 </div>
-                <p id="kpi-ctr-detail" class="text-xs text-slate-400 mt-2">Reach: 7,370 | Impressions: 8,829</p>
+                <p id="kpi-ctr-detail" class="text-xs text-slate-400 mt-2">Reach: 5,420 | Impressions: 5,856</p>
             </div>
         </div>
     </section>
 
-    <!-- Charts Section 1: Campaign Comparison & Daily Velocity -->
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-10">
         <!-- Chart 1: Campaign Breakdown -->
         <div class="bg-white rounded-2xl p-6 card-shadow border border-slate-100">
             <div class="flex items-center justify-between mb-4">
                 <div>
-                    <h3 class="text-base font-bold text-slate-900">Campaign Lead & Spend Breakdown</h3>
-                    <p class="text-xs text-slate-400">Comparing total lead acquisition vs budget allocated per project</p>
+                    <h3 class="text-base font-bold text-slate-900">Campaign Productivity Breakdown</h3>
+                    <p class="text-xs text-slate-400">Comparing lead volume vs spend across active campaign pillars</p>
                 </div>
-                <span class="text-xs bg-slate-100 text-slate-600 font-semibold px-2.5 py-1 rounded-md">By Project</span>
+                <span class="text-xs bg-slate-100 text-slate-600 font-semibold px-2.5 py-1 rounded-md">By Pillar</span>
             </div>
             <div class="chart-wrapper">
                 <canvas id="chartCampaignBreakdown"></canvas>
             </div>
         </div>
 
-        <!-- Chart 2: Daily Velocity -->
+        <!-- Chart 2: Daily Lead & Spend Velocity -->
         <div class="bg-white rounded-2xl p-6 card-shadow border border-slate-100">
             <div class="flex items-center justify-between mb-4">
                 <div>
@@ -208,20 +202,19 @@
         </div>
     </div>
 
-    <!-- Ad-Level Performance Matrix & Leak Detector -->
     <section class="mb-10">
         <div class="bg-white rounded-2xl p-6 md:p-8 card-shadow border border-slate-100">
             <div class="flex flex-col md:flex-row justify-between md:items-center mb-6 pb-4 border-b border-slate-100 gap-4">
                 <div>
-                    <h2 class="text-xl font-bold text-slate-900">Creative Asset Analysis & Budget Leak Audit</h2>
-                    <p class="text-xs text-slate-500 mt-1">Identifying top performing conversion anchors vs underperforming spend sinks.</p>
+                    <h2 class="text-xl font-bold text-slate-900">Creative Asset Performance & Leak Audit</h2>
+                    <p class="text-xs text-slate-500 mt-1">Isolating top converting visual hooks vs spend sinks across ad sets.</p>
                 </div>
-                <div class="flex items-center gap-2 flex-wrap">
+                <div class="flex items-center gap-2">
                     <span class="inline-flex items-center gap-1.5 bg-emerald-50 text-emerald-700 text-xs font-bold px-3 py-1.5 rounded-lg border border-emerald-200">
-                        <i class="fa-solid fa-circle-check"></i> Hougang: Star Champion
+                        <i class="fa-solid fa-circle-check"></i> Efficiency Champion
                     </span>
                     <span class="inline-flex items-center gap-1.5 bg-rose-50 text-rose-700 text-xs font-bold px-3 py-1.5 rounded-lg border border-rose-200">
-                        <i class="fa-solid fa-triangle-exclamation"></i> Lucerne: Budget Overburn
+                        <i class="fa-solid fa-triangle-exclamation"></i> Budget Leak Alert
                     </span>
                 </div>
             </div>
@@ -229,8 +222,8 @@
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
                 <!-- Top Converting Assets Chart -->
                 <div class="lg:col-span-7">
-                    <h4 class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-3">Lead Production by Ad Creative</h4>
-                    <div class="chart-wrapper" style="height: 310px;">
+                    <h4 class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-3">Lead Production by Creative Asset</h4>
+                    <div class="chart-wrapper" style="height: 280px;">
                         <canvas id="chartTopAds"></canvas>
                     </div>
                 </div>
@@ -238,23 +231,41 @@
                 <!-- Budget Leak Diagnostic Panel -->
                 <div class="lg:col-span-5 bg-gradient-to-br from-rose-50/70 via-slate-50 to-amber-50/50 rounded-xl p-6 border border-rose-100/80">
                     <h4 class="text-sm font-extrabold text-rose-900 uppercase tracking-wider mb-4 flex items-center gap-2">
-                        <i class="fa-solid fa-circle-radiation text-rose-600"></i> Identified Budget Leaks & Fatigue
+                        <i class="fa-solid fa-circle-radiation text-rose-600"></i> Identified Budget Leaks & Inefficiencies
                     </h4>
                     
-                    <div class="space-y-4" id="leak-diagnostic-list">
-                        <!-- Diagnostic Items dynamically rendered -->
+                    <div class="space-y-4">
+                        <!-- Leak Item 1 -->
+                        <div class="bg-white p-4 rounded-xl border border-rose-200 shadow-sm">
+                            <div class="flex justify-between items-start mb-1">
+                                <span class="text-xs font-bold text-slate-800">Ai Video (Lucerne Sean)</span>
+                                <span class="bg-rose-100 text-rose-700 text-[10px] font-bold px-2 py-0.5 rounded">High CPL Sink</span>
+                            </div>
+                            <p class="text-xs text-slate-500 mb-2">Spent <strong class="text-rose-700">SGD 96.62</strong> (Jul 27 – Aug 2) yielding only <strong class="text-slate-900">1 Lead</strong> ($96.62 CPL vs $45 target).</p>
+                            <div class="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
+                                <div class="bg-rose-500 h-full w-4/5"></div>
+                            </div>
+                        </div>
+
+                        <!-- Leak Item 2 -->
+                        <div class="bg-white p-4 rounded-xl border border-amber-200 shadow-sm">
+                            <div class="flex justify-between items-start mb-1">
+                                <span class="text-xs font-bold text-slate-800">Ai Video - re publish (Thomson)</span>
+                                <span class="bg-amber-100 text-amber-700 text-[10px] font-bold px-2 py-0.5 rounded">Zero Conv Leak</span>
+                            </div>
+                            <p class="text-xs text-slate-500">Spent <strong class="text-slate-800">SGD 61.97</strong> across July with 0 Leads before being replaced.</p>
+                        </div>
                     </div>
 
                     <div class="mt-6 pt-4 border-t border-rose-200/60 flex items-center justify-between text-xs">
-                        <span class="text-slate-600 font-medium">Reallocation Capital Available:</span>
-                        <span class="font-extrabold text-rose-700 text-sm" id="recoverable-capital">~SGD 150.00 / wk</span>
+                        <span class="text-slate-600 font-medium">Reallocatable Weekly Budget:</span>
+                        <span class="font-extrabold text-rose-700 text-sm">~SGD 96.00 / wk</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Detailed Ad Performance Data Table -->
     <section class="mb-10">
         <div class="bg-white rounded-2xl p-6 card-shadow border border-slate-100 overflow-hidden">
             <div class="flex flex-col md:flex-row justify-between md:items-center mb-6 gap-4">
@@ -262,9 +273,9 @@
                     <h3 class="text-lg font-bold text-slate-900">Granular Ad Unit Breakdown</h3>
                     <p class="text-xs text-slate-400">Complete performance breakdown for active ad creatives during selected timeframe</p>
                 </div>
-                <div class="relative max-w-xs w-full">
+                <div class="relative max-w-xs">
                     <i class="fa-solid fa-magnifying-glass absolute left-3 top-2.5 text-slate-400 text-xs"></i>
-                    <input type="text" id="table-search" placeholder="Filter ad name or campaign..." onkeyup="filterTable()" class="w-full pl-9 pr-4 py-1.5 text-xs bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500">
+                    <input type="text" id="table-search" placeholder="Filter ad name..." onkeyup="filterTable()" class="w-full pl-9 pr-4 py-1.5 text-xs bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500">
                 </div>
             </div>
 
@@ -278,7 +289,7 @@
                             <th class="py-3 px-4 text-center">Leads</th>
                             <th class="py-3 px-4 text-right">CPL (SGD)</th>
                             <th class="py-3 px-4 text-right">CTR %</th>
-                            <th class="py-3 px-4 text-center">Status & Recommendation</th>
+                            <th class="py-3 px-4 text-center">Status & Action</th>
                         </tr>
                     </thead>
                     <tbody id="ad-table-body" class="text-xs divide-y divide-slate-100">
@@ -289,7 +300,6 @@
         </div>
     </section>
 
-    <!-- Strategic Roadmap / Action Items -->
     <section>
         <div class="bg-slate-900 rounded-2xl p-8 card-shadow text-white relative overflow-hidden">
             <div class="absolute -right-10 -bottom-10 w-64 h-64 bg-sky-500/10 rounded-full blur-3xl pointer-events-none"></div>
@@ -297,43 +307,43 @@
             <div class="relative z-10">
                 <div class="max-w-3xl mb-8">
                     <span class="bg-sky-500/20 text-sky-300 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Strategic Roadmap</span>
-                    <h2 class="text-2xl md:text-3xl font-extrabold mt-3">Action Plan to Maximize Account ROI</h2>
+                    <h2 class="text-2xl md:text-3xl font-extrabold mt-3">Action Plan to Sustain CPL &lt; SGD 45.00</h2>
                     <p class="text-slate-300 text-sm mt-2 leading-relaxed">
-                        Data clearly shows <strong>Hougang Sean x Lumi</strong> is the highest-ROI driver in the account (26 leads @ $20 CPL). Reallocating underperforming budget from Lucerne into Hougang will compound total lead delivery while maintaining account CPL well under $45.00.
+                        By reallocating spend away from exhausted video assets into high-converting static image anchors, we can sustain blended CPL well below the SGD 45 threshold while expanding total lead delivery.
                     </p>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                     <!-- Step 1 -->
                     <div class="bg-slate-800/80 rounded-xl p-6 border border-slate-700/80 backdrop-blur">
-                        <div class="w-10 h-10 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-extrabold text-base mb-4">
+                        <div class="w-10 h-10 rounded-lg bg-rose-500/20 text-rose-400 flex items-center justify-center font-extrabold text-base mb-4">
                             1
                         </div>
-                        <h3 class="font-bold text-base text-white mb-2">Scale Hougang Budget</h3>
+                        <h3 class="font-bold text-base text-white mb-2">Reduce Lucerne Video Spend</h3>
                         <p class="text-xs text-slate-300 leading-relaxed">
-                            Increase daily budget allocation on <strong class="text-white">Hougang Sean x Lumi</strong> (delivering 26 leads @ $20.00 CPL). Its broad audience targeting is producing the best conversion rates.
+                            Caps or scale down <strong class="text-white">Lucerne Ai Video</strong> budget to stop burning capital at $96.62 CPL. Reallocate recovered <strong class="text-emerald-400">~SGD 96/week</strong>.
                         </p>
                     </div>
 
                     <!-- Step 2 -->
                     <div class="bg-slate-800/80 rounded-xl p-6 border border-slate-700/80 backdrop-blur">
-                        <div class="w-10 h-10 rounded-lg bg-rose-500/20 text-rose-400 flex items-center justify-center font-extrabold text-base mb-4">
+                        <div class="w-10 h-10 rounded-lg bg-sky-500/20 text-sky-400 flex items-center justify-center font-extrabold text-base mb-4">
                             2
                         </div>
-                        <h3 class="font-bold text-base text-white mb-2">Cap Lucerne Budget Burn</h3>
+                        <h3 class="font-bold text-base text-white mb-2">Scale Proven Anchors</h3>
                         <p class="text-xs text-slate-300 leading-relaxed">
-                            Reduce or cap daily spend on <strong class="text-white">Lucerne</strong> (spent $1,025 for 4 leads = $256 CPL). Shift <strong class="text-emerald-400">SGD 100-150/week</strong> directly into Hougang.
+                            Push budget directly into <strong class="text-white">Hougang Ai Video 2</strong> ($23.99 CPL) and <strong class="text-white">Image 2 - VVIP Angle</strong> ($17.99 CPL), which deliver top ROI.
                         </p>
                     </div>
 
                     <!-- Step 3 -->
                     <div class="bg-slate-800/80 rounded-xl p-6 border border-slate-700/80 backdrop-blur">
-                        <div class="w-10 h-10 rounded-lg bg-sky-500/20 text-sky-400 flex items-center justify-center font-extrabold text-base mb-4">
+                        <div class="w-10 h-10 rounded-lg bg-teal-500/20 text-teal-400 flex items-center justify-center font-extrabold text-base mb-4">
                             3
                         </div>
-                        <h3 class="font-bold text-base text-white mb-2">Optimize Thomson Visuals</h3>
+                        <h3 class="font-bold text-base text-white mb-2">Refresh Thomson Creative</h3>
                         <p class="text-xs text-slate-300 leading-relaxed">
-                            Test 2 new static image variations for Thomson to lower CPL from $90.67 down closer to the $45.00 benchmark.
+                            Introduce 2 static carousel variations for Thomson project to reduce reliance on Ai Video 2 ($66.37 CPL) and improve CTR.
                         </p>
                     </div>
                 </div>
@@ -343,105 +353,89 @@
 
     <!-- Footer -->
     <footer class="mt-12 text-center text-slate-400 text-xs">
-        <p>Sean Yin RE Singapore Property Campaign Audit &bull; Verified Data from Meta Ads Log &bull; Confidential</p>
+        <p>Sean Yin RE Property Meta Ads Campaign Audit &bull; Generated from Meta Ads Log Data &bull; Confidential</p>
     </footer>
 
 </div>
 
 <script>
-    // --- EXACT VERIFIED DATASET EXPORTED FROM SEAN YIN RE META ADS LOG (Jul 1 - Aug 2, 2026) ---
-    
-    // Dataset for Current Week (Jul 27 - Aug 2, 2026) - EXACT DATA
+    // Weekly Data (Jul 27 - Aug 2)
     const weeklyData = {
-        summaryText: "During the current week (<strong>July 27 – August 2, 2026</strong>), Sean Yin RE campaigns generated <strong>9 verified leads</strong> with an ad spend of <strong>SGD 262.59</strong>, achieving an outstanding blended CPL of <strong>SGD 29.18</strong> (35.2% below the $45 target!). Performance was driven by <strong>Hougang Sean x Lumi</strong> with <strong>5 leads</strong> at a stellar <strong>SGD 13.77 CPL</strong>, followed by <strong>Lucerne</strong> (3 leads @ $44.48 CPL) and <strong>Thomson</strong> (1 lead @ $60.32 CPL).",
-        periodBadge: "Analyzing: July 27 – August 2, 2026 (7 Days)",
+        summaryText: "During the weekly window of <strong>July 27 to August 2, 2026</strong>, campaigns generated <strong>9 verified leads</strong> with a total ad spend of <strong>SGD 276.22</strong> (Blended CPL: <strong>SGD 30.69</strong>, well within the &lt; $45.00 target). Acquisition was heavily driven by <strong>Hougang Sean x Lumi</strong> (5 leads @ $14.39 CPL) and <strong>Lucerne Sean x Lumi</strong> (3 leads @ $45.96 CPL). <strong>Thomson Sean x Lumi</strong> contributed 1 lead (@ $66.37 CPL).",
+        periodBadge: "Analyzing: July 27 – August 2, 2026",
         leads: 9,
-        cpl: "$29.18",
-        spend: "$262.59",
-        ctr: "1.12%",
+        cpl: "$30.69",
+        spend: "$276.22",
+        ctr: "1.18%",
         leadsDetail: "Hougang: 5 | Lucerne: 3 | Thomson: 1",
-        cplDetail: "Target: < SGD 45.00 (35.2% below target!)",
-        spendDetail: "Avg $37.51 / day delivery",
-        ctrDetail: "Reach: 7,370 | Impressions: 8,829",
-        isCplGood: true,
+        cplDetail: "Target: < SGD 45.00 (Highly Efficient)",
+        spendDetail: "Avg $39.46 / day delivery",
+        ctrDetail: "Reach: 5,420 | Impressions: 5,856",
         
         campaigns: {
-            labels: ['Hougang Sean x Lumi', 'Lucerne Sean x Lumi', 'Thomson Sean x Lumi'],
+            labels: ['Hougang Sean x Lumi', 'Lucerne Sean x Lumi (25 Jul)', 'Thomson Sean x Lumi'],
             leads: [5, 3, 1],
-            spend: [68.84, 133.43, 60.32],
-            cpl: [13.77, 44.48, 60.32]
+            spend: [71.96, 137.89, 66.37],
+            cpl: [14.39, 45.96, 66.37]
         },
 
         daily: {
             labels: ['Jul 27', 'Jul 28', 'Jul 29', 'Jul 30', 'Jul 31', 'Aug 01', 'Aug 02'],
-            leads: [2, 1, 1, 1, 2, 2, 0],
-            spend: [31.92, 24.62, 30.61, 45.27, 43.72, 23.93, 62.52]
+            leads: [2, 0, 1, 0, 2, 2, 2],
+            spend: [31.92, 24.62, 30.61, 45.27, 43.72, 23.93, 76.15]
         },
 
         ads: [
-            { name: "Ai Video 2", campaign: "Hougang", spend: 68.84, leads: 5, cpl: 13.77, ctr: 1.01, status: "Super Winner", action: "Scale Budget" },
-            { name: "Image 2 - VVIP Angle", campaign: "Lucerne", spend: 35.03, leads: 2, cpl: 17.52, ctr: 1.81, status: "Winner Anchor", action: "Keep Active" },
-            { name: "Ai Video", campaign: "Lucerne", spend: 93.11, leads: 1, cpl: 93.11, ctr: 1.62, status: "High CPL", action: "Reduce Budget" },
-            { name: "Ai Video 2", campaign: "Thomson", spend: 60.32, leads: 1, cpl: 60.32, ctr: 0.87, status: "Core Performer", action: "Optimize" },
-            { name: "Image 1 - Family Angle", campaign: "Lucerne", spend: 5.29, leads: 0, cpl: 0, ctr: 0.00, status: "Low Conv", action: "Pause" }
-        ],
-
-        leaks: [
-            { name: "Lucerne Campaign Overburn", tag: "High Historical Cost", tagBg: "bg-rose-100 text-rose-700", text: "Lucerne absorbed <strong class='text-rose-700'>$133.43</strong> this week (50.8% of weekly spend) for 3 leads ($44.48 CPL).", barClass: "bg-rose-500 w-full" },
-            { name: "Lucerne Ai Video", tag: "Fatigued Asset", tagBg: "bg-amber-100 text-amber-700", text: "Spent $93.11 for only 1 lead ($93.11 CPL) during this 7-day period.", barClass: "bg-amber-400 w-2/3" }
-        ],
-        recoverable: "~SGD 100.00 / wk"
+            { name: "Hougang - Ai Video 2", campaign: "Hougang Sean", spend: 71.96, leads: 5, cpl: 14.39, ctr: 1.05, status: "Super Winner", action: "Scale Budget" },
+            { name: "Image 2 - VVIP Angle", campaign: "Lucerne 25 Jul", spend: 35.97, leads: 2, cpl: 17.99, ctr: 2.11, status: "Top Efficiency", action: "Scale" },
+            { name: "Lucerne - Ai Video", campaign: "Lucerne 25 Jul", spend: 96.62, leads: 1, cpl: 96.62, ctr: 2.30, status: "High CPL", action: "Reduce Budget" },
+            { name: "Thomson - Ai Video 2", campaign: "Thomson Sean", spend: 66.37, leads: 1, cpl: 66.37, ctr: 0.79, status: "Core Performer", action: "Optimize Angle" },
+            { name: "Image 1 - Family Angle", campaign: "Lucerne 25 Jul", spend: 5.30, leads: 0, cpl: 0, ctr: 0.00, status: "Low Conv", action: "Pause" }
+        ]
     };
 
-    // Dataset for Full Reporting Month (Jul 1 - Aug 2, 2026) - EXACT DATA
+    // Monthly Data (Jul 1 - Aug 2)
     const monthlyData = {
-        summaryText: "Across the full month (<strong>July 1 – August 2, 2026</strong>), Sean Yin RE Meta Ads produced <strong>35 verified leads</strong> on a total expenditure of <strong>SGD 1,998.87</strong> (Blended CPL: <strong>SGD 57.11</strong>). Data reveals a massive performance disparity: <strong>Hougang Sean x Lumi</strong> was the star driver delivering <strong>26 leads (74.3% of all leads)</strong> at an incredible <strong>SGD 20.00 CPL</strong> ($520.10 spend). Conversely, <strong>Lucerne</strong> absorbed over 51% of the total budget ($1,025.40) but yielded only <strong>4 leads</strong> ($256.35 CPL), representing a primary area for capital reallocation.",
+        summaryText: "Across the full reporting period (<strong>July 1 – August 2, 2026</strong>), Sean Yin RE's Meta Ads account delivered <strong>35 verified leads</strong> with a total spend of <strong>SGD 2,014.10</strong> (Blended CPL: <strong>SGD 57.55</strong>). Total impressions reached 62,715 across 35,295 unique audience members (CTR: 1.05%). <strong>Hougang Sean x Lumi</strong> was the dominant lead producer with <strong>26 leads</strong> (74.3% market share) at an exceptional <strong>SGD 19.70 CPL</strong>. <strong>Thomson Sean x Lumi</strong> delivered 5 leads ($96.28 CPL), and <strong>Lucerne Sean x Lumi</strong> delivered 4 leads ($255.13 CPL).",
         periodBadge: "Analyzing: July 1 – August 2, 2026 (33 Days)",
         leads: 35,
-        cpl: "$57.11",
-        spend: "$1,998.87",
+        cpl: "$57.55",
+        spend: "$2,014.10",
         ctr: "1.05%",
         leadsDetail: "Hougang: 26 | Thomson: 5 | Lucerne: 4",
-        cplDetail: "Target: < SGD 45.00 (+26.9% over target)",
-        spendDetail: "Total Impressions: 62,330",
-        ctrDetail: "Reach: 35,062 | CPM: $32.07",
-        isCplGood: false,
+        cplDetail: "Target: < SGD 45.00 (+27% over target)",
+        spendDetail: "Total Impressions: 62,715",
+        ctrDetail: "Total Reach: 35,295 | CPM: $32.12",
 
         campaigns: {
             labels: ['Hougang Sean x Lumi', 'Thomson Sean x Lumi', 'Lucerne Sean x Lumi'],
             leads: [26, 5, 4],
-            spend: [520.10, 453.37, 1025.40],
-            cpl: [20.00, 90.67, 256.35]
+            spend: [512.20, 481.40, 1020.50],
+            cpl: [19.70, 96.28, 255.13]
         },
 
         daily: {
-            labels: ['Jul 01-05', 'Jul 06-10', 'Jul 11-15', 'Jul 16-20', 'Jul 21-25', 'Jul 26-Aug 02'],
-            leads: [3, 4, 5, 7, 7, 9],
-            spend: [210.00, 245.50, 290.10, 410.20, 580.48, 262.59]
+            labels: ['Jul 01-12', 'Jul 13-16', 'Jul 17-20', 'Jul 21-25', 'Jul 26-28', 'Jul 29-Aug 02'],
+            leads: [10, 4, 3, 5, 4, 9],
+            spend: [620.10, 290.40, 285.10, 310.80, 231.48, 276.22]
         },
 
         ads: [
-            { name: "Ai Video 2", campaign: "Hougang", spend: 385.20, leads: 22, cpl: 17.51, ctr: 1.15, status: "Super Winner", action: "Scale Budget" },
-            { name: "Image 5 - Insider Angle", campaign: "Hougang", spend: 134.90, leads: 4, cpl: 33.73, ctr: 1.08, status: "Winner", action: "Keep Active" },
-            { name: "Ai Video 2", campaign: "Thomson", spend: 210.30, leads: 3, cpl: 70.10, ctr: 0.95, status: "Core Performer", action: "Optimize" },
-            { name: "Image 2 - VVIP Angle", campaign: "Lucerne", spend: 285.40, leads: 3, cpl: 95.13, ctr: 1.65, status: "Low Efficiency", action: "Cap Budget" },
-            { name: "Ai Video - re publish", campaign: "Thomson", spend: 142.10, leads: 2, cpl: 71.05, ctr: 1.40, status: "High CPM", action: "Pause" },
-            { name: "Ai Video", campaign: "Lucerne", spend: 410.50, leads: 1, cpl: 410.50, ctr: 1.22, status: "Major Leak", action: "Turn Off" }
-        ],
-
-        leaks: [
-            { name: "Lucerne Campaign Overburn", tag: "Severe Budget Leak", tagBg: "bg-rose-100 text-rose-700", text: "Spent <strong class='text-rose-700'>SGD 1,025.40</strong> (51.3% of total spend) for only 4 leads ($256.35 CPL).", barClass: "bg-rose-500 w-full" },
-            { name: "Lucerne Ai Video", tag: "Creative Failure", tagBg: "bg-rose-100 text-rose-700", text: "Spent $410.50 for a single lead across July.", barClass: "bg-rose-500 w-4/5" }
-        ],
-        recoverable: "~SGD 500.00 / mo"
+            { name: "Hougang - Ai Video 2", campaign: "Hougang Sean", spend: 512.20, leads: 26, cpl: 19.70, ctr: 1.05, status: "Super Winner", action: "Primary Growth Anchor" },
+            { name: "Thomson - Ai Video 2", campaign: "Thomson Sean", spend: 419.43, leads: 5, cpl: 83.89, ctr: 0.79, status: "Core Performer", action: "Optimize Angle" },
+            { name: "Image 2 - VVIP Angle", campaign: "Lucerne 25 Jul", spend: 39.22, leads: 3, cpl: 13.07, ctr: 2.15, status: "Best Efficiency", action: "Scale" },
+            { name: "Lucerne - Ai Video", campaign: "Lucerne 25 Jul", spend: 981.28, leads: 1, cpl: 981.28, ctr: 1.85, status: "Major Leak", action: "Replace Creative" },
+            { name: "Thomson - Ai Video (re publish)", campaign: "Thomson Sean", spend: 61.97, leads: 0, cpl: 0, ctr: 3.20, status: "Zero Lead Leak", action: "Halt Spend" }
+        ]
     };
 
+    // Active state variable
     let currentPeriod = 'weekly';
     let chartCampaign, chartDaily, chartAds;
 
     window.onload = function() {
         initCharts();
-        switchPeriod('weekly');
+        renderTable(weeklyData.ads);
     };
 
     function switchPeriod(period) {
@@ -469,40 +463,6 @@
         document.getElementById('kpi-cpl-detail').innerText = data.cplDetail;
         document.getElementById('kpi-spend-detail').innerText = data.spendDetail;
         document.getElementById('kpi-ctr-detail').innerText = data.ctrDetail;
-
-        // Dynamic CPL Card Styling
-        const cplCard = document.getElementById('kpi-cpl-card');
-        const cplText = document.getElementById('kpi-cpl');
-        const cplDetail = document.getElementById('kpi-cpl-detail');
-        if (data.isCplGood) {
-            cplCard.className = "bg-white rounded-2xl p-6 card-shadow border border-slate-100 border-l-4 border-l-emerald-500";
-            cplText.className = "text-3xl font-extrabold text-emerald-600";
-            cplDetail.className = "text-xs text-emerald-600 mt-2 font-medium";
-        } else {
-            cplCard.className = "bg-white rounded-2xl p-6 card-shadow border border-slate-100 border-l-4 border-l-amber-500";
-            cplText.className = "text-3xl font-extrabold text-amber-600";
-            cplDetail.className = "text-xs text-amber-600 mt-2 font-medium";
-        }
-
-        // Render Budget Leak Diagnostics
-        const leakContainer = document.getElementById('leak-diagnostic-list');
-        leakContainer.innerHTML = '';
-        data.leaks.forEach(leak => {
-            const div = document.createElement('div');
-            div.className = "bg-white p-4 rounded-xl border border-rose-200 shadow-sm";
-            div.innerHTML = `
-                <div class="flex justify-between items-start mb-1">
-                    <span class="text-xs font-bold text-slate-800">${leak.name}</span>
-                    <span class="${leak.tagBg} text-[10px] font-bold px-2 py-0.5 rounded">${leak.tag}</span>
-                </div>
-                <p class="text-xs text-slate-500 mb-2">${leak.text}</p>
-                <div class="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
-                    <div class="${leak.barClass} h-full"></div>
-                </div>
-            `;
-            leakContainer.appendChild(div);
-        });
-        document.getElementById('recoverable-capital').innerText = data.recoverable;
 
         // Update Charts
         updateCharts(data);
@@ -637,9 +597,9 @@
             const cplDisplay = ad.cpl > 0 ? `$${ad.cpl.toFixed(2)}` : 'N/A ($0 leads)';
             let statusBadge = '';
             
-            if (ad.status.includes('Winner')) {
+            if (ad.status.includes('Winner') || ad.status.includes('Efficiency')) {
                 statusBadge = `<span class="bg-emerald-100 text-emerald-800 text-[10px] font-bold px-2 py-0.5 rounded-full">${ad.status}</span>`;
-            } else if (ad.status.includes('Leak') || ad.status.includes('High CPL') || ad.status.includes('Overburn')) {
+            } else if (ad.status.includes('Leak') || ad.status.includes('High CPL') || ad.status.includes('Fatigued')) {
                 statusBadge = `<span class="bg-rose-100 text-rose-800 text-[10px] font-bold px-2 py-0.5 rounded-full">${ad.status}</span>`;
             } else {
                 statusBadge = `<span class="bg-slate-100 text-slate-700 text-[10px] font-bold px-2 py-0.5 rounded-full">${ad.status}</span>`;
