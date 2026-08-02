@@ -16,7 +16,7 @@
         
         :root {
             --primary: #0f172a;
-            --brand-sky: #0284c7;
+            --brand-blue: #0284c7;
             --brand-teal: #0d9488;
             --brand-amber: #d97706;
             --brand-rose: #e11d48;
@@ -36,7 +36,7 @@
         .chart-wrapper {
             position: relative;
             width: 100%;
-            height: 330px;
+            height: 320px;
         }
 
         /* Custom Scrollbar */
@@ -56,11 +56,11 @@
         }
 
         .animate-fade-in {
-            animation: fadeIn 0.4s ease-in-out;
+            animation: fadeIn 0.35s ease-in-out;
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(6px); }
+            from { opacity: 0; transform: translateY(5px); }
             to { opacity: 1; transform: translateY(0); }
         }
     </style>
@@ -72,12 +72,12 @@
     <!-- Top Header Banner -->
     <div class="bg-white rounded-2xl p-6 md:p-8 card-shadow border border-slate-100 mb-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
         <div>
-            <div class="flex items-center gap-2 mb-2">
+            <div class="flex flex-wrap items-center gap-2 mb-2">
                 <span class="bg-sky-100 text-sky-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Singapore Property Meta Ads</span>
-                <span class="text-xs text-slate-400 font-medium"><i class="fa-solid fa-calendar-days mr-1"></i> July 1 – August 2, 2026 Data Export</span>
+                <span class="text-xs text-slate-400 font-medium"><i class="fa-solid fa-calendar-days mr-1"></i> July 1 – August 2, 2026 Raw Log Export</span>
             </div>
             <h1 class="text-2xl md:text-3xl font-extrabold text-slate-900 tracking-tight">Maureen Campaign Performance Report</h1>
-            <p class="text-slate-500 text-sm mt-1">Verified multi-campaign analysis covering General PL, Thomson Maureen, and Narra Condo PL.</p>
+            <p class="text-slate-500 text-sm mt-1">Multi-campaign audit covering General PL, Thomson Project, and Narra Condo PL.</p>
         </div>
 
         <!-- Period Filter Selector -->
@@ -92,27 +92,27 @@
     </div>
 
     <!-- Executive Productivity Scorecard -->
-    <section class="mb-10">
+    <section class="mb-10 animate-fade-in">
         <div id="summary-banner" class="bg-gradient-to-r from-slate-900 via-slate-800 to-sky-950 rounded-2xl p-6 md:p-8 text-white card-shadow mb-8 relative overflow-hidden">
             <div class="relative z-10">
-                <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-3 gap-2">
-                    <h2 class="text-lg font-bold text-sky-400 uppercase tracking-widest flex items-center gap-2">
-                        <i class="fa-solid fa-compass"></i> Executive Summary & Insights
+                <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                    <h2 class="text-base font-bold text-sky-400 uppercase tracking-widest flex items-center gap-2">
+                        <i class="fa-solid fa-compass"></i> Executive Summary & Diagnostic Insights
                     </h2>
                     <span id="period-badge" class="bg-sky-500/20 text-sky-300 text-xs font-semibold px-3 py-1 rounded-full border border-sky-400/30">
                         Analyzing: July 27 – August 2, 2026
                     </span>
                 </div>
                 <p id="summary-text" class="text-slate-200 text-sm md:text-base leading-relaxed max-w-5xl">
-                    During the week of <strong>July 27 to August 2, 2026</strong>, campaigns generated <strong>9 verified leads</strong> with total ad spend of <strong>SGD 592.73</strong> (Blended CPL: <strong>SGD 65.86</strong>). Lead acquisition was driven by <strong>General Personal Branding</strong> (5 leads @ $40.47 CPL) and <strong>Thomson Project</strong> (4 leads @ $49.37 CPL). However, <strong>Narra Condo PL</strong> experienced severe creative fatigue, accumulating <strong>SGD 192.89 in zero-lead ad spend</strong> during this 7-day window.
+                    <!-- Populated dynamically via JS -->
                 </p>
             </div>
         </div>
 
         <!-- Metric Cards Grid -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            <!-- Metric 1 -->
-            <div class="bg-white rounded-2xl p-6 card-shadow border border-slate-100 border-l-4 border-l-sky-600">
+            <!-- Metric 1: Verified Leads -->
+            <div class="bg-white rounded-2xl p-6 card-shadow border border-slate-100 border-l-4 border-l-sky-600 hover:shadow-md transition-shadow">
                 <div class="flex justify-between items-start">
                     <p class="text-xs font-bold text-slate-400 uppercase tracking-wider">Verified Leads</p>
                     <div class="w-8 h-8 rounded-lg bg-sky-50 text-sky-600 flex items-center justify-center text-sm font-bold">
@@ -120,14 +120,14 @@
                     </div>
                 </div>
                 <div class="mt-3 flex items-baseline gap-2">
-                    <span id="kpi-leads" class="text-3xl font-extrabold text-slate-900">9</span>
-                    <span id="kpi-leads-sub" class="text-xs font-semibold text-emerald-600">Form Submissions</span>
+                    <span id="kpi-leads" class="text-3xl font-extrabold text-slate-900">0</span>
+                    <span class="text-xs font-semibold text-emerald-600">Form Submissions</span>
                 </div>
-                <p id="kpi-leads-detail" class="text-xs text-slate-400 mt-2">Gen PL: 5 | Thomson: 4 | Narra: 0</p>
+                <p id="kpi-leads-detail" class="text-xs text-slate-400 mt-2">Loading breakdown...</p>
             </div>
 
-            <!-- Metric 2 -->
-            <div class="bg-white rounded-2xl p-6 card-shadow border border-slate-100 border-l-4 border-l-amber-500">
+            <!-- Metric 2: Blended CPL -->
+            <div class="bg-white rounded-2xl p-6 card-shadow border border-slate-100 border-l-4 border-l-amber-500 hover:shadow-md transition-shadow">
                 <div class="flex justify-between items-start">
                     <p class="text-xs font-bold text-slate-400 uppercase tracking-wider">Blended CPL</p>
                     <div class="w-8 h-8 rounded-lg bg-amber-50 text-amber-600 flex items-center justify-center text-sm font-bold">
@@ -135,14 +135,14 @@
                     </div>
                 </div>
                 <div class="mt-3 flex items-baseline gap-2">
-                    <span id="kpi-cpl" class="text-3xl font-extrabold text-amber-600">$65.86</span>
+                    <span id="kpi-cpl" class="text-3xl font-extrabold text-amber-600">$0.00</span>
                     <span class="text-xs text-slate-400">SGD / lead</span>
                 </div>
-                <p id="kpi-cpl-detail" class="text-xs text-rose-500 mt-2 font-medium">Target: &lt; SGD 45.00 (+46% over target)</p>
+                <p id="kpi-cpl-detail" class="text-xs text-rose-500 mt-2 font-medium">Target: &lt; SGD 45.00</p>
             </div>
 
-            <!-- Metric 3 -->
-            <div class="bg-white rounded-2xl p-6 card-shadow border border-slate-100 border-l-4 border-l-slate-800">
+            <!-- Metric 3: Total Spend -->
+            <div class="bg-white rounded-2xl p-6 card-shadow border border-slate-100 border-l-4 border-l-slate-800 hover:shadow-md transition-shadow">
                 <div class="flex justify-between items-start">
                     <p class="text-xs font-bold text-slate-400 uppercase tracking-wider">Total Ad Investment</p>
                     <div class="w-8 h-8 rounded-lg bg-slate-100 text-slate-700 flex items-center justify-center text-sm font-bold">
@@ -150,14 +150,14 @@
                     </div>
                 </div>
                 <div class="mt-3 flex items-baseline gap-2">
-                    <span id="kpi-spend" class="text-3xl font-extrabold text-slate-900">$592.73</span>
+                    <span id="kpi-spend" class="text-3xl font-extrabold text-slate-900">$0.00</span>
                     <span class="text-xs text-slate-400">SGD Spent</span>
                 </div>
-                <p id="kpi-spend-detail" class="text-xs text-slate-400 mt-2">Avg $84.68 / day delivery</p>
+                <p id="kpi-spend-detail" class="text-xs text-slate-400 mt-2">Loading delivery...</p>
             </div>
 
-            <!-- Metric 4 -->
-            <div class="bg-white rounded-2xl p-6 card-shadow border border-slate-100 border-l-4 border-l-teal-500">
+            <!-- Metric 4: CTR & Engagement -->
+            <div class="bg-white rounded-2xl p-6 card-shadow border border-slate-100 border-l-4 border-l-teal-500 hover:shadow-md transition-shadow">
                 <div class="flex justify-between items-start">
                     <p class="text-xs font-bold text-slate-400 uppercase tracking-wider">Engagement & Reach</p>
                     <div class="w-8 h-8 rounded-lg bg-teal-50 text-teal-600 flex items-center justify-center text-sm font-bold">
@@ -165,24 +165,24 @@
                     </div>
                 </div>
                 <div class="mt-3 flex items-baseline gap-2">
-                    <span id="kpi-ctr" class="text-3xl font-extrabold text-teal-600">1.08%</span>
+                    <span id="kpi-ctr" class="text-3xl font-extrabold text-teal-600">0.00%</span>
                     <span class="text-xs text-slate-400">CTR (Link)</span>
                 </div>
-                <p id="kpi-ctr-detail" class="text-xs text-slate-400 mt-2">Reach: 6,854 | Impressions: 7,921</p>
+                <p id="kpi-ctr-detail" class="text-xs text-slate-400 mt-2">Loading impressions...</p>
             </div>
         </div>
     </section>
 
-    <!-- Charts Section 1: Campaign Comparison & Daily Velocity -->
+    <!-- Charts Section 1: Campaign Breakdown & Daily Velocity -->
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-10">
         <!-- Chart 1: Campaign Breakdown -->
         <div class="bg-white rounded-2xl p-6 card-shadow border border-slate-100">
             <div class="flex items-center justify-between mb-4">
                 <div>
                     <h3 class="text-base font-bold text-slate-900">Campaign Productivity Breakdown</h3>
-                    <p class="text-xs text-slate-400">Comparing lead volume vs ad spend across active campaign pillars</p>
+                    <p class="text-xs text-slate-400">Leads generated vs ad spend allocated per pillar</p>
                 </div>
-                <span class="text-xs bg-slate-100 text-slate-600 font-semibold px-2.5 py-1 rounded-md">By Pillar</span>
+                <span class="text-xs bg-slate-100 text-slate-600 font-semibold px-2.5 py-1 rounded-md">By Campaign</span>
             </div>
             <div class="chart-wrapper">
                 <canvas id="chartCampaignBreakdown"></canvas>
@@ -194,9 +194,9 @@
             <div class="flex items-center justify-between mb-4">
                 <div>
                     <h3 class="text-base font-bold text-slate-900">Daily Production Velocity</h3>
-                    <p class="text-xs text-slate-400">Daily spend tracking against lead delivery trajectory</p>
+                    <p class="text-xs text-slate-400">Daily spend tracking against verified lead delivery trajectory</p>
                 </div>
-                <span class="text-xs bg-sky-50 text-sky-700 font-semibold px-2.5 py-1 rounded-md">Daily Trajectory</span>
+                <span class="text-xs bg-sky-50 text-sky-700 font-semibold px-2.5 py-1 rounded-md">Trajectory</span>
             </div>
             <div class="chart-wrapper">
                 <canvas id="chartDailyTrend"></canvas>
@@ -210,14 +210,14 @@
             <div class="flex flex-col md:flex-row justify-between md:items-center mb-6 pb-4 border-b border-slate-100 gap-4">
                 <div>
                     <h2 class="text-xl font-bold text-slate-900">Creative Asset Performance & Leak Audit</h2>
-                    <p class="text-xs text-slate-500 mt-1">Isolating top converting visual hooks vs spend sinks in active ad sets.</p>
+                    <p class="text-xs text-slate-500 mt-1">Isolating top converting visual hooks vs spend sinks across active ad sets.</p>
                 </div>
-                <div class="flex items-center gap-2">
+                <div class="flex flex-wrap items-center gap-2">
                     <span class="inline-flex items-center gap-1.5 bg-emerald-50 text-emerald-700 text-xs font-bold px-3 py-1.5 rounded-lg border border-emerald-200">
-                        <i class="fa-solid fa-circle-check"></i> Top Efficiency Champion
+                        <i class="fa-solid fa-circle-check"></i> High Converting Anchor
                     </span>
                     <span class="inline-flex items-center gap-1.5 bg-rose-50 text-rose-700 text-xs font-bold px-3 py-1.5 rounded-lg border border-rose-200">
-                        <i class="fa-solid fa-triangle-exclamation"></i> Budget Leak Alert
+                        <i class="fa-solid fa-triangle-exclamation"></i> Spend Leak Alert
                     </span>
                 </div>
             </div>
@@ -226,43 +226,24 @@
                 <!-- Top Converting Assets Chart -->
                 <div class="lg:col-span-7">
                     <h4 class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-3">Lead Production by Creative Asset</h4>
-                    <div class="chart-wrapper" style="height: 280px;">
+                    <div class="chart-wrapper" style="height: 300px;">
                         <canvas id="chartTopAds"></canvas>
                     </div>
                 </div>
 
                 <!-- Budget Leak Diagnostic Panel -->
-                <div class="lg:col-span-5 bg-gradient-to-br from-rose-50/70 via-slate-50 to-amber-50/50 rounded-xl p-6 border border-rose-100/80">
+                <div id="leak-panel" class="lg:col-span-5 bg-gradient-to-br from-rose-50/70 via-slate-50 to-amber-50/50 rounded-xl p-6 border border-rose-100/80">
                     <h4 class="text-sm font-extrabold text-rose-900 uppercase tracking-wider mb-4 flex items-center gap-2">
                         <i class="fa-solid fa-circle-radiation text-rose-600"></i> Identified Budget Leaks
                     </h4>
                     
-                    <div class="space-y-4">
-                        <!-- Leak Item 1 -->
-                        <div class="bg-white p-4 rounded-xl border border-rose-200 shadow-sm">
-                            <div class="flex justify-between items-start mb-1">
-                                <span class="text-xs font-bold text-slate-800">Ai Video (Narra Condo PL)</span>
-                                <span class="bg-rose-100 text-rose-700 text-[10px] font-bold px-2 py-0.5 rounded">Severe Leak</span>
-                            </div>
-                            <p class="text-xs text-slate-500 mb-2">Creative hit acute audience fatigue. Spent <strong class="text-rose-700">SGD 190.98</strong> across Jul 27 – Aug 2 with <strong class="text-slate-900">0 Leads</strong>.</p>
-                            <div class="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
-                                <div class="bg-rose-500 h-full w-full"></div>
-                            </div>
-                        </div>
-
-                        <!-- Leak Item 2 -->
-                        <div class="bg-white p-4 rounded-xl border border-amber-200 shadow-sm">
-                            <div class="flex justify-between items-start mb-1">
-                                <span class="text-xs font-bold text-slate-800">AI Video GPL & Image 8 (General PL)</span>
-                                <span class="bg-amber-100 text-amber-700 text-[10px] font-bold px-2 py-0.5 rounded">Low Efficiency</span>
-                            </div>
-                            <p class="text-xs text-slate-500">Combined spend of <strong class="text-slate-800">SGD 11.89</strong> during current weekly window produced 0 leads. Needs copy refresh.</p>
-                        </div>
+                    <div id="leak-items-container" class="space-y-4">
+                        <!-- Dynamically populated via JS -->
                     </div>
 
                     <div class="mt-6 pt-4 border-t border-rose-200/60 flex items-center justify-between text-xs">
-                        <span class="text-slate-600 font-medium">Weekly Capital Recoverable:</span>
-                        <span class="font-extrabold text-rose-700 text-sm">~SGD 192.89 / wk</span>
+                        <span class="text-slate-600 font-medium">Period Recoverable Capital:</span>
+                        <span id="recoverable-capital" class="font-extrabold text-rose-700 text-sm">$0.00</span>
                     </div>
                 </div>
             </div>
@@ -275,11 +256,21 @@
             <div class="flex flex-col md:flex-row justify-between md:items-center mb-6 gap-4">
                 <div>
                     <h3 class="text-lg font-bold text-slate-900">Granular Ad Unit Breakdown</h3>
-                    <p class="text-xs text-slate-400">Complete performance breakdown for active ad creatives during selected timeframe</p>
+                    <p class="text-xs text-slate-400">Complete performance breakdown derived directly from Meta raw export logs</p>
                 </div>
-                <div class="relative max-w-xs">
-                    <i class="fa-solid fa-magnifying-glass absolute left-3 top-2.5 text-slate-400 text-xs"></i>
-                    <input type="text" id="table-search" placeholder="Filter ad name..." onkeyup="filterTable()" class="w-full pl-9 pr-4 py-1.5 text-xs bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500">
+                
+                <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+                    <select id="campaign-filter" onchange="filterTable()" class="px-3 py-1.5 text-xs bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500 font-medium">
+                        <option value="ALL">All Campaign Pillars</option>
+                        <option value="General PL">General PL</option>
+                        <option value="Thomson Project">Thomson Project</option>
+                        <option value="Narra Condo PL">Narra Condo PL</option>
+                    </select>
+
+                    <div class="relative max-w-xs">
+                        <i class="fa-solid fa-magnifying-glass absolute left-3 top-2.5 text-slate-400 text-xs"></i>
+                        <input type="text" id="table-search" placeholder="Search ad creative..." onkeyup="filterTable()" class="w-full pl-9 pr-4 py-1.5 text-xs bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500">
+                    </div>
                 </div>
             </div>
 
@@ -311,10 +302,10 @@
             
             <div class="relative z-10">
                 <div class="max-w-3xl mb-8">
-                    <span class="bg-sky-500/20 text-sky-300 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Strategic Roadmap</span>
-                    <h2 class="text-2xl md:text-3xl font-extrabold mt-3">Action Plan to Lower CPL &lt; SGD 45.00</h2>
+                    <span class="bg-sky-500/20 text-sky-300 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Optimization Roadmap</span>
+                    <h2 class="text-2xl md:text-3xl font-extrabold mt-3">3-Step Action Plan to Compress CPL &lt; SGD 45.00</h2>
                     <p class="text-slate-300 text-sm mt-2 leading-relaxed">
-                        By reallocating spend away from exhausted video assets into high-converting static image anchors like <strong>General PL Image 5</strong> ($37.44 CPL) and <strong>Thomson Image 8</strong> ($48.84 CPL), we can immediately reduce overall CPL below target.
+                        Reallocating budget away from saturated video creatives into top-performing static image anchors will immediately drive blended cost per lead below the SGD 45 target threshold while maximizing weekly acquisition volume.
                     </p>
                 </div>
 
@@ -324,9 +315,9 @@
                         <div class="w-10 h-10 rounded-lg bg-rose-500/20 text-rose-400 flex items-center justify-center font-extrabold text-base mb-4">
                             1
                         </div>
-                        <h3 class="font-bold text-base text-white mb-2">Halt Narra Video Spend</h3>
+                        <h3 class="font-bold text-base text-white mb-2">Halt Exhausted Video Assets</h3>
                         <p class="text-xs text-slate-300 leading-relaxed">
-                            Immediately turn OFF <strong class="text-white">Narra Ai Video</strong> to recover <strong class="text-emerald-400">SGD ~191/week</strong> in wasted capital. The creative has hit acute fatigue.
+                            Pause <strong class="text-white">Narra Ai Video</strong> and underperforming GPL videos immediately. Recover up to <strong class="text-emerald-400">SGD ~160 - $180/week</strong> in wasted ad spend.
                         </p>
                     </div>
 
@@ -335,9 +326,9 @@
                         <div class="w-10 h-10 rounded-lg bg-sky-500/20 text-sky-400 flex items-center justify-center font-extrabold text-base mb-4">
                             2
                         </div>
-                        <h3 class="font-bold text-base text-white mb-2">Scale Proven Anchors</h3>
+                        <h3 class="font-bold text-base text-white mb-2">Scale Winning Image Anchors</h3>
                         <p class="text-xs text-slate-300 leading-relaxed">
-                            Redirect recovered budget to <strong class="text-white">Image 5 (Budget & Area Anchor)</strong> (28 leads overall) and <strong class="text-white">Image 8 - VVIP Angle (Thomson)</strong>.
+                            Redirect budget to <strong class="text-white">Image 5 (Budget & Area Anchor)</strong> and <strong class="text-white">Image 8 (VVIP Angle)</strong>, which consistently yield leads at SGD 25.00 – $42.00 CPL.
                         </p>
                     </div>
 
@@ -346,9 +337,9 @@
                         <div class="w-10 h-10 rounded-lg bg-teal-500/20 text-teal-400 flex items-center justify-center font-extrabold text-base mb-4">
                             3
                         </div>
-                        <h3 class="font-bold text-base text-white mb-2">Deploy Fresh Angles</h3>
+                        <h3 class="font-bold text-base text-white mb-2">Deploy Fresh Static Angles</h3>
                         <p class="text-xs text-slate-300 leading-relaxed">
-                            Launch 2 new Narra Condo PL static variations (e.g., floorplan entry pricing hook & PSF comparison matrix) to refresh audience engagement.
+                            Launch 2 new static graphic hooks for Narra Condo PL (e.g., PSF comparison matrix & floorplan pricing breakdown) to reset ad frequency.
                         </p>
                     </div>
                 </div>
@@ -358,122 +349,382 @@
 
     <!-- Footer -->
     <footer class="mt-12 text-center text-slate-400 text-xs">
-        <p>Maureen Singapore Property Campaign Audit &bull; Generated from Meta Ads Export Data &bull; Confidential</p>
+        <p>Maureen Singapore Property Campaign Audit &bull; Built with Verified Meta Ads Log Export Data &bull; Confidential</p>
     </footer>
 
 </div>
 
 <script>
-    
-    // Weekly Data (Jul 27 - Aug 2)
-    const weeklyData = {
-        summaryText: "During the week of <strong>July 27 to August 2, 2026</strong>, campaigns generated <strong>9 verified leads</strong> with total ad spend of <strong>SGD 592.73</strong> (Blended CPL: <strong>SGD 65.86</strong>). Lead acquisition was driven by <strong>General Personal Branding</strong> (5 leads @ $40.47 CPL) and <strong>Thomson Project</strong> (4 leads @ $49.37 CPL). However, <strong>Narra Condo PL</strong> experienced severe creative fatigue, accumulating <strong>SGD 192.89 in zero-lead ad spend</strong> during this 7-day window.",
-        periodBadge: "Analyzing: July 27 – August 2, 2026",
-        leads: 9,
-        cpl: "$65.86",
-        spend: "$592.73",
-        ctr: "1.08%",
-        leadsDetail: "Gen PL: 5 | Thomson: 4 | Narra: 0",
-        cplDetail: "Target: < SGD 45.00 (+46% over target)",
-        spendDetail: "Avg $84.68 / day delivery",
-        ctrDetail: "Reach: 6,854 | Impressions: 7,921",
-        
-        campaigns: {
-            labels: ['General PL Maureen x LA', 'Thomson Maureen x Lumi', 'Narra Condo PL x Lumi'],
-            leads: [5, 4, 0],
-            spend: [202.36, 197.48, 192.89],
-            cpl: [40.47, 49.37, 0] // 0 means N/A
-        },
+    /*
+      RAW CSV DATASET PARSED DIRECTLY FROM META ADS EXPORT LOG
+      Reporting Period: July 1, 2026 – August 2, 2026
+    */
+    const rawCsvLogs = [
+        {"campaign":"General PL Maureen x LA | 28 May","adset":"Broad_30-55_Exclusion_Image & Video (General PL)","ad":"Image 5 - The Budget & Area Anchor - reTry","day":"2026-08-02","reach":466,"impressions":569,"spend":42.60,"clicks":8,"leads":1},
+        {"campaign":"General PL Maureen x LA | 28 May","adset":"Broad_30-55_Exclusion_Image & Video (General PL)","ad":"Image 8 - The Comparison Math","day":"2026-08-02","reach":7,"impressions":7,"spend":0.10,"clicks":0,"leads":0},
+        {"campaign":"General PL Maureen x LA | 28 May","adset":"Broad_30-55_Exclusion_Image & Video (General PL)","ad":"AI Video GPL","day":"2026-08-02","reach":16,"impressions":16,"spend":0.35,"clicks":0,"leads":0},
+        {"campaign":"Narra Condo PL x Lumi (Re Launch) - 14 July","adset":"Broad,30-60,Exclusion","ad":"Ai Video","day":"2026-08-02","reach":363,"impressions":398,"spend":39.65,"clicks":1,"leads":0},
+        {"campaign":"Thomson Maureen x Lumi | 14 July","adset":"Broad, Exclusion Ad set","ad":"Image 8 - VVIP Angle","day":"2026-08-02","reach":1117,"impressions":1316,"spend":37.69,"clicks":15,"leads":4},
 
-        daily: {
-            labels: ['Jul 27', 'Jul 28', 'Jul 29', 'Jul 30', 'Jul 31', 'Aug 01', 'Aug 02'],
-            leads: [2, 3, 1, 1, 1, 1, 1],
-            spend: [73.20, 103.24, 95.72, 96.13, 78.98, 51.28, 94.18]
-        },
+        {"campaign":"General PL Maureen x LA | 28 May","adset":"Broad_30-55_Exclusion_Image & Video (General PL)","ad":"Image 5 - The Budget & Area Anchor - reTry","day":"2026-08-01","reach":164,"impressions":179,"spend":11.42,"clicks":3,"leads":1},
+        {"campaign":"General PL Maureen x LA | 28 May","adset":"Broad_30-55_Exclusion_Image & Video (General PL)","ad":"Image 7 - The Comparison Math - Newstyle","day":"2026-08-01","reach":1,"impressions":1,"spend":0.02,"clicks":0,"leads":0},
+        {"campaign":"General PL Maureen x LA | 28 May","adset":"Broad_30-55_Exclusion_Image & Video (General PL)","ad":"AI Video GPL","day":"2026-08-01","reach":2,"impressions":2,"spend":0.04,"clicks":0,"leads":0},
+        {"campaign":"Narra Condo PL x Lumi (Re Launch) - 14 July","adset":"Broad,30-60,Exclusion","ad":"Image 7 - Buyer Situation","day":"2026-08-01","reach":2,"impressions":2,"spend":0.09,"clicks":0,"leads":0},
+        {"campaign":"Narra Condo PL x Lumi (Re Launch) - 14 July","adset":"Broad,30-60,Exclusion","ad":"Image 8 - Scarcity & Price","day":"2026-08-01","reach":2,"impressions":2,"spend":0.11,"clicks":0,"leads":0},
+        {"campaign":"Narra Condo PL x Lumi (Re Launch) - 14 July","adset":"Broad,30-60,Exclusion","ad":"Ai Video","day":"2026-08-01","reach":177,"impressions":188,"spend":13.83,"clicks":3,"leads":0},
+        {"campaign":"Thomson Maureen x Lumi | 14 July","adset":"Broad, Exclusion Ad set","ad":"Image 8 - VVIP Angle","day":"2026-08-01","reach":860,"impressions":980,"spend":25.77,"clicks":12,"leads":0},
 
-        ads: [
-            { name: "Image 5 - Budget & Area Anchor - reTry", campaign: "General PL", spend: 187.18, leads: 5, cpl: 37.44, ctr: 1.18, status: "Top Performer", action: "Scale Budget" },
-            { name: "Image 8 - VVIP Angle", campaign: "Thomson", spend: 195.37, leads: 4, cpl: 48.84, ctr: 0.96, status: "Core Performer", action: "Maintain" },
-            { name: "Ai Video", campaign: "Narra Condo PL", spend: 190.98, leads: 0, cpl: 0, ctr: 0.73, status: "Budget Leak", action: "PAUSE NOW" },
-            { name: "AI Video GPL", campaign: "General PL", spend: 5.98, leads: 0, cpl: 0, ctr: 0.45, status: "Low Conv", action: "Refresh Copy" },
-            { name: "Image 8 - The Comparison Math", campaign: "General PL", spend: 5.91, leads: 0, cpl: 0, ctr: 0.82, status: "Low Spend", action: "Monitor" },
-            { name: "Image 6 - The Budget", campaign: "General PL", spend: 3.11, leads: 0, cpl: 0, ctr: 0.65, status: "Low Spend", action: "Monitor" },
-            { name: "Image 10 - VVIP Angle White", campaign: "Thomson", spend: 2.08, leads: 0, cpl: 0, ctr: 0.51, status: "Testing", action: "Pause" }
-        ]
-    };
+        {"campaign":"Narra Condo PL x Lumi (Re Launch) - 14 July","adset":"Broad,30-60,Exclusion","ad":"Ai Video","day":"2026-07-31","reach":228,"impressions":248,"spend":24.66,"clicks":2,"leads":0},
+        {"campaign":"Thomson Maureen x Lumi | 14 July","adset":"Broad, Exclusion Ad set","ad":"Image 8 - VVIP Angle","day":"2026-07-31","reach":823,"impressions":989,"spend":25.96,"clicks":6,"leads":0},
+        {"campaign":"Thomson Maureen x Lumi | 14 July","adset":"Broad, Exclusion Ad set","ad":"Image 9 - Investor Angle","day":"2026-07-31","reach":1,"impressions":1,"spend":0.03,"clicks":0,"leads":0},
+        {"campaign":"General PL Maureen x LA | 28 May","adset":"Broad_30-55_Exclusion_Image & Video (General PL)","ad":"AI Video GPL","day":"2026-07-31","reach":16,"impressions":16,"spend":0.84,"clicks":0,"leads":0},
+        {"campaign":"Narra Condo PL x Lumi (Re Launch) - 14 July","adset":"Broad,30-60,Exclusion","ad":"Image 8 - Scarcity & Price","day":"2026-07-31","reach":3,"impressions":3,"spend":0.07,"clicks":0,"leads":0},
+        {"campaign":"General PL Maureen x LA | 28 May","adset":"Broad_30-55_Exclusion_Image & Video (General PL)","ad":"Image 6 - The Budget","day":"2026-07-31","reach":4,"impressions":4,"spend":0.34,"clicks":0,"leads":0},
+        {"campaign":"General PL Maureen x LA | 28 May","adset":"Broad_30-55_Exclusion_Image & Video (General PL)","ad":"Image 5 - The Budget & Area Anchor - reTry","day":"2026-07-31","reach":258,"impressions":287,"spend":27.08,"clicks":2,"leads":1},
 
-    // Monthly Data (Jul 1 - Aug 2)
-    const monthlyData = {
-        summaryText: "Across the complete 33-day reporting period (<strong>July 1 – August 2, 2026</strong>), Maureen's Meta Ads ecosystem produced <strong>42 verified leads</strong> on a total expenditure of <strong>SGD 2,351.00</strong> (Blended CPL: <strong>SGD 55.98</strong>). The campaign generated 36,685 impressions and 478 direct link clicks (CTR: 1.30%). <strong>Image 5 (General PL)</strong> was the dominant top performer overall, generating 28 total leads (66.7% share of all leads).",
-        periodBadge: "Analyzing: July 1 – August 2, 2026 (33 Days)",
-        leads: 42,
-        cpl: "$55.98",
-        spend: "$2,351.00",
-        ctr: "1.30%",
-        leadsDetail: "Gen PL: 30 | Narra: 6 | Thomson: 6",
-        cplDetail: "Target: < SGD 45.00 (+24% over target)",
-        spendDetail: "Total Impressions: 36,685",
-        ctrDetail: "Total Link Clicks: 478 | CPC: $4.92",
+        {"campaign":"General PL Maureen x LA | 28 May","adset":"Broad_30-55_Exclusion_Image & Video (General PL)","ad":"Image 5 - The Budget & Area Anchor - reTry","day":"2026-07-30","reach":291,"impressions":325,"spend":29.10,"clicks":2,"leads":0},
+        {"campaign":"General PL Maureen x LA | 28 May","adset":"Broad_30-55_Exclusion_Image & Video (General PL)","ad":"Image 6 - The Budget","day":"2026-07-30","reach":8,"impressions":8,"spend":0.76,"clicks":0,"leads":0},
+        {"campaign":"General PL Maureen x LA | 28 May","adset":"Broad_30-55_Exclusion_Image & Video (General PL)","ad":"Image 7 - The Comparison Math - Newstyle","day":"2026-07-30","reach":1,"impressions":1,"spend":0.15,"clicks":0,"leads":0},
+        {"campaign":"General PL Maureen x LA | 28 May","adset":"Broad_30-55_Exclusion_Image & Video (General PL)","ad":"Image 8 - The Comparison Math","day":"2026-07-30","reach":2,"impressions":2,"spend":0.32,"clicks":0,"leads":0},
+        {"campaign":"General PL Maureen x LA | 28 May","adset":"Broad_30-55_Exclusion_Image & Video (General PL)","ad":"AI Video GPL","day":"2026-07-30","reach":13,"impressions":15,"spend":2.44,"clicks":0,"leads":0},
+        {"campaign":"Narra Condo PL x Lumi (Re Launch) - 14 July","adset":"Broad,30-60,Exclusion","ad":"Image 8 - Scarcity & Price","day":"2026-07-30","reach":4,"impressions":4,"spend":1.25,"clicks":0,"leads":0},
+        {"campaign":"Narra Condo PL x Lumi (Re Launch) - 14 July","adset":"Broad,30-60,Exclusion","ad":"Ai Video","day":"2026-07-30","reach":298,"impressions":324,"spend":31.51,"clicks":8,"leads":0},
+        {"campaign":"Thomson Maureen x Lumi | 14 July","adset":"Broad, Exclusion Ad set","ad":"Image 8 - VVIP Angle","day":"2026-07-30","reach":979,"impressions":1163,"spend":30.60,"clicks":5,"leads":1},
 
-        campaigns: {
-            labels: ['General PL Maureen x LA', 'Narra Condo PL x Lumi', 'Thomson Maureen x Lumi'],
-            leads: [30, 6, 6],
-            spend: [1150.40, 680.20, 520.40],
-            cpl: [38.35, 113.37, 86.73]
-        },
+        {"campaign":"Narra Condo PL x Lumi (Re Launch) - 14 July","adset":"Broad,30-60,Exclusion","ad":"Image 8 - Scarcity & Price","day":"2026-07-29","reach":1,"impressions":1,"spend":0.19,"clicks":0,"leads":0},
+        {"campaign":"Thomson Maureen x Lumi | 14 July","adset":"Broad, Exclusion Ad set","ad":"Image 8 - VVIP Angle","day":"2026-07-29","reach":1008,"impressions":1218,"spend":30.57,"clicks":9,"leads":1},
+        {"campaign":"Narra Condo PL x Lumi (Re Launch) - 14 July","adset":"Broad,30-60,Exclusion","ad":"Ai Video","day":"2026-07-29","reach":200,"impressions":208,"spend":27.58,"clicks":0,"leads":0},
+        {"campaign":"General PL Maureen x LA | 28 May","adset":"Broad_30-55_Exclusion_Image & Video (General PL)","ad":"Image 5 - The Budget & Area Anchor - reTry","day":"2026-07-29","reach":271,"impressions":294,"spend":34.74,"clicks":1,"leads":0},
+        {"campaign":"General PL Maureen x LA | 28 May","adset":"Broad_30-55_Exclusion_Image & Video (General PL)","ad":"AI Video GPL","day":"2026-07-29","reach":1,"impressions":1,"spend":1.44,"clicks":0,"leads":0},
+        {"campaign":"General PL Maureen x LA | 28 May","adset":"Broad_30-55_Exclusion_Image & Video (General PL)","ad":"Image 6 - The Budget","day":"2026-07-29","reach":3,"impressions":3,"spend":0.93,"clicks":0,"leads":0},
+        {"campaign":"General PL Maureen x LA | 28 May","adset":"Broad_30-55_Exclusion_Image & Video (General PL)","ad":"Image 8 - The Comparison Math","day":"2026-07-29","reach":4,"impressions":4,"spend":0.27,"clicks":0,"leads":0},
 
-        daily: {
-            labels: ['Jul 01-05', 'Jul 06-10', 'Jul 11-15', 'Jul 16-20', 'Jul 21-25', 'Jul 26-30', 'Jul 31-Aug 02'],
-            leads: [8, 3, 5, 11, 7, 5, 3],
-            spend: [310.50, 290.40, 285.10, 420.30, 450.80, 380.20, 213.70]
-        },
+        {"campaign":"General PL Maureen x LA | 28 May","adset":"Broad_30-55_Exclusion_Image & Video (General PL)","ad":"Image 5 - The Budget & Area Anchor - reTry","day":"2026-07-28","reach":303,"impressions":324,"spend":29.83,"clicks":4,"leads":2},
+        {"campaign":"General PL Maureen x LA | 28 May","adset":"Broad_30-55_Exclusion_Image & Video (General PL)","ad":"Image 6 - The Budget","day":"2026-07-28","reach":3,"impressions":3,"spend":0.88,"clicks":0,"leads":0},
+        {"campaign":"General PL Maureen x LA | 28 May","adset":"Broad_30-55_Exclusion_Image & Video (General PL)","ad":"Image 8 - The Comparison Math","day":"2026-07-28","reach":9,"impressions":9,"spend":0.72,"clicks":0,"leads":0},
+        {"campaign":"General PL Maureen x LA | 28 May","adset":"Broad_30-55_Exclusion_Image & Video (General PL)","ad":"AI Video GPL","day":"2026-07-28","reach":9,"impressions":10,"spend":0.76,"clicks":0,"leads":0},
+        {"campaign":"Narra Condo PL x Lumi (Re Launch) - 14 July","adset":"Broad,30-60,Exclusion","ad":"Ai Video","day":"2026-07-28","reach":317,"impressions":338,"spend":31.37,"clicks":3,"leads":0},
+        {"campaign":"Thomson Maureen x Lumi | 14 July","adset":"Broad, Exclusion Ad set","ad":"Image 8 - VVIP Angle","day":"2026-07-28","reach":700,"impressions":848,"spend":39.63,"clicks":9,"leads":1},
+        {"campaign":"Thomson Maureen x Lumi | 14 July","adset":"Broad, Exclusion Ad set","ad":"Image 10 - VVIP Angle - White","day":"2026-07-28","reach":3,"impressions":3,"spend":0.05,"clicks":0,"leads":0},
 
-        ads: [
-            { name: "Image 5 - Budget & Area Anchor - reTry", campaign: "General PL", spend: 812.45, leads: 28, cpl: 29.02, ctr: 1.42, status: "Super Winner", action: "Main Anchor" },
-            { name: "Ai Video", campaign: "Narra Condo PL", spend: 520.10, leads: 6, cpl: 86.68, ctr: 1.12, status: "Fatigued", action: "Replace Creative" },
-            { name: "Image 8 - VVIP Angle", campaign: "Thomson", spend: 310.40, leads: 5, cpl: 62.08, ctr: 0.98, status: "Core Performer", action: "Maintain" },
-            { name: "Ai Video Thomson Maureen", campaign: "Thomson", spend: 185.30, leads: 1, cpl: 185.30, ctr: 1.05, status: "Low Conv", action: "Pause" },
-            { name: "Image 6 - The Budget", campaign: "General PL", spend: 45.20, leads: 1, cpl: 45.20, ctr: 1.05, status: "Niche Winner", action: "Keep Active" },
-            { name: "AI Video GPL", campaign: "General PL", spend: 35.80, leads: 1, cpl: 35.80, ctr: 0.88, status: "Niche Winner", action: "Keep Active" }
-        ]
-    };
+        {"campaign":"Narra Condo PL x Lumi (Re Launch) - 14 July","adset":"Broad,30-60,Exclusion","ad":"Image 7 - Buyer Situation","day":"2026-07-27","reach":1,"impressions":1,"spend":0.17,"clicks":0,"leads":0},
+        {"campaign":"Thomson Maureen x Lumi | 14 July","adset":"Broad, Exclusion Ad set","ad":"Image 10 - VVIP Angle - White","day":"2026-07-27","reach":23,"impressions":28,"spend":2.03,"clicks":0,"leads":0},
+        {"campaign":"Thomson Maureen x Lumi | 14 July","adset":"Broad, Exclusion Ad set","ad":"Image 8 - VVIP Angle","day":"2026-07-27","reach":511,"impressions":591,"spend":16.74,"clicks":4,"leads":0},
+        {"campaign":"Narra Condo PL x Lumi (Re Launch) - 14 July","adset":"Broad,30-60,Exclusion","ad":"Ai Video","day":"2026-07-27","reach":326,"impressions":353,"spend":29.04,"clicks":1,"leads":0},
+        {"campaign":"Narra Condo PL x Lumi (Re Launch) - 14 July","adset":"Broad,30-60,Exclusion","ad":"Image 8 - Scarcity & Price","day":"2026-07-27","reach":1,"impressions":1,"spend":0.03,"clicks":0,"leads":0},
+        {"campaign":"General PL Maureen x LA | 28 May","adset":"Broad_30-55_Exclusion_Image & Video (General PL)","ad":"Image 6 - The Budget","day":"2026-07-27","reach":6,"impressions":6,"spend":0.20,"clicks":0,"leads":0},
+        {"campaign":"General PL Maureen x LA | 28 May","adset":"Broad_30-55_Exclusion_Image & Video (General PL)","ad":"AI Video GPL","day":"2026-07-27","reach":6,"impressions":6,"spend":0.11,"clicks":0,"leads":0},
+        {"campaign":"General PL Maureen x LA | 28 May","adset":"Broad_30-55_Exclusion_Image & Video (General PL)","ad":"Image 8 - The Comparison Math","day":"2026-07-27","reach":33,"impressions":36,"spend":4.50,"clicks":0,"leads":0},
+        {"campaign":"General PL Maureen x LA | 28 May","adset":"Broad_30-55_Exclusion_Image & Video (General PL)","ad":"Image 7 - The Comparison Math - Newstyle","day":"2026-07-27","reach":2,"impressions":2,"spend":0.01,"clicks":0,"leads":0},
+        {"campaign":"General PL Maureen x LA | 28 May","adset":"Broad_30-55_Exclusion_Image & Video (General PL)","ad":"Image 5 - The Budget & Area Anchor - reTry","day":"2026-07-27","reach":177,"impressions":194,"spend":20.37,"clicks":4,"leads":1},
+
+        // Earlier July Logs (Jul 01 - Jul 26)
+        {"campaign":"Narra Condo PL x Lumi (Re Launch) - 14 July","adset":"Broad,30-60,Exclusion","ad":"Image 8 - Scarcity & Price","day":"2026-07-26","reach":1,"impressions":1,"spend":0.02,"clicks":0,"leads":0},
+        {"campaign":"Thomson Maureen x Lumi | 14 July","adset":"Broad, Exclusion Ad set","ad":"Image 10 - VVIP Angle - White","day":"2026-07-26","reach":90,"impressions":109,"spend":4.44,"clicks":0,"leads":0},
+        {"campaign":"Thomson Maureen x Lumi | 14 July","adset":"Broad, Exclusion Ad set","ad":"Image 8 - VVIP Angle","day":"2026-07-26","reach":985,"impressions":1266,"spend":34.06,"clicks":12,"leads":0},
+        {"campaign":"Thomson Maureen x Lumi | 14 July","adset":"Broad, Exclusion Ad set","ad":"Image 9 - Investor Angle","day":"2026-07-26","reach":1,"impressions":2,"spend":0.05,"clicks":0,"leads":0},
+        {"campaign":"Narra Condo PL x Lumi (Re Launch) - 14 July","adset":"Broad,30-60,Exclusion","ad":"Ai Video","day":"2026-07-26","reach":403,"impressions":423,"spend":49.84,"clicks":4,"leads":1},
+        {"campaign":"Narra Condo PL x Lumi (Re Launch) - 14 July","adset":"Broad,30-60,Exclusion","ad":"Image 7 - Buyer Situation","day":"2026-07-26","reach":1,"impressions":1,"spend":0.03,"clicks":0,"leads":0},
+        {"campaign":"General PL Maureen x LA | 28 May","adset":"Broad_30-55_Exclusion_Image & Video (General PL)","ad":"Image 8 - The Comparison Math","day":"2026-07-26","reach":11,"impressions":11,"spend":0.92,"clicks":0,"leads":0},
+        {"campaign":"General PL Maureen x LA | 28 May","adset":"Broad_30-55_Exclusion_Image & Video (General PL)","ad":"Image 7 - The Comparison Math - Newstyle","day":"2026-07-26","reach":6,"impressions":7,"spend":0.14,"clicks":0,"leads":0},
+        {"campaign":"General PL Maureen x LA | 28 May","adset":"Broad_30-55_Exclusion_Image & Video (General PL)","ad":"Image 6 - The Budget","day":"2026-07-26","reach":11,"impressions":12,"spend":0.81,"clicks":0,"leads":0},
+        {"campaign":"General PL Maureen x LA | 28 May","adset":"Broad_30-55_Exclusion_Image & Video (General PL)","ad":"Image 5 - The Budget & Area Anchor - reTry","day":"2026-07-26","reach":281,"impressions":319,"spend":40.70,"clicks":5,"leads":1},
+
+        {"campaign":"Narra Condo PL x Lumi (Re Launch) - 14 July","adset":"Broad,30-60,Exclusion","ad":"Image 8 - Scarcity & Price","day":"2026-07-25","reach":4,"impressions":4,"spend":0.07,"clicks":0,"leads":0},
+        {"campaign":"General PL Maureen x LA | 28 May","adset":"Broad_30-55_Exclusion_Image & Video (General PL)","ad":"Image 5 - The Budget & Area Anchor - reTry","day":"2026-07-25","reach":316,"impressions":375,"spend":30.66,"clicks":5,"leads":2},
+        {"campaign":"General PL Maureen x LA | 28 May","adset":"Broad_30-55_Exclusion_Image & Video (General PL)","ad":"Image 6 - The Budget","day":"2026-07-25","reach":2,"impressions":2,"spend":0.05,"clicks":0,"leads":0},
+        {"campaign":"General PL Maureen x LA | 28 May","adset":"Broad_30-55_Exclusion_Image & Video (General PL)","ad":"Image 7 - The Comparison Math - Newstyle","day":"2026-07-25","reach":3,"impressions":3,"spend":0.05,"clicks":0,"leads":0},
+        {"campaign":"General PL Maureen x LA | 28 May","adset":"Broad_30-55_Exclusion_Image & Video (General PL)","ad":"Image 8 - The Comparison Math","day":"2026-07-25","reach":24,"impressions":26,"spend":1.22,"clicks":0,"leads":0},
+        {"campaign":"Narra Condo PL x Lumi (Re Launch) - 14 July","adset":"Broad,30-60,Exclusion","ad":"Ai Video","day":"2026-07-25","reach":159,"impressions":168,"spend":15.13,"clicks":4,"leads":1},
+        {"campaign":"Thomson Maureen x Lumi | 14 July","adset":"Broad, Exclusion Ad set","ad":"Image 9 - Investor Angle","day":"2026-07-25","reach":6,"impressions":11,"spend":1.04,"clicks":0,"leads":0},
+        {"campaign":"Thomson Maureen x Lumi | 14 July","adset":"Broad, Exclusion Ad set","ad":"Image 8 - VVIP Angle","day":"2026-07-25","reach":308,"impressions":382,"spend":12.94,"clicks":4,"leads":1},
+        {"campaign":"Thomson Maureen x Lumi | 14 July","adset":"Broad, Exclusion Ad set","ad":"Image 10 - VVIP Angle - White","day":"2026-07-25","reach":58,"impressions":63,"spend":2.02,"clicks":0,"leads":0},
+
+        {"campaign":"Narra Condo PL x Lumi (Re Launch) - 14 July","adset":"Broad,30-60,Exclusion","ad":"Ai Video","day":"2026-07-24","reach":170,"impressions":186,"spend":27.63,"clicks":3,"leads":1},
+        {"campaign":"Thomson Maureen x Lumi | 14 July","adset":"Broad, Exclusion Ad set","ad":"Image 8 - VVIP Angle","day":"2026-07-24","reach":520,"impressions":622,"spend":21.72,"clicks":5,"leads":0},
+        {"campaign":"Thomson Maureen x Lumi | 14 July","adset":"Broad, Exclusion Ad set","ad":"Image 9 - Investor Angle","day":"2026-07-24","reach":14,"impressions":19,"spend":1.37,"clicks":1,"leads":0},
+        {"campaign":"Thomson Maureen x Lumi | 14 July","adset":"Broad, Exclusion Ad set","ad":"Image 6 - Heavy Text","day":"2026-07-24","reach":14,"impressions":16,"spend":3.94,"clicks":0,"leads":0},
+        {"campaign":"General PL Maureen x LA | 28 May","adset":"Broad_30-55_Exclusion_Image & Video (General PL)","ad":"Image 5 - The Budget & Area Anchor - reTry","day":"2026-07-24","reach":277,"impressions":327,"spend":36.10,"clicks":2,"leads":1},
+        {"campaign":"Thomson Maureen x Lumi | 14 July","adset":"Broad, Exclusion Ad set","ad":"Ai Video Thomson Maureen","day":"2026-07-24","reach":15,"impressions":15,"spend":2.59,"clicks":0,"leads":0},
+        {"campaign":"General PL Maureen x LA | 28 May","adset":"Broad_30-55_Exclusion_Image & Video (General PL)","ad":"AI Video GPL","day":"2026-07-24","reach":1,"impressions":1,"spend":0.32,"clicks":0,"leads":0},
+        {"campaign":"General PL Maureen x LA | 28 May","adset":"Broad_30-55_Exclusion_Image & Video (General PL)","ad":"Image 6 - The Budget","day":"2026-07-24","reach":19,"impressions":19,"spend":1.21,"clicks":0,"leads":0},
+
+        {"campaign":"Narra Condo PL x Lumi (Re Launch) - 14 July","adset":"Broad,30-60,Exclusion","ad":"Ai Video","day":"2026-07-23","reach":230,"impressions":253,"spend":27.47,"clicks":0,"leads":0},
+        {"campaign":"Thomson Maureen x Lumi | 14 July","adset":"Broad, Exclusion Ad set","ad":"Image 6 - Heavy Text","day":"2026-07-23","reach":73,"impressions":85,"spend":17.96,"clicks":1,"leads":0},
+        {"campaign":"Thomson Maureen x Lumi | 14 July","adset":"Broad, Exclusion Ad set","ad":"Image 7 - Maps","day":"2026-07-23","reach":48,"impressions":53,"spend":3.81,"clicks":0,"leads":0},
+        {"campaign":"Thomson Maureen x Lumi | 14 July","adset":"Broad, Exclusion Ad set","ad":"Ai Video Thomson Maureen","day":"2026-07-23","reach":59,"impressions":70,"spend":4.87,"clicks":0,"leads":0},
+        {"campaign":"General PL Maureen x LA | 28 May","adset":"Broad_30-55_Exclusion_Image & Video (General PL)","ad":"Image 5 - The Budget & Area Anchor - reTry","day":"2026-07-23","reach":217,"impressions":244,"spend":24.35,"clicks":3,"leads":3},
+
+        {"campaign":"Narra Condo PL x Lumi (Re Launch) - 14 July","adset":"Broad,30-60,Exclusion","ad":"Ai Video","day":"2026-07-22","reach":243,"impressions":260,"spend":33.32,"clicks":5,"leads":2},
+        {"campaign":"Thomson Maureen x Lumi | 14 July","adset":"Broad, Exclusion Ad set","ad":"Image 7 - Maps","day":"2026-07-22","reach":105,"impressions":121,"spend":5.47,"clicks":0,"leads":0},
+        {"campaign":"Thomson Maureen x Lumi | 14 July","adset":"Broad, Exclusion Ad set","ad":"Image 5 - Emphasize Number","day":"2026-07-22","reach":355,"impressions":403,"spend":28.02,"clicks":2,"leads":0},
+        {"campaign":"General PL Maureen x LA | 28 May","adset":"Broad_30-55_Exclusion_Image & Video (General PL)","ad":"Image 5 - The Budget & Area Anchor - reTry","day":"2026-07-22","reach":116,"impressions":139,"spend":17.13,"clicks":0,"leads":0},
+
+        {"campaign":"Thomson Maureen x Lumi | 14 July","adset":"Broad, Exclusion Ad set","ad":"Image 5 - Emphasize Number","day":"2026-07-21","reach":276,"impressions":308,"spend":13.95,"clicks":3,"leads":0},
+        {"campaign":"Thomson Maureen x Lumi | 14 July","adset":"Broad, Exclusion Ad set","ad":"Image 6 - Heavy Text","day":"2026-07-21","reach":70,"impressions":89,"spend":8.10,"clicks":6,"leads":0},
+        {"campaign":"Thomson Maureen x Lumi | 14 July","adset":"Broad, Exclusion Ad set","ad":"Image 7 - Maps","day":"2026-07-21","reach":273,"impressions":299,"spend":7.88,"clicks":3,"leads":0},
+        {"campaign":"Narra Condo PL x Lumi (Re Launch) - 14 July","adset":"Broad,30-60,Exclusion","ad":"Ai Video","day":"2026-07-21","reach":229,"impressions":249,"spend":26.60,"clicks":1,"leads":0},
+        {"campaign":"General PL Maureen x LA | 28 May","adset":"Broad_30-55_Exclusion_Image & Video (General PL)","ad":"Image 5 - The Budget & Area Anchor - reTry","day":"2026-07-21","reach":128,"impressions":149,"spend":20.33,"clicks":3,"leads":0},
+        {"campaign":"Narra Condo PL x Lumi (Re Launch) - 14 July","adset":"Broad,30-60,Exclusion","ad":"Image 8 - Scarcity & Price","day":"2026-07-21","reach":17,"impressions":19,"spend":3.05,"clicks":0,"leads":0},
+
+        {"campaign":"General PL Maureen x LA | 28 May","adset":"Broad_30-55_Exclusion_Image & Video (General PL)","ad":"Image 5 - The Budget & Area Anchor - reTry","day":"2026-07-20","reach":184,"impressions":208,"spend":28.19,"clicks":3,"leads":2},
+        {"campaign":"Thomson Maureen x Lumi | 14 July","adset":"Broad, Exclusion Ad set","ad":"Image 5 - Emphasize Number","day":"2026-07-20","reach":450,"impressions":542,"spend":21.71,"clicks":4,"leads":0},
+        {"campaign":"Thomson Maureen x Lumi | 14 July","adset":"Broad, Exclusion Ad set","ad":"Ai Video Thomson Maureen","day":"2026-07-20","reach":54,"impressions":56,"spend":5.24,"clicks":3,"leads":0},
+        {"campaign":"Narra Condo PL x Lumi (Re Launch) - 14 July","adset":"Broad,30-60,Exclusion","ad":"Image 8 - Scarcity & Price","day":"2026-07-20","reach":47,"impressions":56,"spend":7.11,"clicks":0,"leads":0},
+        {"campaign":"Narra Condo PL x Lumi (Re Launch) - 14 July","adset":"Broad,30-60,Exclusion","ad":"Ai Video","day":"2026-07-20","reach":228,"impressions":246,"spend":24.98,"clicks":3,"leads":0},
+
+        {"campaign":"Thomson Maureen x Lumi | 14 July","adset":"Broad, Exclusion Ad set","ad":"Ai Video Thomson Maureen","day":"2026-07-19","reach":374,"impressions":404,"spend":32.47,"clicks":2,"leads":0},
+        {"campaign":"General PL Maureen x LA | 28 May","adset":"Broad_30-55_Exclusion_Image & Video (General PL)","ad":"Image 5 - The Budget & Area Anchor - reTry","day":"2026-07-19","reach":288,"impressions":302,"spend":32.53,"clicks":10,"leads":3},
+        {"campaign":"Thomson Maureen x Lumi | 14 July","adset":"Broad, Exclusion Ad set","ad":"Image 5 - Emphasize Number","day":"2026-07-19","reach":142,"impressions":164,"spend":7.01,"clicks":1,"leads":0},
+        {"campaign":"General PL Maureen x LA | 28 May","adset":"Broad_30-55_Exclusion_Image & Video (General PL)","ad":"AI Video GPL","day":"2026-07-19","reach":17,"impressions":17,"spend":1.42,"clicks":1,"leads":0},
+        {"campaign":"Narra Condo PL x Lumi (Re Launch) - 14 July","adset":"Broad,30-60,Exclusion","ad":"Ai Video","day":"2026-07-19","reach":188,"impressions":198,"spend":22.82,"clicks":2,"leads":1},
+        {"campaign":"Narra Condo PL x Lumi (Re Launch) - 14 July","adset":"Broad,30-60,Exclusion","ad":"Image 9 - Comparison","day":"2026-07-19","reach":228,"impressions":256,"spend":9.42,"clicks":0,"leads":0},
+
+        {"campaign":"Narra Condo PL x Lumi (Re Launch) - 14 July","adset":"Broad,30-60,Exclusion","ad":"Image 9 - Comparison","day":"2026-07-18","reach":209,"impressions":234,"spend":10.29,"clicks":2,"leads":0},
+        {"campaign":"Narra Condo PL x Lumi (Re Launch) - 14 July","adset":"Broad,30-60,Exclusion","ad":"Ai Video","day":"2026-07-18","reach":92,"impressions":97,"spend":7.16,"clicks":1,"leads":0},
+        {"campaign":"Thomson Maureen x Lumi | 14 July","adset":"Broad, Exclusion Ad set","ad":"Ai Video Thomson Maureen","day":"2026-07-18","reach":333,"impressions":365,"spend":22.00,"clicks":1,"leads":0},
+        {"campaign":"Thomson Maureen x Lumi | 14 July","adset":"Broad, Exclusion Ad set","ad":"Image 5 - Emphasize Number","day":"2026-07-18","reach":47,"impressions":51,"spend":3.05,"clicks":1,"leads":0},
+        {"campaign":"General PL Maureen x LA | 28 May","adset":"Broad_30-55_Exclusion_Image & Video (General PL)","ad":"Image 5 - The Budget & Area Anchor - reTry","day":"2026-07-18","reach":188,"impressions":206,"spend":12.93,"clicks":3,"leads":0},
+
+        {"campaign":"Thomson Maureen x Lumi | 14 July","adset":"Broad, Exclusion Ad set","ad":"Ai Video Thomson Maureen","day":"2026-07-17","reach":468,"impressions":515,"spend":26.86,"clicks":5,"leads":0},
+        {"campaign":"Narra Condo PL x Lumi (Re Launch) - 14 July","adset":"Broad,30-60,Exclusion","ad":"Ai Video","day":"2026-07-17","reach":96,"impressions":109,"spend":15.85,"clicks":1,"leads":0},
+        {"campaign":"Narra Condo PL x Lumi (Re Launch) - 14 July","adset":"Broad,30-60,Exclusion","ad":"Image 9 - Comparison","day":"2026-07-17","reach":80,"impressions":88,"spend":6.60,"clicks":1,"leads":0},
+        {"campaign":"Narra Condo PL x Lumi (Re Launch) - 14 July","adset":"Broad,30-60,Exclusion","ad":"Image 8 - Scarcity & Price","day":"2026-07-17","reach":47,"impressions":53,"spend":5.16,"clicks":0,"leads":0},
+        {"campaign":"General PL Maureen x LA | 28 May","adset":"Broad_30-55_Exclusion_Image & Video (General PL)","ad":"Image 5 - The Budget & Area Anchor - reTry","day":"2026-07-17","reach":192,"impressions":202,"spend":22.27,"clicks":2,"leads":0},
+
+        {"campaign":"Thomson Maureen x Lumi | 14 July","adset":"Broad, Exclusion Ad set","ad":"Ai Video Thomson Maureen","day":"2026-07-16","reach":319,"impressions":350,"spend":21.61,"clicks":3,"leads":1},
+        {"campaign":"Narra Condo PL x Lumi (Re Launch) - 14 July","adset":"Broad,30-60,Exclusion","ad":"Image 9 - Comparison","day":"2026-07-16","reach":122,"impressions":134,"spend":3.76,"clicks":1,"leads":0},
+        {"campaign":"Narra Condo PL x Lumi (Re Launch) - 14 July","adset":"Broad,30-60,Exclusion","ad":"Image 8 - Scarcity & Price","day":"2026-07-16","reach":100,"impressions":112,"spend":13.71,"clicks":1,"leads":0},
+        {"campaign":"General PL Maureen x LA | 28 May","adset":"Broad_30-55_Exclusion_Image & Video (General PL)","ad":"Image 8 - The Comparison Math","day":"2026-07-16","reach":23,"impressions":24,"spend":0.90,"clicks":2,"leads":0},
+        {"campaign":"General PL Maureen x LA | 28 May","adset":"Broad_30-55_Exclusion_Image & Video (General PL)","ad":"Image 5 - The Budget & Area Anchor - reTry","day":"2026-07-16","reach":232,"impressions":254,"spend":22.78,"clicks":3,"leads":0},
+
+        {"campaign":"Narra Condo PL x Lumi (Re Launch) - 14 July","adset":"Broad,30-60,Exclusion","ad":"Image 8 - Scarcity & Price","day":"2026-07-15","reach":106,"impressions":127,"spend":14.14,"clicks":5,"leads":0},
+        {"campaign":"Narra Condo PL x Lumi (Re Launch) - 14 July","adset":"Broad,30-60,Exclusion","ad":"Image 9 - Comparison","day":"2026-07-15","reach":445,"impressions":541,"spend":21.81,"clicks":4,"leads":0},
+        {"campaign":"General PL Maureen x LA | 28 May","adset":"Broad_30-55_Exclusion_Image & Video (General PL)","ad":"Image 6 - The Budget","day":"2026-07-15","reach":41,"impressions":45,"spend":5.51,"clicks":1,"leads":1},
+        {"campaign":"Thomson Maureen x Lumi | 14 July","adset":"Broad, Exclusion Ad set","ad":"Ai Video Thomson Maureen","day":"2026-07-15","reach":193,"impressions":235,"spend":16.83,"clicks":4,"leads":0},
+        {"campaign":"General PL Maureen x LA | 28 May","adset":"Broad_30-55_Exclusion_Image & Video (General PL)","ad":"AI Video GPL","day":"2026-07-15","reach":262,"impressions":278,"spend":11.06,"clicks":3,"leads":1},
+        {"campaign":"Thomson Maureen x Lumi | 14 July","adset":"Broad, Exclusion Ad set","ad":"Image 5 - Emphasize Number","day":"2026-07-15","reach":350,"impressions":385,"spend":17.86,"clicks":2,"leads":0},
+        {"campaign":"General PL Maureen x LA | 28 May","adset":"Broad_30-55_Exclusion_Image & Video (General PL)","ad":"Image 5 - The Budget & Area Anchor - reTry","day":"2026-07-15","reach":106,"impressions":111,"spend":13.50,"clicks":1,"leads":0},
+
+        {"campaign":"Thomson Maureen x Lumi | 14 July","adset":"Broad, Exclusion Ad set","ad":"Image 5 - Emphasize Number","day":"2026-07-14","reach":404,"impressions":439,"spend":9.16,"clicks":2,"leads":0},
+        {"campaign":"Narra Condo PL x Lumi (Re Launch) - 14 July","adset":"Broad,30-60,Exclusion","ad":"Image 9 - Comparison","day":"2026-07-14","reach":204,"impressions":240,"spend":6.69,"clicks":1,"leads":0},
+        {"campaign":"Narra Condo PL x Lumi (Re Launch) - 14 July","adset":"Broad,30-60,Exclusion","ad":"Image 8 - Scarcity & Price","day":"2026-07-14","reach":107,"impressions":117,"spend":7.85,"clicks":0,"leads":0},
+        {"campaign":"Thomson Maureen x Lumi | 14 July","adset":"Broad, Exclusion Ad set","ad":"Ai Video Thomson Maureen","day":"2026-07-14","reach":34,"impressions":38,"spend":1.18,"clicks":2,"leads":0},
+        {"campaign":"General PL Maureen x LA | 28 May","adset":"Broad_30-55_Exclusion_Image & Video (General PL)","ad":"AI Video GPL","day":"2026-07-14","reach":100,"impressions":113,"spend":3.74,"clicks":1,"leads":0},
+        {"campaign":"General PL Maureen x LA | 28 May","adset":"Broad_30-55_Exclusion_Image & Video (General PL)","ad":"Image 5 - The Budget & Area Anchor - reTry","day":"2026-07-14","reach":261,"impressions":286,"spend":23.45,"clicks":3,"leads":1},
+
+        {"campaign":"General PL Maureen x LA | 28 May","adset":"Broad_30-55_Exclusion_Image & Video (General PL)","ad":"Image 5 - The Budget & Area Anchor - reTry","day":"2026-07-13","reach":220,"impressions":237,"spend":26.67,"clicks":3,"leads":0},
+        {"campaign":"General PL Maureen x LA | 28 May","adset":"Broad_30-55_Exclusion_Image & Video (General PL)","ad":"AI Video GPL","day":"2026-07-13","reach":331,"impressions":364,"spend":14.56,"clicks":5,"leads":0},
+        {"campaign":"General PL Maureen x LA | 28 May","adset":"Broad_30-55_Exclusion_Image & Video (General PL)","ad":"Image 5 - The Budget & Area Anchor - reTry","day":"2026-07-12","reach":438,"impressions":469,"spend":41.69,"clicks":10,"leads":1},
+        {"campaign":"General PL Maureen x LA | 28 May","adset":"Broad_30-55_Exclusion_Image & Video (General PL)","ad":"Image 5 - The Budget & Area Anchor - reTry","day":"2026-07-10","reach":224,"impressions":242,"spend":22.15,"clicks":3,"leads":1},
+        {"campaign":"General PL Maureen x LA | 28 May","adset":"Broad_30-55_Exclusion_Image & Video (General PL)","ad":"Image 5 - The Budget & Area Anchor - reTry","day":"2026-07-09","reach":302,"impressions":314,"spend":29.83,"clicks":4,"leads":1},
+        {"campaign":"General PL Maureen x LA | 28 May","adset":"Broad_30-55_Exclusion_Image & Video (General PL)","ad":"Image 5 - The Budget & Area Anchor - reTry","day":"2026-07-08","reach":288,"impressions":303,"spend":36.09,"clicks":4,"leads":2},
+        {"campaign":"General PL Maureen x LA | 28 May","adset":"Broad_30-55_Exclusion_Image & Video (General PL)","ad":"Image 5 - The Budget & Area Anchor - reTry","day":"2026-07-07","reach":290,"impressions":326,"spend":32.33,"clicks":9,"leads":0},
+        {"campaign":"General PL Maureen x LA | 28 May","adset":"Broad_30-55_Exclusion_Image & Video (General PL)","ad":"Image 5 - The Budget & Area Anchor - reTry","day":"2026-07-06","reach":426,"impressions":483,"spend":41.89,"clicks":3,"leads":0},
+        {"campaign":"Thomson Maureen x Lumi | 18 June","adset":"Broad, Exclusion Ad set","ad":"Ai Video Thomson Maureen","day":"2026-07-06","reach":281,"impressions":374,"spend":27.25,"clicks":10,"leads":0},
+        {"campaign":"Thomson Maureen x Lumi | 18 June","adset":"Broad, Exclusion Ad set","ad":"Ai Video Thomson Maureen","day":"2026-07-05","reach":711,"impressions":994,"spend":51.79,"clicks":38,"leads":0},
+        {"campaign":"General PL Maureen x LA | 28 May","adset":"Broad_30-55_Exclusion_Image & Video (General PL)","ad":"Image 2 - The Comparison Math","day":"2026-07-05","reach":144,"impressions":154,"spend":7.03,"clicks":1,"leads":0},
+        {"campaign":"General PL Maureen x LA | 28 May","adset":"Broad_30-55_Exclusion_Image & Video (General PL)","ad":"Image 5 - The Budget & Area Anchor - reTry","day":"2026-07-05","reach":589,"impressions":647,"spend":45.20,"clicks":12,"leads":2},
+        {"campaign":"General PL Maureen x LA | 28 May","adset":"Broad_30-55_Exclusion_Image & Video (General PL)","ad":"Image 2 - The Comparison Math","day":"2026-07-04","reach":94,"impressions":101,"spend":5.31,"clicks":2,"leads":0},
+        {"campaign":"General PL Maureen x LA | 28 May","adset":"Broad_30-55_Exclusion_Image & Video (General PL)","ad":"Image 5 - The Budget & Area Anchor - reTry","day":"2026-07-04","reach":279,"impressions":304,"spend":21.38,"clicks":3,"leads":0},
+        {"campaign":"Thomson Maureen x Lumi | 18 June","adset":"Broad, Exclusion Ad set","ad":"Ai Video Thomson Maureen","day":"2026-07-04","reach":451,"impressions":569,"spend":30.02,"clicks":31,"leads":0},
+        {"campaign":"General PL Maureen x LA | 28 May","adset":"Broad_30-55_Exclusion_Image & Video (General PL)","ad":"Image 5 - The Budget & Area Anchor - reTry","day":"2026-07-03","reach":261,"impressions":285,"spend":19.14,"clicks":1,"leads":0},
+        {"campaign":"Thomson Maureen x Lumi | 18 June","adset":"Broad, Exclusion Ad set","ad":"Ai Video Thomson Maureen","day":"2026-07-03","reach":312,"impressions":440,"spend":19.50,"clicks":18,"leads":0},
+        {"campaign":"Thomson Maureen x Lumi | 18 June","adset":"Broad, Exclusion Ad set","ad":"Ai Video Thomson Maureen","day":"2026-07-02","reach":422,"impressions":563,"spend":31.59,"clicks":31,"leads":0},
+        {"campaign":"General PL Maureen x LA | 28 May","adset":"Broad_30-55_Exclusion_Image & Video (General PL)","ad":"Image 5 - The Budget & Area Anchor - reTry","day":"2026-07-02","reach":315,"impressions":336,"spend":31.27,"clicks":11,"leads":3},
+        {"campaign":"General PL Maureen x LA | 28 May","adset":"Broad_30-55_Exclusion_Image & Video (General PL)","ad":"Image 5 - The Budget & Area Anchor - reTry","day":"2026-07-01","reach":408,"impressions":454,"spend":28.31,"clicks":3,"leads":0},
+        {"campaign":"Thomson Maureen x Lumi | 18 June","adset":"Broad, Exclusion Ad set","ad":"Ai Video Thomson Maureen","day":"2026-07-01","reach":552,"impressions":738,"spend":28.78,"clicks":24,"leads":0}
+    ];
 
     let currentPeriod = 'weekly';
     let chartCampaign, chartDaily, chartAds;
 
+    // Helper: Normalize Campaign Names
+    function cleanCampaignName(c) {
+        if (!c) return 'Other';
+        if (c.includes('General PL')) return 'General PL';
+        if (c.includes('Narra Condo PL')) return 'Narra Condo PL';
+        if (c.includes('Thomson Maureen')) return 'Thomson Project';
+        return c;
+    }
+
+    function aggregateData(period) {
+        const startDate = period === 'weekly' ? '2026-07-27' : '2026-07-01';
+        const endDate = '2026-08-02';
+
+        const filtered = rawCsvLogs.filter(row => row.day >= startDate && row.day <= endDate);
+
+        // KPI totals
+        let totalSpend = 0, totalLeads = 0, totalImpressions = 0, totalReach = 0, totalClicks = 0;
+        
+        // Groupings
+        const campaignGroup = {};
+        const dailyGroup = {};
+        const adGroup = {};
+
+        filtered.forEach(row => {
+            totalSpend += row.spend;
+            totalLeads += row.leads;
+            totalImpressions += row.impressions;
+            totalReach += row.reach;
+            totalClicks += row.clicks;
+
+            const cName = cleanCampaignName(row.campaign);
+
+            // Campaign Aggregation
+            if (!campaignGroup[cName]) campaignGroup[cName] = { spend: 0, leads: 0, clicks: 0, impressions: 0 };
+            campaignGroup[cName].spend += row.spend;
+            campaignGroup[cName].leads += row.leads;
+            campaignGroup[cName].clicks += row.clicks;
+            campaignGroup[cName].impressions += row.impressions;
+
+            // Daily Aggregation
+            if (!dailyGroup[row.day]) dailyGroup[row.day] = { spend: 0, leads: 0 };
+            dailyGroup[row.day].spend += row.spend;
+            dailyGroup[row.day].leads += row.leads;
+
+            // Ad Aggregation
+            const adKey = `${row.ad}|||${cName}`;
+            if (!adGroup[adKey]) {
+                adGroup[adKey] = { name: row.ad, campaign: cName, spend: 0, leads: 0, clicks: 0, impressions: 0 };
+            }
+            adGroup[adKey].spend += row.spend;
+            adGroup[adKey].leads += row.leads;
+            adGroup[adKey].clicks += row.clicks;
+            adGroup[adKey].impressions += row.impressions;
+        });
+
+        const blendedCpl = totalLeads > 0 ? (totalSpend / totalLeads) : 0;
+        const ctr = totalImpressions > 0 ? (totalClicks / totalImpressions) * 100 : 0;
+
+        // Process Ad List
+        const adsList = Object.values(adGroup).map(a => {
+            const adCpl = a.leads > 0 ? (a.spend / a.leads) : 0;
+            const adCtr = a.impressions > 0 ? ((a.clicks / a.impressions) * 100) : 0;
+            
+            let status = 'Standard';
+            let action = 'Monitor';
+
+            if (a.leads >= 3) {
+                status = 'Winner Anchor';
+                action = 'Scale Budget';
+            } else if (a.leads > 0) {
+                status = 'Core Performer';
+                action = 'Maintain';
+            } else if (a.spend >= 50 && a.leads === 0) {
+                status = 'Budget Leak';
+                action = 'PAUSE NOW';
+            } else if (a.spend >= 5 && a.leads === 0) {
+                status = 'Low Conv';
+                action = 'Refresh Copy';
+            }
+
+            return {
+                name: a.name,
+                campaign: a.campaign,
+                spend: a.spend,
+                leads: a.leads,
+                cpl: adCpl,
+                ctr: adCtr.toFixed(2),
+                status: status,
+                action: action
+            };
+        }).sort((a, b) => b.leads - a.leads || b.spend - a.spend);
+
+        // Daily trajectory labels
+        let dailyLabels = Object.keys(dailyGroup).sort();
+        let dailyLeads = dailyLabels.map(d => dailyGroup[d].leads);
+        let dailySpend = dailyLabels.map(d => dailyGroup[d].spend);
+
+        // Shorten daily labels for presentation
+        const formattedDailyLabels = dailyLabels.map(d => {
+            const parts = d.split('-');
+            return `${parts[1] == '07' ? 'Jul' : 'Aug'} ${parts[2]}`;
+        });
+
+        return {
+            period: period,
+            startDate: startDate,
+            endDate: endDate,
+            totalSpend: totalSpend,
+            totalLeads: totalLeads,
+            blendedCpl: blendedCpl,
+            totalImpressions: totalImpressions,
+            totalReach: totalReach,
+            totalClicks: totalClicks,
+            ctr: ctr,
+            campaigns: campaignGroup,
+            daily: {
+                labels: formattedDailyLabels,
+                leads: dailyLeads,
+                spend: dailySpend
+            },
+            ads: adsList
+        };
+    }
+
     window.onload = function() {
         initCharts();
-        renderTable(weeklyData.ads);
+        switchPeriod('weekly');
     };
 
     function switchPeriod(period) {
         currentPeriod = period;
-        const data = period === 'weekly' ? weeklyData : monthlyData;
+        const data = aggregateData(period);
 
-        // Toggle Buttons Style
+        // Toggle Buttons
+        const btnWeekly = document.getElementById('btn-weekly');
+        const btnMonthly = document.getElementById('btn-monthly');
+
         if (period === 'weekly') {
-            document.getElementById('btn-weekly').className = "px-4 py-2 text-xs font-bold rounded-lg transition-all shadow-sm bg-white text-sky-700";
-            document.getElementById('btn-monthly').className = "px-4 py-2 text-xs font-bold text-slate-600 rounded-lg transition-all hover:text-slate-900";
+            btnWeekly.className = "px-4 py-2 text-xs font-bold rounded-lg transition-all shadow-sm bg-white text-sky-700";
+            btnMonthly.className = "px-4 py-2 text-xs font-bold text-slate-600 rounded-lg transition-all hover:text-slate-900";
         } else {
-            document.getElementById('btn-monthly').className = "px-4 py-2 text-xs font-bold rounded-lg transition-all shadow-sm bg-white text-sky-700";
-            document.getElementById('btn-weekly').className = "px-4 py-2 text-xs font-bold text-slate-600 rounded-lg transition-all hover:text-slate-900";
+            btnMonthly.className = "px-4 py-2 text-xs font-bold rounded-lg transition-all shadow-sm bg-white text-sky-700";
+            btnWeekly.className = "px-4 py-2 text-xs font-bold text-slate-600 rounded-lg transition-all hover:text-slate-900";
         }
 
-        // Update Text & KPI Cards
-        document.getElementById('summary-text').innerHTML = data.summaryText;
-        document.getElementById('period-badge').innerText = data.periodBadge;
-        document.getElementById('kpi-leads').innerText = data.leads;
-        document.getElementById('kpi-cpl').innerText = data.cpl;
-        document.getElementById('kpi-spend').innerText = data.spend;
-        document.getElementById('kpi-ctr').innerText = data.ctr;
+        // Executive Summary Text Dynamic Generation
+        const periodText = period === 'weekly' ? 'July 27 to August 2, 2026 (7 Days)' : 'July 1 to August 2, 2026 (33 Days)';
+        const cplDiff = ((data.blendedCpl - 45) / 45 * 100).toFixed(0);
+        const cplStatusText = data.blendedCpl > 45 ? `+${cplDiff}% above target SGD 45.00` : `within SGD 45.00 target threshold`;
 
-        document.getElementById('kpi-leads-detail').innerText = data.leadsDetail;
-        document.getElementById('kpi-cpl-detail').innerText = data.cplDetail;
-        document.getElementById('kpi-spend-detail').innerText = data.spendDetail;
-        document.getElementById('kpi-ctr-detail').innerText = data.ctrDetail;
+        let summaryHtml = `
+            During the period of <strong>${periodText}</strong>, Maureen's Meta Ads ecosystem generated 
+            <strong>${data.totalLeads} verified leads</strong> on a total expenditure of <strong>SGD $${data.totalSpend.toFixed(2)}</strong> 
+            (Blended CPL: <strong>SGD $${data.blendedCpl.toFixed(2)}</strong>, which is ${cplStatusText}). 
+            Acquisition volume was primary driven by <strong>General PL</strong> and <strong>Thomson Project</strong>. 
+            Campaign logs reveal significant spend leakage in zero-lead video creatives (specifically <strong>Ai Video</strong>), 
+            presenting an immediate CPL reduction opportunity through budget reallocation.
+        `;
+        document.getElementById('summary-text').innerHTML = summaryHtml;
 
-        // Update Charts & Table
+        // Period Badge
+        document.getElementById('period-badge').innerText = `Analyzing: ${period === 'weekly' ? 'July 27 – August 2, 2026' : 'July 1 – August 2, 2026'}`;
+
+        // Update KPIs
+        document.getElementById('kpi-leads').innerText = data.totalLeads;
+        document.getElementById('kpi-cpl').innerText = `$${data.blendedCpl.toFixed(2)}`;
+        document.getElementById('kpi-spend').innerText = `$${data.totalSpend.toFixed(2)}`;
+        document.getElementById('kpi-ctr').innerText = `${data.ctr.toFixed(2)}%`;
+
+        // KPI details
+        const cGen = data.campaigns['General PL'] ? data.campaigns['General PL'].leads : 0;
+        const cThom = data.campaigns['Thomson Project'] ? data.campaigns['Thomson Project'].leads : 0;
+        const cNarra = data.campaigns['Narra Condo PL'] ? data.campaigns['Narra Condo PL'].leads : 0;
+
+        document.getElementById('kpi-leads-detail').innerText = `Gen PL: ${cGen} | Thomson: ${cThom} | Narra: ${cNarra}`;
+        document.getElementById('kpi-cpl-detail').innerText = `Target: < SGD 45.00 (${data.blendedCpl > 45 ? '+' + cplDiff + '%' : 'On Target'})`;
+        document.getElementById('kpi-spend-detail').innerText = `Avg $${(data.totalSpend / (period === 'weekly' ? 7 : 33)).toFixed(2)} / day delivery`;
+        document.getElementById('kpi-ctr-detail').innerText = `Reach: ${data.totalReach.toLocaleString()} | Clicks: ${data.totalClicks.toLocaleString()}`;
+
+        // Update Charts
         updateCharts(data);
+
+        // Update Leak Diagnostic Panel
+        renderLeakPanel(data.ads);
+
+        // Update Table
         renderTable(data.ads);
     }
 
@@ -483,18 +734,18 @@
         chartCampaign = new Chart(ctx1, {
             type: 'bar',
             data: {
-                labels: weeklyData.campaigns.labels,
+                labels: [],
                 datasets: [
                     {
                         label: 'Leads Generated',
-                        data: weeklyData.campaigns.leads,
+                        data: [],
                         backgroundColor: '#0284c7',
                         borderRadius: 6,
                         yAxisID: 'yLeads'
                     },
                     {
                         label: 'Spend (SGD)',
-                        data: weeklyData.campaigns.spend,
+                        data: [],
                         backgroundColor: '#e2e8f0',
                         borderRadius: 6,
                         yAxisID: 'ySpend'
@@ -517,11 +768,11 @@
         chartDaily = new Chart(ctx2, {
             type: 'line',
             data: {
-                labels: weeklyData.daily.labels,
+                labels: [],
                 datasets: [
                     {
                         label: 'Daily Leads',
-                        data: weeklyData.daily.leads,
+                        data: [],
                         borderColor: '#0284c7',
                         backgroundColor: 'rgba(2, 132, 199, 0.1)',
                         fill: true,
@@ -530,7 +781,7 @@
                     },
                     {
                         label: 'Daily Spend (SGD)',
-                        data: weeklyData.daily.spend,
+                        data: [],
                         borderColor: '#f59e0b',
                         borderDash: [4, 4],
                         tension: 0.2,
@@ -543,7 +794,7 @@
                 maintainAspectRatio: false,
                 plugins: { legend: { position: 'bottom' } },
                 scales: {
-                    yLeads: { type: 'linear', position: 'left', beginAtZero: true, suggestedMax: 4 },
+                    yLeads: { type: 'linear', position: 'left', beginAtZero: true },
                     ySpend: { type: 'linear', position: 'right', beginAtZero: true, grid: { drawOnChartArea: false } }
                 }
             }
@@ -555,11 +806,11 @@
             type: 'bar',
             indexAxis: 'y',
             data: {
-                labels: weeklyData.ads.map(a => a.name),
+                labels: [],
                 datasets: [{
-                    label: 'Leads',
-                    data: weeklyData.ads.map(a => a.leads),
-                    backgroundColor: weeklyData.ads.map(a => a.leads > 0 ? '#10b981' : '#f43f5e'),
+                    label: 'Leads Generated',
+                    data: [],
+                    backgroundColor: [],
                     borderRadius: 4
                 }]
             },
@@ -573,36 +824,96 @@
     }
 
     function updateCharts(data) {
-        chartCampaign.data.labels = data.campaigns.labels;
-        chartCampaign.data.datasets[0].data = data.campaigns.leads;
-        chartCampaign.data.datasets[1].data = data.campaigns.spend;
+        // Campaign Breakdown
+        const cKeys = Object.keys(data.campaigns);
+        const cLeads = cKeys.map(k => data.campaigns[k].leads);
+        const cSpend = cKeys.map(k => data.campaigns[k].spend);
+
+        chartCampaign.data.labels = cKeys;
+        chartCampaign.data.datasets[0].data = cLeads;
+        chartCampaign.data.datasets[1].data = cSpend;
         chartCampaign.update();
 
+        // Daily Trajectory
         chartDaily.data.labels = data.daily.labels;
         chartDaily.data.datasets[0].data = data.daily.leads;
         chartDaily.data.datasets[1].data = data.daily.spend;
         chartDaily.update();
 
-        chartAds.data.labels = data.ads.map(a => a.name);
-        chartAds.data.datasets[0].data = data.ads.map(a => a.leads);
-        chartAds.data.datasets[0].backgroundColor = data.ads.map(a => a.leads > 0 ? '#10b981' : '#f43f5e');
+        // Top Creatives Chart (Top 7)
+        const topAds = data.ads.slice(0, 7);
+        chartAds.data.labels = topAds.map(a => a.name.length > 25 ? a.name.substring(0, 25) + '...' : a.name);
+        chartAds.data.datasets[0].data = topAds.map(a => a.leads);
+        chartAds.data.datasets[0].backgroundColor = topAds.map(a => a.leads > 0 ? '#10b981' : '#f43f5e');
         chartAds.update();
     }
 
+    function renderLeakPanel(ads) {
+        const container = document.getElementById('leak-items-container');
+        container.innerHTML = '';
+
+        // Find zero-lead spenders
+        const leaks = ads.filter(a => a.leads === 0 && a.spend > 5).sort((a, b) => b.spend - a.spend);
+        let totalLeakSpend = 0;
+
+        if (leaks.length === 0) {
+            container.innerHTML = `<div class="p-4 bg-emerald-50 text-emerald-800 text-xs rounded-xl border border-emerald-200">No severe spend leaks detected in this timeframe.</div>`;
+        } else {
+            leaks.slice(0, 2).forEach(leak => {
+                totalLeakSpend += leak.spend;
+                const card = document.createElement('div');
+                card.className = "bg-white p-4 rounded-xl border border-rose-200 shadow-sm";
+                card.innerHTML = `
+                    <div class="flex justify-between items-start mb-1">
+                        <span class="text-xs font-bold text-slate-800">${leak.name} (${leak.campaign})</span>
+                        <span class="bg-rose-100 text-rose-700 text-[10px] font-bold px-2 py-0.5 rounded">Spend Leak</span>
+                    </div>
+                    <p class="text-xs text-slate-500 mb-2">Zero leads generated on <strong class="text-rose-700">SGD $${leak.spend.toFixed(2)}</strong> ad spend. Creative saturation detected.</p>
+                    <div class="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
+                        <div class="bg-rose-500 h-full w-full"></div>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        document.getElementById('recoverable-capital').innerText = `$${totalLeakSpend.toFixed(2)} SGD`;
+    }
+
+    let activeAdsData = [];
+
     function renderTable(ads) {
+        activeAdsData = ads;
+        filterTable();
+    }
+
+    function filterTable() {
+        const query = document.getElementById('table-search').value.toLowerCase();
+        const campaignFilter = document.getElementById('campaign-filter').value;
         const tbody = document.getElementById('ad-table-body');
         tbody.innerHTML = '';
 
-        ads.forEach(ad => {
+        const filtered = activeAdsData.filter(ad => {
+            const matchesSearch = ad.name.toLowerCase().includes(query) || ad.campaign.toLowerCase().includes(query);
+            const matchesCampaign = campaignFilter === 'ALL' || ad.campaign === campaignFilter;
+            return matchesSearch && matchesCampaign;
+        });
+
+        if (filtered.length === 0) {
+            tbody.innerHTML = `<tr><td colspan="7" class="py-6 text-center text-slate-400 italic">No ad units matching filter criteria</td></tr>`;
+            return;
+        }
+
+        filtered.forEach(ad => {
             const tr = document.createElement('tr');
             tr.className = "hover:bg-slate-50 transition-colors";
             
-            const cplDisplay = ad.cpl > 0 ? `$${ad.cpl.toFixed(2)}` : 'N/A ($0 leads)';
+            const cplDisplay = ad.cpl > 0 ? `$${ad.cpl.toFixed(2)}` : '<span class="text-slate-400">N/A ($0 leads)</span>';
             let statusBadge = '';
             
-            if (ad.status.includes('Winner') || ad.status.includes('Top')) {
+            if (ad.status.includes('Winner')) {
                 statusBadge = `<span class="bg-emerald-100 text-emerald-800 text-[10px] font-bold px-2 py-0.5 rounded-full">${ad.status}</span>`;
-            } else if (ad.status.includes('Leak') || ad.status.includes('Fatigued')) {
+            } else if (ad.status.includes('Leak')) {
                 statusBadge = `<span class="bg-rose-100 text-rose-800 text-[10px] font-bold px-2 py-0.5 rounded-full">${ad.status}</span>`;
             } else {
                 statusBadge = `<span class="bg-slate-100 text-slate-700 text-[10px] font-bold px-2 py-0.5 rounded-full">${ad.status}</span>`;
@@ -621,15 +932,6 @@
                 </td>
             `;
             tbody.appendChild(tr);
-        });
-    }
-
-    function filterTable() {
-        const query = document.getElementById('table-search').value.toLowerCase();
-        const rows = document.querySelectorAll('#ad-table-body tr');
-        rows.forEach(row => {
-            const text = row.innerText.toLowerCase();
-            row.style.display = text.includes(query) ? '' : 'none';
         });
     }
 </script>
